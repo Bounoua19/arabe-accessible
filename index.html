@@ -327,7 +327,7 @@ body.dark .temo-name{color:var(--text)}
 <!-- NAVBAR -->
 <nav>
  <div class="nav-logo">
- <img src="images/logo.png" alt="Logo L'Arabe Accessible">
+ <img src="logo.png" alt="Logo L'Arabe Accessible">
  <span class="nav-name">L'<span>Arabe</span> Accessible</span>
  </div>
  <div class="nav-right">
@@ -376,7 +376,7 @@ body.dark .temo-name{color:var(--text)}
  <p class="hero-ar ar">العربية في متناول الجميع</p>
  <p class="hero-desc" data-i18n="hero_desc">Apprenez l'arabe classique depuis zéro avec une méthode structurée, des leçons complètes et des exercices audio pour une prononciation parfaite.</p>
  <div class="hero-img-block">
- <img src="images/hero-letters.png" alt="Lettres arabes dorées كـ كـ ك">
+ <img src="hero-letters.png" alt="Lettres arabes dorées كـ كـ ك">
  <div class="hero-img-pills">
  <div class="pill"><span data-i18n="pill_audio">Audio intégré</span></div>
  <div class="pill-sep"></div>
@@ -643,7 +643,7 @@ body.dark .temo-name{color:var(--text)}
 <footer>
  <div class="footer-inner">
  <div class="f-brand">
- <img src="images/logo.png" alt="Logo L'Arabe Accessible">
+ <img src="logo.png" alt="Logo L'Arabe Accessible">
  <p data-i18n="footer_desc">La méthode francophone pour apprendre l'arabe classique depuis zéro, à votre rythme et à vie.</p>
       <p style="margin-top:10px;font-size:13px"><a href="mailto:contact@arabeaccessible.com" style="color:rgba(201,162,39,.6);transition:color .2s" onmouseover="this.style.color='#e8c96a'" onmouseout="this.style.color='rgba(201,162,39,.6)'">contact@arabeaccessible.com</a></p>
  </div>
@@ -780,6 +780,12 @@ function setLang(lang){
  if(t[key]!==undefined)el.innerHTML=t[key];
  });
 }
+
+/* Init langue au chargement */
+document.addEventListener('DOMContentLoaded',function(){
+  const saved=localStorage.getItem('lang')||'fr';
+  setLang(saved);
+});
 </script>
 
 </body>
