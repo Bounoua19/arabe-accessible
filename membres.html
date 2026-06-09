@@ -1,0 +1,2315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace Membres — L'Arabe Accessible</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Amiri:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#09190f;--dark2:#122218;--green:#1a4029;--green2:#245c38;--gold:#c9a227;--gold2:#e8c96a;--gold-bg:rgba(201,162,39,.08);--white:#fff;--off:#f7f4ee;--gray:#e5e0d5;--text:#18180f;--muted:#5a5a4a;--r:8px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--text);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.2}
+.ar{font-family:'Amiri',serif}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+
+/* BANNIÈRE COOKIES */
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--dark2);border-top:1px solid rgba(201,162,39,.25);padding:16px 32px;display:none;align-items:center;justify-content:space-between;gap:20px;z-index:9998;flex-wrap:wrap}
+#cookie-banner.show{display:flex}
+.cookie-text{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6;flex:1;min-width:200px}
+.cookie-text a{color:var(--gold2)}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0}
+.cookie-accept{padding:9px 20px;background:var(--gold);color:var(--dark);font-size:13px;font-weight:700;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.cookie-accept:hover{background:var(--gold2)}
+.cookie-decline{padding:9px 20px;background:transparent;color:rgba(255,255,255,.6);font-size:13px;border:1px solid rgba(255,255,255,.2);border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.cookie-decline:hover{border-color:rgba(255,255,255,.4);color:#fff}
+@media(max-width:600px){#cookie-banner{flex-direction:column;text-align:center}.cookie-btns{width:100%;justify-content:center}}
+
+/* LOGIN */
+#login-screen{position:fixed;inset:0;background:var(--dark);display:flex;align-items:center;justify-content:center;z-index:9999;padding:24px}
+.login-box{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.3);border-top:4px solid var(--gold);border-radius:12px;padding:48px 44px;max-width:420px;width:100%;text-align:center}
+.login-logo{height:80px;width:80px;object-fit:contain;border-radius:50%;border:2px solid rgba(201,162,39,.4);margin:0 auto 20px;box-shadow:0 0 20px rgba(201,162,39,.15)}
+.login-title{font-family:'Cormorant Garamond',serif;font-size:28px;color:#fff;margin-bottom:6px}
+.login-sub{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:32px}
+.login-input{width:100%;padding:13px 16px;border:1px solid rgba(255,255,255,.2);border-radius:var(--r);background:rgba(255,255,255,.07);color:#fff;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:12px;transition:border-color .2s}
+.login-input:focus{border-color:var(--gold)}
+.login-input::placeholder{color:rgba(255,255,255,.35)}
+.login-btn{width:100%;padding:15px;background:var(--gold);color:var(--dark);font-size:16px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;margin-top:4px}
+.login-btn:hover{background:var(--gold2)}
+.login-err{color:#e05050;font-size:13px;margin-top:10px;display:none}
+.login-hint{font-size:12px;color:rgba(255,255,255,.3);margin-top:16px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:var(--dark);border-bottom:1px solid rgba(201,162,39,.18);display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:48px;width:48px;object-fit:contain;border-radius:50%;border:2px solid rgba(201,162,39,.4)}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#fff}
+.nav-name span{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-badge{background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.3);color:var(--gold2);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:1px}
+.nav-home{font-size:13px;color:rgba(255,255,255,.6);transition:color .2s}
+.nav-home:hover{color:var(--gold)}
+.dark-btn{padding:6px 14px;border:1px solid rgba(201,162,39,.3);border-radius:20px;background:transparent;color:rgba(255,255,255,.7);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.dark-btn:hover{border-color:var(--gold);color:var(--gold)}
+.nav-logout{font-size:13px;color:rgba(255,255,255,.4);cursor:pointer;transition:color .2s;background:none;border:none;font-family:'DM Sans',sans-serif}
+.nav-logout:hover{color:#e05050}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:300px 1fr;min-height:100vh;padding-top:64px}
+
+/* SIDEBAR */
+.sidebar{background:var(--white);border-right:1px solid var(--gray);padding:24px 0;position:sticky;top:64px;height:calc(100vh - 64px);overflow-y:auto}
+.sidebar-section{margin-bottom:8px}
+.chapter-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--dark);text-align:left;transition:background .2s}
+.chapter-btn:hover{background:var(--off)}
+.chapter-btn.open{background:var(--gold-bg);color:var(--green2)}
+.chapter-icon{font-size:15px;transition:transform .3s}
+.chapter-btn.open .chapter-icon{transform:rotate(90deg)}
+.chapter-num{width:24px;height:24px;border-radius:50%;background:var(--dark);color:var(--gold2);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:10px}
+.chapter-btn.open .chapter-num{background:var(--gold)}
+.chapter-title{flex:1}
+.lesson-list{display:none;padding:4px 0}
+.chapter-btn.open + .lesson-list{display:block}
+.lesson-item{display:flex;align-items:center;gap:8px;padding:9px 20px 9px 52px;font-size:13px;color:var(--muted);cursor:pointer;transition:all .2s;border-left:3px solid transparent}
+.lesson-item:hover{background:var(--off);color:var(--dark)}
+.lesson-item.active{background:var(--gold-bg);color:var(--green2);font-weight:600;border-left-color:var(--gold)}
+.lesson-item.done::after{content:'✓';color:var(--gold);font-size:11px;margin-left:auto}
+.sidebar-sep{height:1px;background:var(--gray);margin:12px 20px}
+.sidebar-prog-wrap{padding:16px 20px}
+.prog-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.prog-bar{height:6px;background:var(--gray);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;background:var(--gold);border-radius:3px;width:0%;transition:width .5s ease}
+.prog-pct{font-size:12px;color:var(--gold);font-weight:600;margin-top:6px}
+
+/* MAIN */
+.main{padding:36px 44px;max-width:960px}
+.lesson-panel{display:none}
+.lesson-panel.active{display:block}
+
+/* LESSON TOP */
+.lesson-top{background:var(--dark);border-radius:var(--r);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.lesson-num{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:rgba(201,162,39,.2);line-height:1}
+.lesson-info{}
+.lesson-main-title{font-size:24px;color:#fff}
+.lesson-ar-title{font-family:'Amiri',serif;font-size:26px;color:var(--gold2);opacity:.7}
+.lesson-meta{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px}
+
+/* PROGRESS BAR PER LESSON */
+.lesson-progress{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding:12px 18px;background:var(--white);border-radius:var(--r);border:1px solid var(--gray)}
+.lp-label{font-size:12px;color:var(--muted);white-space:nowrap;font-weight:500}
+.lp-bar{flex:1;height:6px;background:var(--gray);border-radius:3px;overflow:hidden}
+.lp-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease}
+.lp-pct{font-size:12px;color:var(--gold);font-weight:700;white-space:nowrap}
+.step-dots{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.step-dot{width:28px;height:28px;border-radius:50%;background:var(--gray);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;border:2px solid transparent}
+.step-dot.done{background:rgba(201,162,39,.2);color:var(--gold);border-color:var(--gold)}
+.step-dot.current{background:var(--gold);color:var(--dark);transform:scale(1.1)}
+
+/* ETAPES */
+.etape{margin-bottom:28px;background:var(--white);border-radius:var(--r);overflow:hidden;border:1px solid var(--gray)}
+.etape-header{background:var(--dark);padding:14px 22px;display:flex;align-items:center;gap:12px}
+.etape-num{background:var(--gold);color:var(--dark);font-size:10px;font-weight:700;padding:3px 10px;border-radius:3px;letter-spacing:.5px;white-space:nowrap}
+.etape-title{font-size:15px;color:#fff;font-weight:500}
+.etape-body{padding:22px}
+
+/* TABLEAUX */
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+th{background:var(--dark);color:var(--gold2);font-size:11px;font-weight:500;padding:10px 14px;text-align:left;letter-spacing:.5px}
+td{padding:10px 14px;border-bottom:1px solid var(--gray)}
+tr:last-child td{border:none}
+tr:hover td{background:var(--off)}
+.ar-cell{font-family:'Amiri',serif;font-size:20px;color:var(--dark);direction:rtl;text-align:right}
+.tr-cell{color:var(--muted);font-style:italic;font-size:13px}
+
+/* EXEMPLES */
+.exemples{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.ex-row{display:flex;align-items:center;gap:12px;padding:11px 14px;background:var(--off);border-radius:var(--r);border-left:3px solid var(--gold)}
+.ex-ar{font-family:'Amiri',serif;font-size:22px;color:var(--dark);direction:rtl;min-width:160px;text-align:right}
+.ex-tr{font-size:12.5px;color:var(--muted);font-style:italic;flex:1}
+.ex-fr{font-size:13.5px;color:var(--dark);font-weight:500}
+
+/* RÈGLE */
+.regle{background:var(--gold-bg);border:1px solid rgba(201,162,39,.25);border-radius:var(--r);padding:14px 18px;margin:12px 0;font-size:14px;color:var(--dark);line-height:1.7}
+.regle strong{color:var(--green2)}
+
+/* DEFINITION */
+.definition{background:var(--dark);border-radius:var(--r);padding:20px 24px;margin:12px 0}
+.def-term{font-family:'Amiri',serif;font-size:24px;color:var(--gold2);margin-bottom:6px}
+.def-text{font-size:14px;color:rgba(255,255,255,.75);line-height:1.8}
+.def-text strong{color:var(--gold2)}
+
+/* EXERCICE */
+.exercice{background:var(--dark);border-radius:var(--r);padding:22px 26px;margin-top:22px}
+.exercice h4{color:var(--gold2);font-size:15px;margin-bottom:14px;font-family:'Cormorant Garamond',serif}
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ex-q{font-size:13px;color:rgba(255,255,255,.7);padding:10px 14px;background:rgba(255,255,255,.05);border-radius:6px}
+.ex-a{font-size:13px;color:var(--gold2);padding:10px 14px;background:rgba(201,162,39,.08);border-radius:6px}
+.ex-ar-ans{font-family:'Amiri',serif;font-size:20px;display:block;margin-bottom:2px}
+.qlabel{font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px}
+
+/* VOCAB */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin:12px 0}
+.vocab-card{background:var(--off);border:1px solid var(--gray);border-radius:var(--r);padding:14px;display:flex;align-items:center;gap:12px;transition:all .2s}
+.vocab-card:hover{border-color:var(--gold);background:var(--gold-bg)}
+.vocab-ar{font-family:'Amiri',serif;font-size:28px;color:var(--dark)}
+.vocab-fr{font-size:13px;color:var(--dark);font-weight:500}
+.vocab-tr{font-size:11px;color:var(--muted);margin-top:2px}
+.aud{width:28px;height:28px;background:var(--gold-bg);border:1px solid rgba(201,162,39,.3);border-radius:50%;color:var(--green2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .2s;font-size:11px;flex-shrink:0}
+.aud:hover{background:var(--gold);color:var(--dark)}
+.aud.playing{background:var(--gold);color:var(--dark)}
+
+/* NAV LESSON */
+.lesson-nav{display:flex;justify-content:space-between;margin-top:36px;padding-top:20px;border-top:1px solid var(--gray)}
+.ln-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--r);font-size:13.5px;font-weight:500;cursor:pointer;transition:all .2s;border:1px solid var(--gray);background:var(--white);font-family:'DM Sans',sans-serif;color:var(--muted)}
+.ln-btn:hover{border-color:var(--gold);color:var(--green2)}
+.ln-btn.primary{background:var(--dark);color:var(--gold2);border-color:var(--dark)}
+.ln-btn.primary:hover{background:var(--green2)}
+
+/* DARK MODE */
+body.dark{background:#0f0f1e;color:#e0e0f0}
+body.dark .sidebar{background:#1a1a2e;border-color:#2a2a4a}
+body.dark .chapter-btn{color:#e0e0f0}
+body.dark .chapter-btn:hover{background:#252545}
+body.dark .lesson-item{color:#a0a0c0}
+body.dark .lesson-item:hover{background:#252545;color:#e0e0f0}
+body.dark .etape{background:#1e1e3a;border-color:#2a2a4a}
+body.dark .etape-body{background:#1e1e3a}
+body.dark table td{border-color:#2a2a4a;color:#e0e0f0}
+body.dark tr:hover td{background:#252545}
+body.dark .ex-row{background:#252545}
+body.dark .regle{background:rgba(201,162,39,.07);border-color:rgba(201,162,39,.2);color:#e0e0f0}
+body.dark .vocab-card{background:#252545;border-color:#2a2a4a}
+body.dark .vocab-fr{color:#e0e0f0}
+body.dark .lesson-progress{background:#1e1e3a;border-color:#2a2a4a}
+body.dark .prog-bar,.dark .lp-bar{background:#2a2a4a}
+body.dark .lesson-nav .ln-btn{background:#1e1e3a;border-color:#2a2a4a;color:#a0a0c0}
+body.dark .step-dot{background:#2a2a4a;color:#a0a0c0}
+body.dark .sidebar-sep{background:#2a2a4a}
+
+/* MODULE HEADER Al-Adjroumiyya */
+.module-header{background:linear-gradient(135deg,var(--dark) 0%,var(--green) 100%);border-radius:var(--r);padding:20px 24px;margin-bottom:16px;border-left:4px solid var(--gold)}
+.module-header h3{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;margin-bottom:4px}
+.module-header .mod-ar{font-family:'Amiri',serif;font-size:20px;color:var(--gold2);opacity:.7}
+.module-header p{font-size:13px;color:rgba(255,255,255,.6);margin-top:6px}
+
+/* RESPONSIVE */
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.main{padding:20px 16px}.ex-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <img src="images/logo.png" class="login-logo" alt="Logo">
+    <div class="login-title">Espace Membres</div>
+    <div class="login-sub">Veuillez entrer vos identifiants pour accéder à votre formation</div>
+    <input class="login-input" type="email" id="login-email" placeholder="Votre adresse email">
+    <input class="login-input" type="password" id="login-pass" placeholder="Votre mot de passe" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Accéder à ma formation</button>
+    <div class="login-err" id="login-err">Email ou mot de passe incorrect</div>
+    <div class="login-hint">Pas encore accès ? <a href="index.html" style="color:var(--gold)">Voir la formation</a></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="images/logo.png" alt="Logo">
+    <span class="nav-name">L'<span>Arabe</span> Accessible</span>
+  </div>
+  <div class="nav-right">
+    <span class="nav-badge">Espace Membres</span>
+    <a href="index.html" class="nav-home">Accueil</a>
+    <button class="dark-btn" onclick="toggleDark()" id="darkBtnM">Sombre</button>
+    <button class="nav-logout" onclick="logout()">Déconnexion</button>
+  </div>
+</nav>
+
+<!-- LAYOUT -->
+
+<!-- BANNIÈRE COOKIES -->
+<div id="cookie-banner">
+  <div class="cookie-text">
+    Nous utilisons des cookies essentiels et fonctionnels pour mémoriser vos préférences et votre progression.
+    <a href="mentions-legales.html" target="_blank">En savoir plus</a>
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="declineCookies()">Refuser</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Accepter</button>
+  </div>
+</div>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <!-- CHAPITRE 1 : ALPHABET -->
+  <div class="sidebar-section">
+    <button class="chapter-btn open" onclick="toggleChapter(this)">
+      <div class="chapter-num">1</div>
+      <span class="chapter-title">Alphabet & Prononciation</span>
+      <span class="chapter-icon">›</span>
+    </button>
+    <div class="lesson-list">
+      <div class="lesson-item active" onclick="showLesson('alph-lettres',this)">Les 28 lettres avec audio</div>
+      <div class="lesson-item" onclick="showLesson('alph-formes',this)">Les formes des lettres</div>
+      <div class="lesson-item" onclick="showLesson('alph-voyelles',this)">Les voyelles</div>
+    </div>
+  </div>
+
+  <!-- CHAPITRE 2 : GRAMMAIRE -->
+  <div class="sidebar-section">
+    <button class="chapter-btn" onclick="toggleChapter(this)">
+      <div class="chapter-num">2</div>
+      <span class="chapter-title">Grammaire</span>
+      <span class="chapter-icon">›</span>
+    </button>
+    <div class="lesson-list">
+      <div class="lesson-item" onclick="showLesson('gram-nom',this)">Leçon 1 — Le Nom</div>
+      <div class="lesson-item" onclick="showLesson('gram-pronom',this)">Leçon 2 — Le Pronom</div>
+      <div class="lesson-item" onclick="showLesson('gram-verbe',this)">Leçon 3 — Le Verbe</div>
+    </div>
+  </div>
+
+  <!-- CHAPITRE 3 : CONJUGAISON -->
+  <div class="sidebar-section">
+    <button class="chapter-btn" onclick="toggleChapter(this)">
+      <div class="chapter-num">3</div>
+      <span class="chapter-title">Conjugaison</span>
+      <span class="chapter-icon">›</span>
+    </button>
+    <div class="lesson-list">
+      <div class="lesson-item" onclick="showLesson('conj-accompli',this)">Leçon 1 — L'Accompli</div>
+      <div class="lesson-item" onclick="showLesson('conj-inaccompli',this)">Leçon 2 — L'Inaccompli</div>
+      <div class="lesson-item" onclick="showLesson('conj-imperatif',this)">Leçon 3 — L'Impératif</div>
+    </div>
+  </div>
+
+  <!-- CHAPITRE 4 : AL-ADJROUMIYYA -->
+  <div class="sidebar-section">
+    <button class="chapter-btn" onclick="toggleChapter(this)">
+      <div class="chapter-num">4</div>
+      <span class="chapter-title">Al-Adjroumiyya</span>
+      <span class="chapter-icon">›</span>
+    </button>
+    <div class="lesson-list">
+      <div class="lesson-item" onclick="showLesson('adj-m1',this)">Module 1 — La Parole</div>
+      <div class="lesson-item" onclick="showLesson('adj-m2',this)">Module 2 — L'I'rāb</div>
+      <div class="lesson-item" onclick="showLesson('adj-m3',this)">Module 3 — Les Signes</div>
+      <div class="lesson-item" onclick="showLesson('adj-m4',this)">Module 4 — Les Verbes</div>
+      <div class="lesson-item" onclick="showLesson('adj-m5',this)">Module 5 — Les Nominatifs</div>
+      <div class="lesson-item" onclick="showLesson('adj-m6',this)">Module 6 — Les Accusatifs</div>
+      <div class="lesson-item" onclick="showLesson('adj-m7',this)">Module 7 — Les Génitifs</div>
+      <div class="lesson-item" onclick="showLesson('adj-m8',this)">Module 8 — Analyse grammaticale</div>
+    </div>
+  </div>
+
+  <div class="sidebar-sep"></div>
+  <div class="sidebar-prog-wrap">
+    <div class="prog-label">Progression globale</div>
+    <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+    <div class="prog-pct" id="progPct">0 / 14 leçons</div>
+  </div>
+</aside>
+
+<!-- CONTENU PRINCIPAL -->
+<main class="main">
+
+<!-- ═══ CHAPITRE 1 : ALPHABET ═══ -->
+
+<!-- Leçon : 28 lettres avec audio -->
+<div class="lesson-panel active" id="lesson-alph-lettres">
+  <div class="lesson-top">
+    <span class="lesson-num">01</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Les 28 Lettres Arabes</div>
+      <div class="lesson-ar-title ar">الحروف العربية</div>
+      <div class="lesson-meta">Chapitre 1 · Alphabet · Audio intégré</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-alph-lettres" style="width:0%"></div></div><span class="lp-pct" id="lpp-alph-lettres">0/2</span></div>
+  <div class="step-dots" id="steps-alph-lettres">
+    <div class="step-dot current" id="sd-alph-lettres-1" onclick="setStep('alph-lettres',1,2)">1</div>
+    <div class="step-dot" id="sd-alph-lettres-2" onclick="setStep('alph-lettres',2,2)">2</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LES 28 LETTRES</span><span class="etape-title">Cliquez sur &#9654; pour écouter la prononciation</span></div>
+    <div class="etape-body">
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-ar ar">أ</div><div><div class="vocab-fr">Alif — ā</div></div><button class="aud" onclick="playAud('Alif.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ب</div><div><div class="vocab-fr">Bā — b</div></div><button class="aud" onclick="playAud('BA.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ت</div><div><div class="vocab-fr">Tā — t</div></div><button class="aud" onclick="playAud('Ta.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ث</div><div><div class="vocab-fr">Thā — th</div></div><button class="aud" onclick="playAud('Tha.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ج</div><div><div class="vocab-fr">Jīm — dj</div></div><button class="aud" onclick="playAud('Djim.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ح</div><div><div class="vocab-fr">Ḥā — ḥ</div></div><button class="aud" onclick="playAud('Ha.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">خ</div><div><div class="vocab-fr">Khā — kh</div></div><button class="aud" onclick="playAud('Kha.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">د</div><div><div class="vocab-fr">Dāl — d</div></div><button class="aud" onclick="playAud('dAL.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ذ</div><div><div class="vocab-fr">Dhāl — dh</div></div><button class="aud" onclick="playAud('Dhal.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ر</div><div><div class="vocab-fr">Rā — r</div></div><button class="aud" onclick="playAud('Ra.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ز</div><div><div class="vocab-fr">Zāy — z</div></div><button class="aud" onclick="playAud('Zay.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">س</div><div><div class="vocab-fr">Sīn — s</div></div><button class="aud" onclick="playAud('Sin.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ش</div><div><div class="vocab-fr">Shīn — sh</div></div><button class="aud" onclick="playAud('Shin.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ص</div><div><div class="vocab-fr">Ṣād — ṣ</div></div><button class="aud" onclick="playAud('Sad.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ض</div><div><div class="vocab-fr">Ḍād — ḍ</div></div><button class="aud" onclick="playAud('Dad.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ط</div><div><div class="vocab-fr">Ṭā — ṭ</div></div><button class="aud" onclick="playAud('TImou.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ظ</div><div><div class="vocab-fr">Ẓā — ẓ</div></div><button class="aud" onclick="playAud('Thaaa.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ع</div><div><div class="vocab-fr">'Ayn — ʿ</div></div><button class="aud" onclick="playAud('ayn.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">غ</div><div><div class="vocab-fr">Ghayn — gh</div></div><button class="aud" onclick="playAud('Ghayn.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ف</div><div><div class="vocab-fr">Fā — f</div></div><button class="aud" onclick="playAud('Fa.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ق</div><div><div class="vocab-fr">Qāf — q</div></div><button class="aud" onclick="playAud('Qaf.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ك</div><div><div class="vocab-fr">Kāf — k</div></div><button class="aud" onclick="playAud('Kaf.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ل</div><div><div class="vocab-fr">Lām — l</div></div><button class="aud" onclick="playAud('Lam.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">م</div><div><div class="vocab-fr">Mīm — m</div></div><button class="aud" onclick="playAud('Mim.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ن</div><div><div class="vocab-fr">Nūn — n</div></div><button class="aud" onclick="playAud('Noun.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ه</div><div><div class="vocab-fr">Hā — h</div></div><button class="aud" onclick="playAud('HAA.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">و</div><div><div class="vocab-fr">Wāw — w/ū</div></div><button class="aud" onclick="playAud('Waw.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ي</div><div><div class="vocab-fr">Yā — y/ī</div></div><button class="aud" onclick="playAud('Ya.mp3',this)">&#9654;</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">VOCABULAIRE</span><span class="etape-title">Premiers mots avec audio</span></div>
+    <div class="etape-body">
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-ar ar">بَيْتٌ</div><div><div class="vocab-fr">Maison</div><div class="vocab-tr">baytoun</div></div><button class="aud" onclick="playAud('Bayt.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">مَدْرَسَةٌ</div><div><div class="vocab-fr">École</div><div class="vocab-tr">madrasatoun</div></div><button class="aud" onclick="playAud('Madrasa.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">كَتَبَ</div><div><div class="vocab-fr">Il a écrit</div><div class="vocab-tr">kataba</div></div><button class="aud" onclick="playAud('Kataba.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">دَرَسَ</div><div><div class="vocab-fr">Il a étudié</div><div class="vocab-tr">darasa</div></div><button class="aud" onclick="playAud('Darasa.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">مُدَرِّسٌ</div><div><div class="vocab-fr">Professeur</div><div class="vocab-tr">moudarrisoun</div></div><button class="aud" onclick="playAud('mOUDARIS.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">بَابٌ</div><div><div class="vocab-fr">Porte</div><div class="vocab-tr">bāboun</div></div><button class="aud" onclick="playAud('bABA.mp3',this)">&#9654;</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <div></div>
+    <button class="ln-btn primary" onclick="goNext('alph-formes')">Leçon suivante : Les formes ›</button>
+  </div>
+</div>
+
+<!-- Leçon : Formes des lettres -->
+<div class="lesson-panel" id="lesson-alph-formes">
+  <div class="lesson-top">
+    <span class="lesson-num">02</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Les Formes des Lettres</div>
+      <div class="lesson-ar-title ar">أشكال الحروف</div>
+      <div class="lesson-meta">Chapitre 1 · Alphabet · Isolée · Début · Milieu · Fin</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-alph-formes" style="width:0%"></div></div><span class="lp-pct" id="lpp-alph-formes">0/2</span></div>
+  <div class="step-dots" id="steps-alph-formes">
+    <div class="step-dot current" id="sd-alph-formes-1" onclick="setStep('alph-formes',1,2)">1</div>
+    <div class="step-dot" id="sd-alph-formes-2" onclick="setStep('alph-formes',2,2)">2</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">PRINCIPE</span><span class="etape-title">Pourquoi une lettre change de forme ?</span></div>
+    <div class="etape-body">
+      <p style="margin-bottom:12px;font-size:14px;color:var(--muted)">En arabe, une lettre change de forme selon sa place dans le mot. Il existe 4 formes possibles :</p>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar">ب</div><div class="ex-tr">Isolée</div><div class="ex-fr">La lettre seule, hors mot</div></div>
+        <div class="ex-row"><div class="ex-ar">بـ</div><div class="ex-tr">Début</div><div class="ex-fr">Au début du mot</div></div>
+        <div class="ex-row"><div class="ex-ar">ـبـ</div><div class="ex-tr">Milieu</div><div class="ex-fr">Entre deux lettres</div></div>
+        <div class="ex-row"><div class="ex-ar">ـب</div><div class="ex-tr">Fin</div><div class="ex-fr">À la fin du mot</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">TABLEAU</span><span class="etape-title">Les 28 lettres en 4 formes</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Lettre</th><th>Isolée</th><th>Début</th><th>Milieu</th><th>Fin</th></tr>
+        <tr><td class="ar-cell">أ</td><td class="ar-cell">أ</td><td class="ar-cell">أ</td><td class="ar-cell">ـأ</td><td class="ar-cell">ـأ</td></tr>
+        <tr><td class="ar-cell">ب</td><td class="ar-cell">ب</td><td class="ar-cell">بـ</td><td class="ar-cell">ـبـ</td><td class="ar-cell">ـب</td></tr>
+        <tr><td class="ar-cell">ت</td><td class="ar-cell">ت</td><td class="ar-cell">تـ</td><td class="ar-cell">ـتـ</td><td class="ar-cell">ـت</td></tr>
+        <tr><td class="ar-cell">ث</td><td class="ar-cell">ث</td><td class="ar-cell">ثـ</td><td class="ar-cell">ـثـ</td><td class="ar-cell">ـث</td></tr>
+        <tr><td class="ar-cell">ج</td><td class="ar-cell">ج</td><td class="ar-cell">جـ</td><td class="ar-cell">ـجـ</td><td class="ar-cell">ـج</td></tr>
+        <tr><td class="ar-cell">ح</td><td class="ar-cell">ح</td><td class="ar-cell">حـ</td><td class="ar-cell">ـحـ</td><td class="ar-cell">ـح</td></tr>
+        <tr><td class="ar-cell">خ</td><td class="ar-cell">خ</td><td class="ar-cell">خـ</td><td class="ar-cell">ـخـ</td><td class="ar-cell">ـخ</td></tr>
+        <tr><td class="ar-cell">د</td><td class="ar-cell">د</td><td class="ar-cell">د</td><td class="ar-cell">ـد</td><td class="ar-cell">ـد</td></tr>
+        <tr><td class="ar-cell">ذ</td><td class="ar-cell">ذ</td><td class="ar-cell">ذ</td><td class="ar-cell">ـذ</td><td class="ar-cell">ـذ</td></tr>
+        <tr><td class="ar-cell">ر</td><td class="ar-cell">ر</td><td class="ar-cell">ر</td><td class="ar-cell">ـر</td><td class="ar-cell">ـر</td></tr>
+        <tr><td class="ar-cell">ز</td><td class="ar-cell">ز</td><td class="ar-cell">ز</td><td class="ar-cell">ـز</td><td class="ar-cell">ـز</td></tr>
+        <tr><td class="ar-cell">س</td><td class="ar-cell">س</td><td class="ar-cell">سـ</td><td class="ar-cell">ـسـ</td><td class="ar-cell">ـس</td></tr>
+        <tr><td class="ar-cell">ش</td><td class="ar-cell">ش</td><td class="ar-cell">شـ</td><td class="ar-cell">ـشـ</td><td class="ar-cell">ـش</td></tr>
+        <tr><td class="ar-cell">ص</td><td class="ar-cell">ص</td><td class="ar-cell">صـ</td><td class="ar-cell">ـصـ</td><td class="ar-cell">ـص</td></tr>
+        <tr><td class="ar-cell">ض</td><td class="ar-cell">ض</td><td class="ar-cell">ضـ</td><td class="ar-cell">ـضـ</td><td class="ar-cell">ـض</td></tr>
+        <tr><td class="ar-cell">ط</td><td class="ar-cell">ط</td><td class="ar-cell">طـ</td><td class="ar-cell">ـطـ</td><td class="ar-cell">ـط</td></tr>
+        <tr><td class="ar-cell">ع</td><td class="ar-cell">ع</td><td class="ar-cell">عـ</td><td class="ar-cell">ـعـ</td><td class="ar-cell">ـع</td></tr>
+        <tr><td class="ar-cell">غ</td><td class="ar-cell">غ</td><td class="ar-cell">غـ</td><td class="ar-cell">ـغـ</td><td class="ar-cell">ـغ</td></tr>
+        <tr><td class="ar-cell">ف</td><td class="ar-cell">ف</td><td class="ar-cell">فـ</td><td class="ar-cell">ـفـ</td><td class="ar-cell">ـف</td></tr>
+        <tr><td class="ar-cell">ق</td><td class="ar-cell">ق</td><td class="ar-cell">قـ</td><td class="ar-cell">ـقـ</td><td class="ar-cell">ـق</td></tr>
+        <tr><td class="ar-cell">ك</td><td class="ar-cell">ك</td><td class="ar-cell">كـ</td><td class="ar-cell">ـكـ</td><td class="ar-cell">ـك</td></tr>
+        <tr><td class="ar-cell">ل</td><td class="ar-cell">ل</td><td class="ar-cell">لـ</td><td class="ar-cell">ـلـ</td><td class="ar-cell">ـل</td></tr>
+        <tr><td class="ar-cell">م</td><td class="ar-cell">م</td><td class="ar-cell">مـ</td><td class="ar-cell">ـمـ</td><td class="ar-cell">ـم</td></tr>
+        <tr><td class="ar-cell">ن</td><td class="ar-cell">ن</td><td class="ar-cell">نـ</td><td class="ar-cell">ـنـ</td><td class="ar-cell">ـن</td></tr>
+        <tr><td class="ar-cell">ه</td><td class="ar-cell">ه</td><td class="ar-cell">هـ</td><td class="ar-cell">ـهـ</td><td class="ar-cell">ـه</td></tr>
+        <tr><td class="ar-cell">و</td><td class="ar-cell">و</td><td class="ar-cell">و</td><td class="ar-cell">ـو</td><td class="ar-cell">ـو</td></tr>
+        <tr><td class="ar-cell">ي</td><td class="ar-cell">ي</td><td class="ar-cell">يـ</td><td class="ar-cell">ـيـ</td><td class="ar-cell">ـي</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ASTUCE</span><span class="etape-title">Les 6 lettres qui ne s'attachent pas</span></div>
+    <div class="etape-body">
+      <div class="regle"><strong>6 lettres cassent la liaison :</strong> ا &nbsp; د &nbsp; ذ &nbsp; ر &nbsp; ز &nbsp; و — Elles s'attachent uniquement à droite, jamais à gauche.</div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar">بَاب</div><div class="ex-tr">bāb</div><div class="ex-fr">Porte — le ا coupe la liaison</div></div>
+        <div class="ex-row"><div class="ex-ar">نُور</div><div class="ex-tr">nūr</div><div class="ex-fr">Lumière — le و coupe la liaison</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('alph-lettres')">‹ Les 28 lettres</button>
+    <button class="ln-btn primary" onclick="goNext('alph-voyelles')">Les voyelles ›</button>
+  </div>
+</div>
+
+<!-- Leçon : Voyelles -->
+<div class="lesson-panel" id="lesson-alph-voyelles">
+  <div class="lesson-top">
+    <span class="lesson-num">03</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Les Voyelles</div>
+      <div class="lesson-ar-title ar">الحركات</div>
+      <div class="lesson-meta">Chapitre 1 · Alphabet · Courtes · Longues · Tanwīn</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-alph-voyelles" style="width:0%"></div></div><span class="lp-pct" id="lpp-alph-voyelles">0/3</span></div>
+  <div class="step-dots" id="steps-alph-voyelles">
+    <div class="step-dot current" id="sd-alph-voyelles-1" onclick="setStep('alph-voyelles',1,3)">1</div>
+    <div class="step-dot" id="sd-alph-voyelles-2" onclick="setStep('alph-voyelles',2,3)">2</div>
+    <div class="step-dot" id="sd-alph-voyelles-3" onclick="setStep('alph-voyelles',3,3)">3</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">VOYELLES COURTES</span><span class="etape-title">Fatḥa · Kasra · Ḍamma</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Signe</th><th>Nom</th><th>Son</th><th>Exemple</th><th>Écouter</th></tr>
+        <tr><td class="ar-cell">بَ</td><td>Fatḥa</td><td>a court</td><td class="ar-cell">بَ (ba)</td><td><button class="aud" onclick="playAud('BA.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بِ</td><td>Kasra</td><td>i court</td><td class="ar-cell">بِ (bi)</td><td><button class="aud" onclick="playAud('BI.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بُ</td><td>Ḍamma</td><td>ou court</td><td class="ar-cell">بُ (bou)</td><td><button class="aud" onclick="playAud('BOU.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بْ</td><td>Sukūn</td><td>pas de voyelle</td><td class="ar-cell">بْ</td><td></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">VOYELLES LONGUES</span><span class="etape-title">Le Madd — prolongation du son</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Signe</th><th>Nom</th><th>Son</th><th>Exemple</th><th>Écouter</th></tr>
+        <tr><td class="ar-cell">بَا</td><td>Alif madd</td><td>ā long</td><td class="ar-cell">بَا (bā)</td><td><button class="aud" onclick="playAud('BAA.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بِي</td><td>Yā madd</td><td>ī long</td><td class="ar-cell">بِي (bī)</td><td><button class="aud" onclick="playAud('BIII.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بُو</td><td>Wāw madd</td><td>ū long</td><td class="ar-cell">بُو (bū)</td><td><button class="aud" onclick="playAud('BOUUU.mp3',this)">&#9654;</button></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">TANWĪN</span><span class="etape-title">La nunation — signe de l'indéfini</span></div>
+    <div class="etape-body">
+      <div class="regle">Le <strong>Tanwīn</strong> est le son "n" final sur un nom indéfini. Il existe en trois formes selon le cas grammatical.</div>
+      <table>
+        <tr><th>Forme</th><th>Son</th><th>Cas</th><th>Exemple</th><th>Écouter</th></tr>
+        <tr><td class="ar-cell">بٌ</td><td>-oun</td><td>Nominatif indéfini</td><td class="ar-cell">كِتَابٌ (kitāboun)</td><td><button class="aud" onclick="playAud('Batimou.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بً</td><td>-an</td><td>Accusatif indéfini</td><td class="ar-cell">كِتَابًا (kitāban)</td><td><button class="aud" onclick="playAud('BAAA.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بٍ</td><td>-in</td><td>Génitif indéfini</td><td class="ar-cell">كِتَابٍ (kitābin)</td><td><button class="aud" onclick="playAud('Thaa.mp3',this)">&#9654;</button></td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('alph-formes')">‹ Formes des lettres</button>
+    <button class="ln-btn primary" onclick="goNext('gram-nom')">Chapitre 2 : Grammaire ›</button>
+  </div>
+</div>
+
+<!-- ═══ CHAPITRE 2 : GRAMMAIRE ═══ -->
+
+<!-- Leçon : Le Nom -->
+<div class="lesson-panel" id="lesson-gram-nom">
+  <div class="lesson-top">
+    <span class="lesson-num">04</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Leçon 1 — Le Nom</div>
+      <div class="lesson-ar-title ar">الاسم</div>
+      <div class="lesson-meta">Chapitre 2 · Grammaire · 10 étapes</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-gram-nom" style="width:0%"></div></div><span class="lp-pct" id="lpp-gram-nom">0/10</span></div>
+  <div class="step-dots" id="steps-gram-nom">
+    <div class="step-dot current" id="sd-gram-nom-1" onclick="setStep('gram-nom',1,10)">1</div>
+    <div class="step-dot" id="sd-gram-nom-2" onclick="setStep('gram-nom',2,10)">2</div>
+    <div class="step-dot" id="sd-gram-nom-3" onclick="setStep('gram-nom',3,10)">3</div>
+    <div class="step-dot" id="sd-gram-nom-4" onclick="setStep('gram-nom',4,10)">4</div>
+    <div class="step-dot" id="sd-gram-nom-5" onclick="setStep('gram-nom',5,10)">5</div>
+    <div class="step-dot" id="sd-gram-nom-6" onclick="setStep('gram-nom',6,10)">6</div>
+    <div class="step-dot" id="sd-gram-nom-7" onclick="setStep('gram-nom',7,10)">7</div>
+    <div class="step-dot" id="sd-gram-nom-8" onclick="setStep('gram-nom',8,10)">8</div>
+    <div class="step-dot" id="sd-gram-nom-9" onclick="setStep('gram-nom',9,10)">9</div>
+    <div class="step-dot" id="sd-gram-nom-10" onclick="setStep('gram-nom',10,10)">10</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Les trois catégories de mots</span></div>
+    <div class="etape-body">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Le nom, appelé en arabe <strong class="ar">الاسم</strong>, désigne une personne, un objet, un lieu, une idée ou un animal.</p>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">الاسم</div><div class="ex-tr">al-ism</div><div class="ex-fr">Le nom</div></div>
+        <div class="ex-row"><div class="ex-ar ar">الفعل</div><div class="ex-tr">al-fi'l</div><div class="ex-fr">Le verbe</div></div>
+        <div class="ex-row"><div class="ex-ar ar">الحرف</div><div class="ex-tr">al-harf</div><div class="ex-fr">La particule / mot outil</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Comment reconnaître un nom</span></div>
+    <div class="etape-body">
+      <div class="regle">Un nom peut : <strong>accepter l'article défini ال</strong> · <strong>recevoir le tanwīn</strong> · <strong>être précédé d'une préposition</strong></div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">الكِتَابُ</div><div class="ex-tr">al-kitābou</div><div class="ex-fr">Le livre (avec ال)</div></div>
+        <div class="ex-row"><div class="ex-ar ar">رَجُلٌ</div><div class="ex-tr">rajouloun</div><div class="ex-fr">Un homme (avec tanwīn)</div></div>
+        <div class="ex-row"><div class="ex-ar ar">فِي البَيْتِ</div><div class="ex-tr">fī al-bayti</div><div class="ex-fr">Dans la maison (avec préposition)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 3</span><span class="etape-title">Le nom défini et indéfini</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Type</th><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>Indéfini</td><td class="ar-cell">كِتَابٌ</td><td class="tr-cell">kitāboun</td><td>Un livre</td></tr>
+        <tr><td>Défini (+ ال)</td><td class="ar-cell">الكِتَابُ</td><td class="tr-cell">al-kitābou</td><td>Le livre</td></tr>
+        <tr><td>Indéfini</td><td class="ar-cell">رَجُلٌ</td><td class="tr-cell">rajouloun</td><td>Un homme</td></tr>
+        <tr><td>Défini (+ ال)</td><td class="ar-cell">الرَّجُلُ</td><td class="tr-cell">ar-rajoulou</td><td>L'homme</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 4</span><span class="etape-title">Le masculin et le féminin</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Genre</th><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>Masculin</td><td class="ar-cell">رَجُلٌ</td><td class="tr-cell">rajouloun</td><td>Un homme</td></tr>
+        <tr><td>Masculin</td><td class="ar-cell">وَلَدٌ</td><td class="tr-cell">waladoun</td><td>Un garçon</td></tr>
+        <tr><td>Féminin (ة)</td><td class="ar-cell">مَدْرَسَةٌ</td><td class="tr-cell">madrasatoun</td><td>Une école</td></tr>
+        <tr><td>Féminin (ة)</td><td class="ar-cell">سَيَّارَةٌ</td><td class="tr-cell">sayyāratoun</td><td>Une voiture</td></tr>
+        <tr><td>Féminin (exception)</td><td class="ar-cell">بِنْتٌ</td><td class="tr-cell">bintoun</td><td>Une fille</td></tr>
+      </table>
+      <div class="regle">Attention : certains noms féminins <strong>ne possèdent pas la lettre ة</strong>.</div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 5</span><span class="etape-title">Le singulier, le duel et le pluriel</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Nombre</th><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>Singulier</td><td class="ar-cell">كِتَابٌ</td><td class="tr-cell">kitāboun</td><td>Un livre</td></tr>
+        <tr><td>Duel (+ انِ)</td><td class="ar-cell">كِتَابَانِ</td><td class="tr-cell">kitābāni</td><td>Deux livres</td></tr>
+        <tr><td>Pluriel (brisé)</td><td class="ar-cell">كُتُبٌ</td><td class="tr-cell">koutouboun</td><td>Des livres</td></tr>
+        <tr><td>Singulier</td><td class="ar-cell">رَجُلٌ</td><td class="tr-cell">rajouloun</td><td>Un homme</td></tr>
+        <tr><td>Duel (+ انِ)</td><td class="ar-cell">رَجُلَانِ</td><td class="tr-cell">rajoulāni</td><td>Deux hommes</td></tr>
+        <tr><td>Pluriel (brisé)</td><td class="ar-cell">رِجَالٌ</td><td class="tr-cell">rijāloun</td><td>Des hommes</td></tr>
+      </table>
+      <div class="regle">En arabe, certains pluriels changent <strong>complètement de forme</strong> — on les appelle pluriels brisés.</div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 6</span><span class="etape-title">Les cas grammaticaux</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Cas</th><th>Signe</th><th>Usage principal</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td>Nominatif</td><td class="ar-cell">ُ (ḍamma)</td><td>Sujet</td><td class="ar-cell">الرَّجُلُ ذَهَبَ</td><td>L'homme est parti</td></tr>
+        <tr><td>Accusatif</td><td class="ar-cell">َ (fatḥa)</td><td>Complément d'objet</td><td class="ar-cell">رَأَيْتُ الرَّجُلَ</td><td>J'ai vu l'homme</td></tr>
+        <tr><td>Génitif</td><td class="ar-cell">ِ (kasra)</td><td>Après préposition</td><td class="ar-cell">فِي البَيْتِ</td><td>Dans la maison</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 7</span><span class="etape-title">Le Tanwīn en détail</span></div>
+    <div class="etape-body">
+      <div class="regle">Le tanwīn correspond au son "n" à la fin d'un nom <strong>indéfini</strong>. Il existe trois formes selon le cas.</div>
+      <table>
+        <tr><th>Forme</th><th>Arabe</th><th>Son</th><th>Cas</th></tr>
+        <tr><td>Tanwīn ḍamm</td><td class="ar-cell">كِتَابٌ</td><td class="tr-cell">kitāboun</td><td>Nominatif</td></tr>
+        <tr><td>Tanwīn fatḥ</td><td class="ar-cell">كِتَابًا</td><td class="tr-cell">kitāban</td><td>Accusatif</td></tr>
+        <tr><td>Tanwīn kasr</td><td class="ar-cell">كِتَابٍ</td><td class="tr-cell">kitābin</td><td>Génitif</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 8</span><span class="etape-title">Les prépositions et le nom</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Préposition</th><th>Sens</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">فِي</td><td>Dans</td><td class="ar-cell">فِي المَسْجِدِ</td><td>Dans la mosquée</td></tr>
+        <tr><td class="ar-cell">إِلَى</td><td>Vers</td><td class="ar-cell">إِلَى البَيْتِ</td><td>Vers la maison</td></tr>
+        <tr><td class="ar-cell">مِنْ</td><td>De / depuis</td><td class="ar-cell">مِنَ المَدْرَسَةِ</td><td>De l'école</td></tr>
+        <tr><td class="ar-cell">عَلَى</td><td>Sur</td><td class="ar-cell">عَلَى الكِتَابِ</td><td>Sur le livre</td></tr>
+      </table>
+      <div class="regle">Règle : après une préposition, le nom passe toujours au <strong>génitif (kasra ِ)</strong>.</div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 9</span><span class="etape-title">Phrases simples complètes</span></div>
+    <div class="etape-body">
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">الكِتَابُ جَدِيدٌ</div><div class="ex-tr">al-kitābou jadīdoun</div><div class="ex-fr">Le livre est nouveau</div></div>
+        <div class="ex-row"><div class="ex-ar ar">ذَهَبَ الوَلَدُ إِلَى المَدْرَسَةِ</div><div class="ex-tr">dhahaba al-waladou ilā al-madrasati</div><div class="ex-fr">Le garçon est allé à l'école</div></div>
+        <div class="ex-row"><div class="ex-ar ar">فِي البَيْتِ كِتَابٌ</div><div class="ex-tr">fī al-bayti kitāboun</div><div class="ex-fr">Il y a un livre dans la maison</div></div>
+        <div class="ex-row"><div class="ex-ar ar">رَأَيْتُ رَجُلًا</div><div class="ex-tr">ra'aytou rajoulan</div><div class="ex-fr">J'ai vu un homme</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 10 — EXERCICE</span><span class="etape-title">Retrouvez les formes correctes</span></div>
+    <div class="etape-body">
+      <div class="exercice">
+        <h4>Réponses</h4>
+        <div class="ex-grid">
+          <div class="ex-q"><span class="qlabel">Question</span>Le livre (défini)</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">الكِتَابُ</span>al-kitābou</div>
+          <div class="ex-q"><span class="qlabel">Question</span>Deux hommes (duel)</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">رَجُلَانِ</span>rajoulāni</div>
+          <div class="ex-q"><span class="qlabel">Question</span>Dans la maison (génitif)</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">فِي البَيْتِ</span>fī al-bayti</div>
+          <div class="ex-q"><span class="qlabel">Question</span>Une école (féminin indéfini)</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَدْرَسَةٌ</span>madrasatoun</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('alph-voyelles')">‹ Les voyelles</button>
+    <button class="ln-btn primary" onclick="goNext('gram-pronom')">Leçon 2 : Le Pronom ›</button>
+  </div>
+</div>
+
+<!-- Leçon : Le Pronom -->
+<div class="lesson-panel" id="lesson-gram-pronom">
+  <div class="lesson-top">
+    <span class="lesson-num">05</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Leçon 2 — Le Pronom</div>
+      <div class="lesson-ar-title ar">الضمير</div>
+      <div class="lesson-meta">Chapitre 2 · Grammaire · 20 étapes · Exercice</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-gram-pronom" style="width:0%"></div></div><span class="lp-pct" id="lpp-gram-pronom">0/20</span></div>
+  <div class="step-dots" id="steps-gram-pronom"><div class="step-dot current" id="sd-gram-pronom-1" onclick="setStep('gram-pronom',1,20)">1</div><div class="step-dot" id="sd-gram-pronom-2" onclick="setStep('gram-pronom',2,20)">2</div><div class="step-dot" id="sd-gram-pronom-3" onclick="setStep('gram-pronom',3,20)">3</div><div class="step-dot" id="sd-gram-pronom-4" onclick="setStep('gram-pronom',4,20)">4</div><div class="step-dot" id="sd-gram-pronom-5" onclick="setStep('gram-pronom',5,20)">5</div><div class="step-dot" id="sd-gram-pronom-6" onclick="setStep('gram-pronom',6,20)">6</div><div class="step-dot" id="sd-gram-pronom-7" onclick="setStep('gram-pronom',7,20)">7</div><div class="step-dot" id="sd-gram-pronom-8" onclick="setStep('gram-pronom',8,20)">8</div><div class="step-dot" id="sd-gram-pronom-9" onclick="setStep('gram-pronom',9,20)">9</div><div class="step-dot" id="sd-gram-pronom-10" onclick="setStep('gram-pronom',10,20)">10</div><div class="step-dot" id="sd-gram-pronom-11" onclick="setStep('gram-pronom',11,20)">11</div><div class="step-dot" id="sd-gram-pronom-12" onclick="setStep('gram-pronom',12,20)">12</div><div class="step-dot" id="sd-gram-pronom-13" onclick="setStep('gram-pronom',13,20)">13</div><div class="step-dot" id="sd-gram-pronom-14" onclick="setStep('gram-pronom',14,20)">14</div><div class="step-dot" id="sd-gram-pronom-15" onclick="setStep('gram-pronom',15,20)">15</div><div class="step-dot" id="sd-gram-pronom-16" onclick="setStep('gram-pronom',16,20)">16</div><div class="step-dot" id="sd-gram-pronom-17" onclick="setStep('gram-pronom',17,20)">17</div><div class="step-dot" id="sd-gram-pronom-18" onclick="setStep('gram-pronom',18,20)">18</div><div class="step-dot" id="sd-gram-pronom-19" onclick="setStep('gram-pronom',19,20)">19</div><div class="step-dot" id="sd-gram-pronom-20" onclick="setStep('gram-pronom',20,20)">20</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Rôle du pronom — éviter les répétitions</span></div>
+    <div class="etape-body">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Le pronom, appelé en arabe <strong class="ar">الضَّمِير</strong> (ad-damīr), remplace un nom pour éviter les répétitions.</p>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">مُحَمَّدٌ ذَهَبَ إِلَى المَسْجِدِ</div><div class="ex-tr">Mouhammadoun dhahaba ilā al-masjidi</div><div class="ex-fr">Muhammad est allé à la mosquée</div></div>
+        <div class="ex-row"><div class="ex-ar ar">هُوَ فِي المَسْجِدِ</div><div class="ex-tr">houwa fī al-masjidi</div><div class="ex-fr">Il est dans la mosquée (هُوَ remplace Muhammad)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Les pronoms personnels isolés — tableau complet</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Personne</th><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>1re sg.</td><td class="ar-cell">أَنَا</td><td class="tr-cell">anā</td><td>Je</td></tr>
+        <tr><td>1re pl.</td><td class="ar-cell">نَحْنُ</td><td class="tr-cell">nahnou</td><td>Nous</td></tr>
+        <tr><td>2e sg. masc.</td><td class="ar-cell">أَنْتَ</td><td class="tr-cell">anta</td><td>Tu (masc.)</td></tr>
+        <tr><td>2e sg. fém.</td><td class="ar-cell">أَنْتِ</td><td class="tr-cell">anti</td><td>Tu (fém.)</td></tr>
+        <tr><td>2e duel</td><td class="ar-cell">أَنْتُمَا</td><td class="tr-cell">antoumā</td><td>Vous deux</td></tr>
+        <tr><td>2e pl. masc.</td><td class="ar-cell">أَنْتُمْ</td><td class="tr-cell">antoum</td><td>Vous (masc.)</td></tr>
+        <tr><td>2e pl. fém.</td><td class="ar-cell">أَنْتُنَّ</td><td class="tr-cell">antounna</td><td>Vous (fém.)</td></tr>
+        <tr><td>3e sg. masc.</td><td class="ar-cell">هُوَ</td><td class="tr-cell">houwa</td><td>Il</td></tr>
+        <tr><td>3e sg. fém.</td><td class="ar-cell">هِيَ</td><td class="tr-cell">hiya</td><td>Elle</td></tr>
+        <tr><td>3e duel</td><td class="ar-cell">هُمَا</td><td class="tr-cell">houmā</td><td>Ils/Elles deux</td></tr>
+        <tr><td>3e pl. masc.</td><td class="ar-cell">هُمْ</td><td class="tr-cell">houm</td><td>Ils</td></tr>
+        <tr><td>3e pl. fém.</td><td class="ar-cell">هُنَّ</td><td class="tr-cell">hounna</td><td>Elles</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 3-7</span><span class="etape-title">Utilisation · Genre · Duel · Suffixes · Affixes</span></div>
+    <div class="etape-body">
+      <div class="regle"><strong>Étape 3 — Utilisation :</strong> Les pronoms indiquent le sujet, la personne qui parle, ou dont on parle.</div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">أَنَا طَالِبٌ</div><div class="ex-tr">anā tāliboun</div><div class="ex-fr">Je suis un étudiant</div></div>
+        <div class="ex-row"><div class="ex-ar ar">هِيَ فِي البَيْتِ</div><div class="ex-tr">hiya fī al-bayti</div><div class="ex-fr">Elle est dans la maison</div></div>
+      </div>
+      <div class="regle" style="margin-top:12px"><strong>Étape 4 — Genre :</strong> Les pronoms changent selon le genre. أَنْتَ (masc.) ≠ أَنْتِ (fém.)</div>
+      <div class="regle"><strong>Étape 5 — Duel :</strong> L'arabe a une forme spéciale pour deux personnes. أَنْتُمَا = vous deux · هُمَا = ils/elles deux</div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 6-9</span><span class="etape-title">Les pronoms suffixes — possession</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Suffixe</th><th>Sens</th><th>Avec كِتَاب</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">ـِي</td><td>Mon / ma</td><td class="ar-cell">كِتَابِي</td><td>Mon livre</td></tr>
+        <tr><td class="ar-cell">ـكَ</td><td>Ton (masc.)</td><td class="ar-cell">كِتَابُكَ</td><td>Ton livre</td></tr>
+        <tr><td class="ar-cell">ـكِ</td><td>Ton (fém.)</td><td class="ar-cell">كِتَابُكِ</td><td>Ton livre</td></tr>
+        <tr><td class="ar-cell">ـهُ</td><td>Son (masc.)</td><td class="ar-cell">كِتَابُهُ</td><td>Son livre</td></tr>
+        <tr><td class="ar-cell">ـهَا</td><td>Son (fém.)</td><td class="ar-cell">كِتَابُهَا</td><td>Son livre</td></tr>
+        <tr><td class="ar-cell">ـنَا</td><td>Notre</td><td class="ar-cell">كِتَابُنَا</td><td>Notre livre</td></tr>
+        <tr><td class="ar-cell">ـهُمْ</td><td>Leur</td><td class="ar-cell">كِتَابُهُمْ</td><td>Leur livre</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 10-12</span><span class="etape-title">Pronoms affixes avec verbes et prépositions</span></div>
+    <div class="etape-body">
+      <div class="regle"><strong>Avec un verbe :</strong> le pronom affixe représente le complément.</div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">رَأَيْتُهُ</div><div class="ex-tr">ra'aytouhou</div><div class="ex-fr">Je l'ai vu</div></div>
+        <div class="ex-row"><div class="ex-ar ar">سَمِعْنَاهُ</div><div class="ex-tr">sami'nāhou</div><div class="ex-fr">Nous l'avons entendu</div></div>
+        <div class="ex-row"><div class="ex-ar ar">أَحْبَبْتُهَا</div><div class="ex-tr">aḥbabtouhā</div><div class="ex-fr">Je l'ai aimée</div></div>
+      </div>
+      <div class="regle" style="margin-top:12px"><strong>Avec une préposition :</strong></div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">فِيهِ</div><div class="ex-tr">fīhi</div><div class="ex-fr">Dans lui / dedans</div></div>
+        <div class="ex-row"><div class="ex-ar ar">مَعَكَ</div><div class="ex-tr">ma'aka</div><div class="ex-fr">Avec toi</div></div>
+        <div class="ex-row"><div class="ex-ar ar">لَهُمْ</div><div class="ex-tr">lahoum</div><div class="ex-fr">Pour eux</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 13-17</span><span class="etape-title">Les adjectifs démonstratifs</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Forme</th><th>Arabe</th><th>Translittération</th><th>Usage</th></tr>
+        <tr><td>Masc. sg. proche</td><td class="ar-cell">هَذَا</td><td class="tr-cell">hādhā</td><td>Ce / cet</td></tr>
+        <tr><td>Fém. sg. proche</td><td class="ar-cell">هَذِهِ</td><td class="tr-cell">hādhihi</td><td>Cette</td></tr>
+        <tr><td>Masc. duel</td><td class="ar-cell">هَذَانِ</td><td class="tr-cell">hādhāni</td><td>Ces deux (masc.)</td></tr>
+        <tr><td>Fém. duel</td><td class="ar-cell">هَاتَانِ</td><td class="tr-cell">hātāni</td><td>Ces deux (fém.)</td></tr>
+        <tr><td>Pluriel</td><td class="ar-cell">هَؤُلَاءِ</td><td class="tr-cell">hā'oulā'i</td><td>Ces</td></tr>
+        <tr><td>Masc. sg. lointain</td><td class="ar-cell">ذَلِكَ</td><td class="tr-cell">dhālika</td><td>Ce... là</td></tr>
+        <tr><td>Fém. sg. lointain</td><td class="ar-cell">تِلْكَ</td><td class="tr-cell">tilka</td><td>Cette... là</td></tr>
+      </table>
+      <div class="exemples" style="margin-top:12px">
+        <div class="ex-row"><div class="ex-ar ar">هَذَا كِتَابٌ</div><div class="ex-tr">hādhā kitāboun</div><div class="ex-fr">Ceci est un livre</div></div>
+        <div class="ex-row"><div class="ex-ar ar">ذَلِكَ البَيْتُ</div><div class="ex-tr">dhālika al-baytou</div><div class="ex-fr">Cette maison-là</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 18-20 — EXERCICE</span><span class="etape-title">Phrases et exercice corrigé</span></div>
+    <div class="etape-body">
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">أَنَا مُسْلِمٌ</div><div class="ex-tr">anā mouslimoun</div><div class="ex-fr">Je suis musulman</div></div>
+        <div class="ex-row"><div class="ex-ar ar">هُوَ طَبِيبٌ</div><div class="ex-tr">houwa tabīboun</div><div class="ex-fr">Il est médecin</div></div>
+        <div class="ex-row"><div class="ex-ar ar">كِتَابِي جَدِيدٌ</div><div class="ex-tr">kitābī jadīdoun</div><div class="ex-fr">Mon livre est nouveau</div></div>
+        <div class="ex-row"><div class="ex-ar ar">هَذَا كِتَابِي</div><div class="ex-tr">hādhā kitābī</div><div class="ex-fr">Ceci est mon livre</div></div>
+      </div>
+      <div class="exercice">
+        <h4>Exercice corrigé</h4>
+        <div class="ex-grid">
+          <div class="ex-q"><span class="qlabel">Traduisez</span>Je</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">أَنَا</span>anā</div>
+          <div class="ex-q"><span class="qlabel">Traduisez</span>Tu (féminin)</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">أَنْتِ</span>anti</div>
+          <div class="ex-q"><span class="qlabel">Traduisez</span>Mon livre</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">كِتَابِي</span>kitābī</div>
+          <div class="ex-q"><span class="qlabel">Traduisez</span>Je l'ai vu</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">رَأَيْتُهُ</span>ra'aytouhou</div>
+          <div class="ex-q"><span class="qlabel">Traduisez</span>Ceci est une voiture</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">هَذِهِ سَيَّارَةٌ</span>hādhihi sayyāratoun</div>
+          <div class="ex-q"><span class="qlabel">Traduisez</span>Cette maison-là</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">ذَلِكَ البَيْتُ</span>dhālika al-baytou</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('gram-nom')">‹ Le Nom</button>
+    <button class="ln-btn primary" onclick="goNext('gram-verbe')">Leçon 3 : Le Verbe ›</button>
+  </div>
+</div>
+
+<!-- Leçon : Le Verbe -->
+<div class="lesson-panel" id="lesson-gram-verbe">
+  <div class="lesson-top">
+    <span class="lesson-num">06</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Leçon 3 — Le Verbe</div>
+      <div class="lesson-ar-title ar">الفعل</div>
+      <div class="lesson-meta">Chapitre 2 · Grammaire · 10 étapes</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-gram-verbe" style="width:0%"></div></div><span class="lp-pct" id="lpp-gram-verbe">0/10</span></div>
+  <div class="step-dots" id="steps-gram-verbe"><div class="step-dot current" id="sd-gram-verbe-1" onclick="setStep('gram-verbe',1,10)">1</div><div class="step-dot" id="sd-gram-verbe-2" onclick="setStep('gram-verbe',2,10)">2</div><div class="step-dot" id="sd-gram-verbe-3" onclick="setStep('gram-verbe',3,10)">3</div><div class="step-dot" id="sd-gram-verbe-4" onclick="setStep('gram-verbe',4,10)">4</div><div class="step-dot" id="sd-gram-verbe-5" onclick="setStep('gram-verbe',5,10)">5</div><div class="step-dot" id="sd-gram-verbe-6" onclick="setStep('gram-verbe',6,10)">6</div><div class="step-dot" id="sd-gram-verbe-7" onclick="setStep('gram-verbe',7,10)">7</div><div class="step-dot" id="sd-gram-verbe-8" onclick="setStep('gram-verbe',8,10)">8</div><div class="step-dot" id="sd-gram-verbe-9" onclick="setStep('gram-verbe',9,10)">9</div><div class="step-dot" id="sd-gram-verbe-10" onclick="setStep('gram-verbe',10,10)">10</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 1-2</span><span class="etape-title">Définition et les 3 formes du verbe</span></div>
+    <div class="etape-body">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Le verbe, appelé en arabe <strong class="ar">الفعل</strong> (al-fi'l), désigne une action ou un état.</p>
+      <table>
+        <tr><th>Forme</th><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>Accompli (passé)</td><td class="ar-cell">كَتَبَ</td><td class="tr-cell">kataba</td><td>Il a écrit</td></tr>
+        <tr><td>Inaccompli (présent)</td><td class="ar-cell">يَكْتُبُ</td><td class="tr-cell">yaktoubou</td><td>Il écrit</td></tr>
+        <tr><td>Impératif (ordre)</td><td class="ar-cell">اُكْتُبْ</td><td class="tr-cell">ouktoub</td><td>Écris !</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 3-4</span><span class="etape-title">Le radical trilitère — Accompli et Inaccompli</span></div>
+    <div class="etape-body">
+      <div class="regle">La majorité des verbes arabes sont construits à partir de <strong>trois lettres principales</strong> appelées radical.</div>
+      <table>
+        <tr><th>Verbe accompli</th><th>Radical</th><th>Sens</th></tr>
+        <tr><td class="ar-cell">كَتَبَ</td><td class="ar-cell" style="letter-spacing:8px">ك ت ب</td><td>Écrire</td></tr>
+        <tr><td class="ar-cell">دَرَسَ</td><td class="ar-cell" style="letter-spacing:8px">د ر س</td><td>Étudier</td></tr>
+        <tr><td class="ar-cell">ذَهَبَ</td><td class="ar-cell" style="letter-spacing:8px">ذ ه ب</td><td>Aller</td></tr>
+        <tr><td class="ar-cell">فَهِمَ</td><td class="ar-cell" style="letter-spacing:8px">ف ه م</td><td>Comprendre</td></tr>
+        <tr><td class="ar-cell">أَكَلَ</td><td class="ar-cell" style="letter-spacing:8px">أ ك ل</td><td>Manger</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 5-6</span><span class="etape-title">Accompli — Conjugaison complète de كَتَبَ</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Pronom</th><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>Je</td><td class="ar-cell">كَتَبْتُ</td><td class="tr-cell">katabtou</td><td>J'ai écrit</td></tr>
+        <tr><td>Tu (masc.)</td><td class="ar-cell">كَتَبْتَ</td><td class="tr-cell">katabta</td><td>Tu as écrit</td></tr>
+        <tr><td>Il</td><td class="ar-cell">كَتَبَ</td><td class="tr-cell">kataba</td><td>Il a écrit</td></tr>
+        <tr><td>Elle</td><td class="ar-cell">كَتَبَتْ</td><td class="tr-cell">katabat</td><td>Elle a écrit</td></tr>
+        <tr><td>Nous</td><td class="ar-cell">كَتَبْنَا</td><td class="tr-cell">katabnā</td><td>Nous avons écrit</td></tr>
+        <tr><td>Ils</td><td class="ar-cell">كَتَبُوا</td><td class="tr-cell">katabou</td><td>Ils ont écrit</td></tr>
+        <tr><td>Elles</td><td class="ar-cell">كَتَبْنَ</td><td class="tr-cell">katabna</td><td>Elles ont écrit</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 7-8</span><span class="etape-title">Verbes transitifs · Intransitifs · Négation</span></div>
+    <div class="etape-body">
+      <div class="regle"><strong>Transitif</strong> — a besoin d'un complément : كَتَبَ الرِّسَالَةَ — Il a écrit la lettre</div>
+      <div class="regle"><strong>Intransitif</strong> — sans complément : ذَهَبَ الوَلَدُ — Le garçon est parti</div>
+      <table style="margin-top:12px">
+        <tr><th>Forme</th><th>Négation</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td>Accompli</td><td class="ar-cell">مَا</td><td class="ar-cell">مَا كَتَبَ</td><td>Il n'a pas écrit</td></tr>
+        <tr><td>Inaccompli</td><td class="ar-cell">لَا</td><td class="ar-cell">لَا يَكْتُبُ</td><td>Il n'écrit pas</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 9-10 — EXERCICE</span><span class="etape-title">Phrases et exercice corrigé</span></div>
+    <div class="etape-body">
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">كَتَبْتُ الدَّرْسَ</div><div class="ex-tr">katabtou ad-darsa</div><div class="ex-fr">J'ai écrit la leçon</div></div>
+        <div class="ex-row"><div class="ex-ar ar">يَدْرُسُ العَرَبِيَّةَ</div><div class="ex-tr">yadrousou al-'arabiyyata</div><div class="ex-fr">Il étudie l'arabe</div></div>
+        <div class="ex-row"><div class="ex-ar ar">لَا أَفْهَمُ</div><div class="ex-tr">lā afhamou</div><div class="ex-fr">Je ne comprends pas</div></div>
+      </div>
+      <div class="exercice">
+        <h4>Exercice — Identifiez la forme verbale</h4>
+        <div class="ex-grid">
+          <div class="ex-q"><span class="qlabel">Quelle forme ?</span>كَتَبَ</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">الماضي</span>Accompli — passé</div>
+          <div class="ex-q"><span class="qlabel">Quelle forme ?</span>يَذْهَبُ</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">المضارع</span>Inaccompli — présent</div>
+          <div class="ex-q"><span class="qlabel">Radical de</span>فَهِمَ</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">ف ه م</span>f - h - m</div>
+          <div class="ex-q"><span class="qlabel">Négatif de</span>دَرَسَ (passé)</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَا دَرَسَ</span>mā darasa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('gram-pronom')">‹ Le Pronom</button>
+    <button class="ln-btn primary" onclick="goNext('conj-accompli')">Chapitre 3 : Conjugaison ›</button>
+  </div>
+</div>
+
+<!-- ═══ CHAPITRE 3 : CONJUGAISON ═══ -->
+
+<!-- Leçon : L'Accompli -->
+<div class="lesson-panel" id="lesson-conj-accompli">
+  <div class="lesson-top">
+    <span class="lesson-num">07</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Leçon 1 — L'Accompli</div>
+      <div class="lesson-ar-title ar">الفعل الماضي</div>
+      <div class="lesson-meta">Chapitre 3 · Conjugaison · 10 étapes</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-conj-accompli" style="width:0%"></div></div><span class="lp-pct" id="lpp-conj-accompli">0/10</span></div>
+  <div class="step-dots" id="steps-conj-accompli"><div class="step-dot current" id="sd-conj-accompli-1" onclick="setStep('conj-accompli',1,10)">1</div><div class="step-dot" id="sd-conj-accompli-2" onclick="setStep('conj-accompli',2,10)">2</div><div class="step-dot" id="sd-conj-accompli-3" onclick="setStep('conj-accompli',3,10)">3</div><div class="step-dot" id="sd-conj-accompli-4" onclick="setStep('conj-accompli',4,10)">4</div><div class="step-dot" id="sd-conj-accompli-5" onclick="setStep('conj-accompli',5,10)">5</div><div class="step-dot" id="sd-conj-accompli-6" onclick="setStep('conj-accompli',6,10)">6</div><div class="step-dot" id="sd-conj-accompli-7" onclick="setStep('conj-accompli',7,10)">7</div><div class="step-dot" id="sd-conj-accompli-8" onclick="setStep('conj-accompli',8,10)">8</div><div class="step-dot" id="sd-conj-accompli-9" onclick="setStep('conj-accompli',9,10)">9</div><div class="step-dot" id="sd-conj-accompli-10" onclick="setStep('conj-accompli',10,10)">10</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 1-2</span><span class="etape-title">Principe et radical</span></div>
+    <div class="etape-body">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">L'accompli <strong class="ar">الفعل الماضي</strong> exprime une action <strong>terminée</strong>. En français, il correspond souvent au passé composé.</p>
+      <div class="regle">La forme de base <strong class="ar">كَتَبَ</strong> (kataba) = "il a écrit". On part de cette forme et on ajoute des terminaisons.</div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 3</span><span class="etape-title">Conjugaison complète de كَتَبَ</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Pronom</th><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>J'ai écrit</td><td class="ar-cell">كَتَبْتُ</td><td class="tr-cell">katabtou</td><td>J'ai écrit</td></tr>
+        <tr><td>Tu as écrit (m.)</td><td class="ar-cell">كَتَبْتَ</td><td class="tr-cell">katabta</td><td>Tu as écrit (masc.)</td></tr>
+        <tr><td>Tu as écrit (f.)</td><td class="ar-cell">كَتَبْتِ</td><td class="tr-cell">katabti</td><td>Tu as écrit (fém.)</td></tr>
+        <tr><td>Il a écrit</td><td class="ar-cell">كَتَبَ</td><td class="tr-cell">kataba</td><td>Il a écrit</td></tr>
+        <tr><td>Elle a écrit</td><td class="ar-cell">كَتَبَتْ</td><td class="tr-cell">katabat</td><td>Elle a écrit</td></tr>
+        <tr><td>Nous avons écrit</td><td class="ar-cell">كَتَبْنَا</td><td class="tr-cell">katabnā</td><td>Nous avons écrit</td></tr>
+        <tr><td>Vous avez écrit (m.)</td><td class="ar-cell">كَتَبْتُمْ</td><td class="tr-cell">katabtoum</td><td>Vous avez écrit (masc.)</td></tr>
+        <tr><td>Vous avez écrit (f.)</td><td class="ar-cell">كَتَبْتُنَّ</td><td class="tr-cell">katabtounna</td><td>Vous avez écrit (fém.)</td></tr>
+        <tr><td>Ils ont écrit</td><td class="ar-cell">كَتَبُوا</td><td class="tr-cell">katabou</td><td>Ils ont écrit</td></tr>
+        <tr><td>Elles ont écrit</td><td class="ar-cell">كَتَبْنَ</td><td class="tr-cell">katabna</td><td>Elles ont écrit</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 4-5</span><span class="etape-title">Terminaisons + Deuxième exemple دَرَسَ</span></div>
+    <div class="etape-body">
+      <div class="regle"><strong>Terminaisons à retenir :</strong> تُ = je · تَ = tu masc. · تِ = tu fém. · نَا = nous · وا = ils</div>
+      <table style="margin-top:12px">
+        <tr><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">دَرَسْتُ</td><td class="tr-cell">darastou</td><td>J'ai étudié</td></tr>
+        <tr><td class="ar-cell">دَرَسَ</td><td class="tr-cell">darasa</td><td>Il a étudié</td></tr>
+        <tr><td class="ar-cell">دَرَسَتْ</td><td class="tr-cell">darasat</td><td>Elle a étudié</td></tr>
+        <tr><td class="ar-cell">دَرَسْنَا</td><td class="tr-cell">darasnā</td><td>Nous avons étudié</td></tr>
+        <tr><td class="ar-cell">دَرَسُوا</td><td class="tr-cell">darasou</td><td>Ils ont étudié</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 6-7</span><span class="etape-title">Formation étape par étape + Négation</span></div>
+    <div class="etape-body">
+      <div class="regle"><strong>1.</strong> Prends la forme de base : كَتَبَ · <strong>2.</strong> Garde le radical ك ت ب · <strong>3.</strong> Ajoute la terminaison</div>
+      <div class="regle" style="margin-top:10px">Négation avec <strong class="ar">مَا</strong> : مَا كَتَبَ = Il n'a pas écrit · مَا دَرَسْنَا = Nous n'avons pas étudié</div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 8-10 — EXERCICE</span><span class="etape-title">Phrases et exercice corrigé</span></div>
+    <div class="etape-body">
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">كَتَبْتُ دَرْسًا</div><div class="ex-tr">katabtou darsan</div><div class="ex-fr">J'ai écrit une leçon</div></div>
+        <div class="ex-row"><div class="ex-ar ar">ذَهَبْنَا إِلَى البَيْتِ</div><div class="ex-tr">dhahabnā ilā al-bayti</div><div class="ex-fr">Nous sommes allés à la maison</div></div>
+        <div class="ex-row"><div class="ex-ar ar">مَا فَهِمْتُ</div><div class="ex-tr">mā fahimtou</div><div class="ex-fr">Je n'ai pas compris</div></div>
+      </div>
+      <div class="exercice">
+        <h4>Conjuguez فَعَلَ (faire) à l'accompli</h4>
+        <div class="ex-grid">
+          <div class="ex-q"><span class="qlabel">J'ai fait</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">فَعَلْتُ</span>fa'altou</div>
+          <div class="ex-q"><span class="qlabel">Tu as fait (masc.)</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">فَعَلْتَ</span>fa'alta</div>
+          <div class="ex-q"><span class="qlabel">Elle a fait</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">فَعَلَتْ</span>fa'alat</div>
+          <div class="ex-q"><span class="qlabel">Ils ont fait</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">فَعَلُوا</span>fa'alou</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('gram-verbe')">‹ Le Verbe</button>
+    <button class="ln-btn primary" onclick="goNext('conj-inaccompli')">Leçon 2 : L'Inaccompli ›</button>
+  </div>
+</div>
+
+<!-- Leçon : L'Inaccompli -->
+<div class="lesson-panel" id="lesson-conj-inaccompli">
+  <div class="lesson-top">
+    <span class="lesson-num">08</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Leçon 2 — L'Inaccompli</div>
+      <div class="lesson-ar-title ar">الفعل المضارع</div>
+      <div class="lesson-meta">Chapitre 3 · Conjugaison · 10 étapes</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-conj-inaccompli" style="width:0%"></div></div><span class="lp-pct" id="lpp-conj-inaccompli">0/10</span></div>
+  <div class="step-dots" id="steps-conj-inaccompli"><div class="step-dot current" id="sd-conj-inaccompli-1" onclick="setStep('conj-inaccompli',1,10)">1</div><div class="step-dot" id="sd-conj-inaccompli-2" onclick="setStep('conj-inaccompli',2,10)">2</div><div class="step-dot" id="sd-conj-inaccompli-3" onclick="setStep('conj-inaccompli',3,10)">3</div><div class="step-dot" id="sd-conj-inaccompli-4" onclick="setStep('conj-inaccompli',4,10)">4</div><div class="step-dot" id="sd-conj-inaccompli-5" onclick="setStep('conj-inaccompli',5,10)">5</div><div class="step-dot" id="sd-conj-inaccompli-6" onclick="setStep('conj-inaccompli',6,10)">6</div><div class="step-dot" id="sd-conj-inaccompli-7" onclick="setStep('conj-inaccompli',7,10)">7</div><div class="step-dot" id="sd-conj-inaccompli-8" onclick="setStep('conj-inaccompli',8,10)">8</div><div class="step-dot" id="sd-conj-inaccompli-9" onclick="setStep('conj-inaccompli',9,10)">9</div><div class="step-dot" id="sd-conj-inaccompli-10" onclick="setStep('conj-inaccompli',10,10)">10</div>
+  </div>
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 1-4</span><span class="etape-title">Principe et préfixes</span></div>
+    <div class="etape-body">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">L'inaccompli <strong class="ar">الفعل المضارع</strong> exprime le présent, le futur ou une action en cours. Il se construit avec des <strong>préfixes</strong>.</p>
+      <table>
+        <tr><th>Préfixe</th><th>Personne</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">أَ (a)</td><td>Je</td><td class="ar-cell">أَكْتُبُ</td><td>J'écris</td></tr>
+        <tr><td class="ar-cell">تَ (ta)</td><td>Tu / Elle</td><td class="ar-cell">تَكْتُبُ</td><td>Tu écris / Elle écrit</td></tr>
+        <tr><td class="ar-cell">يَ (ya)</td><td>Il</td><td class="ar-cell">يَكْتُبُ</td><td>Il écrit</td></tr>
+        <tr><td class="ar-cell">نَ (na)</td><td>Nous</td><td class="ar-cell">نَكْتُبُ</td><td>Nous écrivons</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 3</span><span class="etape-title">Conjugaison complète de يَكْتُبُ</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Pronom</th><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>Je</td><td class="ar-cell">أَكْتُبُ</td><td class="tr-cell">aktoubou</td><td>J'écris</td></tr>
+        <tr><td>Tu (masc.)</td><td class="ar-cell">تَكْتُبُ</td><td class="tr-cell">taktoubou</td><td>Tu écris</td></tr>
+        <tr><td>Tu (fém.)</td><td class="ar-cell">تَكْتُبِينَ</td><td class="tr-cell">taktoubīna</td><td>Tu écris</td></tr>
+        <tr><td>Il</td><td class="ar-cell">يَكْتُبُ</td><td class="tr-cell">yaktoubou</td><td>Il écrit</td></tr>
+        <tr><td>Elle</td><td class="ar-cell">تَكْتُبُ</td><td class="tr-cell">taktoubou</td><td>Elle écrit</td></tr>
+        <tr><td>Nous</td><td class="ar-cell">نَكْتُبُ</td><td class="tr-cell">naktoubou</td><td>Nous écrivons</td></tr>
+        <tr><td>Vous (masc.)</td><td class="ar-cell">تَكْتُبُونَ</td><td class="tr-cell">taktoubouna</td><td>Vous écrivez</td></tr>
+        <tr><td>Vous (fém.)</td><td class="ar-cell">تَكْتُبْنَ</td><td class="tr-cell">taktoubna</td><td>Vous écrivez</td></tr>
+        <tr><td>Ils</td><td class="ar-cell">يَكْتُبُونَ</td><td class="tr-cell">yaktoubouna</td><td>Ils écrivent</td></tr>
+        <tr><td>Elles</td><td class="ar-cell">يَكْتُبْنَ</td><td class="tr-cell">yaktoubna</td><td>Elles écrivent</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 5-7</span><span class="etape-title">Exemple دَرَسَ · Formation · Négation</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Arabe</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">أَدْرُسُ</td><td class="tr-cell">adrousou</td><td>J'étudie</td></tr>
+        <tr><td class="ar-cell">يَدْرُسُ</td><td class="tr-cell">yadrousou</td><td>Il étudie</td></tr>
+        <tr><td class="ar-cell">نَدْرُسُ</td><td class="tr-cell">nadrousou</td><td>Nous étudions</td></tr>
+        <tr><td class="ar-cell">يَدْرُسُونَ</td><td class="tr-cell">yadrousouna</td><td>Ils étudient</td></tr>
+      </table>
+      <div class="regle" style="margin-top:12px">Négation avec <strong class="ar">لَا</strong> : لَا أَكْتُبُ = Je n'écris pas · لَا نَدْرُسُ = Nous n'étudions pas</div>
+    </div>
+  </div>
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 8-10 — EXERCICE</span><span class="etape-title">Phrases et exercice corrigé</span></div>
+    <div class="etape-body">
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">نَدْرُسُ العَرَبِيَّةَ</div><div class="ex-tr">nadrousou al-'arabiyyata</div><div class="ex-fr">Nous étudions l'arabe</div></div>
+        <div class="ex-row"><div class="ex-ar ar">يَذْهَبُونَ إِلَى المَسْجِدِ</div><div class="ex-tr">yadhhabouna ilā al-masjidi</div><div class="ex-fr">Ils vont à la mosquée</div></div>
+        <div class="ex-row"><div class="ex-ar ar">لَا أَفْهَمُ</div><div class="ex-tr">lā afhamou</div><div class="ex-fr">Je ne comprends pas</div></div>
+      </div>
+      <div class="exercice">
+        <h4>Conjuguez فَعَلَ (faire) à l'inaccompli</h4>
+        <div class="ex-grid">
+          <div class="ex-q"><span class="qlabel">Je fais</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">أَفْعَلُ</span>af'alou</div>
+          <div class="ex-q"><span class="qlabel">Tu fais (masc.)</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">تَفْعَلُ</span>taf'alou</div>
+          <div class="ex-q"><span class="qlabel">Nous faisons</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">نَفْعَلُ</span>naf'alou</div>
+          <div class="ex-q"><span class="qlabel">Ils font</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">يَفْعَلُونَ</span>yaf'alouna</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('conj-accompli')">‹ L'Accompli</button>
+    <button class="ln-btn primary" onclick="goNext('conj-imperatif')">Leçon 3 : L'Impératif ›</button>
+  </div>
+</div>
+
+<!-- Leçon : L'Impératif -->
+<div class="lesson-panel" id="lesson-conj-imperatif">
+  <div class="lesson-top">
+    <span class="lesson-num">09</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Leçon 3 — L'Impératif</div>
+      <div class="lesson-ar-title ar">فعل الأمر</div>
+      <div class="lesson-meta">Chapitre 3 · Conjugaison · 9 étapes</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-conj-imperatif" style="width:0%"></div></div><span class="lp-pct" id="lpp-conj-imperatif">0/9</span></div>
+  <div class="step-dots" id="steps-conj-imperatif"><div class="step-dot current" id="sd-conj-imperatif-1" onclick="setStep('conj-imperatif',1,9)">1</div><div class="step-dot" id="sd-conj-imperatif-2" onclick="setStep('conj-imperatif',2,9)">2</div><div class="step-dot" id="sd-conj-imperatif-3" onclick="setStep('conj-imperatif',3,9)">3</div><div class="step-dot" id="sd-conj-imperatif-4" onclick="setStep('conj-imperatif',4,9)">4</div><div class="step-dot" id="sd-conj-imperatif-5" onclick="setStep('conj-imperatif',5,9)">5</div><div class="step-dot" id="sd-conj-imperatif-6" onclick="setStep('conj-imperatif',6,9)">6</div><div class="step-dot" id="sd-conj-imperatif-7" onclick="setStep('conj-imperatif',7,9)">7</div><div class="step-dot" id="sd-conj-imperatif-8" onclick="setStep('conj-imperatif',8,9)">8</div><div class="step-dot" id="sd-conj-imperatif-9" onclick="setStep('conj-imperatif',9,9)">9</div>
+  </div>
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Définition et formation</span></div>
+    <div class="etape-body">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">L'impératif <strong class="ar">فعل الأمر</strong> sert à donner un ordre, un conseil ou une instruction. Il s'adresse uniquement à la 2e personne.</p>
+      <div class="regle">
+        <strong>Formation en 3 étapes :</strong><br>
+        1. Prends le verbe à l'inaccompli : تَكْتُبُ<br>
+        2. Enlève le préfixe تَ : كْتُبُ<br>
+        3. Ajoute la hamza de liaison : اُكْتُبْ = Écris !
+      </div>
+    </div>
+  </div>
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Conjugaison complète de l'impératif</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>Personne</th><th>Écrire</th><th>Aller</th><th>S'asseoir</th></tr>
+        <tr><td>Masc. sing.</td><td class="ar-cell">اُكْتُبْ</td><td class="ar-cell">اِذْهَبْ</td><td class="ar-cell">اِجْلِسْ</td></tr>
+        <tr><td>Fém. sing.</td><td class="ar-cell">اُكْتُبِي</td><td class="ar-cell">اِذْهَبِي</td><td class="ar-cell">اِجْلِسِي</td></tr>
+        <tr><td>Masc. pl.</td><td class="ar-cell">اُكْتُبُوا</td><td class="ar-cell">اِذْهَبُوا</td><td class="ar-cell">اِجْلِسُوا</td></tr>
+        <tr><td>Fém. pl.</td><td class="ar-cell">اُكْتُبْنَ</td><td class="ar-cell">اِذْهَبْنَ</td><td class="ar-cell">اِجْلِسْنَ</td></tr>
+      </table>
+      <div class="regle" style="margin-top:10px"><strong>Terminaisons :</strong> ي = fém. sing. · وا = masc. pl. · نَ = fém. pl.</div>
+    </div>
+  </div>
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 3-5</span><span class="etape-title">Exemple دَرَسَ · Négation · Phrases</span></div>
+    <div class="etape-body">
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">اُدْرُسْ</div><div class="ex-tr">oudrous</div><div class="ex-fr">Étudie ! (masc.)</div></div>
+        <div class="ex-row"><div class="ex-ar ar">اُدْرُسِي</div><div class="ex-tr">oudrousī</div><div class="ex-fr">Étudie ! (fém.)</div></div>
+        <div class="ex-row"><div class="ex-ar ar">اُدْرُسُوا</div><div class="ex-tr">oudrousou</div><div class="ex-fr">Étudiez !</div></div>
+      </div>
+      <div class="regle" style="margin-top:12px">Négation : <strong class="ar">لَا</strong> + inaccompli · لَا تَكْتُبْ = N'écris pas · لَا تَذْهَبْ = Ne va pas</div>
+      <div class="exemples" style="margin-top:10px">
+        <div class="ex-row"><div class="ex-ar ar">اِذْهَبْ إِلَى البَيْتِ</div><div class="ex-tr">idhhab ilā al-bayti</div><div class="ex-fr">Va à la maison !</div></div>
+        <div class="ex-row"><div class="ex-ar ar">اُكْتُبِي الدَّرْسَ</div><div class="ex-tr">ouktoubi ad-darsa</div><div class="ex-fr">Écris la leçon ! (fém.)</div></div>
+        <div class="ex-row"><div class="ex-ar ar">لَا تَتَكَلَّمْ</div><div class="ex-tr">lā tatakallam</div><div class="ex-fr">Ne parle pas !</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 6-9 — EXERCICE</span><span class="etape-title">Exercice corrigé</span></div>
+    <div class="etape-body">
+      <div class="exercice">
+        <h4>Conjuguez فَعَلَ (faire) à l'impératif</h4>
+        <div class="ex-grid">
+          <div class="ex-q"><span class="qlabel">Fais ! (masc.)</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">اِفْعَلْ</span>if'al</div>
+          <div class="ex-q"><span class="qlabel">Fais ! (fém.)</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">اِفْعَلِي</span>if'alī</div>
+          <div class="ex-q"><span class="qlabel">Faites ! (masc. pl.)</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">اِفْعَلُوا</span>if'alou</div>
+          <div class="ex-q"><span class="qlabel">Ne fais pas !</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">لَا تَفْعَلْ</span>lā taf'al</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('conj-inaccompli')">‹ L'Inaccompli</button>
+    <button class="ln-btn primary" onclick="goNext('adj-m1')">Chapitre 4 : Al-Adjroumiyya ›</button>
+  </div>
+</div>
+
+<!-- ═══ CHAPITRE 4 : AL-ADJROUMIYYA ═══ -->
+
+<!-- MODULE 1 : La Parole -->
+<div class="lesson-panel" id="lesson-adj-m1">
+  <div class="lesson-top">
+    <span class="lesson-num">10</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Module 1 — La Parole (الكلام)</div>
+      <div class="lesson-ar-title ar">باب الكلام</div>
+      <div class="lesson-meta">Al-Adjroumiyya · 5 leçons · Leçons 1 à 5</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-adj-m1" style="width:0%"></div></div><span class="lp-pct" id="lpp-adj-m1">0/5</span></div>
+  <div class="step-dots" id="steps-adj-m1">
+    <div class="step-dot current" id="sd-adj-m1-1" onclick="setStep('adj-m1',1,5)">L1</div>
+    <div class="step-dot" id="sd-adj-m1-2" onclick="setStep('adj-m1',2,5)">L2</div>
+    <div class="step-dot" id="sd-adj-m1-3" onclick="setStep('adj-m1',3,5)">L3</div>
+    <div class="step-dot" id="sd-adj-m1-4" onclick="setStep('adj-m1',4,5)">L4</div>
+    <div class="step-dot" id="sd-adj-m1-5" onclick="setStep('adj-m1',5,5)">L5</div>
+  </div>
+
+  <div class="module-header">
+    <h3>Module 1 : Le chapitre de la parole</h3>
+    <div class="mod-ar ar">باب الكلام</div>
+    <p>Ce module introduit la définition du discours arabe (الكلام) et les trois catégories fondamentales de mots : le nom, le verbe et la particule.</p>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 1</span><span class="etape-title">Définition du kalām (الكلام)</span></div>
+    <div class="etape-body">
+      <div class="definition">
+        <div class="def-term ar">الكَلَامُ</div>
+        <div class="def-text">Le <strong>kalām</strong> est défini comme : <strong>un discours composé (مركب), intelligible (مفيد), prononcé (لفظ), par convention (بالوضع)</strong>.</div>
+      </div>
+      <table style="margin-top:14px">
+        <tr><th>Terme arabe</th><th>Translittération</th><th>Sens</th></tr>
+        <tr><td class="ar-cell">اللَّفْظُ</td><td class="tr-cell">al-lafẓ</td><td>Le prononcé — ce qui est articulé avec la bouche</td></tr>
+        <tr><td class="ar-cell">الْمُرَكَّبُ</td><td class="tr-cell">al-mourakkab</td><td>Le composé — au moins deux mots assemblés</td></tr>
+        <tr><td class="ar-cell">الْمُفِيدُ</td><td class="tr-cell">al-moufīd</td><td>L'intelligible — qui donne un sens complet</td></tr>
+        <tr><td class="ar-cell">بِالْوَضْعِ</td><td class="tr-cell">bil-wad'i</td><td>Par convention — selon les règles de la langue arabe</td></tr>
+      </table>
+      <div class="regle" style="margin-top:12px">Pour qu'une phrase soit un vrai <strong>kalām</strong>, elle doit réunir les 4 conditions : être prononcée, composée, intelligible et conforme aux conventions de la langue.</div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 2</span><span class="etape-title">Les trois catégories de mots</span></div>
+    <div class="etape-body">
+      <div class="regle">En arabe, tous les mots appartiennent à l'une de ces trois catégories. Il n'existe pas d'autre catégorie.</div>
+      <table>
+        <tr><th>Catégorie</th><th>Arabe</th><th>Définition</th><th>Exemple</th></tr>
+        <tr><td><strong>Le nom</strong></td><td class="ar-cell">الاسم</td><td>Désigne une personne, chose, lieu ou idée</td><td class="ar-cell">رَجُلٌ (un homme)</td></tr>
+        <tr><td><strong>Le verbe</strong></td><td class="ar-cell">الفعل</td><td>Exprime une action ou un état dans le temps</td><td class="ar-cell">كَتَبَ (il a écrit)</td></tr>
+        <tr><td><strong>La particule</strong></td><td class="ar-cell">الحرف</td><td>Mot outil qui n'a de sens qu'avec d'autres mots</td><td class="ar-cell">فِي (dans)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 3</span><span class="etape-title">Reconnaître un nom — les signes du nom</span></div>
+    <div class="etape-body">
+      <div class="regle">Un nom se reconnaît à ses <strong>signes distinctifs</strong> :</div>
+      <table>
+        <tr><th>Signe</th><th>Description</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td>Le tanwīn ـٌ ـً ـٍ</td><td>Terminaison en "n" des noms indéfinis</td><td class="ar-cell">كِتَابٌ</td><td>Un livre</td></tr>
+        <tr><td>L'article ال</td><td>Article défini qui s'attache au nom</td><td class="ar-cell">الكِتَابُ</td><td>Le livre</td></tr>
+        <tr><td>La préposition</td><td>Le nom peut venir après une préposition</td><td class="ar-cell">فِي البَيْتِ</td><td>Dans la maison</td></tr>
+        <tr><td>Le nidā' (appel)</td><td>Le nom peut être précédé de يَا</td><td class="ar-cell">يَا مُحَمَّدُ</td><td>Ô Muhammad !</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 4</span><span class="etape-title">Reconnaître un verbe — les différents temps</span></div>
+    <div class="etape-body">
+      <div class="regle">Le verbe se reconnaît à ses <strong>signes temporels</strong> :</div>
+      <table>
+        <tr><th>Signe</th><th>Temps</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td>قَدْ + accompli</td><td>Passé certain</td><td class="ar-cell">قَدْ كَتَبَ</td><td>Il a certainement écrit</td></tr>
+        <tr><td>قَدْ + inaccompli</td><td>Présent possible</td><td class="ar-cell">قَدْ يَكْتُبُ</td><td>Il écrit peut-être</td></tr>
+        <tr><td>سَـ / سَوْفَ + inaccompli</td><td>Futur</td><td class="ar-cell">سَيَكْتُبُ</td><td>Il écrira</td></tr>
+        <tr><td>تَاء التأنيث السَّاكِنَة</td><td>Accompli féminin</td><td class="ar-cell">كَتَبَتْ</td><td>Elle a écrit</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 5</span><span class="etape-title">Reconnaître une particule</span></div>
+    <div class="etape-body">
+      <div class="regle">La particule <strong class="ar">الحرف</strong> n'a aucun sens seule — elle n'accepte ni tanwīn, ni article ال, ni signe de temps.</div>
+      <table>
+        <tr><th>Particule</th><th>Translittération</th><th>Sens</th><th>Exemple</th></tr>
+        <tr><td class="ar-cell">فِي</td><td class="tr-cell">fī</td><td>Dans</td><td class="ar-cell">فِي البَيْتِ</td></tr>
+        <tr><td class="ar-cell">مِنْ</td><td class="tr-cell">min</td><td>De / depuis</td><td class="ar-cell">مِنَ المَدِينَةِ</td></tr>
+        <tr><td class="ar-cell">إِلَى</td><td class="tr-cell">ilā</td><td>Vers</td><td class="ar-cell">إِلَى المَسْجِدِ</td></tr>
+        <tr><td class="ar-cell">عَنْ</td><td class="tr-cell">'an</td><td>De / au sujet de</td><td class="ar-cell">عَنِ العِلْمِ</td></tr>
+        <tr><td class="ar-cell">عَلَى</td><td class="tr-cell">'alā</td><td>Sur</td><td class="ar-cell">عَلَى الكِتَابِ</td></tr>
+        <tr><td class="ar-cell">وَ</td><td class="tr-cell">wa</td><td>Et</td><td class="ar-cell">كِتَابٌ وَقَلَمٌ</td></tr>
+        <tr><td class="ar-cell">هَلْ</td><td class="tr-cell">hal</td><td>Est-ce que ? (interrogation)</td><td class="ar-cell">هَلْ كَتَبَ؟</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('conj-imperatif')">‹ L'Impératif</button>
+    <button class="ln-btn primary" onclick="goNext('adj-m2')">Module 2 : L'I'rāb ›</button>
+  </div>
+</div>
+
+<!-- MODULE 2 : L'I'rab -->
+<div class="lesson-panel" id="lesson-adj-m2">
+  <div class="lesson-top">
+    <span class="lesson-num">11</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Module 2 — L'I'rāb (الإعراب)</div>
+      <div class="lesson-ar-title ar">باب الإعراب</div>
+      <div class="lesson-meta">Al-Adjroumiyya · 5 leçons · Leçons 6 à 10</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-adj-m2" style="width:0%"></div></div><span class="lp-pct" id="lpp-adj-m2">0/5</span></div>
+  <div class="step-dots" id="steps-adj-m2">
+    <div class="step-dot current" id="sd-adj-m2-1" onclick="setStep('adj-m2',1,5)">L6</div>
+    <div class="step-dot" id="sd-adj-m2-2" onclick="setStep('adj-m2',2,5)">L7</div>
+    <div class="step-dot" id="sd-adj-m2-3" onclick="setStep('adj-m2',3,5)">L8</div>
+    <div class="step-dot" id="sd-adj-m2-4" onclick="setStep('adj-m2',4,5)">L9</div>
+    <div class="step-dot" id="sd-adj-m2-5" onclick="setStep('adj-m2',5,5)">L10</div>
+  </div>
+
+  <div class="module-header">
+    <h3>Module 2 : L'I'rāb — La déclinaison</h3>
+    <div class="mod-ar ar">الإعراب</div>
+    <p>L'i'rāb est le changement de la fin des mots selon leur rôle dans la phrase. C'est l'une des spécificités les plus importantes de la langue arabe.</p>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 6</span><span class="etape-title">Définition de l'i'rāb</span></div>
+    <div class="etape-body">
+      <div class="definition">
+        <div class="def-term ar">الإِعْرَابُ</div>
+        <div class="def-text">L'i'rāb est <strong>le changement qui survient à la fin des mots</strong> en fonction du facteur (العامل) qui gouverne ce mot dans la phrase.</div>
+      </div>
+      <div class="regle" style="margin-top:12px">Il existe <strong>4 types d'i'rāb</strong> : le raf' (nominatif), le naṣb (accusatif), le jarr (génitif) et le jazm (apocopé — pour les verbes uniquement).</div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 7</span><span class="etape-title">Le marfū' — المرفوع (nominatif)</span></div>
+    <div class="etape-body">
+      <div class="regle">Le <strong>marfū'</strong> est l'état nominatif. Son signe principal est la <strong>ḍamma (ُ)</strong>.</div>
+      <table>
+        <tr><th>Rôle</th><th>Exemple</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>Sujet (فاعل)</td><td class="ar-cell">جَاءَ الرَّجُلُ</td><td class="tr-cell">jā'a ar-rajoulou</td><td>L'homme est venu</td></tr>
+        <tr><td>Sujet logique (مبتدأ)</td><td class="ar-cell">الكِتَابُ جَدِيدٌ</td><td class="tr-cell">al-kitābou jadīdoun</td><td>Le livre est nouveau</td></tr>
+        <tr><td>Attribut (خبر)</td><td class="ar-cell">مُحَمَّدٌ طَالِبٌ</td><td class="tr-cell">Mouhammadoun tāliboun</td><td>Muhammad est un étudiant</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 8</span><span class="etape-title">Le manṣūb — المنصوب (accusatif)</span></div>
+    <div class="etape-body">
+      <div class="regle">Le <strong>manṣūb</strong> est l'état accusatif. Son signe principal est la <strong>fatḥa (َ)</strong>.</div>
+      <table>
+        <tr><th>Rôle</th><th>Exemple</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>COD (مفعول به)</td><td class="ar-cell">كَتَبَ الدَّرْسَ</td><td class="tr-cell">kataba ad-darsa</td><td>Il a écrit la leçon</td></tr>
+        <tr><td>Circonstanciel (ظرف)</td><td class="ar-cell">جَلَسَ يَوْمًا</td><td class="tr-cell">jalasa yawman</td><td>Il s'est assis un jour</td></tr>
+        <tr><td>Ḥāl (حال)</td><td class="ar-cell">جَاءَ رَاكِبًا</td><td class="tr-cell">jā'a rākiban</td><td>Il est venu à cheval</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 9</span><span class="etape-title">Le majrūr — المجرور (génitif)</span></div>
+    <div class="etape-body">
+      <div class="regle">Le <strong>majrūr</strong> est l'état génitif. Son signe principal est la <strong>kasra (ِ)</strong>. Il apparaît après les prépositions ou dans l'annexion (iḍāfa).</div>
+      <table>
+        <tr><th>Rôle</th><th>Exemple</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td>Après préposition</td><td class="ar-cell">فِي البَيْتِ</td><td class="tr-cell">fī al-bayti</td><td>Dans la maison</td></tr>
+        <tr><td>Annexion (مضاف إليه)</td><td class="ar-cell">كِتَابُ الطَّالِبِ</td><td class="tr-cell">kitābou at-tālibi</td><td>Le livre de l'étudiant</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 10</span><span class="etape-title">Le majzūm — المجزوم (apocopé, verbes)</span></div>
+    <div class="etape-body">
+      <div class="regle">Le <strong>majzūm</strong> concerne uniquement les <strong>verbes à l'inaccompli</strong>. Son signe principal est le <strong>sukūn (ْ)</strong>. Il apparaît après certaines particules.</div>
+      <table>
+        <tr><th>Particule</th><th>Exemple</th><th>Translittération</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">لَمْ</td><td class="ar-cell">لَمْ يَكْتُبْ</td><td class="tr-cell">lam yaktoub</td><td>Il n'a pas écrit</td></tr>
+        <tr><td class="ar-cell">لَا (négation impératif)</td><td class="ar-cell">لَا تَكْتُبْ</td><td class="tr-cell">lā taktoub</td><td>N'écris pas !</td></tr>
+        <tr><td class="ar-cell">إِنْ (condition)</td><td class="ar-cell">إِنْ تَكْتُبْ</td><td class="tr-cell">in taktoub</td><td>Si tu écris...</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('adj-m1')">‹ Module 1</button>
+    <button class="ln-btn primary" onclick="goNext('adj-m3')">Module 3 : Les Signes ›</button>
+  </div>
+</div>
+
+<!-- MODULE 3 : Les Signes -->
+<div class="lesson-panel" id="lesson-adj-m3">
+  <div class="lesson-top">
+    <span class="lesson-num">12</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Module 3 — Les Signes de l'I'rāb</div>
+      <div class="lesson-ar-title ar">علامات الإعراب</div>
+      <div class="lesson-meta">Al-Adjroumiyya · 5 leçons · Leçons 11 à 15</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-adj-m3" style="width:0%"></div></div><span class="lp-pct" id="lpp-adj-m3">0/5</span></div>
+  <div class="step-dots" id="steps-adj-m3">
+    <div class="step-dot current" id="sd-adj-m3-1" onclick="setStep('adj-m3',1,5)">L11</div>
+    <div class="step-dot" id="sd-adj-m3-2" onclick="setStep('adj-m3',2,5)">L12</div>
+    <div class="step-dot" id="sd-adj-m3-3" onclick="setStep('adj-m3',3,5)">L13</div>
+    <div class="step-dot" id="sd-adj-m3-4" onclick="setStep('adj-m3',4,5)">L14</div>
+    <div class="step-dot" id="sd-adj-m3-5" onclick="setStep('adj-m3',5,5)">L15</div>
+  </div>
+
+  <div class="module-header">
+    <h3>Module 3 : Les signes de l'i'rāb</h3>
+    <div class="mod-ar ar">علامات الإعراب</div>
+    <p>Les signes peuvent être principaux (voyelles courtes) ou secondaires (lettres qui remplacent les voyelles dans certaines structures).</p>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 11</span><span class="etape-title">Les signes principaux</span></div>
+    <div class="etape-body">
+      <table>
+        <tr><th>État</th><th>Signe principal</th><th>Nom</th><th>Exemple</th></tr>
+        <tr><td>Marfū' (nominatif)</td><td class="ar-cell" style="font-size:24px">ُ</td><td>Ḍamma</td><td class="ar-cell">الرَّجُلُ</td></tr>
+        <tr><td>Manṣūb (accusatif)</td><td class="ar-cell" style="font-size:24px">َ</td><td>Fatḥa</td><td class="ar-cell">رَأَيْتُ الرَّجُلَ</td></tr>
+        <tr><td>Majrūr (génitif)</td><td class="ar-cell" style="font-size:24px">ِ</td><td>Kasra</td><td class="ar-cell">مَرَرْتُ بِالرَّجُلِ</td></tr>
+        <tr><td>Majzūm (apocopé)</td><td class="ar-cell" style="font-size:24px">ْ</td><td>Sukūn</td><td class="ar-cell">لَمْ يَكْتُبْ</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 12</span><span class="etape-title">Les signes secondaires</span></div>
+    <div class="etape-body">
+      <div class="regle">Dans certains cas, ce ne sont pas des voyelles mais des <strong>lettres</strong> qui jouent le rôle de signe d'i'rāb.</div>
+      <table>
+        <tr><th>Cas</th><th>Signe secondaire</th><th>Description</th></tr>
+        <tr><td>Marfū'</td><td class="ar-cell">الواو (و)</td><td>Dans le pluriel masculin sain et les cinq noms</td></tr>
+        <tr><td>Manṣūb</td><td class="ar-cell">الياء (ي)</td><td>Dans le duel et le pluriel masculin sain</td></tr>
+        <tr><td>Majrūr</td><td class="ar-cell">الياء (ي)</td><td>Dans le duel et le pluriel masculin sain</td></tr>
+        <tr><td>Marfū'</td><td class="ar-cell">الألف (ا)</td><td>Dans les cinq noms (cas spéciaux)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 13</span><span class="etape-title">Le duel — المثنى</span></div>
+    <div class="etape-body">
+      <div class="regle">Le duel désigne <strong>exactement deux éléments</strong>. Il se forme en ajoutant <strong>انِ</strong> au singulier pour le nominatif et <strong>يْنِ</strong> pour l'accusatif/génitif.</div>
+      <table>
+        <tr><th>État</th><th>Terminaison</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td>Marfū' (nominatif)</td><td class="ar-cell">ـَانِ</td><td class="ar-cell">كِتَابَانِ</td><td>Deux livres</td></tr>
+        <tr><td>Manṣūb / Majrūr</td><td class="ar-cell">ـَيْنِ</td><td class="ar-cell">كِتَابَيْنِ</td><td>Deux livres (COD/après préposition)</td></tr>
+        <tr><td>Marfū'</td><td class="ar-cell">ـَانِ</td><td class="ar-cell">رَجُلَانِ</td><td>Deux hommes</td></tr>
+        <tr><td>Manṣūb / Majrūr</td><td class="ar-cell">ـَيْنِ</td><td class="ar-cell">رَجُلَيْنِ</td><td>Deux hommes</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 14</span><span class="etape-title">Le pluriel masculin sain — جمع المذكر السالم</span></div>
+    <div class="etape-body">
+      <div class="regle">Le pluriel masculin sain se forme en ajoutant <strong>ونَ</strong> (nominatif) ou <strong>ينَ</strong> (accusatif/génitif) au singulier sans modifier le radical.</div>
+      <table>
+        <tr><th>État</th><th>Terminaison</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td>Marfū' (nominatif)</td><td class="ar-cell">ـُونَ</td><td class="ar-cell">الْمُسْلِمُونَ</td><td>Les musulmans</td></tr>
+        <tr><td>Manṣūb / Majrūr</td><td class="ar-cell">ـِينَ</td><td class="ar-cell">الْمُسْلِمِينَ</td><td>Les musulmans</td></tr>
+        <tr><td>Marfū'</td><td class="ar-cell">ـُونَ</td><td class="ar-cell">الطَّالِبُونَ</td><td>Les étudiants</td></tr>
+        <tr><td>Manṣūb / Majrūr</td><td class="ar-cell">ـِينَ</td><td class="ar-cell">الطَّالِبِينَ</td><td>Les étudiants</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 15</span><span class="etape-title">Les cinq noms — الأسماء الخمسة</span></div>
+    <div class="etape-body">
+      <div class="regle">Les cinq noms ont des signes d'i'rāb spéciaux : <strong>و pour le nominatif, ا pour l'accusatif, ي pour le génitif</strong>.</div>
+      <table>
+        <tr><th>Nom</th><th>Sens</th><th>Marfū'</th><th>Manṣūb</th><th>Majrūr</th></tr>
+        <tr><td class="ar-cell">أَب</td><td>Père</td><td class="ar-cell">أَبُوكَ</td><td class="ar-cell">أَبَاكَ</td><td class="ar-cell">أَبِيكَ</td></tr>
+        <tr><td class="ar-cell">أَخ</td><td>Frère</td><td class="ar-cell">أَخُوكَ</td><td class="ar-cell">أَخَاكَ</td><td class="ar-cell">أَخِيكَ</td></tr>
+        <tr><td class="ar-cell">حَم</td><td>Beau-père</td><td class="ar-cell">حَمُوكَ</td><td class="ar-cell">حَمَاكَ</td><td class="ar-cell">حَمِيكَ</td></tr>
+        <tr><td class="ar-cell">فَم</td><td>Bouche</td><td class="ar-cell">فُوكَ</td><td class="ar-cell">فَاكَ</td><td class="ar-cell">فِيكَ</td></tr>
+        <tr><td class="ar-cell">ذُو</td><td>Possesseur de</td><td class="ar-cell">ذُو مَالٍ</td><td class="ar-cell">ذَا مَالٍ</td><td class="ar-cell">ذِي مَالٍ</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('adj-m2')">‹ Module 2</button>
+    <button class="ln-btn primary" onclick="goNext('adj-m4')">Module 4 : Les Verbes ›</button>
+  </div>
+</div>
+
+<!-- MODULE 4 : Les Verbes -->
+<div class="lesson-panel" id="lesson-adj-m4">
+  <div class="lesson-top">
+    <span class="lesson-num">13</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Module 4 — Les Verbes</div>
+      <div class="lesson-ar-title ar">الأفعال</div>
+      <div class="lesson-meta">Al-Adjroumiyya · 5 leçons · Leçons 16 à 20</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-adj-m4" style="width:0%"></div></div><span class="lp-pct" id="lpp-adj-m4">0/5</span></div>
+  <div class="step-dots" id="steps-adj-m4">
+    <div class="step-dot current" id="sd-adj-m4-1" onclick="setStep('adj-m4',1,5)">L16</div>
+    <div class="step-dot" id="sd-adj-m4-2" onclick="setStep('adj-m4',2,5)">L17</div>
+    <div class="step-dot" id="sd-adj-m4-3" onclick="setStep('adj-m4',3,5)">L18</div>
+    <div class="step-dot" id="sd-adj-m4-4" onclick="setStep('adj-m4',4,5)">L19</div>
+    <div class="step-dot" id="sd-adj-m4-5" onclick="setStep('adj-m4',5,5)">L20</div>
+  </div>
+
+  <div class="module-header">
+    <h3>Module 4 : Les verbes et leurs états</h3>
+    <div class="mod-ar ar">الأفعال</div>
+    <p>Ce module étudie les trois temps verbaux selon Al-Adjroumiyya, ainsi que les particules qui modifient l'état du verbe à l'inaccompli.</p>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 16</span><span class="etape-title">Le passé — الماضي</span></div>
+    <div class="etape-body">
+      <div class="regle">Le verbe au passé <strong class="ar">الماضي</strong> est toujours à l'état <strong>mabni</strong> (figé) — il ne change pas selon l'i'rāb. Sa terminaison est fixe.</div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">كَتَبَ</div><div class="ex-tr">kataba</div><div class="ex-fr">Il a écrit — mabni sur la fatḥa</div></div>
+        <div class="ex-row"><div class="ex-ar ar">كَتَبُوا</div><div class="ex-tr">katabou</div><div class="ex-fr">Ils ont écrit — mabni sur le ḍamm</div></div>
+        <div class="ex-row"><div class="ex-ar ar">كَتَبْتُ</div><div class="ex-tr">katabtou</div><div class="ex-fr">J'ai écrit — mabni sur le sukūn</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 17</span><span class="etape-title">Le présent — المضارع</span></div>
+    <div class="etape-body">
+      <div class="regle">Le verbe à l'inaccompli <strong class="ar">المضارع</strong> est <strong>mo'rab</strong> (déclinable) — il change selon les particules qui le gouvernent. Par défaut, il est au nominatif (marfū') avec la ḍamma.</div>
+      <table>
+        <tr><th>État</th><th>Condition</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td>Marfū' (ḍamma)</td><td>Aucune particule</td><td class="ar-cell">يَكْتُبُ</td><td>Il écrit</td></tr>
+        <tr><td>Manṣūb (fatḥa)</td><td>Après أَنْ, لَنْ, كَيْ...</td><td class="ar-cell">لَنْ يَكْتُبَ</td><td>Il n'écrira pas</td></tr>
+        <tr><td>Majzūm (sukūn)</td><td>Après لَمْ, لَا...</td><td class="ar-cell">لَمْ يَكْتُبْ</td><td>Il n'a pas écrit</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 18</span><span class="etape-title">L'impératif — الأمر</span></div>
+    <div class="etape-body">
+      <div class="regle">Le verbe à l'impératif <strong class="ar">الأمر</strong> est toujours <strong>mabni</strong> (figé). Il est généralement figé sur le sukūn.</div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">اُكْتُبْ</div><div class="ex-tr">ouktoub</div><div class="ex-fr">Écris ! — mabni sur le sukūn</div></div>
+        <div class="ex-row"><div class="ex-ar ar">اُكْتُبِي</div><div class="ex-tr">ouktoubī</div><div class="ex-fr">Écris ! (fém.) — mabni sur le sukūn</div></div>
+        <div class="ex-row"><div class="ex-ar ar">اُكْتُبُوا</div><div class="ex-tr">ouktoubou</div><div class="ex-fr">Écrivez ! — mabni sur le ḍamm</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 19</span><span class="etape-title">Particules rendant le verbe manṣūb</span></div>
+    <div class="etape-body">
+      <div class="regle">Ces particules rendent le verbe à l'inaccompli à l'état <strong>manṣūb</strong> (accusatif) — la ḍamma finale est remplacée par la fatḥa.</div>
+      <table>
+        <tr><th>Particule</th><th>Sens</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">أَنْ</td><td>Que (finalité)</td><td class="ar-cell">أُرِيدُ أَنْ أَكْتُبَ</td><td>Je veux écrire</td></tr>
+        <tr><td class="ar-cell">لَنْ</td><td>Ne...jamais (futur)</td><td class="ar-cell">لَنْ يَكْتُبَ</td><td>Il n'écrira jamais</td></tr>
+        <tr><td class="ar-cell">إِذَنْ</td><td>Alors (conséquence)</td><td class="ar-cell">إِذَنْ أَكْتُبَ</td><td>Alors j'écris</td></tr>
+        <tr><td class="ar-cell">كَيْ</td><td>Pour que (but)</td><td class="ar-cell">كَيْ تَعْلَمَ</td><td>Pour que tu saches</td></tr>
+        <tr><td class="ar-cell">لَامُ كَيْ</td><td>Lam de but</td><td class="ar-cell">جِئْتُ لِأَكْتُبَ</td><td>Je suis venu pour écrire</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 20</span><span class="etape-title">Particules rendant le verbe majzūm</span></div>
+    <div class="etape-body">
+      <div class="regle">Ces particules rendent le verbe à l'inaccompli à l'état <strong>majzūm</strong> (apocopé) — la ḍamma finale est remplacée par le sukūn.</div>
+      <table>
+        <tr><th>Particule</th><th>Sens</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">لَمْ</td><td>Ne pas (passé négatif)</td><td class="ar-cell">لَمْ يَكْتُبْ</td><td>Il n'a pas écrit</td></tr>
+        <tr><td class="ar-cell">لَمَّا</td><td>Pas encore</td><td class="ar-cell">لَمَّا يَكْتُبْ</td><td>Il n'a pas encore écrit</td></tr>
+        <tr><td class="ar-cell">لَا (négation impérative)</td><td>Ne...pas (ordre)</td><td class="ar-cell">لَا تَكْتُبْ</td><td>N'écris pas !</td></tr>
+        <tr><td class="ar-cell">إِنْ (condition)</td><td>Si (conditionnel)</td><td class="ar-cell">إِنْ تَكْتُبْ أَكْتُبْ</td><td>Si tu écris, j'écris</td></tr>
+        <tr><td class="ar-cell">مَنْ / مَا / مَهْمَا</td><td>Celui qui / quoi que</td><td class="ar-cell">مَنْ يَعْمَلْ يُكَافَأْ</td><td>Qui travaille sera récompensé</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('adj-m3')">‹ Module 3</button>
+    <button class="ln-btn primary" onclick="goNext('adj-m5')">Module 5 : Les Nominatifs ›</button>
+  </div>
+</div>
+
+<!-- MODULE 5 : Les Nominatifs -->
+<div class="lesson-panel" id="lesson-adj-m5">
+  <div class="lesson-top">
+    <span class="lesson-num">14</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Module 5 — Les Noms au Nominatif</div>
+      <div class="lesson-ar-title ar">المرفوعات</div>
+      <div class="lesson-meta">Al-Adjroumiyya · 6 leçons · Leçons 21 à 26</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-adj-m5" style="width:0%"></div></div><span class="lp-pct" id="lpp-adj-m5">0/6</span></div>
+  <div class="step-dots" id="steps-adj-m5">
+    <div class="step-dot current" id="sd-adj-m5-1" onclick="setStep('adj-m5',1,6)">L21</div>
+    <div class="step-dot" id="sd-adj-m5-2" onclick="setStep('adj-m5',2,6)">L22</div>
+    <div class="step-dot" id="sd-adj-m5-3" onclick="setStep('adj-m5',3,6)">L23</div>
+    <div class="step-dot" id="sd-adj-m5-4" onclick="setStep('adj-m5',4,6)">L24</div>
+    <div class="step-dot" id="sd-adj-m5-5" onclick="setStep('adj-m5',5,6)">L25</div>
+    <div class="step-dot" id="sd-adj-m5-6" onclick="setStep('adj-m5',6,6)">L26</div>
+  </div>
+
+  <div class="module-header">
+    <h3>Module 5 : Les noms au nominatif (المرفوعات)</h3>
+    <div class="mod-ar ar">المرفوعات</div>
+    <p>Ce module étudie tous les éléments de la phrase qui portent la ḍamma (nominatif) : le sujet, le mubtada', le khabar et les verbes incomplets.</p>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 21</span><span class="etape-title">Le sujet — الفاعل</span></div>
+    <div class="etape-body">
+      <div class="definition"><div class="def-term ar">الفَاعِلُ</div><div class="def-text">Le <strong>fā'il</strong> est le nom qui suit le verbe et qui réalise l'action. Il est toujours au <strong>nominatif (marfū')</strong>.</div></div>
+      <div class="exemples" style="margin-top:12px">
+        <div class="ex-row"><div class="ex-ar ar">كَتَبَ الطَّالِبُ</div><div class="ex-tr">kataba at-tālibu</div><div class="ex-fr">L'étudiant a écrit — الطَّالِبُ est le fā'il</div></div>
+        <div class="ex-row"><div class="ex-ar ar">جَاءَ مُحَمَّدٌ</div><div class="ex-tr">jā'a Mouhammadoun</div><div class="ex-fr">Muhammad est venu — مُحَمَّدٌ est le fā'il</div></div>
+        <div class="ex-row"><div class="ex-ar ar">قَرَأَتِ الطَّالِبَةُ</div><div class="ex-tr">qara'ati at-tālibatou</div><div class="ex-fr">L'étudiante a lu — الطَّالِبَةُ est le fā'il</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 22</span><span class="etape-title">Le sujet passif — نائب الفاعل</span></div>
+    <div class="etape-body">
+      <div class="definition"><div class="def-term ar">نَائِبُ الفَاعِلِ</div><div class="def-text">Quand le verbe est à la voix passive, le COD prend la place du sujet et se met au <strong>nominatif</strong>. Le verbe change de forme.</div></div>
+      <table style="margin-top:12px">
+        <tr><th>Voix active</th><th>Voix passive</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">كَتَبَ الطَّالِبُ الدَّرْسَ</td><td class="ar-cell">كُتِبَ الدَّرْسُ</td><td>La leçon a été écrite</td></tr>
+        <tr><td class="ar-cell">ضَرَبَ زَيْدٌ عَمْرًا</td><td class="ar-cell">ضُرِبَ عَمْرٌو</td><td>'Amr a été frappé</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 23</span><span class="etape-title">Le mubtada' — المبتدأ</span></div>
+    <div class="etape-body">
+      <div class="definition"><div class="def-term ar">الْمُبْتَدَأُ</div><div class="def-text">Le <strong>mubtada'</strong> est le sujet d'une phrase nominale. Il est toujours au <strong>nominatif</strong> et généralement défini.</div></div>
+      <div class="exemples" style="margin-top:12px">
+        <div class="ex-row"><div class="ex-ar ar">مُحَمَّدٌ طَالِبٌ</div><div class="ex-tr">Mouhammadoun tāliboun</div><div class="ex-fr">Muhammad est un étudiant — مُحَمَّدٌ = mubtada'</div></div>
+        <div class="ex-row"><div class="ex-ar ar">الكِتَابُ جَدِيدٌ</div><div class="ex-tr">al-kitābou jadīdoun</div><div class="ex-fr">Le livre est nouveau — الكِتَابُ = mubtada'</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 24</span><span class="etape-title">Le khabar — الخبر</span></div>
+    <div class="etape-body">
+      <div class="definition"><div class="def-term ar">الخَبَرُ</div><div class="def-text">Le <strong>khabar</strong> est l'attribut ou le prédicat de la phrase nominale. Il complète le sens du mubtada' et est aussi au <strong>nominatif</strong>.</div></div>
+      <table style="margin-top:12px">
+        <tr><th>Mubtada'</th><th>Khabar</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">مُحَمَّدٌ</td><td class="ar-cell">طَالِبٌ</td><td>Muhammad est un étudiant</td></tr>
+        <tr><td class="ar-cell">الكِتَابُ</td><td class="ar-cell">جَدِيدٌ</td><td>Le livre est nouveau</td></tr>
+        <tr><td class="ar-cell">الْبَيْتُ</td><td class="ar-cell">كَبِيرٌ</td><td>La maison est grande</td></tr>
+        <tr><td class="ar-cell">هُوَ</td><td class="ar-cell">فِي الْمَدْرَسَةِ</td><td>Il est à l'école (khabar = préposition)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 25</span><span class="etape-title">Kāna et ses sœurs — كان وأخواتها</span></div>
+    <div class="etape-body">
+      <div class="regle">Les verbes frères de <strong class="ar">كَانَ</strong> entrent sur la phrase nominale, mettent le mubtada' au nominatif (ismu kāna) et l'attribut à l'accusatif (khabaru kāna).</div>
+      <table>
+        <tr><th>Verbe</th><th>Sens</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">كَانَ</td><td>Était</td><td class="ar-cell">كَانَ مُحَمَّدٌ طَالِبًا</td><td>Muhammad était un étudiant</td></tr>
+        <tr><td class="ar-cell">أَصْبَحَ</td><td>Est devenu (matin)</td><td class="ar-cell">أَصْبَحَ غَنِيًّا</td><td>Il est devenu riche</td></tr>
+        <tr><td class="ar-cell">لَيْسَ</td><td>N'est pas</td><td class="ar-cell">لَيْسَ مُسَافِرًا</td><td>Il n'est pas en voyage</td></tr>
+        <tr><td class="ar-cell">صَارَ</td><td>Est devenu</td><td class="ar-cell">صَارَ عَالِمًا</td><td>Il est devenu savant</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 26</span><span class="etape-title">Inna et ses sœurs — إن وأخواتها</span></div>
+    <div class="etape-body">
+      <div class="regle">Les particules sœurs de <strong class="ar">إِنَّ</strong> entrent sur la phrase nominale et font l'inverse de kāna : elles mettent le mubtada' à l'accusatif et laissent le khabar au nominatif.</div>
+      <table>
+        <tr><th>Particule</th><th>Sens</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">إِنَّ</td><td>Certes / En vérité</td><td class="ar-cell">إِنَّ مُحَمَّدًا طَالِبٌ</td><td>Certes Muhammad est étudiant</td></tr>
+        <tr><td class="ar-cell">أَنَّ</td><td>Que (forme contractée)</td><td class="ar-cell">عَلِمْتُ أَنَّ الْعِلْمَ نُورٌ</td><td>J'ai su que le savoir est lumière</td></tr>
+        <tr><td class="ar-cell">لَكِنَّ</td><td>Mais / Cependant</td><td class="ar-cell">جَاءَ زَيْدٌ لَكِنَّ عَمْرًا غَائِبٌ</td><td>Zayd est venu mais Amr est absent</td></tr>
+        <tr><td class="ar-cell">لَيْتَ</td><td>Plût à Dieu que</td><td class="ar-cell">لَيْتَ الشَّبَابَ يَعُودُ</td><td>Si seulement la jeunesse revenait</td></tr>
+        <tr><td class="ar-cell">لَعَلَّ</td><td>Peut-être que / Espérons que</td><td class="ar-cell">لَعَلَّ الْأَمْرَ يَسِيرٌ</td><td>Peut-être que la chose est facile</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('adj-m4')">‹ Module 4</button>
+    <button class="ln-btn primary" onclick="goNext('adj-m6')">Module 6 : Les Accusatifs ›</button>
+  </div>
+</div>
+
+<!-- MODULE 6 : Les Accusatifs -->
+<div class="lesson-panel" id="lesson-adj-m6">
+  <div class="lesson-top">
+    <span class="lesson-num">15</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Module 6 — Les Noms à l'Accusatif</div>
+      <div class="lesson-ar-title ar">المنصوبات</div>
+      <div class="lesson-meta">Al-Adjroumiyya · 6 leçons · Leçons 27 à 32</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-adj-m6" style="width:0%"></div></div><span class="lp-pct" id="lpp-adj-m6">0/6</span></div>
+  <div class="step-dots" id="steps-adj-m6">
+    <div class="step-dot current" id="sd-adj-m6-1" onclick="setStep('adj-m6',1,6)">L27</div>
+    <div class="step-dot" id="sd-adj-m6-2" onclick="setStep('adj-m6',2,6)">L28</div>
+    <div class="step-dot" id="sd-adj-m6-3" onclick="setStep('adj-m6',3,6)">L29</div>
+    <div class="step-dot" id="sd-adj-m6-4" onclick="setStep('adj-m6',4,6)">L30</div>
+    <div class="step-dot" id="sd-adj-m6-5" onclick="setStep('adj-m6',5,6)">L31</div>
+    <div class="step-dot" id="sd-adj-m6-6" onclick="setStep('adj-m6',6,6)">L32</div>
+  </div>
+
+  <div class="module-header">
+    <h3>Module 6 : Les noms à l'accusatif (المنصوبات)</h3>
+    <div class="mod-ar ar">المنصوبات</div>
+    <p>Ce module couvre tous les éléments de la phrase qui portent la fatḥa (accusatif) : le COD, les compléments circonstanciels, le ḥāl, le tamyīz, l'exception et le vocatif.</p>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 27</span><span class="etape-title">Le complément d'objet direct — المفعول به</span></div>
+    <div class="etape-body">
+      <div class="definition"><div class="def-term ar">المَفْعُولُ بِهِ</div><div class="def-text">Le <strong>maf'ūl bihi</strong> est la personne ou chose qui subit l'action. Il est toujours à l'accusatif (manṣūb).</div></div>
+      <div class="exemples" style="margin-top:12px">
+        <div class="ex-row"><div class="ex-ar ar">كَتَبَ الطَّالِبُ الدَّرْسَ</div><div class="ex-tr">kataba at-tālibu ad-darsa</div><div class="ex-fr">L'étudiant a écrit la leçon — الدَّرْسَ est COD</div></div>
+        <div class="ex-row"><div class="ex-ar ar">رَأَيْتُ مُحَمَّدًا</div><div class="ex-tr">ra'aytou Mouhammadan</div><div class="ex-fr">J'ai vu Muhammad — مُحَمَّدًا est COD</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 28</span><span class="etape-title">Le complément circonstanciel — المفعول فيه</span></div>
+    <div class="etape-body">
+      <div class="regle">Le <strong>maf'ūl fīhi</strong> exprime le <strong>temps</strong> ou le <strong>lieu</strong> de l'action. Il répond à "quand ?" ou "où ?" et est à l'accusatif.</div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">جِئْتُ يَوْمَ الجُمُعَةِ</div><div class="ex-tr">ji'tou yawma al-jum'ati</div><div class="ex-fr">Je suis venu le vendredi — يَوْمَ = circonstanciel de temps</div></div>
+        <div class="ex-row"><div class="ex-ar ar">جَلَسَ أَمَامَ الْبَيْتِ</div><div class="ex-tr">jalasa amāma al-bayti</div><div class="ex-fr">Il s'est assis devant la maison — أَمَامَ = circonstanciel de lieu</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 29</span><span class="etape-title">Le ḥāl — الحال</span></div>
+    <div class="etape-body">
+      <div class="definition"><div class="def-term ar">الحَالُ</div><div class="def-text">Le <strong>ḥāl</strong> décrit l'état du sujet ou du COD au moment de l'action. Il est à l'accusatif et généralement indéfini.</div></div>
+      <div class="exemples" style="margin-top:12px">
+        <div class="ex-row"><div class="ex-ar ar">جَاءَ الرَّجُلُ رَاكِبًا</div><div class="ex-tr">jā'a ar-rajoulou rākiban</div><div class="ex-fr">L'homme est venu à cheval — رَاكِبًا = ḥāl</div></div>
+        <div class="ex-row"><div class="ex-ar ar">دَخَلَ مُبْتَسِمًا</div><div class="ex-tr">dakhala moubtassiman</div><div class="ex-fr">Il est entré en souriant — مُبْتَسِمًا = ḥāl</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 30</span><span class="etape-title">Le tamyīz — التمييز</span></div>
+    <div class="etape-body">
+      <div class="definition"><div class="def-term ar">التَّمْيِيزُ</div><div class="def-text">Le <strong>tamyīz</strong> précise et distingue le sens d'un mot ambigu. Il répond à la question "de quoi ? en quoi ?". Il est à l'accusatif et indéfini.</div></div>
+      <div class="exemples" style="margin-top:12px">
+        <div class="ex-row"><div class="ex-ar ar">اشْتَرَيْتُ كِيلُوغْرَامًا تُفَّاحًا</div><div class="ex-tr">ishtaraytou kīlūghramman touffāhan</div><div class="ex-fr">J'ai acheté un kilo de pommes — تُفَّاحًا = tamyīz</div></div>
+        <div class="ex-row"><div class="ex-ar ar">طَابَ نَفْسًا</div><div class="ex-tr">tāba nafsan</div><div class="ex-fr">Il est bon de caractère — نَفْسًا = tamyīz</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 31</span><span class="etape-title">L'exception — الاستثناء</span></div>
+    <div class="etape-body">
+      <div class="regle">L'exception avec <strong class="ar">إِلَّا</strong> (sauf/excepté) met le nom exclu à l'accusatif quand la phrase est affirmative et complète.</div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">جَاءَ الطُّلَّابُ إِلَّا مُحَمَّدًا</div><div class="ex-tr">jā'a at-toullābu illā Mouhammadan</div><div class="ex-fr">Les étudiants sont venus sauf Muhammad</div></div>
+        <div class="ex-row"><div class="ex-ar ar">مَا قَامَ إِلَّا زَيْدٌ</div><div class="ex-tr">mā qāma illā Zaydoun</div><div class="ex-fr">Personne ne s'est levé sauf Zayd (phrase négative → nominatif)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 32</span><span class="etape-title">L'appel (le vocatif) — المنادى</span></div>
+    <div class="etape-body">
+      <div class="definition"><div class="def-term ar">الْمُنَادَى</div><div class="def-text">Le <strong>munādā</strong> est le nom appelé avec la particule <strong class="ar">يَا</strong>. Son état dépend de sa nature : un nom propre simple est au nominatif figé (mabni), un nom commun indéfini est à l'accusatif.</div></div>
+      <div class="exemples" style="margin-top:12px">
+        <div class="ex-row"><div class="ex-ar ar">يَا مُحَمَّدُ</div><div class="ex-tr">yā Mouhammadon</div><div class="ex-fr">Ô Muhammad ! (nom propre → nominatif figé)</div></div>
+        <div class="ex-row"><div class="ex-ar ar">يَا رَجُلًا</div><div class="ex-tr">yā rajoulan</div><div class="ex-fr">Ô homme ! (indéfini → accusatif)</div></div>
+        <div class="ex-row"><div class="ex-ar ar">يَا عِبَادَ اللَّهِ</div><div class="ex-tr">yā 'ibāda Allāhi</div><div class="ex-fr">Ô serviteurs d'Allah ! (annexion → accusatif)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('adj-m5')">‹ Module 5</button>
+    <button class="ln-btn primary" onclick="goNext('adj-m7')">Module 7 : Les Génitifs ›</button>
+  </div>
+</div>
+
+<!-- MODULE 7 : Les Génitifs -->
+<div class="lesson-panel" id="lesson-adj-m7">
+  <div class="lesson-top">
+    <span class="lesson-num">16</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Module 7 — Les Noms au Génitif</div>
+      <div class="lesson-ar-title ar">المجرورات</div>
+      <div class="lesson-meta">Al-Adjroumiyya · 2 leçons · Leçons 33 à 34</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-adj-m7" style="width:0%"></div></div><span class="lp-pct" id="lpp-adj-m7">0/2</span></div>
+  <div class="step-dots" id="steps-adj-m7">
+    <div class="step-dot current" id="sd-adj-m7-1" onclick="setStep('adj-m7',1,2)">L33</div>
+    <div class="step-dot" id="sd-adj-m7-2" onclick="setStep('adj-m7',2,2)">L34</div>
+  </div>
+
+  <div class="module-header">
+    <h3>Module 7 : Les noms au génitif (المجرورات)</h3>
+    <div class="mod-ar ar">المجرورات</div>
+    <p>Le génitif (kasra) apparaît après les prépositions et dans la construction d'annexion (iḍāfa).</p>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 33</span><span class="etape-title">Les prépositions — حروف الجر</span></div>
+    <div class="etape-body">
+      <div class="regle">Toute préposition gouverne le nom qui la suit et le met au <strong>génitif (kasra ِ)</strong>.</div>
+      <table>
+        <tr><th>Préposition</th><th>Sens</th><th>Exemple</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">مِنْ</td><td>De / depuis</td><td class="ar-cell">مِنَ الْبَيْتِ</td><td>De la maison</td></tr>
+        <tr><td class="ar-cell">إِلَى</td><td>Vers / jusqu'à</td><td class="ar-cell">إِلَى الْمَسْجِدِ</td><td>Vers la mosquée</td></tr>
+        <tr><td class="ar-cell">عَنْ</td><td>De / au sujet de</td><td class="ar-cell">عَنِ الْعِلْمِ</td><td>Au sujet du savoir</td></tr>
+        <tr><td class="ar-cell">عَلَى</td><td>Sur</td><td class="ar-cell">عَلَى الطَّاوِلَةِ</td><td>Sur la table</td></tr>
+        <tr><td class="ar-cell">فِي</td><td>Dans / en</td><td class="ar-cell">فِي الْكِتَابِ</td><td>Dans le livre</td></tr>
+        <tr><td class="ar-cell">بِـ</td><td>Avec / par / à</td><td class="ar-cell">بِالْقَلَمِ</td><td>Avec le stylo</td></tr>
+        <tr><td class="ar-cell">لِـ</td><td>Pour / à / appartenant à</td><td class="ar-cell">لِلطَّالِبِ</td><td>Pour l'étudiant</td></tr>
+        <tr><td class="ar-cell">كَـ</td><td>Comme / tel que</td><td class="ar-cell">كَالأَسَدِ</td><td>Comme le lion</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 34</span><span class="etape-title">L'iḍāfa (l'annexion) — الإضافة</span></div>
+    <div class="etape-body">
+      <div class="definition"><div class="def-term ar">الإِضَافَةُ</div><div class="def-text">L'<strong>iḍāfa</strong> est la construction d'annexion qui exprime la possession ou la relation entre deux noms. Le premier (muḍāf) perd le tanwīn, le second (muḍāf ilayhi) est au génitif.</div></div>
+      <table style="margin-top:12px">
+        <tr><th>Muḍāf</th><th>Muḍāf ilayhi</th><th>Résultat</th><th>Traduction</th></tr>
+        <tr><td class="ar-cell">كِتَابُ</td><td class="ar-cell">الطَّالِبِ</td><td class="ar-cell">كِتَابُ الطَّالِبِ</td><td>Le livre de l'étudiant</td></tr>
+        <tr><td class="ar-cell">بَيْتُ</td><td class="ar-cell">مُحَمَّدٍ</td><td class="ar-cell">بَيْتُ مُحَمَّدٍ</td><td>La maison de Muhammad</td></tr>
+        <tr><td class="ar-cell">بَابُ</td><td class="ar-cell">الْمَدْرَسَةِ</td><td class="ar-cell">بَابُ الْمَدْرَسَةِ</td><td>La porte de l'école</td></tr>
+        <tr><td class="ar-cell">عِبَادُ</td><td class="ar-cell">اللَّهِ</td><td class="ar-cell">عِبَادُ اللَّهِ</td><td>Les serviteurs d'Allah</td></tr>
+      </table>
+      <div class="regle" style="margin-top:12px">Règle : le <strong>muḍāf</strong> ne peut jamais porter le tanwīn ni l'article ال. Le <strong>muḍāf ilayhi</strong> est toujours au génitif.</div>
+    </div>
+  </div>
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('adj-m6')">‹ Module 6</button>
+    <button class="ln-btn primary" onclick="goNext('adj-m8')">Module 8 : Analyse grammaticale ›</button>
+  </div>
+</div>
+
+<!-- MODULE 8 : Analyse grammaticale -->
+<div class="lesson-panel" id="lesson-adj-m8">
+  <div class="lesson-top">
+    <span class="lesson-num">17</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Module 8 — Analyse grammaticale</div>
+      <div class="lesson-ar-title ar">الإعراب التطبيقي</div>
+      <div class="lesson-meta">Al-Adjroumiyya · 6 leçons · Leçons 35 à 40</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-adj-m8" style="width:0%"></div></div><span class="lp-pct" id="lpp-adj-m8">0/6</span></div>
+  <div class="step-dots" id="steps-adj-m8">
+    <div class="step-dot current" id="sd-adj-m8-1" onclick="setStep('adj-m8',1,6)">L35</div>
+    <div class="step-dot" id="sd-adj-m8-2" onclick="setStep('adj-m8',2,6)">L36</div>
+    <div class="step-dot" id="sd-adj-m8-3" onclick="setStep('adj-m8',3,6)">L37</div>
+    <div class="step-dot" id="sd-adj-m8-4" onclick="setStep('adj-m8',4,6)">L38</div>
+    <div class="step-dot" id="sd-adj-m8-5" onclick="setStep('adj-m8',5,6)">L39</div>
+    <div class="step-dot" id="sd-adj-m8-6" onclick="setStep('adj-m8',6,6)">L40</div>
+  </div>
+
+  <div class="module-header">
+    <h3>Module 8 : Analyse grammaticale complète</h3>
+    <div class="mod-ar ar">الإعراب التطبيقي</div>
+    <p>Ce module final met en pratique tout ce que vous avez appris. Vous analyserez des phrases simples, des versets coraniques et des textes classiques, puis un test final évaluera votre maîtrise de l'Al-Adjroumiyya.</p>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 35</span><span class="etape-title">Analyse de phrases simples</span></div>
+    <div class="etape-body">
+      <div class="regle">L'analyse grammaticale (الإعراب) consiste à identifier la <strong>nature</strong> et la <strong>fonction</strong> de chaque mot, puis à préciser son <strong>état</strong> (i'rāb).</div>
+      <p style="font-size:13px;color:var(--muted);margin:12px 0">Méthode : pour chaque mot, précisez → nature (nom/verbe/particule) → fonction (sujet, COD...) → état (nominatif/accusatif/génitif).</p>
+
+      <div class="etape" style="background:var(--off);margin-top:12px">
+        <div class="etape-header" style="background:var(--green)"><span class="etape-num">EXEMPLE 1</span><span class="etape-title">كَتَبَ الطَّالِبُ الدَّرْسَ</span></div>
+        <div class="etape-body">
+          <table>
+            <tr><th>Mot</th><th>Nature</th><th>Fonction</th><th>État</th><th>Signe</th></tr>
+            <tr><td class="ar-cell">كَتَبَ</td><td>Verbe accompli</td><td>Prédicat verbal</td><td>Mabni sur fatḥa</td><td class="ar-cell">فتحة</td></tr>
+            <tr><td class="ar-cell">الطَّالِبُ</td><td>Nom</td><td>Fā'il (sujet)</td><td>Marfū' (nominatif)</td><td class="ar-cell">ضمة</td></tr>
+            <tr><td class="ar-cell">الدَّرْسَ</td><td>Nom</td><td>Maf'ūl bihi (COD)</td><td>Manṣūb (accusatif)</td><td class="ar-cell">فتحة</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="etape" style="background:var(--off);margin-top:12px">
+        <div class="etape-header" style="background:var(--green)"><span class="etape-num">EXEMPLE 2</span><span class="etape-title">الكِتَابُ فِي الحَقِيبَةِ</span></div>
+        <div class="etape-body">
+          <table>
+            <tr><th>Mot</th><th>Nature</th><th>Fonction</th><th>État</th><th>Signe</th></tr>
+            <tr><td class="ar-cell">الكِتَابُ</td><td>Nom</td><td>Mubtada'</td><td>Marfū' (nominatif)</td><td class="ar-cell">ضمة</td></tr>
+            <tr><td class="ar-cell">فِي</td><td>Particule (préposition)</td><td>Préposition</td><td>Mabni (invariable)</td><td>—</td></tr>
+            <tr><td class="ar-cell">الحَقِيبَةِ</td><td>Nom</td><td>Majrūr (après prép.)</td><td>Majrūr (génitif)</td><td class="ar-cell">كسرة</td></tr>
+          </table>
+          <div class="regle" style="margin-top:10px">Le khabar ici est la proposition prépositionnelle فِي الحَقِيبَةِ entière.</div>
+        </div>
+      </div>
+
+      <div class="etape" style="background:var(--off);margin-top:12px">
+        <div class="etape-header" style="background:var(--green)"><span class="etape-num">EXEMPLE 3</span><span class="etape-title">إِنَّ مُحَمَّدًا رَسُولُ اللَّهِ</span></div>
+        <div class="etape-body">
+          <table>
+            <tr><th>Mot</th><th>Nature</th><th>Fonction</th><th>État</th><th>Signe</th></tr>
+            <tr><td class="ar-cell">إِنَّ</td><td>Particule (sœur de إن)</td><td>Gouvernante</td><td>Mabni</td><td>—</td></tr>
+            <tr><td class="ar-cell">مُحَمَّدًا</td><td>Nom propre</td><td>Ism inna</td><td>Manṣūb (accusatif)</td><td class="ar-cell">فتحة</td></tr>
+            <tr><td class="ar-cell">رَسُولُ</td><td>Nom</td><td>Khabar inna</td><td>Marfū' (nominatif)</td><td class="ar-cell">ضمة</td></tr>
+            <tr><td class="ar-cell">اللَّهِ</td><td>Nom</td><td>Muḍāf ilayhi</td><td>Majrūr (génitif)</td><td class="ar-cell">كسرة</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 36</span><span class="etape-title">Analyse de versets simples</span></div>
+    <div class="etape-body">
+      <div class="regle">Analysons maintenant des versets coraniques simples — ils sont la référence principale de l'arabe classique.</div>
+
+      <div class="etape" style="background:var(--off);margin-top:12px">
+        <div class="etape-header" style="background:var(--green)"><span class="etape-num">VERSET 1</span><span class="etape-title" style="font-family:'Amiri',serif;font-size:16px">اقْرَأْ بِاسْمِ رَبِّكَ — Lis au nom de ton Seigneur (Al-'Alaq : 1)</span></div>
+        <div class="etape-body">
+          <table>
+            <tr><th>Mot</th><th>Nature</th><th>Fonction</th><th>État</th></tr>
+            <tr><td class="ar-cell">اقْرَأْ</td><td>Verbe impératif</td><td>Prédicat / ordre</td><td>Mabni sur sukūn</td></tr>
+            <tr><td class="ar-cell">بِـ</td><td>Particule (préposition)</td><td>Préposition</td><td>Mabni</td></tr>
+            <tr><td class="ar-cell">اسْمِ</td><td>Nom</td><td>Majrūr (après بِـ) + muḍāf</td><td>Majrūr — kasra</td></tr>
+            <tr><td class="ar-cell">رَبِّكَ</td><td>Nom + suffixe كَ</td><td>Muḍāf ilayhi</td><td>Majrūr — kasra</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="etape" style="background:var(--off);margin-top:12px">
+        <div class="etape-header" style="background:var(--green)"><span class="etape-num">VERSET 2</span><span class="etape-title" style="font-family:'Amiri',serif;font-size:16px">وَاللَّهُ بِكُلِّ شَيْءٍ عَلِيمٌ — Et Allah est Omniscient de toute chose</span></div>
+        <div class="etape-body">
+          <table>
+            <tr><th>Mot</th><th>Nature</th><th>Fonction</th><th>État</th></tr>
+            <tr><td class="ar-cell">وَ</td><td>Particule (conjonction)</td><td>Coordination</td><td>Mabni</td></tr>
+            <tr><td class="ar-cell">اللَّهُ</td><td>Nom propre</td><td>Mubtada'</td><td>Marfū' — ḍamma</td></tr>
+            <tr><td class="ar-cell">بِكُلِّ</td><td>Prép. + nom</td><td>Complément prépositif</td><td>Majrūr — kasra</td></tr>
+            <tr><td class="ar-cell">شَيْءٍ</td><td>Nom</td><td>Muḍāf ilayhi</td><td>Majrūr — kasra + tanwīn</td></tr>
+            <tr><td class="ar-cell">عَلِيمٌ</td><td>Nom (attribut)</td><td>Khabar</td><td>Marfū' — ḍamma + tanwīn</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 37</span><span class="etape-title">Analyse de textes complets</span></div>
+    <div class="etape-body">
+      <div class="regle">Analysez ce texte classique extrait de l'Al-Adjroumiyya :</div>
+      <div class="definition" style="margin-bottom:16px">
+        <div class="def-text" style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2);direction:rtl;text-align:right;line-height:2">
+          الكَلَامُ هُوَ اللَّفْظُ الْمُرَكَّبُ الْمُفِيدُ بِالْوَضْعِ
+        </div>
+        <div class="def-text" style="margin-top:8px;font-style:italic">Le discours est la parole composée, intelligible, par convention.</div>
+      </div>
+      <table>
+        <tr><th>Mot</th><th>Nature</th><th>Fonction</th><th>État</th></tr>
+        <tr><td class="ar-cell">الكَلَامُ</td><td>Nom</td><td>Mubtada'</td><td>Marfū' — ḍamma</td></tr>
+        <tr><td class="ar-cell">هُوَ</td><td>Pronom</td><td>Pronom de séparation (فصل)</td><td>Mabni</td></tr>
+        <tr><td class="ar-cell">اللَّفْظُ</td><td>Nom</td><td>Khabar</td><td>Marfū' — ḍamma</td></tr>
+        <tr><td class="ar-cell">الْمُرَكَّبُ</td><td>Nom (adjectif)</td><td>Ṣifa (épithète de اللفظ)</td><td>Marfū' — ḍamma</td></tr>
+        <tr><td class="ar-cell">الْمُفِيدُ</td><td>Nom (adjectif)</td><td>Ṣifa (épithète)</td><td>Marfū' — ḍamma</td></tr>
+        <tr><td class="ar-cell">بِالْوَضْعِ</td><td>Prép. + nom</td><td>Complément de manière</td><td>Majrūr — kasra</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 38</span><span class="etape-title">Exercices corrigés</span></div>
+    <div class="etape-body">
+      <div class="regle">Analysez les phrases suivantes avant de regarder les réponses.</div>
+
+      <div class="exercice">
+        <h4>Exercice 1 — Identifiez la fonction de chaque mot souligné</h4>
+        <div class="ex-grid">
+          <div class="ex-q"><span class="qlabel">ذَهَبَ <u>الوَلَدُ</u> إِلَى المَدْرَسَةِ</span>Fonction de الوَلَدُ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">فَاعِل</span>Sujet (fā'il) — marfū' — ḍamma</div>
+          <div class="ex-q"><span class="qlabel">رَأَيْتُ <u>الرَّجُلَ</u> فِي السُّوقِ</span>Fonction de الرَّجُلَ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَفْعُول بِهِ</span>COD — manṣūb — fatḥa</div>
+          <div class="ex-q"><span class="qlabel">الكِتَابُ <u>جَدِيدٌ</u></span>Fonction de جَدِيدٌ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">خَبَر</span>Khabar — marfū' — ḍamma + tanwīn</div>
+          <div class="ex-q"><span class="qlabel">مَرَرْتُ بِ<u>الرَّجُلِ</u></span>Fonction de الرَّجُلِ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَجْرُور</span>Génitif après prép. بِـ — kasra</div>
+        </div>
+      </div>
+
+      <div class="exercice" style="margin-top:16px">
+        <h4>Exercice 2 — Analyse complète de phrases</h4>
+        <div class="ex-grid">
+          <div class="ex-q"><span class="qlabel">إِنَّ العِلْمَ نُورٌ</span>État de العِلْمَ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَنْصُوب</span>Ism inna — accusatif — fatḥa</div>
+          <div class="ex-q"><span class="qlabel">لَمْ يَذْهَبِ الطَّالِبُ</span>État du verbe يَذْهَبِ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَجْزُوم</span>Majzūm après لَمْ — sukūn</div>
+          <div class="ex-q"><span class="qlabel">جَاءَ مُحَمَّدٌ رَاكِبًا</span>Fonction de رَاكِبًا ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">حَال</span>Ḥāl — manṣūb — fatḥa + tanwīn</div>
+          <div class="ex-q"><span class="qlabel">يَا مُحَمَّدُ</span>État de مُحَمَّدُ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَبْنِيّ عَلَى الضَّم</span>Munādā — mabni sur la ḍamma</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 39</span><span class="etape-title">Révision générale</span></div>
+    <div class="etape-body">
+      <div class="regle">Récapitulatif complet de l'Al-Adjroumiyya en un tableau synthétique.</div>
+      <table>
+        <tr><th>Module</th><th>Concept clé</th><th>À retenir</th></tr>
+        <tr><td>Module 1</td><td>Le Kalām</td><td>4 conditions : lafẓ · murakkab · mofīd · bil-waḍ'</td></tr>
+        <tr><td>Module 1</td><td>3 catégories</td><td>الاسم · الفعل · الحرف</td></tr>
+        <tr><td>Module 2</td><td>L'i'rāb</td><td>4 états : raf' · naṣb · jarr · jazm</td></tr>
+        <tr><td>Module 3</td><td>Signes principaux</td><td>ḍamma (ُ) · fatḥa (َ) · kasra (ِ) · sukūn (ْ)</td></tr>
+        <tr><td>Module 3</td><td>Signes secondaires</td><td>و (raf') · ي (naṣb/jarr) · حذف النون (jazm)</td></tr>
+        <tr><td>Module 4</td><td>Verbes</td><td>Passé mabni · Présent mo'rab · Impératif mabni</td></tr>
+        <tr><td>Module 5</td><td>Marfū'āt</td><td>Fā'il · Nā'ib al-fā'il · Mubtada' · Khabar · Ism kāna · Khabar inna</td></tr>
+        <tr><td>Module 6</td><td>Manṣūbāt</td><td>COD · Circonstanciel · Ḥāl · Tamyīz · Exception · Vocatif</td></tr>
+        <tr><td>Module 7</td><td>Majrūrāt</td><td>Après préposition · Muḍāf ilayhi (iḍāfa)</td></tr>
+      </table>
+      <div class="exemples" style="margin-top:16px">
+        <div class="ex-row"><div class="ex-ar ar">كَتَبَ الطَّالِبُ الدَّرْسَ فِي الفَصْلِ</div><div class="ex-tr">Phrase complète</div><div class="ex-fr">L'étudiant a écrit la leçon dans la classe</div></div>
+        <div class="ex-row"><div class="ex-ar ar" style="font-size:14px">كَتَبَ : فعل ماضٍ · الطَّالِبُ : فاعل مرفوع · الدَّرْسَ : مفعول به منصوب · فِي : حرف جر · الفَصْلِ : مجرور</div><div class="ex-fr">Analyse complète</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">LEÇON 40 — TEST FINAL</span><span class="etape-title">Test final Al-Adjroumiyya</span></div>
+    <div class="etape-body">
+      <div class="regle">Ce test évalue votre maîtrise complète de l'Al-Adjroumiyya. Analysez chaque phrase grammaticalement avant de regarder les corrections.</div>
+
+      <div class="exercice">
+        <h4>Test final — 10 questions</h4>
+        <div class="ex-grid">
+          <div class="ex-q"><span class="qlabel">Q1 — 3 catégories de mots</span>Citez les 3 catégories</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">اسم · فعل · حرف</span>Nom · Verbe · Particule</div>
+
+          <div class="ex-q"><span class="qlabel">Q2 — Signe du nominatif</span>Quel est le signe principal ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">الضَّمَّة (ُ)</span>La ḍamma</div>
+
+          <div class="ex-q"><span class="qlabel">Q3 — Dans جَاءَ الرَّجُلُ</span>Fonction de الرَّجُلُ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">فَاعِل مَرْفُوع</span>Sujet — nominatif</div>
+
+          <div class="ex-q"><span class="qlabel">Q4 — Dans كَتَبَ الدَّرْسَ</span>Fonction de الدَّرْسَ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَفْعُول بِهِ مَنْصُوب</span>COD — accusatif</div>
+
+          <div class="ex-q"><span class="qlabel">Q5 — Dans فِي الْبَيْتِ</span>Pourquoi kasra sur البيت ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَجْرُور بَعْدَ حَرْف الجَر</span>Génitif après préposition</div>
+
+          <div class="ex-q"><span class="qlabel">Q6 — كَانَ الطَّالِبُ مُجْتَهِدًا</span>État de مُجْتَهِدًا ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">خَبَر كَانَ مَنْصُوب</span>Khabar kāna — accusatif</div>
+
+          <div class="ex-q"><span class="qlabel">Q7 — إِنَّ الْعِلْمَ نُورٌ</span>Fonction de الْعِلْمَ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">اسم إِنَّ مَنْصُوب</span>Ism inna — accusatif</div>
+
+          <div class="ex-q"><span class="qlabel">Q8 — لَمْ يَكْتُبْ</span>Pourquoi sukūn sur يَكْتُبْ ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مَجْزُوم بِـ لَمْ</span>Majzūm après لَمْ</div>
+
+          <div class="ex-q"><span class="qlabel">Q9 — كِتَابُ الطَّالِبِ</span>Construction grammaticale ?</div>
+          <div class="ex-a"><span class="ex-ar-ans ar">مُضَاف + مُضَاف إِلَيْهِ</span>Iḍāfa — annexion</div>
+
+          <div class="ex-q"><span class="qlabel">Q10 — Analysez : ذَهَبَ مُحَمَّدٌ إِلَى الْمَسْجِدِ</span></div>
+          <div class="ex-a"><span class="ex-ar-ans ar">فعل ماضٍ + فاعل مرفوع + جار ومجرور</span>Verbe passé + Sujet nominatif + Prép. + Génitif</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:28px;padding:24px;background:var(--dark);border-radius:var(--r);border:1px solid rgba(201,162,39,.3)">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#fff;margin-bottom:8px">Félicitations !</div>
+        <div style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2);margin-bottom:12px">تَهَانِيَّ — أَتْمَمْتَ الآجُرُومِيَّة</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.8">Vous avez terminé les 40 leçons de l'Al-Adjroumiyya. Vous maîtrisez maintenant les fondements de la grammaire arabe classique. Continuez à pratiquer en lisant des textes classiques et en analysant chaque phrase que vous rencontrez.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('adj-m7')">‹ Module 7</button>
+    <div style="font-size:14px;color:var(--green2);font-weight:600;display:flex;align-items:center;gap:8px">
+      <span style="background:var(--gold);color:var(--dark);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700">COMPLET</span>
+      Formation Al-Adjroumiyya terminée !
+    </div>
+  </div>
+</div>
+
+</main>
+</div><!-- fin layout -->
+
+<script>
+/* ── MEMBRES ── */
+const MEMBERS = {
+  "demo@arabe-accessible.fr": "arabe2024",
+  "test@test.fr": "test123"
+};
+
+function doLogin(){
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const pass  = document.getElementById('login-pass').value;
+  const err   = document.getElementById('login-err');
+  if(MEMBERS[email] && MEMBERS[email] === pass){
+    document.getElementById('login-screen').style.display='none';
+    sessionStorage.setItem('membre', email);
+    loadSavedProgress();
+  } else {
+    err.style.display='block';
+    setTimeout(()=>err.style.display='none', 3000);
+  }
+}
+function logout(){
+  sessionStorage.removeItem('membre');
+  location.reload();
+}
+if(sessionStorage.getItem('membre')){
+  document.getElementById('login-screen').style.display='none';
+}
+
+
+/* COOKIES */
+function acceptCookies(){
+  localStorage.setItem('cookie-consent','accepted');
+  document.getElementById('cookie-banner').classList.remove('show');
+}
+function declineCookies(){
+  localStorage.setItem('cookie-consent','declined');
+  document.getElementById('cookie-banner').classList.remove('show');
+}
+if(!localStorage.getItem('cookie-consent')){
+  document.addEventListener('DOMContentLoaded',function(){
+    document.getElementById('cookie-banner').classList.add('show');
+  });
+}
+
+/* ── DARK MODE ── */
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  const d = document.body.classList.contains('dark');
+  const b = document.getElementById('darkBtnM');
+  if(b) b.textContent = d ? 'Clair' : 'Sombre';
+  localStorage.setItem('theme-m', d ? '1' : '0');
+}
+if(localStorage.getItem('theme-m')==='1'){
+  document.body.classList.add('dark');
+  document.addEventListener('DOMContentLoaded',()=>{
+    const b=document.getElementById('darkBtnM');
+    if(b) b.textContent='Clair';
+  });
+}
+
+/* ── SIDEBAR CHAPTERS ── */
+function toggleChapter(btn){
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.chapter-btn').forEach(b=>b.classList.remove('open'));
+  document.querySelectorAll('.lesson-list').forEach(l=>l.style.display='none');
+  if(!isOpen){
+    btn.classList.add('open');
+    btn.nextElementSibling.style.display='block';
+  }
+}
+// Init sidebar
+document.querySelectorAll('.lesson-list').forEach(l=>{
+  if(!l.previousElementSibling.classList.contains('open')) l.style.display='none';
+});
+
+/* ── NAVIGATION ── */
+const ALL_LESSONS = [
+  'alph-lettres','alph-formes','alph-voyelles',
+  'gram-nom','gram-pronom','gram-verbe',
+  'conj-accompli','conj-inaccompli','conj-imperatif',
+  'adj-m1','adj-m2','adj-m3','adj-m4','adj-m5','adj-m6','adj-m7','adj-m8'
+];
+const STEPS_MAP = {
+  'alph-lettres':2,'alph-formes':2,'alph-voyelles':3,
+  'gram-nom':10,'gram-pronom':20,'gram-verbe':10,
+  'conj-accompli':10,'conj-inaccompli':10,'conj-imperatif':9,
+  'adj-m1':5,'adj-m2':5,'adj-m3':5,'adj-m4':5,
+  'adj-m5':6,'adj-m6':6,'adj-m7':2,'adj-m8':6
+};
+
+let completed = [];
+let lessonSteps = {};
+
+function getSaveKey(){
+  return 'prog-' + (sessionStorage.getItem('membre')||'guest');
+}
+function loadSavedProgress(){
+  try{
+    const d = JSON.parse(localStorage.getItem(getSaveKey())||'{}');
+    completed = d.completed||[];
+    lessonSteps = d.lessonSteps||{};
+  }catch(e){}
+  updateGlobalProgress();
+  completed.forEach(id=>{
+    document.querySelectorAll('.lesson-item').forEach(el=>{
+      if(el.getAttribute('onclick') && el.getAttribute('onclick').includes("'"+id+"'"))
+        el.classList.add('done');
+    });
+    const s = lessonSteps[id]||0;
+    if(s > 0) updateLessonBar(id, s, STEPS_MAP[id]||1);
+  });
+}
+function saveProgress(){
+  try{
+    localStorage.setItem(getSaveKey(), JSON.stringify({completed, lessonSteps}));
+  }catch(e){}
+}
+
+function showLesson(id, el){
+  document.querySelectorAll('.lesson-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.lesson-item').forEach(b=>b.classList.remove('active'));
+  const panel = document.getElementById('lesson-'+id);
+  if(panel) panel.classList.add('active');
+  if(el) el.classList.add('active');
+  if(!completed.includes(id)){
+    completed.push(id);
+    if(el) el.classList.add('done');
+    saveProgress();
+  }
+  updateGlobalProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goNext(id){
+  const items = document.querySelectorAll('.lesson-item');
+  items.forEach(item=>{
+    if(item.getAttribute('onclick') && item.getAttribute('onclick').includes("'"+id+"'")){
+      showLesson(id, item);
+    }
+  });
+}
+function goPrev(id){ goNext(id); }
+
+function updateGlobalProgress(){
+  const pct = Math.round(completed.length / ALL_LESSONS.length * 100);
+  const f=document.getElementById('progFill');
+  const p=document.getElementById('progPct');
+  if(f) f.style.width=pct+'%';
+  if(p) p.textContent=completed.length+' / '+ALL_LESSONS.length+' leçons';
+}
+
+/* ── PROGRESSION PAR LEÇON ── */
+function setStep(lessonId, stepNum, total){
+  lessonSteps[lessonId] = stepNum;
+  saveProgress();
+  updateLessonBar(lessonId, stepNum, total);
+}
+function updateLessonBar(lessonId, stepNum, total){
+  const pct = Math.round(stepNum/total*100);
+  const f=document.getElementById('lpf-'+lessonId);
+  const p=document.getElementById('lpp-'+lessonId);
+  if(f) f.style.width=pct+'%';
+  if(p) p.textContent=stepNum+'/'+total;
+  for(let i=1;i<=total;i++){
+    const d=document.getElementById('sd-'+lessonId+'-'+i);
+    if(!d) continue;
+    d.className='step-dot';
+    if(i<stepNum) d.classList.add('done');
+    else if(i===stepNum) d.classList.add('current');
+  }
+  if(stepNum>=total && !completed.includes(lessonId)){
+    completed.push(lessonId);
+    saveProgress();
+    updateGlobalProgress();
+  }
+}
+
+/* ── AUDIO ── */
+let curAud=null,curBtn=null;
+function playAud(file,btn){
+  if(curAud){curAud.pause();curAud.currentTime=0;if(curBtn){curBtn.classList.remove('playing');curBtn.innerHTML='&#9654;'}}
+  if(curBtn===btn){curAud=null;curBtn=null;return}
+  const a=new Audio('+file);
+  a.play().catch(()=>{});
+  curAud=a;curBtn=btn;btn.classList.add('playing');btn.innerHTML='&#9646;&#9646;';
+  a.onended=()=>{btn.classList.remove('playing');btn.innerHTML='&#9654;';curAud=null;curBtn=null}
+}
+
+// Init
+if(sessionStorage.getItem('membre')) loadSavedProgress();
+</script>
+<div style="text-align:center;padding:20px;font-size:12px;color:var(--muted);border-top:1px solid var(--gray)">Une question ? <a href="mailto:contact@arabeaccessible.com" style="color:var(--gold)">contact@arabeaccessible.com</a></div>
+</body>
+</html>
