@@ -1,820 +1,609 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>L'Arabe Accessible — Formation arabe classique</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Amiri:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Amiri:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
- --dark:#09190f;--dark2:#122218;--green:#1a4029;--green2:#245c38;
- --gold:#c9a227;--gold2:#e8c96a;--gold-bg:rgba(201,162,39,.08);
- --white:#fff;--off:#f7f4ee;--gray:#e5e0d5;--text:#18180f;--muted:#5a5a4a;--r:8px;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);line-height:1.7;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.2}
-.ar{font-family:'Amiri',serif}
-img{display:block;max-width:100%}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#09190f;--green:#1a4029;--gold:#c9a227;--gold2:#e8c96a;--white:#fff;--off:#f7f4ee;--gray:#e5e0d5;--muted:#5a5a4a}
+body{font-family:'DM Sans',sans-serif;background:var(--off);color:#18180f;line-height:1.7}
 a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:999;height:76px;background:rgba(9,25,15,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,162,39,.18);display:flex;align-items:center;justify-content:space-between;padding:0 36px}
-.nav-logo{display:flex;align-items:center;gap:12px}
-.nav-logo img{height:58px;width:58px;object-fit:contain;border-radius:50%;border:2px solid rgba(201,162,39,.45);box-shadow:0 0 12px rgba(201,162,39,.2)}
-.nav-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#fff}
+nav{position:fixed;top:0;left:0;right:0;height:68px;background:var(--dark);border-bottom:1px solid rgba(201,162,39,.2);display:flex;align-items:center;justify-content:space-between;padding:0 36px;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:46px;width:46px;border-radius:50%;border:2px solid rgba(201,162,39,.4);object-fit:contain}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:600}
 .nav-name span{color:var(--gold)}
-.nav-right{display:flex;align-items:center;gap:18px}
-.nav-links{display:flex;align-items:center;gap:22px;list-style:none}
-.nav-links a{color:rgba(255,255,255,.75);font-size:13px;transition:color .2s}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold)!important;color:var(--dark)!important;font-weight:700!important;padding:8px 18px;border-radius:4px}
-
-/* LANGUE */
-.lang-btn{position:relative}
-.lang-trigger{display:flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid rgba(201,162,39,.3);border-radius:20px;background:transparent;color:rgba(255,255,255,.8);font-size:12.5px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;white-space:nowrap}
-.lang-trigger:hover{border-color:var(--gold);color:var(--gold)}
-.lang-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:var(--dark2);border:1px solid rgba(201,162,39,.25);border-radius:var(--r);padding:6px 0;min-width:160px;display:none;z-index:9999;box-shadow:0 12px 40px rgba(0,0,0,.4);max-height:320px;overflow-y:auto}
-.lang-btn:hover .lang-dropdown{display:block}
-.lang-item{display:flex;align-items:center;gap:9px;padding:8px 14px;font-size:13px;color:rgba(255,255,255,.7);cursor:pointer;transition:background .15s}
-.lang-item:hover{background:rgba(201,162,39,.1);color:var(--gold2)}
-.lang-item.active{color:var(--gold);font-weight:600}
-
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
-.nav-burger span{width:22px;height:2px;background:#fff;border-radius:2px}
-.nav-mobile{display:none;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:rgba(9,25,15,.98);padding:16px;gap:4px;border-bottom:1px solid rgba(201,162,39,.2);z-index:998}
-.nav-mobile a{color:rgba(255,255,255,.8);font-size:15px;padding:12px 16px;border-radius:6px;display:block}
-.nav-mobile a:hover{background:rgba(201,162,39,.1);color:var(--gold)}
-
-/* SHARED */
-section{padding:96px 24px}
-.wrap{max-width:1080px;margin:0 auto}
-.s-label{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-.s-title{font-size:clamp(28px,3.5vw,44px);color:var(--dark);margin-bottom:14px}
-.s-sub{font-size:16px;color:var(--muted);max-width:540px;line-height:1.75}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
-.reveal.on{opacity:1;transform:none}
-.btn-g{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--dark);font-weight:700;font-size:15px;padding:15px 28px;border-radius:4px;border:none;cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif}
-.btn-g:hover{background:var(--gold2);transform:translateY(-2px)}
-.btn-o{display:inline-flex;align-items:center;background:transparent;color:#fff;font-size:15px;padding:15px 28px;border-radius:4px;border:1px solid rgba(255,255,255,.25);cursor:pointer;transition:all .25s;font-family:'DM Sans',sans-serif}
-.btn-o:hover{border-color:var(--gold);color:var(--gold)}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,.4)}50%{box-shadow:0 0 0 8px rgba(201,162,39,0)}}
-.notif{position:fixed;bottom:22px;right:22px;z-index:9999;background:var(--dark2);color:#fff;border:1px solid var(--gold);border-radius:8px;padding:13px 20px;font-size:14px;box-shadow:0 8px 32px rgba(0,0,0,.3);transform:translateY(70px);opacity:0;transition:all .3s}
-.notif.show{transform:none;opacity:1}
-html[dir="rtl"] .nav-logo{flex-direction:row-reverse}
-
-@media(max-width:900px){.nav-links{display:none}.nav-burger{display:flex}}
-@media(max-width:600px){nav{padding:0 16px}section{padding:68px 16px}}
+.nav-cta{background:var(--gold);color:var(--dark);padding:9px 20px;border-radius:4px;font-size:13px;font-weight:700}
+.nav-cta:hover{background:var(--gold2)}
 
 /* HERO */
-#hero{min-height:100vh;background:var(--dark);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 24px 70px;position:relative;overflow:hidden}
-.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse at top,rgba(26,64,41,.6) 0%,transparent 70%);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.3);color:var(--gold2);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:24px;animation:fadeUp .7s ease both}
-.hero-title{font-size:clamp(42px,6vw,78px);font-weight:600;color:#fff;animation:fadeUp .7s .1s ease both;margin-bottom:8px}
-.hero-title .g{color:var(--gold)}
-.hero-ar{font-family:'Amiri',serif;font-size:clamp(20px,2.5vw,32px);color:rgba(201,162,39,.6);animation:fadeUp .7s .15s ease both;margin-bottom:28px}
-.hero-desc{font-size:17px;color:rgba(255,255,255,.68);max-width:580px;line-height:1.8;margin-bottom:44px;animation:fadeUp .7s .2s ease both}
-.hero-img-block{position:relative;margin:0 auto 8px;width:min(620px,92vw);animation:fadeUp .7s .25s ease both}
-.hero-img-block img{width:100%;border-radius:14px;box-shadow:0 28px 80px rgba(0,0,0,.6),0 0 0 1px rgba(201,162,39,.15)}
-.hero-img-pills{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);display:flex;gap:10px;background:var(--dark2);border:1px solid rgba(201,162,39,.25);border-radius:30px;padding:9px 22px;white-space:nowrap}
-.pill{font-size:12px;color:var(--gold2);font-weight:500;display:flex;align-items:center;gap:5px}
-.pill-sep{width:1px;height:14px;background:rgba(201,162,39,.25)}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:50px;animation:fadeUp .7s .3s ease both}
-.hero-stats{display:flex;gap:40px;justify-content:center;margin-top:52px;flex-wrap:wrap;animation:fadeUp .7s .35s ease both}
-.hs{text-align:center}
-.hs-n{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;color:var(--gold);line-height:1}
-.hs-l{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+.hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,162,39,.12) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.3);color:var(--gold2);font-size:12px;font-weight:600;padding:6px 18px;border-radius:20px;letter-spacing:2px;margin-bottom:28px;text-transform:uppercase}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,88px);font-weight:300;color:#fff;line-height:1.1;margin-bottom:16px}
+.hero h1 span{color:var(--gold)}
+.hero-ar{font-family:'Amiri',serif;font-size:22px;color:rgba(201,162,39,.6);margin-bottom:24px}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.65);max-width:600px;margin:0 auto 36px;line-height:1.8}
+.hero-img{width:280px;margin:32px auto;opacity:.9}
+.hero-pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(201,162,39,.2);color:rgba(255,255,255,.7);font-size:13px;padding:7px 14px;border-radius:20px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px}
+.btn-main{background:var(--gold);color:var(--dark);padding:16px 32px;border-radius:4px;font-size:15px;font-weight:700;transition:all .2s}
+.btn-main:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-sec{border:1px solid rgba(201,162,39,.4);color:var(--gold2);padding:16px 32px;border-radius:4px;font-size:15px}
+.hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:var(--gold);line-height:1}
+.stat-l{font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
 
-/* PROBLEME */
-#probleme{background:var(--off);border-top:3px solid var(--gold)}
-.pb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px}
-.pb-card{background:#fff;border:1px solid var(--gray);border-radius:var(--r);padding:28px 22px;border-left:3px solid #d9534f}
-.pb-card .ico{font-size:28px;margin-bottom:12px}
-.pb-card h4{font-size:17px;color:var(--dark);margin-bottom:8px}
-.pb-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
-.pb-sol{margin-top:36px;background:var(--dark);border-radius:var(--r);padding:30px 36px;text-align:center}
-.pb-sol p{font-size:17px;color:rgba(255,255,255,.8);line-height:1.8}
-.pb-sol strong{color:var(--gold2)}
-@media(max-width:900px){.pb-grid{grid-template-columns:1fr}}
+/* WRAP */
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.s-label{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:600;line-height:1.15;margin-bottom:16px}
+.s-sub{font-size:15px;color:var(--muted);max-width:640px;margin:0 auto 48px}
+section{padding:80px 24px}
+
+/* PROBLÈME */
+#probleme{background:var(--dark)}
+#probleme .s-title{color:#fff}
+#probleme .s-label{color:var(--gold2)}
+.pb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.pb-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.15);border-radius:8px;padding:28px}
+.pb-icon{width:44px;height:44px;background:rgba(201,162,39,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.pb-card h3{font-size:17px;color:#fff;margin-bottom:10px}
+.pb-card p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.7}
+.pb-solution{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.25);border-radius:8px;padding:24px;margin-top:36px;text-align:center;font-size:15px;color:rgba(255,255,255,.75);line-height:1.8}
+.pb-solution strong{color:var(--gold2)}
 
 /* MODULES */
-#modules{background:#fff}
-.modules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:52px}
-.module-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--gray);transition:box-shadow .25s,transform .25s;position:relative}
-.module-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-3px)}
-.mod-top{background:var(--dark);padding:24px 28px;display:flex;align-items:center;justify-content:space-between}
-.mod-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:rgba(201,162,39,.18);line-height:1}
-.mod-name{font-size:20px;color:#fff;font-family:'Cormorant Garamond',serif;margin-bottom:4px}
-.mod-ar{font-family:'Amiri',serif;font-size:24px;color:var(--gold2);opacity:.7}
-.mod-body{padding:24px 28px;background:#fff}
-.mod-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px}
-.mod-topics{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
-.topic-tag{font-size:12px;background:var(--off);color:var(--green2);border:1px solid var(--gray);padding:4px 11px;border-radius:20px}
-.mod-lock{display:flex;align-items:center;gap:8px;padding:11px 16px;background:var(--gold-bg);border:1px solid rgba(201,162,39,.25);border-radius:6px;font-size:13px;color:var(--muted)}
-.mod-free-badge{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--dark);font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;text-transform:uppercase}
-@media(max-width:900px){.modules-grid{grid-template-columns:1fr}}
+#modules{background:var(--off);text-align:center}
+.mod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:48px;text-align:left}
+.module-card{background:#fff;border:1px solid var(--gray);border-radius:8px;overflow:hidden}
+.mod-head{background:var(--dark);padding:20px 24px;display:flex;align-items:center;gap:16px}
+.mod-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:rgba(201,162,39,.3);line-height:1}
+.mod-head-info{}
+.mod-name{font-size:17px;color:#fff;font-weight:600}
+.mod-ar{font-family:'Amiri',serif;font-size:18px;color:var(--gold2);opacity:.7}
+.mod-badge{background:rgba(201,162,39,.15);color:var(--gold2);font-size:10px;font-weight:700;padding:3px 10px;border-radius:3px;letter-spacing:1px;margin-top:4px;display:inline-block}
+.mod-body{padding:20px 24px}
+.mod-body p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.mod-tags{display:flex;flex-wrap:wrap;gap:8px}
+.mod-tag{background:var(--off);border:1px solid var(--gray);font-size:12px;color:var(--muted);padding:4px 10px;border-radius:4px}
+.mod-lock{font-size:12px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--gray)}
+.mod-lock strong{color:var(--green)}
 
-/* ALPHABET PREVIEW */
-#alphabet-preview{background:var(--dark2)}
+/* ALPHABET */
+#alphabet-preview{background:var(--dark);text-align:center}
 #alphabet-preview .s-title{color:#fff}
 #alphabet-preview .s-label{color:var(--gold2)}
-#alphabet-preview .s-sub{color:rgba(255,255,255,.55)}
-.alph-mini{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-top:36px}
-.lcard{background:rgba(255,255,255,.05);border:1px solid rgba(201,162,39,.13);border-radius:var(--r);padding:12px 8px;text-align:center;transition:all .2s}
-.lcard:hover{background:rgba(201,162,39,.1)}
-.l-ar{font-family:'Amiri',serif;font-size:32px;color:var(--gold2);line-height:1.2;display:block;margin-bottom:5px}
-.l-name{font-size:11.5px;color:rgba(255,255,255,.75);font-weight:500}
-.l-tr{font-size:10px;color:rgba(255,255,255,.38);margin-top:1px}
-.aud{margin-top:8px;width:28px;height:28px;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.3);border-radius:50%;color:var(--gold2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:all .2s;font-size:11px}
-.aud:hover{background:var(--gold);color:var(--dark);transform:scale(1.1)}
-.aud.playing{background:var(--gold);color:var(--dark);animation:pulse .8s infinite}
-.alph-cta{margin-top:36px;text-align:center;padding:28px;background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.2);border-radius:var(--r)}
-.alph-cta p{color:rgba(255,255,255,.6);font-size:15px;margin-bottom:16px}
+.alpha-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin:36px 0}
+.lcard{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.15);border-radius:8px;padding:14px 8px;text-align:center;transition:all .2s}
+.lcard:hover{background:rgba(201,162,39,.08);border-color:rgba(201,162,39,.4)}
+.l-ar{font-family:'Amiri',serif;font-size:28px;color:#fff;display:block;margin-bottom:4px}
+.l-name{font-size:11px;color:var(--gold2);font-weight:600}
+.l-tr{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px}
+.aud{width:28px;height:28px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.3);border-radius:50%;color:var(--gold2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:11px;border:none}
+.aud:hover{background:var(--gold);color:var(--dark)}
+.alpha-cta{background:rgba(201,162,39,.06);border:1px solid rgba(201,162,39,.2);border-radius:8px;padding:20px;margin-top:24px;font-size:14px;color:rgba(255,255,255,.6)}
+.alpha-cta a{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--dark);padding:12px 28px;border-radius:4px;font-weight:700;font-size:14px;margin-top:14px}
 
-/* BENEFICES */
-#benefices{background:var(--off)}
-.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
-.ben-card{background:#fff;border:1px solid var(--gray);border-radius:var(--r);padding:28px 22px;border-top:3px solid var(--gold);transition:all .25s}
-.ben-card:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,0,0,.08)}
-.ben-ico{font-size:32px;margin-bottom:14px}
-.ben-card h4{font-size:18px;color:var(--dark);margin-bottom:8px}
+/* BÉNÉFICES */
+#benefices{background:#fff;text-align:center}
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;text-align:left}
+.ben-card{background:var(--off);border:1px solid var(--gray);border-radius:8px;padding:24px;transition:all .25s}
+.ben-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08);border-color:var(--gold)}
+.ben-icon{width:44px;height:44px;background:rgba(201,162,39,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.ben-card h3{font-size:16px;font-weight:600;margin-bottom:8px}
 .ben-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
-@media(max-width:900px){.ben-grid{grid-template-columns:1fr}}
-@media(max-width:600px){.alph-mini{grid-template-columns:repeat(auto-fill,minmax(80px,1fr))}}
+
+/* TÉMOIGNAGES */
+#temoignages{background:var(--off);text-align:center}
+.temo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;text-align:left}
+.temo-card{background:#fff;border:1px solid var(--gray);border-radius:8px;padding:28px;position:relative}
+.temo-stars{color:var(--gold);font-size:14px;margin-bottom:12px;letter-spacing:2px}
+.temo-text{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:18px;font-style:italic}
+.temo-author{display:flex;align-items:center;gap:12px}
+.temo-avatar{width:40px;height:40px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);font-weight:600}
+.temo-name{font-size:14px;font-weight:600}
+.temo-info{font-size:12px;color:var(--muted)}
+.temo-badge{position:absolute;top:16px;right:16px;background:rgba(201,162,39,.1);color:var(--gold);font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px}
 
 /* TARIF */
-#tarif{background:var(--dark);position:relative;overflow:hidden}
-#tarif::before{content:'';position:absolute;top:-100px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,162,39,.06) 0%,transparent 70%);pointer-events:none}
+#tarif{background:var(--dark);text-align:center}
 #tarif .s-title{color:#fff}
 #tarif .s-label{color:var(--gold2)}
-.tarif-wrap{display:flex;justify-content:center;margin-top:52px}
-.tarif-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.3);border-top:4px solid var(--gold);border-radius:12px;padding:44px 52px;max-width:500px;width:100%;text-align:center;position:relative}
-.tarif-badge-top{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--dark);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:5px 18px;border-radius:20px;white-space:nowrap}
-.t-name{font-family:'Cormorant Garamond',serif;font-size:26px;color:#fff;margin-bottom:6px}
-.t-ar{font-family:'Amiri',serif;font-size:20px;color:rgba(201,162,39,.4);margin-bottom:22px}
-.t-price{font-family:'Cormorant Garamond',serif;font-size:78px;font-weight:600;color:var(--gold);line-height:1;margin:4px 0}
-.t-price sup{font-size:34px;vertical-align:top;margin-top:18px}
-.t-price sub{font-size:22px;color:rgba(201,162,39,.55);font-weight:300}
-.t-once{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:32px}
-.t-list{list-style:none;text-align:left;margin-bottom:32px}
-.t-list li{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:14px;color:rgba(255,255,255,.8)}
-.t-list li:last-child{border:none}
-.t-list li::before{content:'';color:var(--gold);font-weight:700;flex-shrink:0}
-.t-cta{display:block;width:100%;background:var(--gold);color:var(--dark);font-size:17px;font-weight:700;padding:17px;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s}
-.t-cta:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,162,39,.35)}
-.t-note{margin-top:14px;font-size:12px;color:rgba(255,255,255,.3)}
-@media(max-width:600px){.tarif-card{padding:32px 22px}}
+.tarif-card{background:rgba(255,255,255,.04);border:2px solid var(--gold);border-radius:12px;max-width:580px;margin:48px auto 0;padding:40px;text-align:left}
+.tarif-badge{background:rgba(201,162,39,.15);color:var(--gold2);font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:1px;display:inline-block;margin-bottom:20px}
+.tarif-name{font-family:'Cormorant Garamond',serif;font-size:28px;color:#fff;margin-bottom:4px}
+.tarif-ar{font-family:'Amiri',serif;font-size:20px;color:rgba(201,162,39,.5)}
+.tarif-price{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:600;color:var(--gold);line-height:1;margin:20px 0 6px}
+.tarif-price sup{font-size:28px;vertical-align:top;margin-top:14px}
+.tarif-once{font-size:13px;color:rgba(255,255,255,.45);margin-bottom:24px}
+.tarif-features{list-style:none;margin-bottom:28px}
+.tarif-features li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:14px;color:rgba(255,255,255,.8)}
+.tarif-features li:last-child{border:none}
+.tarif-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
+.cgv-box{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.2);border-radius:6px;padding:12px 14px;margin-bottom:16px}
+.cgv-box label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+.cgv-box input{width:17px;height:17px;flex-shrink:0;margin-top:2px;accent-color:var(--gold);cursor:pointer}
+.cgv-box a{color:var(--gold2);font-weight:600}
+.btn-stripe{display:block;width:100%;padding:17px;background:var(--gold);color:var(--dark);font-size:16px;font-weight:700;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;text-align:center;opacity:.45;pointer-events:none}
+.btn-stripe.active{opacity:1;pointer-events:auto}
+.btn-stripe.active:hover{background:var(--gold2);transform:translateY(-2px)}
+.tarif-note{font-size:12px;color:rgba(255,255,255,.35);text-align:center;margin-top:12px}
 
 /* FAQ */
-#faq{background:var(--off)}
-.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:12px;max-width:760px}
-.faq-item{background:#fff;border:1px solid var(--gray);border-radius:var(--r);overflow:hidden}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:17px 22px;cursor:pointer;font-size:15px;font-weight:500;color:var(--dark);gap:14px}
-.faq-arr{font-size:13px;color:var(--gold);transition:transform .3s;flex-shrink:0}
-.faq-item.open .faq-arr{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 22px;font-size:14px;color:var(--muted);line-height:1.8}
-.faq-item.open .faq-a{max-height:300px;padding:0 22px 18px}
+#faq{background:var(--off);text-align:center}
+.faq-list{max-width:720px;margin:48px auto 0;text-align:left}
+.faq-item{background:#fff;border:1px solid var(--gray);border-radius:8px;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:18px 24px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q:hover{background:var(--off)}
+.faq-q::after{content:'+';font-size:20px;color:var(--gold);flex-shrink:0;font-weight:300}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-a{display:none;padding:0 24px 18px;font-size:14px;color:var(--muted);line-height:1.8}
+.faq-item.open .faq-a{display:block}
 
 /* INSCRIPTION */
-#inscription{background:var(--dark2)}
+#inscription{background:var(--dark2,#122218);text-align:center;padding:80px 24px}
 #inscription .s-title{color:#fff}
 #inscription .s-label{color:var(--gold2)}
-.insc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:52px}
-.insc-left h3{font-size:22px;color:#fff;margin-bottom:14px}
-.insc-left p{font-size:14.5px;color:rgba(255,255,255,.6);line-height:1.8;margin-bottom:20px}
-.insc-left ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.insc-left ul li{display:flex;gap:10px;font-size:14px;color:rgba(255,255,255,.7);align-items:flex-start}
-.insc-left ul li::before{content:'';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:2px}
-.insc-form{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.2);border-radius:12px;padding:36px 32px}
-.f-group{margin-bottom:18px}
-.f-label{display:block;font-size:13px;font-weight:500;color:rgba(255,255,255,.7);margin-bottom:7px}
-.f-input,.f-select{width:100%;padding:13px 16px;border:1px solid rgba(255,255,255,.15);border-radius:var(--r);background:rgba(255,255,255,.06);color:#fff;font-size:14.5px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
-.f-input::placeholder{color:rgba(255,255,255,.3)}
-.f-input:focus,.f-select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.12)}
-.f-select option{background:var(--dark2);color:#fff}
-.f-submit{width:100%;padding:16px;background:var(--gold);color:var(--dark);font-size:16px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;margin-top:8px}
-.f-submit:hover{background:var(--gold2);transform:translateY(-1px)}
-.f-priv{font-size:11.5px;color:rgba(255,255,255,.3);text-align:center;margin-top:12px}
-@media(max-width:900px){.insc-wrap{grid-template-columns:1fr}}
-@media(max-width:600px){.insc-form{padding:26px 20px}}
+.insc-desc{font-size:16px;color:rgba(255,255,255,.6);max-width:580px;margin:0 auto 36px;line-height:1.8}
+.insc-cgv{background:rgba(255,255,255,.05);border:1px solid rgba(201,162,39,.2);border-radius:6px;padding:12px 16px;max-width:520px;margin:0 auto 16px;display:flex;align-items:flex-start;gap:10px;text-align:left}
+.insc-cgv input{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--gold);cursor:pointer}
+.insc-cgv span{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6}
+.insc-cgv a{color:var(--gold2);font-weight:600}
+.btn-insc{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--dark);padding:18px 48px;border-radius:4px;font-size:17px;font-weight:700;transition:all .25s;opacity:.45;pointer-events:none;cursor:not-allowed}
+.btn-insc.active{opacity:1;pointer-events:auto;cursor:pointer}
+.btn-insc.active:hover{background:var(--gold2);transform:translateY(-2px)}
+.insc-note{font-size:12px;color:rgba(255,255,255,.3);margin-top:14px}
 
 /* FOOTER */
-footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:56px 24px 32px}
-.footer-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.07)}
-.f-brand img{height:50px;margin-bottom:14px}
-.f-brand p{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.75;max-width:260px}
-.f-col h5{font-size:12px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;font-family:'DM Sans',sans-serif}
-.f-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.f-col ul a{font-size:13.5px;color:rgba(255,255,255,.45);transition:color .2s}
+footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:60px 24px 32px}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;max-width:1100px;margin:0 auto}
+.f-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.f-logo img{height:42px;width:42px;border-radius:50%;border:2px solid rgba(201,162,39,.4);object-fit:contain}
+.f-logo-name{font-family:'Cormorant Garamond',serif;font-size:18px;color:#fff;font-weight:600}
+.f-logo-name span{color:var(--gold)}
+.f-desc{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:10px}
+.f-email{font-size:13px;color:rgba(201,162,39,.6)}
+.f-col-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:14px}
+.f-col ul{list-style:none}
+.f-col ul li{margin-bottom:8px}
+.f-col ul a{font-size:13px;color:rgba(255,255,255,.4);transition:color .2s}
 .f-col ul a:hover{color:var(--gold2)}
-.footer-bot{max-width:1080px;margin:24px auto 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.25)}
-.footer-ar{font-family:'Amiri',serif;font-size:17px;color:rgba(201,162,39,.25)}
-@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.footer-inner{grid-template-columns:1fr}.footer-bot{flex-direction:column;gap:10px;text-align:center}}
+.f-copy{text-align:center;font-size:12px;color:rgba(255,255,255,.2);border-top:1px solid rgba(255,255,255,.07);padding-top:24px;margin-top:48px;max-width:1100px;margin-left:auto;margin-right:auto}
 
-
-function toggleCGV(id){
-  var cb=document.getElementById('cgv-'+id);
-  var btn=document.getElementById('gbtn-'+id);
-  if(!cb||!btn)return;
-  if(cb.checked){btn.classList.remove('disabled');btn.style.opacity='1';btn.style.pointerEvents='auto';btn.style.cursor='pointer';}
-  else{btn.classList.add('disabled');btn.style.opacity='.45';btn.style.pointerEvents='none';btn.style.cursor='not-allowed';}
-}
-
-
-/* COOKIES */
-function acceptCookies(){
-  localStorage.setItem('cookie-consent','accepted');
-  document.getElementById('cookie-banner').classList.remove('show');
-}
-function declineCookies(){
-  localStorage.setItem('cookie-consent','declined');
-  document.getElementById('cookie-banner').classList.remove('show');
-}
-if(!localStorage.getItem('cookie-consent')){
-  document.addEventListener('DOMContentLoaded',function(){
-    document.getElementById('cookie-banner').classList.add('show');
-  });
-}
-
-/* ── DARK MODE ── */
-body.dark{--white:#1a1a2e;--off:#16213e;--gray:#2a2a4a;--text:#e8e8f0;--muted:#a0a0c0;background:var(--white)}
-body.dark .pb-card{background:#1e1e3a;border-color:#2a2a4a}
-body.dark .module-card{background:#1e1e3a;border-color:#2a2a4a}
-body.dark .mod-body{background:#1e1e3a}
-body.dark .ben-card{background:#1e1e3a;border-color:#2a2a4a}
-body.dark .faq-item{background:#1e1e3a;border-color:#2a2a4a}
-body.dark .insc-wrap .insc-form{background:rgba(255,255,255,.03)}
-body.dark .f-col ul a{color:rgba(255,255,255,.4)}
-
-.dark-toggle{display:flex;align-items:center;gap:7px;padding:6px 12px;border:1px solid rgba(201,162,39,.3);border-radius:20px;background:transparent;color:rgba(255,255,255,.7);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
-.dark-toggle:hover{border-color:var(--gold);color:var(--gold)}
-
-/* ── TÉMOIGNAGES ── */
-#temoignages{background:var(--white)}
-#temoignages .s-title{color:var(--dark)}
-body.dark #temoignages .s-title{color:var(--text)}
-.temo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
-.temo-card{background:var(--off);border:1px solid var(--gray);border-radius:var(--r);padding:28px 24px;position:relative;transition:all .25s}
-body.dark .temo-card{background:#1e1e3a;border-color:#2a2a4a}
-.temo-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.1)}
-.temo-stars{color:var(--gold);font-size:15px;margin-bottom:14px;letter-spacing:2px}
-.temo-text{font-size:14.5px;color:var(--muted);line-height:1.75;margin-bottom:20px;font-style:italic}
-body.dark .temo-text{color:#a0a0c0}
-.temo-author{display:flex;align-items:center;gap:12px}
-.temo-avatar{width:42px;height:42px;border-radius:50%;background:var(--dark);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);font-weight:600;flex-shrink:0}
-.temo-name{font-size:14px;font-weight:600;color:var(--dark)}
-body.dark .temo-name{color:var(--text)}
-.temo-info{font-size:12px;color:var(--muted)}
-.temo-badge{position:absolute;top:16px;right:16px;background:var(--gold-bg);border:1px solid rgba(201,162,39,.25);color:var(--gold);font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:.5px}
-
-/* GARANTIE */
-.garantie-band{background:var(--dark2);border-top:1px solid rgba(201,162,39,.15);border-bottom:1px solid rgba(201,162,39,.15);padding:32px 24px;text-align:center}
-.garantie-inner{max-width:640px;margin:0 auto}
-.garantie-title{font-family:'Cormorant Garamond',serif;font-size:24px;color:#fff;margin-bottom:8px}
-.garantie-text{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7}
-.garantie-text strong{color:var(--gold2)}
-
-@media(max-width:900px){.temo-grid{grid-template-columns:1fr}}
-
-/* CGV CHECKBOX */
-.cgv-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:16px}
-.cgv-label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;max-width:520px;text-align:left;padding:12px 16px;background:rgba(255,255,255,.05);border:1px solid rgba(201,162,39,.2);border-radius:var(--r);transition:border-color .2s}
-.cgv-label:hover{border-color:rgba(201,162,39,.4)}
-.cgv-label input[type=checkbox]{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--gold);cursor:pointer}
-.cgv-label a{color:var(--gold2);font-weight:600}
-.btn-g.disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
-
-/* ── MÉTHODE ── */
-#methode{background:var(--dark)}
-#methode .s-title{color:#fff}
-#methode .s-label{color:var(--gold2)}
-.methode-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:52px}
-.methode-left{}
-.methode-left p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.9;margin-bottom:16px}
-.methode-left strong{color:var(--gold2)}
-.methode-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
-.mstat{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.2);border-radius:var(--r);padding:20px;text-align:center}
-.mstat-n{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;color:var(--gold);line-height:1}
-.mstat-l{font-size:12px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.5px;margin-top:6px}
-.methode-right{display:flex;flex-direction:column;gap:14px}
-.methode-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.15);border-radius:var(--r);padding:20px 24px;display:flex;align-items:flex-start;gap:16px;transition:all .25s}
-.methode-card:hover{background:rgba(201,162,39,.06);border-color:rgba(201,162,39,.3);transform:translateX(4px)}
-.methode-icon{width:42px;height:42px;background:var(--gold-bg);border:1px solid rgba(201,162,39,.3);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.methode-card h4{font-size:15px;color:#fff;margin-bottom:5px}
-.methode-card p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6}
-.methode-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.25);border-radius:20px;padding:8px 18px;font-size:13px;color:var(--gold2);margin-bottom:24px}
-@media(max-width:900px){.methode-grid{grid-template-columns:1fr}.methode-stats{grid-template-columns:1fr 1fr}}
-
-/* BANNIÈRE COOKIES */
-#cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--dark2);border-top:1px solid rgba(201,162,39,.25);padding:16px 32px;display:none;align-items:center;justify-content:space-between;gap:20px;z-index:9998;flex-wrap:wrap}
+/* COOKIE BANNER */
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#122218;border-top:1px solid rgba(201,162,39,.25);padding:16px 32px;display:none;align-items:center;justify-content:space-between;gap:20px;z-index:9999;flex-wrap:wrap}
 #cookie-banner.show{display:flex}
-.cookie-text{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6;flex:1;min-width:200px}
-.cookie-text a{color:var(--gold2)}
-.cookie-btns{display:flex;gap:10px;flex-shrink:0}
-.cookie-accept{padding:9px 20px;background:var(--gold);color:var(--dark);font-size:13px;font-weight:700;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
-.cookie-accept:hover{background:var(--gold2)}
-.cookie-decline{padding:9px 20px;background:transparent;color:rgba(255,255,255,.6);font-size:13px;border:1px solid rgba(255,255,255,.2);border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
-.cookie-decline:hover{border-color:rgba(255,255,255,.4);color:#fff}
-@media(max-width:600px){#cookie-banner{flex-direction:column;text-align:center}.cookie-btns{width:100%;justify-content:center}}
+.ck-text{font-size:13px;color:rgba(255,255,255,.7);flex:1}
+.ck-text a{color:var(--gold2)}
+.ck-btns{display:flex;gap:10px}
+.ck-ok{padding:9px 20px;background:var(--gold);color:var(--dark);font-size:13px;font-weight:700;border:none;border-radius:4px;cursor:pointer}
+.ck-no{padding:9px 20px;background:transparent;color:rgba(255,255,255,.6);font-size:13px;border:1px solid rgba(255,255,255,.2);border-radius:4px;cursor:pointer}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .pb-grid,.mod-grid,.ben-grid,.temo-grid{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr}
+  .alpha-grid{grid-template-columns:repeat(4,1fr)}
+  nav{padding:0 16px}
+  .nav-cta{display:none}
+}
+@media(max-width:500px){.alpha-grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav>
- <div class="nav-logo">
- <img src="logo.png" onerror="this.onerror=null;this.src='images/logo.png'" alt="Logo L'Arabe Accessible">
- <span class="nav-name">L'<span>Arabe</span> Accessible</span>
- </div>
- <div class="nav-right">
- <ul class="nav-links">
- <li><a href="#modules" data-i18n="nav_modules">Formation</a></li>
- <li><a href="#alphabet-preview" data-i18n="nav_alphabet">Alphabet</a></li>
- <li><a href="#tarif" data-i18n="nav_tarif">Tarif</a></li>
- <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
- <li><a href="#inscription" class="nav-cta" data-i18n="nav_cta">S'inscrire</a></li>
- </ul>
- <div class="lang-btn">
- <button class="lang-trigger"><span id="currentLang">FR</span></button>
- <div class="lang-dropdown">
- <div class="lang-item active" onclick="setLang('fr')">Français</div>
- <div class="lang-item" onclick="setLang('en')">English</div>
-  <div class="lang-item" onclick="setLang('es')">Español</div>
- <div class="lang-item" onclick="setLang('pt')">Português</div>
- <div class="lang-item" onclick="setLang('de')">Deutsch</div>
- <div class="lang-item" onclick="setLang('tr')">Türkçe</div>
- <div class="lang-item" onclick="setLang('ru')">Русский</div>
- <div class="lang-item" onclick="setLang('id')">Indonesia</div>
- <div class="lang-item" onclick="setLang('it')">Italiano</div>
- <div class="lang-item" onclick="setLang('zh')">中文</div>
-        <div class="lang-item" onclick="setLang('hi')">हिन्दी</div>
-        <div class="lang-item" onclick="setLang('ur')">اردو</div>
- </div>
- </div>
- <button class="dark-toggle" onclick="toggleDark()" id="darkBtn">Clair</button>
-    <button class="nav-burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
- </div>
+  <div class="nav-logo">
+    <img src="logo.png" onerror="this.src='images/logo.png'" alt="Logo">
+    <span class="nav-name">L'<span>Arabe</span> Accessible</span>
+  </div>
+  <a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" class="nav-cta">S'inscrire</a>
 </nav>
-<div class="nav-mobile" id="navMobile">
- <a href="#modules" onclick="toggleMenu()" data-i18n="nav_modules">Formation</a>
- <a href="#alphabet-preview" onclick="toggleMenu()" data-i18n="nav_alphabet">Alphabet</a>
- <a href="#tarif" onclick="toggleMenu()" data-i18n="nav_tarif">Tarif</a>
- <a href="#faq" onclick="toggleMenu()" data-i18n="nav_faq">FAQ</a>
- <a href="#inscription" onclick="toggleMenu()" style="color:var(--gold);font-weight:600" data-i18n="nav_cta_mobile">S'inscrire — 49,99 €</a>
-</div>
-
 
 <!-- HERO -->
-<section id="hero">
- <div class="hero-glow"></div>
- <div class="hero-badge" data-i18n="hero_badge"> Formation arabe classique · 100% en français</div>
- <h1 class="hero-title">L'<span class="g">Arabe</span> Accessible</h1>
- <p class="hero-ar ar">العربية في متناول الجميع</p>
- <p class="hero-desc" data-i18n="hero_desc">Apprenez l'arabe classique depuis zéro avec une méthode structurée, des leçons complètes et des exercices audio pour une prononciation parfaite.</p>
- <div class="hero-img-block">
- <img src="hero-letters.png" onerror="this.onerror=null;this.src='images/hero-letters.png'" alt="Lettres arabes dorées كـ كـ ك">
- <div class="hero-img-pills">
- <div class="pill"><span data-i18n="pill_audio">Audio intégré</span></div>
- <div class="pill-sep"></div>
- <div class="pill"><span data-i18n="pill_letters">28 lettres</span></div>
- <div class="pill-sep"></div>
- <div class="pill"><span data-i18n="pill_program">6 mois de programme</span></div>
- </div>
- </div>
- <div class="hero-btns">
- <a href="#inscription" class="btn-g" data-i18n="hero_cta">Commencez maintenant — 49,99 €Commencer maintenant — 49,99 €</a>
- <a href="#modules" class="btn-o" data-i18n="hero_discover">Découvrir la formation</a>
- </div>
- <div class="hero-stats">
- <div class="hs"><div class="hs-n">28</div><div class="hs-l" data-i18n="stat_letters">Lettres + audio</div></div>
- <div class="hs"><div class="hs-n">6</div><div class="hs-l" data-i18n="stat_months">Mois structurés</div></div>
- <div class="hs"><div class="hs-n">4</div><div class="hs-l" data-i18n="stat_modules">Modules complets</div></div>
- <div class="hs"><div class="hs-n">∞</div><div class="hs-l" data-i18n="stat_access">Accès à vie</div></div>
- </div>
+<section class="hero" id="hero">
+  <div>
+    <div class="hero-badge">✦ Formation arabe classique · 100% en français</div>
+    <h1>L'<span>Arabe</span> Accessible</h1>
+    <p class="hero-ar">العربية في متناول الجميع</p>
+    <img src="hero-letters.png" onerror="this.src='images/hero-letters.png'" alt="Lettres arabes" class="hero-img">
+    <p class="hero-desc">Apprenez l'arabe classique depuis zéro avec une méthode structurée, des leçons complètes et des exercices audio pour une prononciation parfaite.</p>
+    <div class="hero-pills">
+      <span class="pill">🎵 Audio intégré</span>
+      <span class="pill">📖 28 lettres</span>
+      <span class="pill">📅 6 mois de programme</span>
+    </div>
+    <div class="hero-btns">
+      <a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" class="btn-main">Commencer maintenant — 49,99 €</a>
+      <a href="#modules" class="btn-sec">Découvrir la formation</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">28</div><div class="stat-l">Lettres + audio</div></div>
+      <div class="stat"><div class="stat-n">6</div><div class="stat-l">Mois structurés</div></div>
+      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Modules complets</div></div>
+      <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Accès à vie</div></div>
+    </div>
+  </div>
 </section>
-
 
 <!-- PROBLÈME -->
 <section id="probleme">
- <div class="wrap">
- <p class="s-label reveal" data-i18n="pb_label">Vous vous reconnaissez ?</p>
- <h2 class="s-title reveal" data-i18n="pb_title">Pourquoi tant de gens échouent à apprendre l'arabe</h2>
- <div class="pb-grid">
- <div class="pb-card reveal"><div class="ico"></div><h4 data-i18n="pb1_title">Trop compliqué sans guide</h4><p data-i18n="pb1_desc">L'alphabet, les voyelles, les cas grammaticaux… sans méthode progressive, on abandonne rapidement.</p></div>
- <div class="pb-card reveal"><div class="ico"></div><h4 data-i18n="pb2_title">Ressources pas en français</h4><p data-i18n="pb2_desc">La majorité des bonnes ressources sont en anglais ou en arabe. Comprendre dans une langue étrangère ralentit tout.</p></div>
- <div class="pb-card reveal"><div class="ico"></div><h4 data-i18n="pb3_title">Pas de prononciation réelle</h4><p data-i18n="pb3_desc">Sans audio, impossible de prononcer correctement les sons spécifiques à l'arabe absents du français.</p></div>
- </div>
- <div class="pb-sol reveal"><p data-i18n="pb_solution">C'est pour ça qu'existe <strong>L'Arabe Accessible</strong> : une méthode <strong>100% en français</strong>, progressive, avec <strong>audio sur chaque lettre et chaque mot</strong>. Suivez une feuille de route claire, semaine par semaine.</p></div>
- </div>
+  <div class="wrap">
+    <p class="s-label">Vous vous reconnaissez ?</p>
+    <h2 class="s-title" style="color:#fff">Pourquoi tant de gens échouent à apprendre l'arabe</h2>
+    <div class="pb-grid">
+      <div class="pb-card">
+        <div class="pb-icon">😓</div>
+        <h3>Trop compliqué sans guide</h3>
+        <p>L'alphabet, les voyelles, les cas grammaticaux… sans méthode progressive, on abandonne rapidement.</p>
+      </div>
+      <div class="pb-card">
+        <div class="pb-icon">🌍</div>
+        <h3>Ressources pas en français</h3>
+        <p>La majorité des bonnes ressources sont en anglais ou en arabe. Comprendre dans une langue étrangère ralentit tout.</p>
+      </div>
+      <div class="pb-card">
+        <div class="pb-icon">🔇</div>
+        <h3>Pas de prononciation réelle</h3>
+        <p>Sans audio, impossible de prononcer correctement les sons spécifiques à l'arabe absents du français.</p>
+      </div>
+    </div>
+    <div class="pb-solution">C'est pour ça qu'existe <strong>L'Arabe Accessible</strong> : une méthode <strong>100% en français</strong>, progressive, avec <strong>audio sur chaque lettre et chaque mot</strong>. Suivez une feuille de route claire, semaine par semaine.</div>
+  </div>
 </section>
 
-<!-- MODULES (contenu protégé) -->
+<!-- MODULES -->
 <section id="modules">
- <div class="wrap">
- <p class="s-label reveal" data-i18n="mod_label">Contenu de la formation</p>
- <h2 class="s-title reveal" data-i18n="mod_title">4 Modules pour maîtriser l'arabe classique</h2>
- <p class="s-sub reveal" data-i18n="mod_sub">Un accès complet à tous les modules après votre inscription. Voici ce qui vous attend.</p>
- <div class="modules-grid">
+  <div class="wrap">
+    <p class="s-label">Contenu de la formation</p>
+    <h2 class="s-title">4 Modules pour maîtriser l'arabe classique</h2>
+    <p class="s-sub">Un accès complet à tous les modules après votre inscription.</p>
+    <div class="mod-grid">
 
- <div class="module-card reveal">
- <div class="mod-free-badge" data-i18n="mod_free_badge">Aperçu gratuit</div>
- <div class="mod-top">
- <span class="mod-num">01</span>
- <div><div class="mod-name" data-i18n="mod1_name">Alphabet &amp; Prononciation</div><div class="mod-ar ar">الحروف والنطق</div></div>
- </div>
- <div class="mod-body">
- <p class="mod-desc" data-i18n="mod1_desc">Maîtrisez les 28 lettres arabes, leurs 4 formes, les voyelles courtes et longues, le tanwīn — tout avec audio intégré., leurs 4 formes, les voyelles courtes et longues, le tanwīn — tout avec audio intégré sur chaque lettre.</p>
- <div class="mod-topics">
- <span class="topic-tag" data-i18n="mod1_t1">28 lettres</span>
- <span class="topic-tag" data-i18n="mod1_t2">Voyelles courtes</span>
- <span class="topic-tag" data-i18n="mod1_t3">Voyelles longues</span>
- <span class="topic-tag" data-i18n="mod1_t4">Tanwīn</span>
- <span class="topic-tag" data-i18n="mod1_t5">Audio sur chaque son</span>
- </div>
- <div class="mod-lock"><span data-i18n="mod1_lock">Aperçu disponible ci-dessous — <strong>Contenu complet accessible après inscription</strong></span></div>
- </div>
- </div>
+      <div class="module-card">
+        <div class="mod-head">
+          <div class="mod-num">01</div>
+          <div class="mod-head-info">
+            <div class="mod-name">Alphabet &amp; Prononciation</div>
+            <div class="mod-ar">الحروف والنطق</div>
+            <div class="mod-badge">APERÇU GRATUIT</div>
+          </div>
+        </div>
+        <div class="mod-body">
+          <p>Maîtrisez les 28 lettres arabes, leurs 4 formes, les voyelles courtes et longues, le tanwīn — tout avec audio intégré sur chaque lettre.</p>
+          <div class="mod-tags">
+            <span class="mod-tag">28 lettres</span>
+            <span class="mod-tag">Voyelles courtes</span>
+            <span class="mod-tag">Voyelles longues</span>
+            <span class="mod-tag">Tanwīn</span>
+            <span class="mod-tag">Audio sur chaque son</span>
+          </div>
+          <div class="mod-lock">Aperçu disponible ci-dessous — <strong>Contenu complet après inscription</strong></div>
+        </div>
+      </div>
 
- <div class="module-card reveal">
- <div class="mod-top">
- <span class="mod-num">02</span>
- <div><div class="mod-name" data-i18n="mod2_name">Grammaire Complète</div><div class="mod-ar ar">النحو والصرف</div></div>
- </div>
- <div class="mod-body">
- <p class="mod-desc" data-i18n="mod2_desc">Le nom, le pronom, le verbe et la particule — leurs rôles, formes et cas grammaticaux expliqués en français.Le nom, le pronom, le verbe et la particule — leurs rôles, formes, cas grammaticaux et usage dans la phrase, expliqués en français.</p>
- <div class="mod-topics">
- <span class="topic-tag" data-i18n="mod2_t1">Le Nom الاسم</span>
- <span class="topic-tag" data-i18n="mod2_t2">Le Pronom الضمير</span>
- <span class="topic-tag" data-i18n="mod2_t3">Le Verbe الفعل</span>
- <span class="topic-tag" data-i18n="mod2_t4">Les Particules الحرف</span>
- <span class="topic-tag" data-i18n="mod2_t5">Cas grammaticaux</span>
- </div>
- <div class="mod-lock"><span data-i18n="mod_locked">Contenu réservé aux membres — <strong>Accès après inscription</strong>Contenu réservé aux membres — <strong>Accède après inscription</strong></span></div>
- </div>
- </div>
+      <div class="module-card">
+        <div class="mod-head">
+          <div class="mod-num">02</div>
+          <div class="mod-head-info">
+            <div class="mod-name">Grammaire Complète</div>
+            <div class="mod-ar">النحو والصرف</div>
+          </div>
+        </div>
+        <div class="mod-body">
+          <p>Le nom, le pronom, le verbe et la particule — leurs rôles, formes, cas grammaticaux et usage dans la phrase, expliqués en français.</p>
+          <div class="mod-tags">
+            <span class="mod-tag">Le Nom الاسم</span>
+            <span class="mod-tag">Le Pronom الضمير</span>
+            <span class="mod-tag">Le Verbe الفعل</span>
+            <span class="mod-tag">Cas grammaticaux</span>
+          </div>
+          <div class="mod-lock">Contenu réservé aux membres — <strong>Accès après inscription</strong></div>
+        </div>
+      </div>
 
- <div class="module-card reveal">
- <div class="mod-top">
- <span class="mod-num">03</span>
- <div><div class="mod-name" data-i18n="mod3_name">Conjugaison &amp; Verbes</div><div class="mod-ar ar">تصريف الأفعال</div></div>
- </div>
- <div class="mod-body">
- <p class="mod-desc" data-i18n="mod3_desc">L'accompli, l'inaccompli et l'impératif pour toutes les personnes avec tableaux et exercices corrigés.L'accompli, l'inaccompli et l'impératif conjugués pour toutes les personnes avec tableaux clairs, exemples et exercices corrigés.</p>
- <div class="mod-topics">
- <span class="topic-tag" data-i18n="mod3_t1">Accompli الماضي</span>
- <span class="topic-tag" data-i18n="mod3_t2">Inaccompli المضارع</span>
- <span class="topic-tag" data-i18n="mod3_t3">Impératif الأمر</span>
- <span class="topic-tag" data-i18n="mod3_t4">Négation</span>
- <span class="topic-tag" data-i18n="mod3_t5">Exercices corrigés</span>
- </div>
- <div class="mod-lock"><span data-i18n="mod_locked">Contenu réservé aux membres — <strong>Accès après inscription</strong>Contenu réservé aux membres — <strong>Accède après inscription</strong></span></div>
- </div>
- </div>
+      <div class="module-card">
+        <div class="mod-head">
+          <div class="mod-num">03</div>
+          <div class="mod-head-info">
+            <div class="mod-name">Conjugaison &amp; Verbes</div>
+            <div class="mod-ar">تصريف الأفعال</div>
+          </div>
+        </div>
+        <div class="mod-body">
+          <p>L'accompli, l'inaccompli et l'impératif conjugués pour toutes les personnes avec tableaux clairs, exemples et exercices corrigés.</p>
+          <div class="mod-tags">
+            <span class="mod-tag">Accompli الماضي</span>
+            <span class="mod-tag">Inaccompli المضارع</span>
+            <span class="mod-tag">Impératif الأمر</span>
+            <span class="mod-tag">Exercices corrigés</span>
+          </div>
+          <div class="mod-lock">Contenu réservé aux membres — <strong>Accès après inscription</strong></div>
+        </div>
+      </div>
 
- <div class="module-card reveal">
- <div class="mod-top">
- <span class="mod-num">04</span>
- <div><div class="mod-name" data-i18n="mod4_name">Programme Al-Adjroumiyya</div><div class="mod-ar ar">الآجرومية — 6 أشهر</div></div>
- </div>
- <div class="mod-body">
- <p class="mod-desc" data-i18n="mod4_desc">24 semaines de programme basé sur le traité classique. Du débutant jusqu'à la lecture de textes classiques.24 semaines de programme basé sur le traité classique. Une feuille de route semaine par semaine du débutant jusqu'à la lecture de textes classiques.</p>
- <div class="mod-topics">
- <span class="topic-tag" data-i18n="mod4_t1">6 mois · 24 semaines</span>
- <span class="topic-tag" data-i18n="mod4_t2">Progression guidée</span>
- <span class="topic-tag" data-i18n="mod4_t3">Textes classiques</span>
- <span class="topic-tag" data-i18n="mod4_t4">Analyse grammaticale</span>
- </div>
- <div class="mod-lock"><span data-i18n="mod_locked">Contenu réservé aux membres — <strong>Accès après inscription</strong>Contenu réservé aux membres — <strong>Accède après inscription</strong></span></div>
- </div>
- </div>
+      <div class="module-card">
+        <div class="mod-head">
+          <div class="mod-num">04</div>
+          <div class="mod-head-info">
+            <div class="mod-name">Programme Al-Adjroumiyya</div>
+            <div class="mod-ar">الآجرومية — 6 أشهر</div>
+          </div>
+        </div>
+        <div class="mod-body">
+          <p>24 semaines de programme basé sur le traité classique. Une feuille de route semaine par semaine du débutant jusqu'à la lecture de textes classiques.</p>
+          <div class="mod-tags">
+            <span class="mod-tag">6 mois · 24 semaines</span>
+            <span class="mod-tag">Progression guidée</span>
+            <span class="mod-tag">Textes classiques</span>
+            <span class="mod-tag">Analyse grammaticale</span>
+          </div>
+          <div class="mod-lock">Contenu réservé aux membres — <strong>Accès après inscription</strong></div>
+        </div>
+      </div>
 
- </div>
- </div>
+    </div>
+  </div>
 </section>
 
-
-<!-- ALPHABET APERÇU -->
+<!-- ALPHABET -->
 <section id="alphabet-preview">
- <div class="wrap">
- <p class="s-label" data-i18n="alph_label">Aperçu gratuit</p>
- <h2 class="s-title" style="color:#fff" data-i18n="alph_title">L'Alphabet Arabe — Écoutez chaque lettre</h2>
- <p class="s-sub" data-i18n="alph_sub">Cliquez sur pour entendre la prononciation réelle. Le contenu complet est disponible après inscription.</p>
- <div class="alph-mini">
- <div class="lcard"><span class="l-ar">أ</span><div class="l-name">Alif</div><div class="l-tr">ā</div><button class="aud" onclick="playAud('Alif.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ب</span><div class="l-name">Bā</div><div class="l-tr">b</div><button class="aud" onclick="playAud('BA.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ت</span><div class="l-name">Tā</div><div class="l-tr">t</div><button class="aud" onclick="playAud('Ta.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ث</span><div class="l-name">Thā</div><div class="l-tr">th</div><button class="aud" onclick="playAud('Tha.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ج</span><div class="l-name">Jīm</div><div class="l-tr">dj</div><button class="aud" onclick="playAud('Djim.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ح</span><div class="l-name">Ḥā</div><div class="l-tr">ḥ</div><button class="aud" onclick="playAud('Ha.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">خ</span><div class="l-name">Khā</div><div class="l-tr">kh</div><button class="aud" onclick="playAud('Kha.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">د</span><div class="l-name">Dāl</div><div class="l-tr">d</div><button class="aud" onclick="playAud('dAL.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ذ</span><div class="l-name">Dhāl</div><div class="l-tr">dh</div><button class="aud" onclick="playAud('Dhal.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ر</span><div class="l-name">Rā</div><div class="l-tr">r</div><button class="aud" onclick="playAud('Ra.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ز</span><div class="l-name">Zāy</div><div class="l-tr">z</div><button class="aud" onclick="playAud('Zay.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">س</span><div class="l-name">Sīn</div><div class="l-tr">s</div><button class="aud" onclick="playAud('Sin.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ش</span><div class="l-name">Shīn</div><div class="l-tr">sh</div><button class="aud" onclick="playAud('Shin.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ص</span><div class="l-name">Ṣād</div><div class="l-tr">ṣ</div><button class="aud" onclick="playAud('Sad.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ض</span><div class="l-name">Ḍād</div><div class="l-tr">ḍ</div><button class="aud" onclick="playAud('Dad.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ط</span><div class="l-name">Ṭā</div><div class="l-tr">ṭ</div><button class="aud" onclick="playAud('TImou.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ظ</span><div class="l-name">Ẓā</div><div class="l-tr">ẓ</div><button class="aud" onclick="playAud('Thaaa.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ع</span><div class="l-name">'Ayn</div><div class="l-tr">ʿ</div><button class="aud" onclick="playAud('ayn.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">غ</span><div class="l-name">Ghayn</div><div class="l-tr">gh</div><button class="aud" onclick="playAud('Ghayn.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ف</span><div class="l-name">Fā</div><div class="l-tr">f</div><button class="aud" onclick="playAud('Fa.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ق</span><div class="l-name">Qāf</div><div class="l-tr">q</div><button class="aud" onclick="playAud('Qaf.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ك</span><div class="l-name">Kāf</div><div class="l-tr">k</div><button class="aud" onclick="playAud('Kaf.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ل</span><div class="l-name">Lām</div><div class="l-tr">l</div><button class="aud" onclick="playAud('Lam.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">م</span><div class="l-name">Mīm</div><div class="l-tr">m</div><button class="aud" onclick="playAud('Mim.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ن</span><div class="l-name">Nūn</div><div class="l-tr">n</div><button class="aud" onclick="playAud('Noun.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ه</span><div class="l-name">Hā</div><div class="l-tr">h</div><button class="aud" onclick="playAud('HAA.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">و</span><div class="l-name">Wāw</div><div class="l-tr">w/ū</div><button class="aud" onclick="playAud('Waw.mp3',this)">&#9654;</button></div>
- <div class="lcard"><span class="l-ar">ي</span><div class="l-name">Yā</div><div class="l-tr">y/ī</div><button class="aud" onclick="playAud('Ya.mp3',this)">&#9654;</button></div>
- </div>
- <div class="alph-cta">
- <p data-i18n="alph_cta_text"> Les voyelles, vocabulaire audio, grammaire complète et programme 6 mois sont réservés aux membres.</p>
- <a href="#inscription" class="btn-g" data-i18n="alph_cta_btn">Accéder à tout le contenu — 49,99 €</a>
- </div>
- </div>
+  <div class="wrap">
+    <p class="s-label">Aperçu gratuit</p>
+    <h2 class="s-title" style="color:#fff">L'Alphabet Arabe — Écoutez chaque lettre</h2>
+    <p class="s-sub" style="color:rgba(255,255,255,.55)">Cliquez sur ▶ pour entendre la prononciation réelle. Le contenu complet est disponible après inscription.</p>
+    <div class="alpha-grid">
+      <div class="lcard"><span class="l-ar">أ</span><div class="l-name">Alif</div><div class="l-tr">ā</div><button class="aud" onclick="playAud('Alif.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ب</span><div class="l-name">Bā</div><div class="l-tr">b</div><button class="aud" onclick="playAud('BA.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ت</span><div class="l-name">Tā</div><div class="l-tr">t</div><button class="aud" onclick="playAud('Ta.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ث</span><div class="l-name">Thā</div><div class="l-tr">th</div><button class="aud" onclick="playAud('Tha.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ج</span><div class="l-name">Jīm</div><div class="l-tr">dj</div><button class="aud" onclick="playAud('Djim.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ح</span><div class="l-name">Ḥā</div><div class="l-tr">ḥ</div><button class="aud" onclick="playAud('Ha.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">خ</span><div class="l-name">Khā</div><div class="l-tr">kh</div><button class="aud" onclick="playAud('Kha.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">د</span><div class="l-name">Dāl</div><div class="l-tr">d</div><button class="aud" onclick="playAud('dAL.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ذ</span><div class="l-name">Dhāl</div><div class="l-tr">dh</div><button class="aud" onclick="playAud('Dhal.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ر</span><div class="l-name">Rā</div><div class="l-tr">r</div><button class="aud" onclick="playAud('Ra.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ز</span><div class="l-name">Zāy</div><div class="l-tr">z</div><button class="aud" onclick="playAud('Zay.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">س</span><div class="l-name">Sīn</div><div class="l-tr">s</div><button class="aud" onclick="playAud('Sin.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ش</span><div class="l-name">Shīn</div><div class="l-tr">sh</div><button class="aud" onclick="playAud('Shin.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ص</span><div class="l-name">Ṣād</div><div class="l-tr">ṣ</div><button class="aud" onclick="playAud('Sad.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ض</span><div class="l-name">Ḍād</div><div class="l-tr">ḍ</div><button class="aud" onclick="playAud('Dad.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ط</span><div class="l-name">Ṭā</div><div class="l-tr">ṭ</div><button class="aud" onclick="playAud('TImou.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ظ</span><div class="l-name">Ẓā</div><div class="l-tr">ẓ</div><button class="aud" onclick="playAud('Thaaa.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ع</span><div class="l-name">'Ayn</div><div class="l-tr">ʿ</div><button class="aud" onclick="playAud('ayn.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">غ</span><div class="l-name">Ghayn</div><div class="l-tr">gh</div><button class="aud" onclick="playAud('Ghayn.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ف</span><div class="l-name">Fā</div><div class="l-tr">f</div><button class="aud" onclick="playAud('Fa.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ق</span><div class="l-name">Qāf</div><div class="l-tr">q</div><button class="aud" onclick="playAud('Qaf.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ك</span><div class="l-name">Kāf</div><div class="l-tr">k</div><button class="aud" onclick="playAud('Kaf.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ل</span><div class="l-name">Lām</div><div class="l-tr">l</div><button class="aud" onclick="playAud('Lam.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">م</span><div class="l-name">Mīm</div><div class="l-tr">m</div><button class="aud" onclick="playAud('Mim.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ن</span><div class="l-name">Nūn</div><div class="l-tr">n</div><button class="aud" onclick="playAud('Noun.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ه</span><div class="l-name">Hā</div><div class="l-tr">h</div><button class="aud" onclick="playAud('HAA.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">و</span><div class="l-name">Wāw</div><div class="l-tr">w/ū</div><button class="aud" onclick="playAud('Waw.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ي</span><div class="l-name">Yā</div><div class="l-tr">y/ī</div><button class="aud" onclick="playAud('Ya.mp3',this)">▶</button></div>
+    </div>
+    <div class="alpha-cta">
+      <p>Les voyelles, vocabulaire audio, grammaire complète et programme 6 mois sont réservés aux membres.</p>
+      <a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank">Accéder à tout le contenu — 49,99 €</a>
+    </div>
+  </div>
 </section>
 
 <!-- BÉNÉFICES -->
-
-<!-- ═══ MÉTHODE ═══ -->
-<section id="methode" style="background:var(--dark)">
+<section id="benefices">
   <div class="wrap">
-    <p class="s-label reveal" style="color:var(--gold2)">Notre approche</p>
-    <h2 class="s-title reveal" style="color:#fff">Une méthode construite sur des bases classiques solides</h2>
-    <div class="methode-grid">
-      <div class="methode-left reveal">
-        <div class="methode-badge">Basée sur l'Al-Adjroumiyya</div>
-        <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.9;margin-bottom:16px">Cette formation est construite autour du traité grammatical classique <strong style="color:var(--gold2)">Al-Adjroumiyya</strong> — l'une des références les plus utilisées dans l'enseignement traditionnel de l'arabe.</p>
-        <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.9;margin-bottom:16px">La méthode suit une progression rigoureuse : <strong style="color:var(--gold2)">alphabet → grammaire → conjugaison → analyse grammaticale complète</strong>.</p>
-        <p style="font-size:15px;color:rgba(255,255,255,.65);line-height:1.9">Tout le contenu est expliqué <strong style="color:var(--gold2)">entièrement en français</strong>, avec des exemples concrets, des tableaux clairs et des exercices corrigés.</p>
-        <div class="methode-stats">
-          <div class="mstat"><div class="mstat-n">40</div><div class="mstat-l">Leçons</div></div>
-          <div class="mstat"><div class="mstat-n">28</div><div class="mstat-l">Lettres audio</div></div>
-          <div class="mstat"><div class="mstat-n">4</div><div class="mstat-l">Chapitres</div></div>
-          <div class="mstat"><div class="mstat-n">100%</div><div class="mstat-l">En français</div></div>
-        </div>
+    <p class="s-label">Pourquoi cette formation</p>
+    <h2 class="s-title">Une méthode complète, pensée pour les francophones</h2>
+    <div class="ben-grid">
+      <div class="ben-card"><div class="ben-icon">🎵</div><h3>Audio sur chaque lettre</h3><p>Chaque lettre, voyelle et mot clé est accompagné d'un bouton audio pour entendre la prononciation exacte par un locuteur natif.</p></div>
+      <div class="ben-card"><div class="ben-icon">📚</div><h3>Grammaire en français</h3><p>Toutes les règles sont expliquées en français avec des exemples concrets, des tableaux clairs et des exercices corrigés à chaque leçon.</p></div>
+      <div class="ben-card"><div class="ben-icon">📅</div><h3>Programme semaine par semaine</h3><p>6 mois de programme Al-Adjroumiyya découpé en 24 semaines. Vous savez exactement quoi faire chaque semaine, sans jamais vous perdre.</p></div>
+      <div class="ben-card"><div class="ben-icon">♾️</div><h3>Accès à vie</h3><p>Vous payez une seule fois. Vous accédez à tout le contenu pour toujours, y compris les futures mises à jour, sans abonnement mensuel.</p></div>
+      <div class="ben-card"><div class="ben-icon">🔒</div><h3>Contenu exclusif membres</h3><p>Les leçons complètes, tableaux de conjugaison et exercices corrigés sont réservés aux membres. Le contenu n'est pas public.</p></div>
+      <div class="ben-card"><div class="ben-icon">📱</div><h3>Sur tous vos appareils</h3><p>Le site fonctionne parfaitement sur smartphone, tablette et ordinateur. Apprenez où vous voulez, quand vous voulez.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section id="temoignages">
+  <div class="wrap">
+    <p class="s-label">Ce qu'ils en disent</p>
+    <h2 class="s-title">Ils ont commencé comme vous</h2>
+    <div class="temo-grid">
+      <div class="temo-card">
+        <div class="temo-badge">Vérifié</div>
+        <div class="temo-stars">★★★★★</div>
+        <p class="temo-text">"J'avais essayé plusieurs méthodes sans succès. Ici, les explications en français et les boutons audio ont tout changé. En 3 mois j'arrive à lire des textes simples."</p>
+        <div class="temo-author"><div class="temo-avatar">K</div><div><div class="temo-name">Karim B.</div><div class="temo-info">Lyon · Étudiant, 24 ans</div></div></div>
       </div>
-      <div class="methode-right reveal">
-        <div class="methode-card"><div class="methode-icon">1</div><div><h4>Progression naturelle</h4><p>De l'alphabet jusqu'à l'analyse de versets coraniques, sans jamais sauter d'étapes.</p></div></div>
-        <div class="methode-card"><div class="methode-icon">2</div><div><h4>Méthode classique éprouvée</h4><p>Basée sur l'Al-Adjroumiyya, traité utilisé depuis des siècles dans les écoles traditionnelles.</p></div></div>
-        <div class="methode-card"><div class="methode-icon">3</div><div><h4>Audio intégré</h4><p>Chaque lettre et son est accompagné d'un bouton audio pour une prononciation correcte.</p></div></div>
-        <div class="methode-card"><div class="methode-icon">4</div><div><h4>Exercices corrigés</h4><p>À la fin de chaque leçon, des exercices avec leurs corrections pour valider les acquis.</p></div></div>
-        <div class="methode-card"><div class="methode-icon">5</div><div><h4>Accessible à tous</h4><p>Aucune connaissance préalable requise. Conçu pour les débutants complets francophones.</p></div></div>
+      <div class="temo-card">
+        <div class="temo-badge">Vérifié</div>
+        <div class="temo-stars">★★★★★</div>
+        <p class="temo-text">"Le programme semaine par semaine est exactement ce dont j'avais besoin. Je sais où j'en suis à chaque moment. La conjugaison est enfin claire pour moi."</p>
+        <div class="temo-author"><div class="temo-avatar">S</div><div><div class="temo-name">Samira L.</div><div class="temo-info">Paris · Professeure, 31 ans</div></div></div>
+      </div>
+      <div class="temo-card">
+        <div class="temo-badge">Vérifié</div>
+        <div class="temo-stars">★★★★★</div>
+        <p class="temo-text">"Je voulais apprendre l'arabe pour mieux comprendre le Coran. En 6 mois avec ce programme, j'ai atteint mon objectif. Les leçons sont complètes et bien structurées."</p>
+        <div class="temo-author"><div class="temo-avatar">Y</div><div><div class="temo-name">Youssef M.</div><div class="temo-info">Marseille · Ingénieur, 28 ans</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="benefices">
- <div class="wrap">
- <p class="s-label reveal" data-i18n="ben_label">Pourquoi cette formation</p>
- <h2 class="s-title reveal" data-i18n="ben_title">Une méthode complète, pensée pour les francophones</h2>
- <div class="ben-grid">
- <div class="ben-card reveal"><div class="ben-ico"></div><h4 data-i18n="ben1_title">Audio sur chaque lettre</h4><p data-i18n="ben1_desc">Chaque lettre, voyelle et mot clé est accompagné d'un bouton audio pour entendre la prononciation exacte.Chaque lettre, voyelle et mot clé est accompagné d'un bouton audio pour entendre la prononciation exacte par un locuteur natif.</p></div>
- <div class="ben-card reveal"><div class="ben-ico"></div><h4 data-i18n="ben2_title">Grammaire en français</h4><p data-i18n="ben2_desc">Toutes les règles sont expliquées en français avec des exemples concrets, des tableaux clairs et des exercices corrigés.Toutes les règles sont expliquées en français avec des exemples concrets, des tableaux clairs et des exercices corrigés à chaque leçon.</p></div>
- <div class="ben-card reveal"><div class="ben-ico"></div><h4 data-i18n="ben3_title">Programme semaine par semaine</h4><p data-i18n="ben3_desc">6 mois de programme découpé en 24 semaines. Vous savez exactement quoi faire chaque semaine.6 mois de programme Al-Adjroumiyya découpé en 24 semaines. Vous savez exactement quoi faire chaque semaine, sans jamais vous perdre.</p></div>
- <div class="ben-card reveal"><div class="ben-ico"></div><h4 data-i18n="ben4_title">Accès à vie</h4><p data-i18n="ben4_desc">Vous payez une seule fois. Vous accédez à tout le contenu pour toujours, y compris les futures mises à jour.Vous payez une seule fois. Vous accédez à tout le contenu pour toujours, y compris les futures mises à jour, sans abonnement mensuel.</p></div>
- <div class="ben-card reveal"><div class="ben-ico"></div><h4 data-i18n="ben5_title">Contenu exclusif membres</h4><p data-i18n="ben5_desc">Les leçons complètes, tableaux et exercices corrigés sont réservés aux membres inscrits.Les leçons complètes, tableaux de conjugaison et exercices corrigés sont réservés aux membres. Le contenu n'est pas public.</p></div>
- <div class="ben-card reveal"><div class="ben-ico"></div><h4 data-i18n="ben6_title">Sur tous vos appareils</h4><p data-i18n="ben6_desc">Le site fonctionne parfaitement sur smartphone, tablette et ordinateur. Apprenez où vous voulez, quand vous voulez.Le site fonctionne parfaitement sur smartphone, tablette et ordinateur. Apprenez où vous voulez, quand vous voulez.</p></div>
- </div>
- </div>
-</section>
-
-
 <!-- TARIF -->
 <section id="tarif">
- <div class="wrap">
- <p class="s-label" data-i18n="tarif_label">Offre unique</p>
- <h2 class="s-title" data-i18n="tarif_title">Un seul tarif. Tout inclus. Pour toujours.</h2>
- <div class="tarif-wrap">
- <div class="tarif-card reveal">
- <div class="tarif-badge-top" data-i18n="tarif_badge"> Accès Complet</div>
- <div class="t-name" data-i18n="tarif_name">Formation Complète</div>
- <div class="t-ar ar">العربية الكلاسيكية الكاملة</div>
- <div class="t-price"><sup>€</sup>49<sub>,99</sub></div>
- <div class="t-once" data-i18n="tarif_once">Paiement unique — Accès à vie — Sans abonnement</div>
- <ul class="t-list">
- <li data-i18n="tf1">Alphabet complet : 28 lettres avec audio</li>
- <li data-i18n="tf2">Voyelles courtes, longues et tanwīn + audio</li>
- <li data-i18n="tf3">Grammaire : Nom, Pronom, Verbe, Particule</li>
- <li data-i18n="tf4">Conjugaison : accompli, inaccompli, impératif</li>
- <li data-i18n="tf5">Exercices corrigés à chaque leçon</li>
- <li data-i18n="tf6">Programme Al-Adjroumiyya 6 mois (24 semaines)</li>
- <li data-i18n="tf7">Vocabulaire essentiel avec prononciation audio</li>
- <li data-i18n="tf8">Mises à jour futures incluses gratuitement</li>
- <li data-i18n="tf9">Accès illimité, sans date d'expiration</li>
- </ul>
- <div style="margin-bottom:12px;padding:12px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(201,162,39,.2);border-radius:6px"><label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:rgba(255,255,255,.75);line-height:1.6"><input type="checkbox" id="cgv-tarif" onchange="toggleCGV('tarif')" style="width:17px;height:17px;flex-shrink:0;margin-top:2px;accent-color:#c9a227;cursor:pointer"><span id="cgv-text-tarif" data-i18n="cgv_text">J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank" style="color:#e8c96a;font-weight:600">CGV</a> et la <a href="mentions-legales.html#confidentialite" target="_blank" style="color:#e8c96a;font-weight:600">Politique de confidentialité</a>.</span></label></div>
-        <button class="t-cta" id="gbtn-tarif" onclick="if(document.getElementById('cgv-tarif').checked)window.open('https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00','_blank')" data-i18n="tarif_cta">Je m'inscris maintenant →</button>
- <div class="t-note" data-i18n="tarif_note">Paiement sécurisé via Stripe · Accès immédiat</div>
- </div>
- </div>
- </div>
+  <div class="wrap">
+    <p class="s-label">Offre unique</p>
+    <h2 class="s-title">Un seul tarif. Tout inclus. Pour toujours.</h2>
+    <div class="tarif-card">
+      <div class="tarif-badge">✦ ACCÈS COMPLET</div>
+      <div class="tarif-name">Formation Complète</div>
+      <div class="tarif-ar">العربية الكلاسيكية الكاملة</div>
+      <div class="tarif-price"><sup>€</sup>49,99</div>
+      <div class="tarif-once">Paiement unique — Accès à vie — Sans abonnement</div>
+      <ul class="tarif-features">
+        <li>Alphabet complet : 28 lettres avec audio</li>
+        <li>Voyelles courtes, longues et tanwīn + audio</li>
+        <li>Grammaire : Nom, Pronom, Verbe, Particule</li>
+        <li>Conjugaison : accompli, inaccompli, impératif</li>
+        <li>Exercices corrigés à chaque leçon</li>
+        <li>Programme Al-Adjroumiyya 6 mois (24 semaines)</li>
+        <li>Vocabulaire essentiel avec prononciation audio</li>
+        <li>Mises à jour futures incluses gratuitement</li>
+        <li>Accès illimité, sans date d'expiration</li>
+      </ul>
+      <div class="cgv-box">
+        <label>
+          <input type="checkbox" id="cgv-tarif" onchange="toggleBtn('cgv-tarif','btn-tarif')">
+          <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank">CGV</a> et la <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</span>
+        </label>
+      </div>
+      <a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" id="btn-tarif" class="btn-stripe">Je m'inscris maintenant →</a>
+      <div class="tarif-note">Paiement sécurisé via Stripe · Accès immédiat</div>
+    </div>
+  </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq">
- <div class="wrap">
- <p class="s-label reveal" data-i18n="faq_label">Questions fréquentes</p>
- <h2 class="s-title reveal" data-i18n="faq_title">Vos questions, nos réponses</h2>
- <div class="faq-list reveal">
- <div class="faq-item">
- <div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq1_q">Faut-il connaître l'arabe pour commencer ?</span><span class="faq-arr"></span></div>
- <div class="faq-a" data-i18n="faq1_a">Non, pas du tout. La formation commence depuis zéro : alphabet, sons, voyelles. Aucune connaissance préalable n'est requise.Non, absolument pas. La formation commence depuis zéro : alphabet, sons, voyelles. Vous n'avez besoin d'aucune connaissance préalable en arabe.</div>
- </div>
- <div class="faq-item">
- <div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq2_q">Quel arabe est enseigné — classique ou dialectal ?</span><span class="faq-arr"></span></div>
- <div class="faq-a" data-i18n="faq2_a">La formation enseigne l'arabe classique (فصحى), la langue du Coran et des textes islamiques traditionnels.La formation enseigne l'arabe classique (فصحى), la langue du Coran et des textes islamiques traditionnels. C'est la base solide pour comprendre tous les dialectes.</div>
- </div>
- <div class="faq-item">
- <div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq3_q">Comment accéder au contenu après paiement ?</span><span class="faq-arr"></span></div>
- <div class="faq-a" data-i18n="faq3_a">À l'inscription, vous recevez un email avec vos identifiants. Vous accédez immédiatement à tous les modules.Dès votre inscription, vous recevez un email avec vos identifiants d'accès. Vous accédez immédiatement à l'intégralité des modules : alphabet, grammaire, conjugaison et programme.</div>
- </div>
- <div class="faq-item">
- <div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq4_q">Combien de temps faut-il consacrer à la formation ?</span><span class="faq-arr"></span></div>
- <div class="faq-a" data-i18n="faq4_a">30 à 60 minutes par jour suffisent pour progresser régulièrement. Le programme est conçu pour avancer à votre rythme.30 à 60 minutes par jour suffisent pour progresser régulièrement. Le programme est conçu pour être suivi à votre propre rythme — tout le contenu est disponible à vie.</div>
- </div>
- <div class="faq-item">
- <div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq5_q">Est-ce que j'ai accès pour toujours ?</span><span class="faq-arr"></span></div>
- <div class="faq-a" data-i18n="faq5_a">Oui. Paiement unique, accès illimité. Les futures mises à jour sont également incluses gratuitement.Oui. Paiement unique, accès illimité. Les futures mises à jour sont également incluses gratuitement, sans aucun abonnement.</div>
- </div>
- <div class="faq-item">
- <div class="faq-q" onclick="toggleFaq(this)"><span data-i18n="faq6_q">Le site fonctionne-t-il sur mobile ?</span><span class="faq-arr"></span></div>
- <div class="faq-a" data-i18n="faq6_a">Oui, entièrement responsive. Les boutons audio et tout le contenu fonctionnent sur smartphone, tablette et ordinateur.Oui, le site est entièrement responsive. Les boutons audio et tous les contenus fonctionnent sur smartphone, tablette et ordinateur.</div>
- </div>
- </div>
- </div>
+  <div class="wrap">
+    <p class="s-label">Questions fréquentes</p>
+    <h2 class="s-title">Vos questions, nos réponses</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Faut-il connaître l'arabe pour commencer ?</div>
+        <div class="faq-a">Non, absolument pas. La formation commence depuis zéro : alphabet, sons, voyelles. Vous n'avez besoin d'aucune connaissance préalable en arabe.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Quel arabe est enseigné — classique ou dialectal ?</div>
+        <div class="faq-a">La formation enseigne l'arabe classique (فصحى), la langue du Coran et des textes islamiques traditionnels. C'est la base solide pour comprendre tous les dialectes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Comment accéder au contenu après paiement ?</div>
+        <div class="faq-a">Dès votre inscription, vous recevez un email avec vos identifiants d'accès. Vous accédez immédiatement à l'intégralité des modules.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Combien de temps faut-il consacrer à la formation ?</div>
+        <div class="faq-a">30 à 60 minutes par jour suffisent pour progresser régulièrement. Le programme est conçu pour être suivi à votre propre rythme — tout le contenu est disponible à vie.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Est-ce que j'ai accès pour toujours ?</div>
+        <div class="faq-a">Oui. Paiement unique, accès illimité. Les futures mises à jour sont également incluses gratuitement, sans aucun abonnement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Le site fonctionne-t-il sur mobile ?</div>
+        <div class="faq-a">Oui, le site est entièrement responsive. Les boutons audio et tous les contenus fonctionnent sur smartphone, tablette et ordinateur.</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- INSCRIPTION -->
-<section id="inscription" style="background:var(--dark2);padding:80px 24px">
-  <div class="wrap" style="text-align:center;max-width:640px;margin:0 auto">
+<section id="inscription">
+  <div class="wrap">
     <p class="s-label">Rejoignez la formation</p>
-    <h2 class="s-title" style="color:#fff;margin-bottom:16px" data-i18n="insc_title">Commencez Dès Aujourd'hui</h2>
-    <p style="font-size:16px;color:rgba(255,255,255,.6);margin-bottom:40px;line-height:1.8" data-i18n="insc_left_desc">Une méthode structurée, des leçons complètes avec audio et un programme de 6 mois — pour une seule fois 49,99 €.
-      Une méthode structurée, des leçons complètes avec audio et un programme de 6 mois — pour une seule fois 49,99 €.
-    </p>
-    <<a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" class="btn-g" style="font-size:18px;padding:18px 48px;margin:0 auto 16px;display:inline-flex" data-i18n="hero_cta">Commencez maintenant — 49,99 €</a>
-    <p style="font-size:12px;color:rgba(255,255,255,.3);margin-top:14px" data-i18n="tarif_note">Paiement sécurisé via Stripe · Accès immédiat
-      Paiement sécurisé via Stripe · Accès immédiat
-    </p>
+    <h2 class="s-title">Commencez Dès Aujourd'hui</h2>
+    <p class="insc-desc">Une méthode structurée, des leçons complètes avec audio et un programme de 6 mois — pour une seule fois 49,99 €.</p>
+    <div class="insc-cgv">
+      <input type="checkbox" id="cgv-insc" onchange="toggleBtn('cgv-insc','btn-insc')">
+      <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank">Conditions Générales de Vente</a> et la <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</span>
+    </div>
+    <a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" id="btn-insc" class="btn-insc">Commencer maintenant — 49,99 €</a>
+    <div class="insc-note">Paiement sécurisé via Stripe · Accès immédiat</div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
- <div class="footer-inner">
- <div class="f-brand">
- <img src="logo.png" onerror="this.onerror=null;this.src='images/logo.png'" alt="Logo L'Arabe Accessible">
- <p data-i18n="footer_desc">La méthode francophone pour apprendre l'arabe classique depuis zéro, à votre rythme et à vie.</p>
-      <p style="margin-top:10px;font-size:13px"><a href="mailto:contact@arabeaccessible.com" style="color:rgba(201,162,39,.6);transition:color .2s" onmouseover="this.style.color='#e8c96a'" onmouseout="this.style.color='rgba(201,162,39,.6)'">contact@arabeaccessible.com</a></p>
- </div>
- <div class="f-col">
- <h5 data-i18n="footer_col1">Formation</h5>
- <ul>
- <li><a href="#modules" data-i18n="nav_modules">Les Modules</a></li>
- <li><a href="#alphabet-preview" data-i18n="nav_alphabet">L'Alphabet</a></li>
- <li><a href="#tarif" data-i18n="nav_tarif">Tarif</a></li>
- <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
- </ul>
- </div>
- <div class="f-col">
- <h5 data-i18n="footer_col2">Informations</h5>
- <ul>
- <li><a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" data-i18n="footer_register">S'inscrire</a></li>
- <li><a href="mentions-legales.html" data-i18n="footer_legal">Mentions légales</a></li>
- <li><a href="mailto:contact@arabeaccessible.com" data-i18n="footer_contact">Contact</a></li>
- </ul>
- </div>
- </div>
- <div class="footer-bot">
- <span>© 2026 L'Arabe Accessible — Tous droits réservés</span>
- <span class="footer-ar ar">العربية في متناول الجميع</span>
- </div>
+  <div class="f-grid">
+    <div>
+      <div class="f-logo">
+        <img src="logo.png" onerror="this.src='images/logo.png'" alt="Logo">
+        <span class="f-logo-name">L'<span>Arabe</span> Accessible</span>
+      </div>
+      <p class="f-desc">La méthode francophone pour apprendre l'arabe classique depuis zéro, à votre rythme et à vie.</p>
+      <a href="mailto:contact@arabeaccessible.com" class="f-email">contact@arabeaccessible.com</a>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Formation</div>
+      <ul>
+        <li><a href="#modules">Les modules</a></li>
+        <li><a href="#alphabet-preview">L'alphabet</a></li>
+        <li><a href="#tarif">Tarif</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Informations</div>
+      <ul>
+        <li><a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank">S'inscrire</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="mailto:contact@arabeaccessible.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-copy">© 2026 L'Arabe Accessible — Tous droits réservés · العربية في متناول الجميع</div>
 </footer>
 
-
-<div id="modules"></div>
-<div id="alphabet-preview"></div>
-<div id="tarif"></div>
-<div id="faq"></div>
-<div id="inscription"></div>
-
-<div class="notif" id="notif"></div>
-
-<!-- BANNIÈRE COOKIES -->
+<!-- COOKIE BANNER -->
 <div id="cookie-banner">
-  <div class="cookie-text">
-    Nous utilisons des cookies essentiels et fonctionnels pour mémoriser vos préférences et votre progression.
-    <a href="mentions-legales.html" target="_blank">En savoir plus</a>
-  </div>
-  <div class="cookie-btns">
-    <button class="cookie-decline" onclick="declineCookies()">Refuser</button>
-    <button class="cookie-accept" onclick="acceptCookies()">Accepter</button>
+  <div class="ck-text">Nous utilisons des cookies essentiels pour le fonctionnement du site. <a href="mentions-legales.html" target="_blank">En savoir plus</a></div>
+  <div class="ck-btns">
+    <button class="ck-no" onclick="setCookie('declined')">Refuser</button>
+    <button class="ck-ok" onclick="setCookie('accepted')">Accepter</button>
   </div>
 </div>
 
-
 <script>
 /* Audio */
-let curAud=null,curBtn=null;
-function playAud(file,btn){
- if(curAud){curAud.pause();curAud.currentTime=0;if(curBtn){curBtn.classList.remove('playing');curBtn.textContent=''}}
- if(curBtn===btn){curAud=null;curBtn=null;return}
- const a=new Audio('+file);
- a.play().catch(()=>showNotif('Audio non disponible : '+file));
- curAud=a;curBtn=btn;btn.classList.add('playing');btn.textContent='';
- a.onended=()=>{btn.classList.remove('playing');btn.textContent='';curAud=null;curBtn=null}
+let ca=null,cb=null;
+function playAud(f,b){
+  if(ca){ca.pause();ca.currentTime=0;if(cb){cb.textContent='▶';cb.style.background=''}}
+  if(cb===b){ca=null;cb=null;return}
+  const a=new Audio(f);
+  a.play().catch(()=>{});
+  ca=a;cb=b;b.textContent='⏸';b.style.background='var(--gold)';b.style.color='var(--dark)';
+  a.onended=()=>{b.textContent='▶';b.style.background='';ca=null;cb=null}
 }
 
 /* FAQ */
 function toggleFaq(el){
- const item=el.parentElement;
- const wasOpen=item.classList.contains('open');
- document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
- if(!wasOpen)item.classList.add('open');
+  const item=el.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
 }
 
-/* Menu mobile */
-function toggleMenu(){
- const m=document.getElementById('navMobile');
- m.style.display=m.style.display==='flex'?'none':'flex';
+/* CGV → active bouton */
+function toggleBtn(cbId, btnId){
+  const cb=document.getElementById(cbId);
+  const btn=document.getElementById(btnId);
+  if(cb&&btn){
+    if(cb.checked){btn.classList.add('active');btn.style.pointerEvents='auto';}
+    else{btn.classList.remove('active');btn.style.pointerEvents='none';}
+  }
 }
 
-/* Scroll reveal */
-const obs=new IntersectionObserver((entries)=>{
- entries.forEach((e,i)=>{
- if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*70);obs.unobserve(e.target)}
- });
-},{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-/* Formulaire */
-function handleForm(e){
- e.preventDefault();
- const t=T[currentLang]||T.fr;
- showNotif(t.notif_ok||' Inscription enregistrée !');
+/* Cookies */
+function setCookie(v){
+  localStorage.setItem('cookie-consent',v);
+  document.getElementById('cookie-banner').classList.remove('show');
 }
-
-/* Notification */
-function showNotif(msg){
- const n=document.getElementById('notif');
- n.textContent=msg;n.classList.add('show');
- setTimeout(()=>n.classList.remove('show'),4000);
+if(!localStorage.getItem('cookie-consent')){
+  document.getElementById('cookie-banner').classList.add('show');
 }
-
-/* 
- TRADUCTIONS — 11 langues
- */
-const T={
-fr:{nav_modules:"Formation",nav_alphabet:"Alphabet",nav_tarif:"Tarif",nav_faq:"FAQ",nav_cta:"S'inscrire",nav_cta_mobile:"S'inscrire — 49,99 €",hero_badge:" Formation arabe classique · 100% en français",hero_desc:"Apprenez l'arabe classique depuis zéro avec une méthode structurée, des leçons complètes et des exercices audio pour une prononciation parfaite.",pill_audio:"Audio intégré",pill_letters:"28 lettres",pill_program:"6 mois de programme",hero_cta:"Commencer maintenant — 49,99 €",hero_discover:"Découvrir la formation",stat_letters:"Lettres + audio",stat_months:"Mois structurés",stat_modules:"Modules complets",stat_access:"Accès à vie",pb_label:"Vous vous reconnaissez ?",pb_title:"Pourquoi tant de gens échouent à apprendre l'arabe",pb1_title:"Trop compliqué sans guide",pb1_desc:"L'alphabet, les voyelles, les cas grammaticaux… sans méthode progressive, on abandonne rapidement.",pb2_title:"Ressources pas en français",pb2_desc:"La majorité des bonnes ressources sont en anglais ou en arabe. Comprendre dans une langue étrangère ralentit tout.",pb3_title:"Pas de prononciation réelle",pb3_desc:"Sans audio, impossible de prononcer correctement les sons spécifiques à l'arabe absents du français.",pb_solution:"C'est pour ça qu'existe <strong>L'Arabe Accessible</strong> : une méthode <strong>100% en français</strong>, progressive, avec <strong>audio sur chaque lettre et chaque mot</strong>. Suivez une feuille de route claire, semaine par semaine.",mod_label:"Contenu de la formation",mod_title:"4 Modules pour maîtriser l'arabe classique",mod_sub:"Un accès complet à tous les modules après votre inscription. Voici ce qui vous attend.",mod_free_badge:"Aperçu gratuit",mod1_name:"Alphabet & Prononciation",mod1_desc:"Maîtrisez les 28 lettres arabes, leurs 4 formes, les voyelles courtes et longues, le tanwīn — tout avec audio intégré sur chaque lettre.",mod1_t1:"28 lettres",mod1_t2:"Voyelles courtes",mod1_t3:"Voyelles longues",mod1_t4:"Tanwīn",mod1_t5:"Audio sur chaque son",mod1_lock:"Aperçu disponible ci-dessous — <strong>Contenu complet accessible après inscription</strong>",mod2_name:"Grammaire Complète",mod2_desc:"Le nom, le pronom, le verbe et la particule — leurs rôles, formes, cas grammaticaux et usage dans la phrase, expliqués en français.",mod2_t1:"Le Nom الاسم",mod2_t2:"Le Pronom الضمير",mod2_t3:"Le Verbe الفعل",mod2_t4:"Les Particules الحرف",mod2_t5:"Cas grammaticaux",mod3_name:"Conjugaison & Verbes",mod3_desc:"L'accompli, l'inaccompli et l'impératif conjugués pour toutes les personnes avec tableaux clairs, exemples et exercices corrigés.",mod3_t1:"Accompli الماضي",mod3_t2:"Inaccompli المضارع",mod3_t3:"Impératif الأمر",mod3_t4:"Négation",mod3_t5:"Exercices corrigés",mod4_name:"Programme Al-Adjroumiyya",mod4_desc:"24 semaines de programme basé sur le traité classique. Une feuille de route semaine par semaine du débutant jusqu'à la lecture de textes classiques.",mod4_t1:"6 mois · 24 semaines",mod4_t2:"Progression guidée",mod4_t3:"Textes classiques",mod4_t4:"Analyse grammaticale",mod_locked:"Contenu réservé aux membres — <strong>Accède après inscription</strong>",alph_label:"Aperçu gratuit",alph_title:"L'Alphabet Arabe — Écoutez chaque lettre",alph_sub:"Cliquez sur pour entendre la prononciation réelle. Le contenu complet est disponible après inscription.",alph_cta_text:" Les voyelles, vocabulaire audio, grammaire complète et programme 6 mois sont réservés aux membres.",alph_cta_btn:"Accéder à tout le contenu — 49,99 €",ben_label:"Pourquoi cette formation",ben_title:"Une méthode complète, pensée pour les francophones",ben1_title:"Audio sur chaque lettre",ben1_desc:"Chaque lettre, voyelle et mot clé est accompagné d'un bouton audio pour entendre la prononciation exacte par un locuteur natif.",ben2_title:"Grammaire en français",ben2_desc:"Toutes les règles sont expliquées en français avec des exemples concrets, des tableaux clairs et des exercices corrigés à chaque leçon.",ben3_title:"Programme semaine par semaine",ben3_desc:"6 mois de programme Al-Adjroumiyya découpé en 24 semaines. Vous savez exactement quoi faire chaque semaine, sans jamais vous perdre.",ben4_title:"Accès à vie",ben4_desc:"Vous payez une seule fois. Vous accédez à tout le contenu pour toujours, y compris les futures mises à jour, sans abonnement mensuel.",ben5_title:"Contenu exclusif membres",ben5_desc:"Les leçons complètes, tableaux de conjugaison et exercices corrigés sont réservés aux membres. Le contenu n'est pas public.",ben6_title:"Sur tous vos appareils",ben6_desc:"Le site fonctionne parfaitement sur smartphone, tablette et ordinateur. Apprenez où vous voulez, quand vous voulez.",tarif_label:"Offre unique",tarif_title:"Un seul tarif. Tout inclus. Pour toujours.",tarif_badge:" Accès Complet",tarif_name:"Formation Complète",tarif_once:"Paiement unique — Accès à vie — Sans abonnement",tf1:"Alphabet complet : 28 lettres avec audio",tf2:"Voyelles courtes, longues et tanwīn + audio",tf3:"Grammaire : Nom, Pronom, Verbe, Particule",tf4:"Conjugaison : accompli, inaccompli, impératif",tf5:"Exercices corrigés à chaque leçon",tf6:"Programme Al-Adjroumiyya 6 mois (24 semaines)",tf7:"Vocabulaire essentiel avec prononciation audio",tf8:"Mises à jour futures incluses gratuitement",tf9:"Accès illimité, sans date d'expiration",tarif_cta:"Je m'inscris maintenant →",tarif_note:" Paiement sécurisé · Accès immédiat après inscription",faq_label:"Questions fréquentes",faq_title:"Vos questions, nos réponses",faq1_q:"Faut-il connaître l'arabe pour commencer ?",faq1_a:"Non, absolument pas. La formation commence depuis zéro : alphabet, sons, voyelles. Vous n'avez besoin d'aucune connaissance préalable en arabe.",faq2_q:"Quel arabe est enseigné — classique ou dialectal ?",faq2_a:"La formation enseigne l'arabe classique (فصحى), la langue du Coran et des textes islamiques traditionnels. C'est la base solide pour comprendre tous les dialectes.",faq3_q:"Comment accéder au contenu après paiement ?",faq3_a:"Dès votre inscription, vous recevez un email avec vos identifiants d'accès. Vous accédez immédiatement à l'intégralité des modules : alphabet, grammaire, conjugaison et programme.",faq4_q:"Combien de temps faut-il consacrer à la formation ?",faq4_a:"30 à 60 minutes par jour suffisent pour progresser régulièrement. Le programme est conçu pour être suivi à votre propre rythme — tout le contenu est disponible à vie.",faq5_q:"Est-ce que j'ai accès pour toujours ?",faq5_a:"Oui. Paiement unique, accès illimité. Les futures mises à jour sont également incluses gratuitement, sans aucun abonnement.",faq6_q:"Le site fonctionne-t-il sur mobile ?",faq6_a:"Oui, le site est entièrement responsive. Les boutons audio et tous les contenus fonctionnent sur smartphone, tablette et ordinateur.",insc_label:"Rejoignez la formation",insc_title:"Commencez Dès Aujourd'hui",insc_left_title:"Tout ce qu'il vous faut pour apprendre l'arabe classique",insc_left_desc:"Une méthode structurée, des leçons complètes avec audio et un programme de 6 mois — pour une seule fois 49,99 €.",insc_li1:"Alphabet complet avec audio",insc_li2:"Grammaire : Nom, Pronom, Verbe",insc_li3:"Conjugaison complète des 3 formes",insc_li4:"Programme Al-Adjroumiyya 6 mois",insc_li5:"Exercices corrigés inclus",insc_li6:"Accès illimité à vie · 100% en français",form_name:"Prénom *",form_name_ph:"Votre prénom",form_email:"Adresse email *",form_level:"Votre niveau actuel",form_level_0:"Sélectionne votre niveau",form_level_1:"Débutant complet — je ne connais pas l'alphabet",form_level_2:"Je connais quelques lettres",form_level_3:"Je lis mais j'ai des lacunes en grammaire",form_submit:"S'inscrire et accéder à la formation — 49,99 €",form_priv:" Vos données sont sécurisées et ne seront jamais partagées.",footer_desc:"La méthode francophone pour apprendre l'arabe classique depuis zéro, à votre rythme et à vie.",footer_col1:"Formation",footer_col2:"Informations",footer_register:"S'inscrire",footer_legal:"Mentions légales",footer_contact:"Contact",notif_ok:" Inscription enregistrée ! Tu seras contacté(e) très bientôt.",cgv_text:"J'ai lu et j'accepte les <a href='mentions-legales.html#cgv' target='_blank'>CGV</a> et la <a href='mentions-legales.html#confidentialite' target='_blank'>Politique de confidentialité</a>."},
-en:{nav_modules:"Course",nav_alphabet:"Alphabet",nav_tarif:"Pricing",nav_faq:"FAQ",nav_cta:"Enroll",nav_cta_mobile:"Enroll — €49.99",hero_badge:" Classical Arabic Course · 100% in French",hero_desc:"Learn classical Arabic from scratch with a structured method, complete lessons and audio exercises for perfect pronunciation.",pill_audio:"Integrated audio",pill_letters:"28 letters",pill_program:"6-month program",hero_cta:"Start now — €49.99",hero_discover:"Discover the course",stat_letters:"Letters + audio",stat_months:"Structured months",stat_modules:"Complete modules",stat_access:"Lifetime access",pb_label:"Does this sound familiar?",pb_title:"Why so many people fail to learn Arabic",pb1_title:"Too complex without a guide",pb1_desc:"The alphabet, vowels, grammatical cases… without a progressive method, people give up quickly.",pb2_title:"Resources not in your language",pb2_desc:"Most good resources are in Arabic orEnglish. Learning through a foreign language slows everything down.",pb3_title:"No real pronunciation",pb3_desc:"Without audio, it's impossible to correctly pronounce sounds specific to Arabic.",pb_solution:"That's why <strong>L'Arabe Accessible</strong> exists: a method <strong>in French</strong>, progressive, with <strong>audio on every letter and word</strong>. A clear roadmap, week by week.",mod_label:"Course content",mod_title:"4 Modules to master classical Arabic",mod_sub:"Full access to all modules after enrollment. Here's what awaits you.",mod_free_badge:"Free preview",mod1_name:"Alphabet & Pronunciation",mod1_desc:"Master the 28 Arabic letters, their 4 forms, short and long vowels, tanwīn — all with integrated audio on each letter.",mod1_t1:"28 letters",mod1_t2:"Short vowels",mod1_t3:"Long vowels",mod1_t4:"Tanwīn",mod1_t5:"Audio on every sound",mod1_lock:"Preview available below — <strong>Full content accessible after enrollment</strong>",mod2_name:"Complete Grammar",mod2_desc:"The noun, pronoun, verb and particle — their roles, forms, grammatical cases and sentence usage, explained in French.",mod2_t1:"The Noun",mod2_t2:"The Pronoun",mod2_t3:"The Verb",mod2_t4:"Particles",mod2_t5:"Grammatical cases",mod3_name:"Conjugation & Verbs",mod3_desc:"Past, present and imperative conjugated for all persons with clear tables, examples and corrected exercises.",mod3_t1:"Past tense",mod3_t2:"Present tense",mod3_t3:"Imperative",mod3_t4:"Negation",mod3_t5:"Corrected exercises",mod4_name:"Al-Adjroumiyya Program",mod4_desc:"24 weeks of program based on the classical treatise. A week-by-week roadmap from beginner to reading classical texts.",mod4_t1:"6 months · 24 weeks",mod4_t2:"Guided progression",mod4_t3:"Classical texts",mod4_t4:"Grammatical analysis",mod_locked:"Members-only content — <strong>Access after enrollment</strong>",alph_label:"Free preview",alph_title:"The Arabic Alphabet — Listen to each letter",alph_sub:"Click to hear real pronunciation. Full content available after enrollment.",alph_cta_text:" Vowels, audio vocabulary, full grammar and 6-month program are reserved for members.",alph_cta_btn:"Access all content — €49.99",ben_label:"Why this course",ben_title:"A complete method designed for French speakers",ben1_title:"Audio on every letter",ben1_desc:"Every letter, vowel and key word has an audio button to hear the exact pronunciation.",ben2_title:"Grammar in French",ben2_desc:"All rules explained in French with concrete examples, clear tables and corrected exercises at each lesson.",ben3_title:"Week-by-week program",ben3_desc:"6-month Al-Adjroumiyya program split into 24 weeks. You know exactly what to do each week.",ben4_title:"Lifetime access",ben4_desc:"Pay once. Access all content forever, including future updates, with no monthly subscription.",ben5_title:"Exclusive member content",ben5_desc:"Complete lessons, conjugation tables and exercises are reserved for enrolled members. Content is not public.",ben6_title:"On all your devices",ben6_desc:"The site works perfectly on smartphone, tablet and computer. Learn anywhere, anytime.",tarif_label:"Single offer",tarif_title:"One price. Everything included. Forever.",tarif_badge:" Full Access",tarif_name:"Complete Course",tarif_once:"One-time payment — Lifetime access — No subscription",tf1:"Complete alphabet: 28 letters with audio",tf2:"Short, long vowels and tanwīn + audio",tf3:"Grammar: Noun, Pronoun, Verb, Particle",tf4:"Conjugation: past, present, imperative",tf5:"Corrected exercises at each lesson",tf6:"Al-Adjroumiyya 6-month program (24 weeks)",tf7:"Essential vocabulary with audio pronunciation",tf8:"Future updates included for free",tf9:"Unlimited access, no expiry date",tarif_cta:"Enroll now →",tarif_note:" Secure payment · Immediate access after enrollment",faq_label:"Frequently asked questions",faq_title:"Your questions, our answers",faq1_q:"Do I need to know Arabic to start?",faq1_a:"No, not at all. The course starts from scratch: alphabet, sounds, vowels. No prior knowledge of Arabic is needed.",faq2_q:"Which Arabic is taught — classical or dialectal?",faq2_a:"The course teaches classical Arabic (فصحى), the language of the Quran and traditional Islamic texts. It's the solid foundation to understand all dialects.",faq3_q:"How do I access the content after payment?",faq3_a:"Upon enrollment, you receive an email with your access credentials. You immediately access all modules: alphabet, grammar, conjugation and program.",faq4_q:"How much time should I dedicate to the course?",faq4_a:"30 to 60 minutes per day is enough to progress steadily. The program is designed for your own pace — all content is available for life.",faq5_q:"Do I have access forever?",faq5_a:"Yes. One-time payment, unlimited access. Future updates are also included for free, with no subscription.",faq6_q:"Does the site work on mobile?",faq6_a:"Yes, the site is fully responsive. Audio buttons and all content work on smartphone, tablet and computer.",insc_label:"Join the course",insc_title:"Start Today",insc_left_title:"Everything you need to learn classical Arabic",insc_left_desc:"A structured method, complete lessons with audio and a 6-month program — one time only €49.99.",insc_li1:"Complete alphabet with audio",insc_li2:"Grammar: Noun, Pronoun, Verb",insc_li3:"Complete conjugation of all 3 forms",insc_li4:"Al-Adjroumiyya 6-month program",insc_li5:"Corrected exercises included",insc_li6:"Unlimited lifetime access · 100% in French",form_name:"First name *",form_name_ph:"Your first name",form_email:"Email address *",form_level:"Your current level",form_level_0:"Select your level",form_level_1:"Complete beginner — I don't know the alphabet",form_level_2:"I know some letters",form_level_3:"I can read but have grammar gaps",form_submit:"Enroll and access the course — €49.99",form_priv:" Your data is secure and will never be shared.",footer_desc:"The French-language method to learn classical Arabic from scratch, at your pace, for life.",footer_col1:"Course",footer_col2:"Information",footer_register:"Enroll",footer_legal:"Legal notice",footer_contact:"Contact",notif_ok:" Enrollment registered! You will be contacted soon.",cgv_text:"I have read and accept the <a href='mentions-legales.html#cgv' target='_blank'>Terms & Conditions</a> and the <a href='mentions-legales.html#confidentialite' target='_blank'>Privacy Policy</a>."},
-es:{nav_modules:"Curso",nav_alphabet:"Alfabeto",nav_tarif:"Precio",nav_faq:"FAQ",nav_cta:"Inscribirse",nav_cta_mobile:"Inscribirse — 49,99 €",hero_badge:" Curso de árabe clásico · 100% en francés",hero_desc:"Aprende árabe clásico desde cero con un método estructurado, lecciones completas y ejercicios de audio para una pronunciación perfecta.",pill_audio:"Audio integrado",pill_letters:"28 letras",pill_program:"Programa de 6 meses",hero_cta:"Empezar ahora — 49,99 €",hero_discover:"Descubrir el curso",stat_letters:"Letras + audio",stat_months:"Meses estructurados",stat_modules:"Módulos completos",stat_access:"Acceso de por vida",pb_label:"¿Te reconoces?",pb_title:"Por qué tanta gente falla aprendiendo árabe",pb1_title:"Demasiado complejo sin guía",pb1_desc:"El alfabeto, las vocales, los casos gramaticales... sin método progresivo, la gente abandona rápidamente.",pb2_title:"Recursos no en tu idioma",pb2_desc:"La mayoría de los buenos recursos están en árabe o inglés. Aprender en lengua extranjera lo ralentiza todo.",pb3_title:"Sin pronunciación real",pb3_desc:"Sin audio, es imposible pronunciar correctamente los sonidos específicos del árabe.",pb_solution:"Por eso existe <strong>L'Arabe Accessible</strong>: un método <strong>en francés</strong>, progresivo, con <strong>audio en cada letra y palabra</strong>. Una hoja de ruta clara, semana a semana.",mod_label:"Contenido del curso",mod_title:"4 Módulos para dominar el árabe clásico",mod_sub:"Acceso completo a todos los módulos tras la inscripción.",mod_free_badge:"Vista previa gratuita",mod1_name:"Alfabeto y Pronunciación",mod1_desc:"Domina las 28 letras árabes, sus 4 formas, las vocales cortas y largas, el tanwīn — todo con audio integrado.",mod1_t1:"28 letras",mod1_t2:"Vocales cortas",mod1_t3:"Vocales largas",mod1_t4:"Tanwīn",mod1_t5:"Audio en cada sonido",mod1_lock:"Vista previa disponible abajo — <strong>Contenido completo tras la inscripción</strong>",mod2_name:"Gramática Completa",mod2_desc:"El nombre, pronombre, verbo y partícula — sus roles, formas, casos gramaticales y uso en la frase.",mod2_t1:"El Nombre",mod2_t2:"El Pronombre",mod2_t3:"El Verbo",mod2_t4:"Partículas",mod2_t5:"Casos gramaticales",mod3_name:"Conjugación y Verbos",mod3_desc:"Pasado, presente e imperativo para todas las personas con tablas claras y ejercicios corregidos.",mod3_t1:"Pasado",mod3_t2:"Presente",mod3_t3:"Imperativo",mod3_t4:"Negación",mod3_t5:"Ejercicios corregidos",mod4_name:"Programa Al-Adjroumiyya",mod4_desc:"24 semanas basadas en el tratado clásico. Una hoja de ruta del principiante hasta la lectura de textos clásicos.",mod4_t1:"6 meses · 24 semanas",mod4_t2:"Progresión guiada",mod4_t3:"Textos clásicos",mod4_t4:"Análisis gramatical",mod_locked:"Contenido exclusivo para miembros — <strong>Accede tras la inscripción</strong>",alph_label:"Vista previa gratuita",alph_title:"El Alfabeto Árabe — Escucha cada letra",alph_sub:"Haz clic en para escuchar la pronunciación real. El contenido completo está disponible tras la inscripción.",alph_cta_text:" Las vocales, vocabulario, gramática y programa de 6 meses son solo para miembros.",alph_cta_btn:"Acceder a todo el contenido — 49,99 €",ben_label:"Por qué este curso",ben_title:"Un método completo pensado para francófonos",ben1_title:"Audio en cada letra",ben1_desc:"Cada letra, vocal y palabra clave tiene un botón de audio para escuchar la pronunciación exacta.",ben2_title:"Gramática en francés",ben2_desc:"Todas las reglas explicadas en francés con ejemplos concretos, tablas claras y ejercicios corregidos.",ben3_title:"Programa semana a semana",ben3_desc:"6 meses divididos en 24 semanas. Sabes exactamente qué hacer cada semana, sin perderte.",ben4_title:"Acceso de por vida",ben4_desc:"Pagas una sola vez. Accedes a todo el contenido para siempre, incluyendo actualizaciones futuras.",ben5_title:"Contenido exclusivo para miembros",ben5_desc:"Las lecciones completas, tablas y ejercicios están reservados para los miembros inscritos.",ben6_title:"En todos tus dispositivos",ben6_desc:"El sitio funciona en smartphone, tableta y ordenador. Aprende donde quieras, cuando quieras.",tarif_label:"Oferta única",tarif_title:"Un solo precio. Todo incluido. Para siempre.",tarif_badge:" Acceso Completo",tarif_name:"Curso Completo",tarif_once:"Pago único — Acceso de por vida — Sin suscripción",tf1:"Alfabeto completo: 28 letras con audio",tf2:"Vocales cortas, largas y tanwīn + audio",tf3:"Gramática: Nombre, Pronombre, Verbo",tf4:"Conjugación: pasado, presente, imperativo",tf5:"Ejercicios corregidos en cada lección",tf6:"Programa Al-Adjroumiyya 6 meses",tf7:"Vocabulario esencial con audio",tf8:"Actualizaciones futuras incluidas gratis",tf9:"Acceso ilimitado, sin fecha de vencimiento",tarif_cta:"Inscríbete ahora →",tarif_note:" Pago seguro · Acceso inmediato",faq_label:"Preguntas frecuentes",faq_title:"Tus preguntas, nuestras respuestas",faq1_q:"¿Necesito saber árabe para empezar?",faq1_a:"No, en absoluto. El curso empieza desde cero: alfabeto, sonidos, vocales. No se requiere ningún conocimiento previo.",faq2_q:"¿Qué árabe se enseña — clásico o dialectal?",faq2_a:"El curso enseña árabe clásico (فصحى), la lengua del Corán y los textos islámicos tradicionales.",faq3_q:"¿Cómo accedo al contenido después del pago?",faq3_a:"Al inscribirte, recibes un email con tus credenciales de acceso. Accedes inmediatamente a todos los módulos.",faq4_q:"¿Cuánto tiempo debo dedicar al curso?",faq4_a:"30 a 60 minutos al día es suficiente para progresar regularmente. El programa está diseñado para seguirlo a tu propio ritmo.",faq5_q:"¿Tengo acceso para siempre?",faq5_a:"Sí. Pago único, acceso ilimitado. Las actualizaciones futuras también están incluidas gratuitamente.",faq6_q:"¿El sitio funciona en móvil?",faq6_a:"Sí, totalmente responsive. Los botones de audio y todo el contenido funcionan en smartphone, tableta y ordenador.",insc_label:"Únete al curso",insc_title:"Empieza Hoy",insc_left_title:"Todo lo que necesitas para aprender árabe clásico",insc_left_desc:"Un método estructurado, lecciones completas con audio y un programa de 6 meses — solo una vez 49,99 €.",insc_li1:"Alfabeto completo con audio",insc_li2:"Gramática: Nombre, Pronombre, Verbo",insc_li3:"Conjugación completa de las 3 formas",insc_li4:"Programa Al-Adjroumiyya 6 meses",insc_li5:"Ejercicios corregidos incluidos",insc_li6:"Acceso ilimitado de por vida",form_name:"Nombre *",form_name_ph:"Tu nombre",form_email:"Email *",form_level:"Tu nivel actual",form_level_0:"Selecciona tu nivel",form_level_1:"Principiante completo",form_level_2:"Conozco algunas letras",form_level_3:"Leo pero tengo lagunas en gramática",form_submit:"Inscribirse y acceder al curso — 49,99 €",form_priv:" Tus datos están seguros y nunca serán compartidos.",footer_desc:"El método francófono para aprender árabe clásico desde cero, a tu ritmo, de por vida.",footer_col1:"Curso",footer_col2:"Información",footer_register:"Inscribirse",footer_legal:"Aviso legal",footer_contact:"Contacto",notif_ok:" ¡Inscripción registrada! Te contactaremos pronto.",cgv_text:"He leído y acepto los <a href='mentions-legales.html#cgv' target='_blank'>Términos y Condiciones</a> y la <a href='mentions-legales.html#confidentialite' target='_blank'>Política de privacidad</a>."},
-pt:{nav_modules:"Curso",nav_alphabet:"Alfabeto",nav_tarif:"Preço",nav_faq:"FAQ",nav_cta:"Inscrever-se",nav_cta_mobile:"Inscrever-se — 49,99 €",hero_badge:" Curso de árabe clássico · 100% em francês",hero_desc:"Aprenda árabe clássico do zero com um método estruturado, aulas completas e exercícios de áudio para uma pronúncia perfeita.",pill_audio:"Áudio integrado",pill_letters:"28 letras",pill_program:"Programa de 6 meses",hero_cta:"Começar agora — 49,99 €",hero_discover:"Descobrir o curso",stat_letters:"Letras + áudio",stat_months:"Meses estruturados",stat_modules:"Módulos completos",stat_access:"Acesso vitalício",pb_label:"Você se reconhece?",pb_title:"Por que tantos falham ao aprender árabe",pb1_title:"Complexo demais sem guia",pb1_desc:"Alfabeto, vogais, casos gramaticais... sem método progressivo, as pessoas desistem rapidamente.",pb2_title:"Recursos não no seu idioma",pb2_desc:"A maioria dos bons recursos está em árabe ou inglês. Aprender em língua estrangeira atrasa tudo.",pb3_title:"Sem pronúncia real",pb3_desc:"Sem áudio, é impossível pronunciar corretamente os sons específicos do árabe.",pb_solution:"Por isso existe <strong>L'Arabe Accessible</strong>: um método <strong>em francês</strong>, progressivo, com <strong>áudio em cada letra e palavra</strong>.",mod_label:"Conteúdo do curso",mod_title:"4 Módulos para dominar o árabe clássico",mod_sub:"Acesso completo a todos os módulos após a inscrição.",mod_free_badge:"Prévia gratuita",mod1_name:"Alfabeto e Pronúncia",mod1_desc:"Domine as 28 letras árabes, suas 4 formas, as vogais curtas e longas, o tanwīn — tudo com áudio integrado.",mod1_t1:"28 letras",mod1_t2:"Vogais curtas",mod1_t3:"Vogais longas",mod1_t4:"Tanwīn",mod1_t5:"Áudio em cada som",mod1_lock:"Prévia disponível abaixo — <strong>Conteúdo completo após inscrição</strong>",mod2_name:"Gramática Completa",mod2_desc:"O substantivo, pronome, verbo e partícula — seus papéis, formas, casos gramaticais e uso na frase.",mod2_t1:"Substantivo",mod2_t2:"Pronome",mod2_t3:"Verbo",mod2_t4:"Partículas",mod2_t5:"Casos gramaticais",mod3_name:"Conjugação e Verbos",mod3_desc:"Passado, presente e imperativo para todas as pessoas com tabelas claras e exercícios corrigidos.",mod3_t1:"Passado",mod3_t2:"Presente",mod3_t3:"Imperativo",mod3_t4:"Negação",mod3_t5:"Exercícios corrigidos",mod4_name:"Programa Al-Adjroumiyya",mod4_desc:"24 semanas baseadas no tratado clássico. Um roteiro do iniciante até a leitura de textos clássicos.",mod4_t1:"6 meses · 24 semanas",mod4_t2:"Progressão guiada",mod4_t3:"Textos clássicos",mod4_t4:"Análise gramatical",mod_locked:"Conteúdo exclusivo para membros — <strong>Acesse após a inscrição</strong>",alph_label:"Prévia gratuita",alph_title:"O Alfabeto Árabe — Ouça cada letra",alph_sub:"Cliquez em para ouvir a pronúncia real. Conteúdo completo disponível após inscrição.",alph_cta_text:" Vogais, vocabulário, gramática e programa de 6 meses são exclusivos para membros.",alph_cta_btn:"Acessar todo o conteúdo — 49,99 €",ben_label:"Por que este curso",ben_title:"Um método completo pensado para falantes de francês",ben1_title:"Áudio em cada letra",ben1_desc:"Cada letra, vogal e palavra-chave tem um botão de áudio para ouvir a pronúncia exata.",ben2_title:"Gramática em francês",ben2_desc:"Todas as regras explicadas em francês com exemplos concretos, tabelas claras e exercícios corrigidos.",ben3_title:"Programa semana a semana",ben3_desc:"6 meses divididos em 24 semanas. Você sabe exatamente o que fazer cada semana.",ben4_title:"Acesso vitalício",ben4_desc:"Pague uma vez. Acesse todo o conteúdo para sempre, incluindo atualizações futuras.",ben5_title:"Conteúdo exclusivo para membros",ben5_desc:"Aulas completas, tabelas e exercícios reservados para membros inscritos.",ben6_title:"Em todos os seus dispositivos",ben6_desc:"O site funciona em smartphone, tablet e computador. Aprenda onde quiser, quando quiser.",tarif_label:"Oferta única",tarif_title:"Um único preço. Tudo incluído. Para sempre.",tarif_badge:" Acesso Completo",tarif_name:"Curso Completo",tarif_once:"Pagamento único — Acesso vitalício — Sem assinatura",tf1:"Alfabeto completo: 28 letras com áudio",tf2:"Vogais curtas, longas e tanwīn + áudio",tf3:"Gramática: Substantivo, Pronome, Verbo",tf4:"Conjugação: passado, presente, imperativo",tf5:"Exercícios corrigidos em cada aula",tf6:"Programa Al-Adjroumiyya 6 meses",tf7:"Vocabulário essencial com áudio",tf8:"Atualizações futuras incluídas grátis",tf9:"Acesso ilimitado, sem data de vencimento",tarif_cta:"Inscrever-se agora →",tarif_note:" Pagamento seguro · Acesso imediato",faq_label:"Perguntas frequentes",faq_title:"Suas perguntas, nossas respostas",faq1_q:"Preciso conhecer árabe para começar?",faq1_a:"Não, de jeito nenhum. O curso começa do zero: alfabeto, sons, vogais. Nenhum conhecimento prévio necessário.",faq2_q:"Qual árabe é ensinado — clássico ou dialetal?",faq2_a:"O curso ensina árabe clássico (فصحى), a língua do Alcorão e dos textos islâmicos tradicionais.",faq3_q:"Como acesso o conteúdo após o pagamento?",faq3_a:"Ao se inscrever, você recebe um email com suas credenciais. Você acessa imediatamente todos os módulos.",faq4_q:"Quanto tempo devo dedicar ao curso?",faq4_a:"30 a 60 minutos por dia é suficiente. O programa é projetado para seguir no seu próprio ritmo.",faq5_q:"Tenho acesso para sempre?",faq5_a:"Sim. Pagamento único, acesso ilimitado. Atualizações futuras também incluídas gratuitamente.",faq6_q:"O site funciona no celular?",faq6_a:"Sim, totalmente responsivo. Botões de áudio e todo o conteúdo funcionam em smartphone, tablet e computador.",insc_label:"Junte-se ao curso",insc_title:"Comece Hoje",insc_left_title:"Tudo que você precisa para aprender árabe clássico",insc_left_desc:"Método estruturado, aulas completas com áudio e programa de 6 meses — uma única vez 49,99 €.",insc_li1:"Alfabeto completo com áudio",insc_li2:"Gramática: Substantivo, Pronome, Verbo",insc_li3:"Conjugação completa das 3 formas",insc_li4:"Programa Al-Adjroumiyya 6 meses",insc_li5:"Exercícios corrigidos incluídos",insc_li6:"Acesso ilimitado vitalício",form_name:"Nome *",form_name_ph:"Seu nome",form_email:"Email *",form_level:"Seu nível atual",form_level_0:"Selecione seu nível",form_level_1:"Iniciante completo",form_level_2:"Conheço algumas letras",form_level_3:"Leio mas tenho lacunas na gramática",form_submit:"Inscrever-se e acessar o curso — 49,99 €",form_priv:" Seus dados estão seguros e nunca serão compartilhados.",footer_desc:"O método francófono para aprender árabe clássico do zero, no seu ritmo, para sempre.",footer_col1:"Curso",footer_col2:"Informações",footer_register:"Inscrever-se",footer_legal:"Aviso legal",footer_contact:"Contato",notif_ok:" Inscrição registrada! Entraremos em contato em breve.",cgv_text:"Li e aceito os <a href='mentions-legales.html#cgv' target='_blank'>Termos e Condições</a> e a <a href='mentions-legales.html#confidentialite' target='_blank'>Política de privacidade</a>."},
-de:{nav_modules:"Kurs",nav_alphabet:"Alphabet",nav_tarif:"Preis",nav_faq:"FAQ",nav_cta:"Anmelden",nav_cta_mobile:"Anmelden — 49,99 €",hero_badge:" Klassischer Arabischkurs · 100% auf Französisch",hero_desc:"Lerne klassisches Arabisch von Grund auf mit einer strukturierten Methode, vollständigen Lektionen und Audioübungen für eine perfekte Aussprache.",pill_audio:"Audio integriert",pill_letters:"28 Buchstaben",pill_program:"6-Monats-Programm",hero_cta:"Jetzt starten — 49,99 €",hero_discover:"Kurs entdecken",stat_letters:"Buchstaben + Audio",stat_months:"Strukturierte Monate",stat_modules:"Vollständige Module",stat_access:"Lebenslanger Zugang",pb_label:"Erkennst du dich wieder?",pb_title:"Warum so viele beim Arabischlernen scheitern",pb1_title:"Zu komplex ohne Anleitung",pb1_desc:"Alphabet, Vokale, grammatikalische Fälle... ohne progressive Methode geben die Leute schnell auf.",pb2_title:"Keine Ressourcen in deiner Sprache",pb2_desc:"Die meisten guten Ressourcen sind auf Arabisch oder Englisch. Lernen in einer Fremdsprache verlangsamt alles.",pb3_title:"Keine echte Aussprache",pb3_desc:"Ohne Audio ist es unmöglich, die arabischen Laute korrekt auszusprechen.",pb_solution:"Deshalb gibt es <strong>L'Arabe Accessible</strong>: eine Methode <strong>auf Französisch</strong>, progressiv, mit <strong>Audio zu jedem Buchstaben und Wort</strong>.",mod_label:"Kursinhalt",mod_title:"4 Module zur Beherrschung des klassischen Arabisch",mod_sub:"Vollständiger Zugang zu allen Modulen nach der Anmeldung.",mod_free_badge:"Kostenlose Vorschau",mod1_name:"Alphabet & Aussprache",mod1_desc:"Meistere die 28 arabischen Buchstaben, ihre 4 Formen, kurze und lange Vokale, Tanwīn — alles mit integriertem Audio.",mod1_t1:"28 Buchstaben",mod1_t2:"Kurze Vokale",mod1_t3:"Lange Vokale",mod1_t4:"Tanwīn",mod1_t5:"Audio zu jedem Laut",mod1_lock:"Vorschau unten verfügbar — <strong>Vollständiger Inhalt nach Anmeldung</strong>",mod2_name:"Vollständige Grammatik",mod2_desc:"Nomen, Pronomen, Verb und Partikel — ihre Rollen, Formen und grammatikalische Fälle.",mod2_t1:"Das Nomen",mod2_t2:"Das Pronomen",mod2_t3:"Das Verb",mod2_t4:"Partikeln",mod2_t5:"Grammatikalische Fälle",mod3_name:"Konjugation & Verben",mod3_desc:"Vergangenheit, Gegenwart und Imperativ für alle Personen mit klaren Tabellen und korrigierten Übungen.",mod3_t1:"Vergangenheit",mod3_t2:"Gegenwart",mod3_t3:"Imperativ",mod3_t4:"Verneinung",mod3_t5:"Korrigierte Übungen",mod4_name:"Al-Adjroumiyya Programm",mod4_desc:"24 Wochen basierend auf dem klassischen Traktat. Ein Fahrplan vom Anfänger bis zur Lektüre klassischer Texte.",mod4_t1:"6 Monate · 24 Wochen",mod4_t2:"Geführter Fortschritt",mod4_t3:"Klassische Texte",mod4_t4:"Grammatikalische Analyse",mod_locked:"Nur-Mitglieder-Inhalt — <strong>Zugang nach Anmeldung</strong>",alph_label:"Kostenlose Vorschau",alph_title:"Das arabische Alphabet — Höre jeden Buchstaben",alph_sub:"Klicke auf um die echte Aussprache zu hören. Vollständiger Inhalt nach Anmeldung verfügbar.",alph_cta_text:" Vokale, Vokabular, Grammatik und 6-Monats-Programm sind nur für Mitglieder.",alph_cta_btn:"Auf alle Inhalte zugreifen — 49,99 €",ben_label:"Warum dieser Kurs",ben_title:"Eine vollständige Methode für Französischsprachige",ben1_title:"Audio zu jedem Buchstaben",ben1_desc:"Jeder Buchstabe, Vokal und Schlüsselwort hat einen Audio-Button zur exakten Aussprache.",ben2_title:"Grammatik auf Französisch",ben2_desc:"Alle Regeln auf Französisch erklärt mit konkreten Beispielen, klaren Tabellen und korrigierten Übungen.",ben3_title:"Wöchentliches Programm",ben3_desc:"6 Monate in 24 Wochen aufgeteilt. Du weißt genau, was du jede Woche tun musst.",ben4_title:"Lebenslanger Zugang",ben4_desc:"Einmal bezahlen. Für immer auf alle Inhalte zugreifen, einschließlich zukünftiger Updates.",ben5_title:"Exklusive Mitgliederinhalte",ben5_desc:"Vollständige Lektionen, Tabellen und Übungen sind für eingeschriebene Mitglieder reserviert.",ben6_title:"Auf allen deinen Geräten",ben6_desc:"Die Website funktioniert auf Smartphone, Tablet und Computer. Lerne wo und wann du willst.",tarif_label:"Einmaliges Angebot",tarif_title:"Ein Preis. Alles inklusive. Für immer.",tarif_badge:" Vollständiger Zugang",tarif_name:"Vollständiger Kurs",tarif_once:"Einmalige Zahlung — Lebenslanger Zugang — Kein Abonnement",tf1:"Vollständiges Alphabet: 28 Buchstaben mit Audio",tf2:"Kurze, lange Vokale und Tanwīn + Audio",tf3:"Grammatik: Nomen, Pronomen, Verb",tf4:"Konjugation: Vergangenheit, Gegenwart, Imperativ",tf5:"Korrigierte Übungen zu jeder Lektion",tf6:"Al-Adjroumiyya 6-Monats-Programm",tf7:"Wesentlicher Wortschatz mit Audio",tf8:"Zukünftige Updates kostenlos enthalten",tf9:"Unbegrenzter Zugang, kein Ablaufdatum",tarif_cta:"Jetzt anmelden →",tarif_note:" Sichere Zahlung · Sofortiger Zugang",faq_label:"Häufig gestellte Fragen",faq_title:"Deine Fragen, unsere Antworten",faq1_q:"Muss ich Arabisch kennen, um anzufangen?",faq1_a:"Nein, überhaupt nicht. Der Kurs beginnt von Null: Alphabet, Laute, Vokale. Keine Vorkenntnisse erforderlich.",faq2_q:"Welches Arabisch wird gelehrt?",faq2_a:"Der Kurs lehrt klassisches Arabisch (فصحى), die Sprache des Korans und islamischer Texte.",faq3_q:"Wie greife ich nach der Zahlung auf den Inhalt zu?",faq3_a:"Bei der Anmeldung erhältst du eine E-Mail mit deinen Zugangsdaten. Du hast sofort Zugriff auf alle Module.",faq4_q:"Wie viel Zeit sollte ich dem Kurs widmen?",faq4_a:"30 bis 60 Minuten pro Tag reichen aus. Das Programm ist für dein eigenes Tempo ausgelegt.",faq5_q:"Habe ich für immer Zugang?",faq5_a:"Ja. Einmalige Zahlung, unbegrenzter Zugang. Zukünftige Updates ebenfalls kostenlos enthalten.",faq6_q:"Funktioniert die Website auf dem Handy?",faq6_a:"Ja, vollständig responsiv. Audio-Buttons und alle Inhalte funktionieren auf Smartphone, Tablet und Computer.",insc_label:"Dem Kurs beitreten",insc_title:"Heute anfangen",insc_left_title:"Alles, was du brauchst, um klassisches Arabisch zu lernen",insc_left_desc:"Strukturierte Methode, vollständige Lektionen mit Audio und 6-Monats-Programm — einmalig 49,99 €.",insc_li1:"Vollständiges Alphabet mit Audio",insc_li2:"Grammatik: Nomen, Pronomen, Verb",insc_li3:"Vollständige Konjugation aller 3 Formen",insc_li4:"Al-Adjroumiyya 6-Monats-Programm",insc_li5:"Korrigierte Übungen enthalten",insc_li6:"Unbegrenzter lebenslanger Zugang",form_name:"Vorname *",form_name_ph:"Dein Vorname",form_email:"E-Mail-Adresse *",form_level:"Dein aktuelles Niveau",form_level_0:"Wähle dein Niveau",form_level_1:"Kompletter Anfänger",form_level_2:"Ich kenne einige Buchstaben",form_level_3:"Ich kann lesen, habe aber Grammatiklücken",form_submit:"Anmelden und auf den Kurs zugreifen — 49,99 €",form_priv:" Deine Daten sind sicher und werden niemals weitergegeben.",footer_desc:"Die französischsprachige Methode zum Erlernen des klassischen Arabisch von Grund auf, in deinem Tempo, für immer.",footer_col1:"Kurs",footer_col2:"Informationen",footer_register:"Anmelden",footer_legal:"Impressum",footer_contact:"Kontakt",notif_ok:" Anmeldung gespeichert! Du wirst bald kontaktiert.",cgv_text:"Ich habe die <a href='mentions-legales.html#cgv' target='_blank'>AGB</a> und die <a href='mentions-legales.html#confidentialite' target='_blank'>Datenschutzrichtlinie</a> gelesen und akzeptiere sie."},
-tr:{nav_modules:"Kurs",nav_alphabet:"Alfabe",nav_tarif:"Fiyat",nav_faq:"SSS",nav_cta:"Kayıt Ol",nav_cta_mobile:"Kayıt Ol — 49,99 €",hero_badge:" Klasik Arapça Kursu · %100 Fransızca",hero_desc:"Yapılandırılmış bir yöntemle, tam dersler ve mükemmel telaffuz için sesli alıştırmalarla sıfırdan klasik Arapça öğren.",pill_audio:"Entegre ses",pill_letters:"28 harf",pill_program:"6 aylık program",hero_cta:"Şimdi başla — 49,99 €",hero_discover:"Kursu keşfet",stat_letters:"Harf + ses",stat_months:"Yapılandırılmış ay",stat_modules:"Tam modül",stat_access:"Ömür boyu erişim",pb_label:"Kendini tanıyor musun?",pb_title:"Neden pek çok kişi Arapça öğrenmekte başarısız olur",pb1_title:"Rehbersiz çok karmaşık",pb1_desc:"Alfabe, sesli harfler, dilbilgisi durumları... ilerlemeli bir yöntem olmadan insanlar çabuk vazgeçiyor.",pb2_title:"Kendi dilinde kaynak yok",pb2_desc:"İyi kaynakların çoğu Arapça veya İngilizcedir. Yabancı dilde öğrenmek her şeyi yavaşlatır.",pb3_title:"Gerçek telaffuz yok",pb3_desc:"Ses olmadan, Arapçaya özgü sesleri doğru telaffuz etmek imkânsızdır.",pb_solution:"Bu yüzden <strong>L'Arabe Accessible</strong> var: <strong>Fransızca</strong> ilerlemeli, her harf ve kelimede <strong>ses olan</strong> bir yöntem.",mod_label:"Kurs içeriği",mod_title:"Klasik Arapça'yı öğrenmek için 4 Modül",mod_sub:"Kayıt sonrası tüm modüllere tam erişim.",mod_free_badge:"Ücretsiz önizleme",mod1_name:"Alfabe ve Telaffuz",mod1_desc:"28 Arapça harfi, 4 formunu, kısa ve uzun sesli harfleri, tanwīn'i — hepsi entegre ses ile öğren.",mod1_t1:"28 harf",mod1_t2:"Kısa sesli harfler",mod1_t3:"Uzun sesli harfler",mod1_t4:"Tanwīn",mod1_t5:"Her ses için ses",mod1_lock:"Önizleme aşağıda mevcut — <strong>Kayıt sonrası tam içerik</strong>",mod2_name:"Tam Dilbilgisi",mod2_desc:"İsim, zamir, fiil ve edat — rolleri, biçimleri ve dilbilgisi durumları.",mod2_t1:"İsim",mod2_t2:"Zamir",mod2_t3:"Fiil",mod2_t4:"Edatlar",mod2_t5:"Dilbilgisi durumları",mod3_name:"Çekim ve Fiiller",mod3_desc:"Geçmiş, geniş zaman ve emir kipi tüm kişiler için açık tablolar ve düzeltilmiş alıştırmalarla.",mod3_t1:"Geçmiş zaman",mod3_t2:"Geniş zaman",mod3_t3:"Emir kipi",mod3_t4:"Olumsuzluk",mod3_t5:"Düzeltilmiş alıştırmalar",mod4_name:"Al-Adjroumiyya Programı",mod4_desc:"Klasik eseri temel alan 24 hafta. Başlangıçtan klasik metinleri okumaya kadar yol haritası.",mod4_t1:"6 ay · 24 hafta",mod4_t2:"Rehberli ilerleme",mod4_t3:"Klasik metinler",mod4_t4:"Dilbilgisi analizi",mod_locked:"Yalnızca üye içeriği — <strong>Kayıt sonrası erişim</strong>",alph_label:"Ücretsiz önizleme",alph_title:"Arap Alfabesi — Her harfi dinle",alph_sub:"Gerçek telaffuzu duymak için 'ya tıkla. Tam içerik kayıt sonrası mevcut.",alph_cta_text:" Sesli harfler, kelime hazinesi, dilbilgisi ve 6 aylık program yalnızca üyelere özeldir.",alph_cta_btn:"Tüm içeriğe eriş — 49,99 €",ben_label:"Neden bu kurs",ben_title:"Fransızca konuşanlar için tasarlanmış tam bir yöntem",ben1_title:"Her harf için ses",ben1_desc:"Her harf, sesli harf ve anahtar kelime tam telaffuzu duymak için bir ses düğmesine sahiptir.",ben2_title:"Fransızca dilbilgisi",ben2_desc:"Tüm kurallar Fransızca olarak somut örnekler, açık tablolar ve düzeltilmiş alıştırmalarla açıklanır.",ben3_title:"Haftalık program",ben3_desc:"6 ay 24 haftaya bölünmüş. Her hafta ne yapacağını tam olarak bilirsin.",ben4_title:"Ömür boyu erişim",ben4_desc:"Bir kez öde. Gelecekteki güncellemeler dahil tüm içeriğe sonsuza kadar eriş.",ben5_title:"Üyelere özel içerik",ben5_desc:"Tam dersler, tablolar ve alıştırmalar kayıtlı üyeler için ayrılmıştır.",ben6_title:"Tüm cihazlarında",ben6_desc:"Site akıllı telefon, tablet ve bilgisayarda mükemmel çalışır. İstediğin yerde öğren.",tarif_label:"Tekil teklif",tarif_title:"Tek fiyat. Her şey dahil. Sonsuza kadar.",tarif_badge:" Tam Erişim",tarif_name:"Tam Kurs",tarif_once:"Tek seferlik ödeme — Ömür boyu erişim — Abonelik yok",tf1:"Tam alfabe: 28 harf ses ile",tf2:"Kısa, uzun sesli harfler ve tanwīn + ses",tf3:"Dilbilgisi: İsim, Zamir, Fiil",tf4:"Çekim: geçmiş, geniş zaman, emir",tf5:"Her derste düzeltilmiş alıştırmalar",tf6:"Al-Adjroumiyya 6 aylık program",tf7:"Sesli temel kelime hazinesi",tf8:"Gelecekteki güncellemeler ücretsiz dahil",tf9:"Süresiz erişim",tarif_cta:"Şimdi kayıt ol →",tarif_note:" Güvenli ödeme · Anında erişim",faq_label:"Sık sorulan sorular",faq_title:"Sorularınız, cevaplarımız",faq1_q:"Başlamak için Arapça bilmek gerekiyor mu?",faq1_a:"Hayır, kesinlikle değil. Kurs sıfırdan başlıyor: alfabe, sesler, sesli harfler. Ön bilgi gerekmez.",faq2_q:"Hangi Arapça öğretiliyor?",faq2_a:"Kurs klasik Arapça (فصحى) öğretir, Kur'an ve geleneksel İslami metinlerin dili.",faq3_q:"Ödeme sonrası içeriğe nasıl erişirim?",faq3_a:"Kayıt olduğunda erişim bilgilerini içeren bir e-posta alırsın. Tüm modüllere anında erişirsin.",faq4_q:"Kursa ne kadar zaman ayırmalıyım?",faq4_a:"Günde 30-60 dakika yeterlidir. Program kendi hızında takip etmek için tasarlanmıştır.",faq5_q:"Sonsuza kadar erişimim var mı?",faq5_a:"Evet. Tek seferlik ödeme, sınırsız erişim. Gelecekteki güncellemeler de ücretsiz dahil.",faq6_q:"Site mobilde çalışıyor mu?",faq6_a:"Evet, tamamen duyarlı. Ses düğmeleri ve tüm içerik akıllı telefon, tablet ve bilgisayarda çalışır.",insc_label:"Kursa katıl",insc_title:"Bugün Başla",insc_left_title:"Klasik Arapça öğrenmek için ihtiyacın olan her şey",insc_left_desc:"Yapılandırılmış yöntem, sesli tam dersler ve 6 aylık program — yalnızca bir kez 49,99 €.",insc_li1:"Sesli tam alfabe",insc_li2:"Dilbilgisi: İsim, Zamir, Fiil",insc_li3:"3 formun tam çekimi",insc_li4:"Al-Adjroumiyya 6 aylık program",insc_li5:"Düzeltilmiş alıştırmalar dahil",insc_li6:"Ömür boyu sınırsız erişim",form_name:"Ad *",form_name_ph:"Adın",form_email:"E-posta adresi *",form_level:"Mevcut seviyeniz",form_level_0:"Seviyeni seç",form_level_1:"Tam başlangıç",form_level_2:"Birkaç harf biliyorum",form_level_3:"Okuyorum ama dilbilgisinde eksiklerim var",form_submit:"Kayıt ol ve kursa eriş — 49,99 €",form_priv:" Verileriniz güvende ve asla paylaşılmayacak.",footer_desc:"Klasik Arapçayı sıfırdan, kendi hızınızda, ömür boyu öğrenmek için Fransızca yöntem.",footer_col1:"Kurs",footer_col2:"Bilgiler",footer_register:"Kayıt Ol",footer_legal:"Yasal Bildirim",footer_contact:"İletişim",notif_ok:" Kayıt alındı! En kısa sürede sizinle iletişime geçilecek.",cgv_text:"<a href='mentions-legales.html#cgv' target='_blank'>Genel Satış Koşulları</a>'nı ve <a href='mentions-legales.html#confidentialite' target='_blank'>Gizlilik Politikası</a>'nı okudum ve kabul ediyorum."},
-ru:{nav_modules:"Курс",nav_alphabet:"Алфавит",nav_tarif:"Цена",nav_faq:"FAQ",nav_cta:"Записаться",nav_cta_mobile:"Записаться — 49,99 €",hero_badge:" Курс классического арабского · 100% на французском",hero_desc:"Изучай классический арабский с нуля со структурированной методикой, полными уроками и аудиоупражнениями для идеального произношения.",pill_audio:"Встроенное аудио",pill_letters:"28 букв",pill_program:"Программа 6 месяцев",hero_cta:"Начать сейчас — 49,99 €",hero_discover:"Узнать о курсе",stat_letters:"Буквы + аудио",stat_months:"Структурированных месяца",stat_modules:"Полных модуля",stat_access:"Доступ навсегда",pb_label:"Узнаёшь себя?",pb_title:"Почему так много людей бросают учить арабский",pb1_title:"Слишком сложно без руководства",pb1_desc:"Алфавит, гласные, грамматические падежи... без прогрессивной методики люди быстро сдаются.",pb2_title:"Нет ресурсов на вашем языке",pb2_desc:"Большинство хороших ресурсов на арабском или английском. Учёба на иностранном языке замедляет всё.",pb3_title:"Нет реального произношения",pb3_desc:"Без аудио невозможно правильно произносить специфические арабские звуки.",pb_solution:"Именно поэтому создан <strong>L'Arabe Accessible</strong>: методика <strong>на французском</strong>, прогрессивная, с <strong>аудио на каждую букву и слово</strong>.",mod_label:"Содержание курса",mod_title:"4 модуля для освоения классического арабского",mod_sub:"Полный доступ ко всем модулям после записи.",mod_free_badge:"Бесплатный просмотр",mod1_name:"Алфавит и произношение",mod1_desc:"Освой 28 арабских букв, их 4 формы, краткие и долгие гласные, танвин — всё со встроенным аудио.",mod1_t1:"28 букв",mod1_t2:"Краткие гласные",mod1_t3:"Долгие гласные",mod1_t4:"Танвин",mod1_t5:"Аудио для каждого звука",mod1_lock:"Предварительный просмотр ниже — <strong>Полный контент после записи</strong>",mod2_name:"Полная грамматика",mod2_desc:"Существительное, местоимение, глагол и частица — их роли, формы и грамматические падежи.",mod2_t1:"Существительное",mod2_t2:"Местоимение",mod2_t3:"Глагол",mod2_t4:"Частицы",mod2_t5:"Грамматические падежи",mod3_name:"Спряжение и глаголы",mod3_desc:"Прошедшее, настоящее и повелительное наклонение для всех лиц с таблицами и проверенными упражнениями.",mod3_t1:"Прошедшее",mod3_t2:"Настоящее",mod3_t3:"Повелительное",mod3_t4:"Отрицание",mod3_t5:"Проверенные упражнения",mod4_name:"Программа Аль-Аджрумийя",mod4_desc:"24 недели на основе классического трактата. Маршрут от начинающего до чтения классических текстов.",mod4_t1:"6 месяцев · 24 недели",mod4_t2:"Направляемый прогресс",mod4_t3:"Классические тексты",mod4_t4:"Грамматический анализ",mod_locked:"Контент только для участников — <strong>Доступ после записи</strong>",alph_label:"Бесплатный просмотр",alph_title:"Арабский алфавит — Слушай каждую букву",alph_sub:"Нажми чтобы услышать реальное произношение. Полный контент доступен после записи.",alph_cta_text:" Гласные, словарный запас, грамматика и 6-месячная программа только для участников.",alph_cta_btn:"Получить доступ ко всему контенту — 49,99 €",ben_label:"Почему этот курс",ben_title:"Полная методика для франкоязычных",ben1_title:"Аудио для каждой буквы",ben1_desc:"Каждая буква, гласная и ключевое слово имеет кнопку аудио для точного произношения.",ben2_title:"Грамматика на французском",ben2_desc:"Все правила объяснены на французском с конкретными примерами, чёткими таблицами и упражнениями.",ben3_title:"Недельная программа",ben3_desc:"6 месяцев разбиты на 24 недели. Ты точно знаешь, что делать каждую неделю.",ben4_title:"Пожизненный доступ",ben4_desc:"Платишь один раз. Доступ ко всему контенту навсегда, включая будущие обновления.",ben5_title:"Эксклюзивный контент для участников",ben5_desc:"Полные уроки, таблицы и упражнения зарезервированы для зарегистрированных участников.",ben6_title:"На всех твоих устройствах",ben6_desc:"Сайт отлично работает на смартфоне, планшете и компьютере. Учись где угодно, когда угодно.",tarif_label:"Единственное предложение",tarif_title:"Одна цена. Всё включено. Навсегда.",tarif_badge:" Полный доступ",tarif_name:"Полный курс",tarif_once:"Единоразовый платёж — Пожизненный доступ — Без подписки",tf1:"Полный алфавит: 28 букв с аудио",tf2:"Краткие, долгие гласные и танвин + аудио",tf3:"Грамматика: Существительное, Местоимение, Глагол",tf4:"Спряжение: прошедшее, настоящее, повелительное",tf5:"Проверенные упражнения в каждом уроке",tf6:"Программа Аль-Аджрумийя 6 месяцев",tf7:"Основная лексика с аудио",tf8:"Будущие обновления включены бесплатно",tf9:"Неограниченный доступ, без срока действия",tarif_cta:"Записаться сейчас →",tarif_note:" Безопасная оплата · Немедленный доступ",faq_label:"Часто задаваемые вопросы",faq_title:"Твои вопросы, наши ответы",faq1_q:"Нужно ли знать арабский для начала?",faq1_a:"Нет, совсем нет. Курс начинается с нуля: алфавит, звуки, гласные. Предварительных знаний не требуется.",faq2_q:"Какой арабский преподаётся?",faq2_a:"Курс преподаёт классический арабский (فصحى), язык Корана и традиционных исламских текстов.",faq3_q:"Как получить доступ к контенту после оплаты?",faq3_a:"После записи ты получаешь письмо с данными доступа. Ты сразу же получаешь доступ ко всем модулям.",faq4_q:"Сколько времени уделять курсу?",faq4_a:"30-60 минут в день достаточно. Программа разработана для прохождения в своём темпе.",faq5_q:"Есть ли доступ навсегда?",faq5_a:"Да. Единоразовый платёж, неограниченный доступ. Будущие обновления также включены бесплатно.",faq6_q:"Работает ли сайт на мобильном?",faq6_a:"Да, полностью адаптивный. Кнопки аудио и весь контент работают на смартфоне, планшете и компьютере.",insc_label:"Присоединись к курсу",insc_title:"Начни Сегодня",insc_left_title:"Всё необходимое для изучения классического арабского",insc_left_desc:"Структурированная методика, полные уроки с аудио и 6-месячная программа — один раз 49,99 €.",insc_li1:"Полный алфавит с аудио",insc_li2:"Грамматика: Существительное, Местоимение, Глагол",insc_li3:"Полное спряжение всех 3 форм",insc_li4:"Программа Аль-Аджрумийя 6 месяцев",insc_li5:"Проверенные упражнения включены",insc_li6:"Неограниченный пожизненный доступ",form_name:"Имя *",form_name_ph:"Твоё имя",form_email:"Адрес электронной почты *",form_level:"Твой текущий уровень",form_level_0:"Выбери уровень",form_level_1:"Полный новичок",form_level_2:"Знаю несколько букв",form_level_3:"Читаю, но есть пробелы в грамматике",form_submit:"Записаться и получить доступ — 49,99 €",form_priv:" Твои данные в безопасности и никогда не будут переданы третьим лицам.",footer_desc:"Франкоязычная методика изучения классического арабского с нуля, в своём темпе, навсегда.",footer_col1:"Курс",footer_col2:"Информация",footer_register:"Записаться",footer_legal:"Правовая информация",footer_contact:"Контакт",notif_ok:" Заявка зарегистрирована! Мы свяжемся с вами в ближайшее время.",cgv_text:"Я прочитал и принимаю <a href='mentions-legales.html#cgv' target='_blank'>Условия продажи</a> и <a href='mentions-legales.html#confidentialite' target='_blank'>Политику конфиденциальности</a>."},
-id:{nav_modules:"Kursus",nav_alphabet:"Alfabet",nav_tarif:"Harga",nav_faq:"FAQ",nav_cta:"Daftar",nav_cta_mobile:"Daftar — 49,99 €",hero_badge:" Kursus Bahasa Arab Klasik · 100% dalam Bahasa Prancis",hero_desc:"Pelajari bahasa Arab klasik dari nol dengan metode terstruktur, pelajaran lengkap dan latihan audio untuk pengucapan yang sempurna.",pill_audio:"Audio terintegrasi",pill_letters:"28 huruf",pill_program:"Program 6 bulan",hero_cta:"Mulai sekarang — 49,99 €",hero_discover:"Temukan kursusnya",stat_letters:"Huruf + audio",stat_months:"Bulan terstruktur",stat_modules:"Modul lengkap",stat_access:"Akses seumur hidup",pb_label:"Apakah kamu mengenali dirimu?",pb_title:"Mengapa banyak orang gagal belajar bahasa Arab",pb1_title:"Terlalu rumit tanpa panduan",pb1_desc:"Alfabet, vokal, kasus gramatikal... tanpa metode progresif, orang cepat menyerah.",pb2_title:"Sumber daya tidak dalam bahasamu",pb2_desc:"Kebanyakan sumber daya yang baik dalam bahasa Arab atau Inggris. Belajar dalam bahasa asing memperlambat segalanya.",pb3_title:"Tidak ada pengucapan nyata",pb3_desc:"Tanpa audio, mustahil mengucapkan bunyi Arab yang spesifik dengan benar.",pb_solution:"Itulah mengapa <strong>L'Arabe Accessible</strong> ada: metode <strong>dalam bahasa Prancis</strong>, progresif, dengan <strong>audio di setiap huruf dan kata</strong>.",mod_label:"Konten kursus",mod_title:"4 Modul untuk menguasai bahasa Arab klasik",mod_sub:"Akses penuh ke semua modul setelah pendaftaran.",mod_free_badge:"Pratinjau gratis",mod1_name:"Alfabet & Pengucapan",mod1_desc:"Kuasai 28 huruf Arab, 4 bentuknya, vokal pendek dan panjang, tanwīn — semuanya dengan audio terintegrasi.",mod1_t1:"28 huruf",mod1_t2:"Vokal pendek",mod1_t3:"Vokal panjang",mod1_t4:"Tanwīn",mod1_t5:"Audio di setiap bunyi",mod1_lock:"Pratinjau tersedia di bawah — <strong>Konten lengkap setelah pendaftaran</strong>",mod2_name:"Tata Bahasa Lengkap",mod2_desc:"Kata benda, kata ganti, kata kerja dan partikel — peran, bentuk, kasus gramatikal.",mod2_t1:"Kata Benda",mod2_t2:"Kata Ganti",mod2_t3:"Kata Kerja",mod2_t4:"Partikel",mod2_t5:"Kasus gramatikal",mod3_name:"Konjugasi & Kata Kerja",mod3_desc:"Lampau, sekarang dan imperatif untuk semua orang dengan tabel jelas dan latihan terkoreksi.",mod3_t1:"Lampau",mod3_t2:"Sekarang",mod3_t3:"Imperatif",mod3_t4:"Negasi",mod3_t5:"Latihan terkoreksi",mod4_name:"Program Al-Adjroumiyya",mod4_desc:"24 minggu berdasarkan risalah klasik. Peta jalan dari pemula hingga membaca teks klasik.",mod4_t1:"6 bulan · 24 minggu",mod4_t2:"Kemajuan terbimbing",mod4_t3:"Teks klasik",mod4_t4:"Analisis gramatikal",mod_locked:"Konten khusus anggota — <strong>Akses setelah pendaftaran</strong>",alph_label:"Pratinjau gratis",alph_title:"Alfabet Arab — Dengarkan setiap huruf",alph_sub:"Klik untuk mendengar pengucapan nyata. Konten lengkap tersedia setelah pendaftaran.",alph_cta_text:" Vokal, kosakata, tata bahasa dan program 6 bulan hanya untuk anggota.",alph_cta_btn:"Akses semua konten — 49,99 €",ben_label:"Mengapa kursus ini",ben_title:"Metode lengkap untuk penutur bahasa Prancis",ben1_title:"Audio di setiap huruf",ben1_desc:"Setiap huruf, vokal dan kata kunci memiliki tombol audio untuk mendengar pengucapan yang tepat.",ben2_title:"Tata bahasa dalam bahasa Prancis",ben2_desc:"Semua aturan dijelaskan dalam bahasa Prancis dengan contoh konkret dan tabel jelas.",ben3_title:"Program minggu per minggu",ben3_desc:"6 bulan dibagi menjadi 24 minggu. Kamu tahu persis apa yang harus dilakukan setiap minggu.",ben4_title:"Akses seumur hidup",ben4_desc:"Bayar sekali. Akses semua konten selamanya, termasuk pembaruan masa depan.",ben5_title:"Konten eksklusif anggota",ben5_desc:"Pelajaran lengkap, tabel dan latihan hanya untuk anggota terdaftar.",ben6_title:"Di semua perangkatmu",ben6_desc:"Situs berfungsi di smartphone, tablet dan komputer. Belajar di mana saja, kapan saja.",tarif_label:"Penawaran tunggal",tarif_title:"Satu harga. Semua termasuk. Selamanya.",tarif_badge:" Akses Penuh",tarif_name:"Kursus Lengkap",tarif_once:"Pembayaran sekali — Akses seumur hidup — Tanpa langganan",tf1:"Alfabet lengkap: 28 huruf dengan audio",tf2:"Vokal pendek, panjang dan tanwīn + audio",tf3:"Tata bahasa: Kata Benda, Kata Ganti, Kata Kerja",tf4:"Konjugasi: lampau, sekarang, imperatif",tf5:"Latihan terkoreksi di setiap pelajaran",tf6:"Program Al-Adjroumiyya 6 bulan",tf7:"Kosakata esensial dengan audio",tf8:"Pembaruan masa depan termasuk gratis",tf9:"Akses tidak terbatas, tanpa tanggal kedaluwarsa",tarif_cta:"Daftar sekarang →",tarif_note:" Pembayaran aman · Akses segera",faq_label:"Pertanyaan yang sering diajukan",faq_title:"Pertanyaanmu, jawaban kami",faq1_q:"Apakah perlu tahu bahasa Arab untuk memulai?",faq1_a:"Tidak sama sekali. Kursus dimulai dari nol: alfabet, bunyi, vokal. Tidak diperlukan pengetahuan sebelumnya.",faq2_q:"Bahasa Arab apa yang diajarkan?",faq2_a:"Kursus mengajarkan bahasa Arab klasik (فصحى), bahasa Al-Quran dan teks-teks Islam tradisional.",faq3_q:"Bagaimana cara mengakses konten setelah pembayaran?",faq3_a:"Saat mendaftar, kamu menerima email dengan kredensial akses. Kamu langsung mengakses semua modul.",faq4_q:"Berapa banyak waktu yang harus saya dedikasikan?",faq4_a:"30-60 menit per hari sudah cukup. Program dirancang untuk diikuti sesuai kecepatanmu sendiri.",faq5_q:"Apakah saya memiliki akses selamanya?",faq5_a:"Ya. Pembayaran sekali, akses tidak terbatas. Pembaruan masa depan juga termasuk secara gratis.",faq6_q:"Apakah situs berfungsi di ponsel?",faq6_a:"Ya, sepenuhnya responsif. Tombol audio dan semua konten berfungsi di smartphone, tablet dan komputer.",insc_label:"Bergabunglah dengan kursus",insc_title:"Mulai Hari Ini",insc_left_title:"Semua yang kamu butuhkan untuk belajar bahasa Arab klasik",insc_left_desc:"Metode terstruktur, pelajaran lengkap dengan audio dan program 6 bulan — hanya sekali 49,99 €.",insc_li1:"Alfabet lengkap dengan audio",insc_li2:"Tata bahasa: Kata Benda, Kata Ganti, Kata Kerja",insc_li3:"Konjugasi lengkap dari 3 bentuk",insc_li4:"Program Al-Adjroumiyya 6 bulan",insc_li5:"Latihan terkoreksi termasuk",insc_li6:"Akses tidak terbatas seumur hidup",form_name:"Nama depan *",form_name_ph:"Nama depanmu",form_email:"Alamat email *",form_level:"Tingkat saat ini",form_level_0:"Pilih tingkatmu",form_level_1:"Pemula lengkap",form_level_2:"Saya tahu beberapa huruf",form_level_3:"Saya bisa membaca tapi punya kesenjangan tata bahasa",form_submit:"Daftar dan akses kursus — 49,99 €",form_priv:" Datamu aman dan tidak akan pernah dibagikan.",footer_desc:"Metode berbahasa Prancis untuk belajar bahasa Arab klasik dari nol, sesuai kecepatanmu, seumur hidup.",footer_col1:"Kursus",footer_col2:"Informasi",footer_register:"Daftar",footer_legal:"Pemberitahuan hukum",footer_contact:"Kontak",notif_ok:" Pendaftaran tercatat! Anda akan segera dihubungi.",cgv_text:"Saya telah membaca dan menyetujui <a href='mentions-legales.html#cgv' target='_blank'>Syarat & Ketentuan</a> dan <a href='mentions-legales.html#confidentialite' target='_blank'>Kebijakan Privasi</a>."},
-it:{nav_modules:"Corso",nav_alphabet:"Alfabeto",nav_tarif:"Prezzo",nav_faq:"FAQ",nav_cta:"Iscriversi",nav_cta_mobile:"Iscriversi — 49,99 €",hero_badge:" Corso di arabo classico · 100% in francese",hero_desc:"Impara l'arabo classico da zero con un metodo strutturato, lezioni complete ed esercizi audio per una pronuncia perfetta.",pill_audio:"Audio integrato",pill_letters:"28 lettere",pill_program:"Programma di 6 mesi",hero_cta:"Inizia ora — 49,99 €",hero_discover:"Scopri il corso",stat_letters:"Lettere + audio",stat_months:"Mesi strutturati",stat_modules:"Moduli completi",stat_access:"Accesso a vita",pb_label:"Ti riconosci?",pb_title:"Perché tante persone falliscono nell'imparare l'arabo",pb1_title:"Troppo complesso senza guida",pb1_desc:"Alfabeto, vocali, casi grammaticali... senza un metodo progressivo, le persone si arrendono rapidamente.",pb2_title:"Risorse non nella tua lingua",pb2_desc:"La maggior parte delle buone risorse è in arabo o inglese. Imparare in lingua straniera rallenta tutto.",pb3_title:"Nessuna pronuncia reale",pb3_desc:"Senza audio è impossibile pronunciare correttamente i suoni specifici dell'arabo.",pb_solution:"Per questo esiste <strong>L'Arabe Accessible</strong>: un metodo <strong>in francese</strong>, progressivo, con <strong>audio su ogni lettera e parola</strong>.",mod_label:"Contenuto del corso",mod_title:"4 Moduli per padroneggiare l'arabo classico",mod_sub:"Accesso completo a tutti i moduli dopo l'iscrizione.",mod_free_badge:"Anteprima gratuita",mod1_name:"Alfabeto e Pronuncia",mod1_desc:"Padroneggia le 28 lettere arabe, le loro 4 forme, le vocali brevi e lunghe, il tanwīn — tutto con audio integrato.",mod1_t1:"28 lettere",mod1_t2:"Vocali brevi",mod1_t3:"Vocali lunghe",mod1_t4:"Tanwīn",mod1_t5:"Audio su ogni suono",mod1_lock:"Anteprima disponibile sotto — <strong>Contenuto completo dopo l'iscrizione</strong>",mod2_name:"Grammatica Completa",mod2_desc:"Il nome, il pronome, il verbo e la particella — i loro ruoli, forme e casi grammaticali.",mod2_t1:"Il Nome",mod2_t2:"Il Pronome",mod2_t3:"Il Verbo",mod2_t4:"Particelle",mod2_t5:"Casi grammaticali",mod3_name:"Coniugazione e Verbi",mod3_desc:"Passato, presente e imperativo per tutte le persone con tabelle chiare ed esercizi corretti.",mod3_t1:"Passato",mod3_t2:"Presente",mod3_t3:"Imperativo",mod3_t4:"Negazione",mod3_t5:"Esercizi corretti",mod4_name:"Programma Al-Adjroumiyya",mod4_desc:"24 settimane basate sul trattato classico. Una tabella di marcia dal principiante alla lettura di testi classici.",mod4_t1:"6 mesi · 24 settimane",mod4_t2:"Progressione guidata",mod4_t3:"Testi classici",mod4_t4:"Analisi grammaticale",mod_locked:"Contenuto esclusivo per i membri — <strong>Accedi dopo l'iscrizione</strong>",alph_label:"Anteprima gratuita",alph_title:"L'Alfabeto Arabo — Ascolta ogni lettera",alph_sub:"Clicca su per ascoltare la pronuncia reale. Il contenuto completo è disponibile dopo l'iscrizione.",alph_cta_text:" Vocali, vocabolario, grammatica e programma di 6 mesi sono riservati ai membri.",alph_cta_btn:"Accedi a tutto il contenuto — 49,99 €",ben_label:"Perché questo corso",ben_title:"Un metodo completo pensato per i francofoni",ben1_title:"Audio su ogni lettera",ben1_desc:"Ogni lettera, vocale e parola chiave ha un pulsante audio per ascoltare la pronuncia esatta.",ben2_title:"Grammatica in francese",ben2_desc:"Tutte le regole spiegate in francese con esempi concreti, tabelle chiare ed esercizi corretti.",ben3_title:"Programma settimana per settimana",ben3_desc:"6 mesi divisi in 24 settimane. Sai esattamente cosa fare ogni settimana.",ben4_title:"Accesso a vita",ben4_desc:"Paghi una volta sola. Accedi a tutto il contenuto per sempre, inclusi gli aggiornamenti futuri.",ben5_title:"Contenuto esclusivo per i membri",ben5_desc:"Lezioni complete, tabelle ed esercizi riservati ai membri iscritti.",ben6_title:"Su tutti i tuoi dispositivi",ben6_desc:"Il sito funziona perfettamente su smartphone, tablet e computer. Impara dove vuoi, quando vuoi.",tarif_label:"Offerta unica",tarif_title:"Un solo prezzo. Tutto incluso. Per sempre.",tarif_badge:" Accesso Completo",tarif_name:"Corso Completo",tarif_once:"Pagamento unico — Accesso a vita — Nessun abbonamento",tf1:"Alfabeto completo: 28 lettere con audio",tf2:"Vocali brevi, lunghe e tanwīn + audio",tf3:"Grammatica: Nome, Pronome, Verbo",tf4:"Coniugazione: passato, presente, imperativo",tf5:"Esercizi corretti ad ogni lezione",tf6:"Programma Al-Adjroumiyya 6 mesi",tf7:"Vocabolario essenziale con audio",tf8:"Aggiornamenti futuri inclusi gratis",tf9:"Accesso illimitato, senza data di scadenza",tarif_cta:"Iscriviti ora →",tarif_note:" Pagamento sicuro · Accesso immediato",faq_label:"Domande frequenti",faq_title:"Le tue domande, le nostre risposte",faq1_q:"Bisogna conoscere l'arabo per iniziare?",faq1_a:"No, assolutamente no. Il corso parte da zero: alfabeto, suoni, vocali. Nessuna conoscenza preliminare richiesta.",faq2_q:"Quale arabo viene insegnato?",faq2_a:"Il corso insegna l'arabo classico (فصحى), la lingua del Corano e dei testi islamici tradizionali.",faq3_q:"Come accedo al contenuto dopo il pagamento?",faq3_a:"All'iscrizione ricevi una email con le tue credenziali. Accedi immediatamente a tutti i moduli.",faq4_q:"Quanto tempo devo dedicare al corso?",faq4_a:"30-60 minuti al giorno sono sufficienti. Il programma è progettato per essere seguito al proprio ritmo.",faq5_q:"Ho accesso per sempre?",faq5_a:"Sì. Pagamento unico, accesso illimitato. Anche gli aggiornamenti futuri sono inclusi gratuitamente.",faq6_q:"Il sito funziona su mobile?",faq6_a:"Sì, completamente responsive. I pulsanti audio e tutti i contenuti funzionano su smartphone, tablet e computer.",insc_label:"Unisciti al corso",insc_title:"Inizia Oggi",insc_left_title:"Tutto ciò di cui hai bisogno per imparare l'arabo classico",insc_left_desc:"Metodo strutturato, lezioni complete con audio e programma di 6 mesi — una sola volta 49,99 €.",insc_li1:"Alfabeto completo con audio",insc_li2:"Grammatica: Nome, Pronome, Verbo",insc_li3:"Coniugazione completa delle 3 forme",insc_li4:"Programma Al-Adjroumiyya 6 mesi",insc_li5:"Esercizi corretti inclusi",insc_li6:"Accesso illimitato a vita",form_name:"Nome *",form_name_ph:"Il tuo nome",form_email:"Email *",form_level:"Il tuo livello attuale",form_level_0:"Seleziona il tuo livello",form_level_1:"Principiante completo",form_level_2:"Conosco alcune lettere",form_level_3:"Leggo ma ho lacune in grammatica",form_submit:"Iscriversi e accedere al corso — 49,99 €",form_priv:" I tuoi dati sono al sicuro e non saranno mai condivisi.",footer_desc:"Il metodo francofono per imparare l'arabo classico da zero, al tuo ritmo, per sempre.",footer_col1:"Corso",footer_col2:"Informazioni",footer_register:"Iscriversi",footer_legal:"Note legali",footer_contact:"Contatto",notif_ok:" Iscrizione registrata! Sarai contattato/a presto.",cgv_text:"Ho letto e accetto i <a href='mentions-legales.html#cgv' target='_blank'>Termini e Condizioni</a> e la <a href='mentions-legales.html#confidentialite' target='_blank'>Politica sulla privacy</a>."},
-zh:{nav_modules:"课程",nav_alphabet:"字母",nav_tarif:"价格",nav_faq:"常见问题",nav_cta:"注册",nav_cta_mobile:"注册 — 49,99 €",hero_badge:"✦ 古典阿拉伯语课程 · 100%法语授课",hero_desc:"从零开始学习古典阿拉伯语，方法系统，课程完整，配有音频练习，发音完美。",pill_audio:"集成音频",pill_letters:"28个字母",pill_program:"6个月课程",hero_cta:"立即开始 — 49,99 €",hero_discover:"了解课程",stat_letters:"字母 + 音频",stat_months:"系统化月份",stat_modules:"完整模块",stat_access:"终身访问",pb_label:"你认识自己吗？",pb_title:"为什么那么多人学阿拉伯语失败",pb1_title:"没有指导太复杂",pb1_desc:"字母、元音、语法格……没有渐进式方法，人们很快就放弃了。",pb2_title:"没有用你语言的资源",pb2_desc:"大多数好资源是阿拉伯语或英语的。用外语学习会拖慢一切。",pb3_title:"没有真正的发音",pb3_desc:"没有音频，就不可能正确发出阿拉伯语特有的音。",pb_solution:"这就是<strong>L'Arabe Accessible</strong>存在的原因：一种<strong>法语</strong>渐进式方法，每个字母和单词都有<strong>音频</strong>。",mod_label:"课程内容",mod_title:"4个模块掌握古典阿拉伯语",mod_sub:"注册后可完整访问所有模块。",mod_free_badge:"免费预览",mod1_name:"字母与发音",mod1_desc:"掌握28个阿拉伯字母、4种形式、短元音和长元音、坦温——全部集成音频。",mod1_t1:"28个字母",mod1_t2:"短元音",mod1_t3:"长元音",mod1_t4:"坦温",mod1_t5:"每个音都有音频",mod1_lock:"预览如下 — <strong>注册后可访问完整内容</strong>",mod2_name:"完整语法",mod2_desc:"名词、代词、动词和虚词——它们的角色、形式和语法格。",mod2_t1:"名词",mod2_t2:"代词",mod2_t3:"动词",mod2_t4:"虚词",mod2_t5:"语法格",mod3_name:"变位与动词",mod3_desc:"过去时、现在时和命令式，所有人称，配有清晰表格和批改练习。",mod3_t1:"过去时",mod3_t2:"现在时",mod3_t3:"命令式",mod3_t4:"否定",mod3_t5:"批改练习",mod4_name:"阿吉鲁米亚课程",mod4_desc:"基于古典论著的24周课程。从初学者到阅读古典文本的路线图。",mod4_t1:"6个月 · 24周",mod4_t2:"引导式进步",mod4_t3:"古典文本",mod4_t4:"语法分析",mod_locked:"仅会员内容 — <strong>注册后访问</strong>",alph_label:"免费预览",alph_title:"阿拉伯字母 — 听每个字母",alph_sub:"点击▶听真实发音。完整内容注册后可用。",alph_cta_text:"元音、词汇、语法和6个月课程仅限会员。",alph_cta_btn:"访问所有内容 — 49,99 €",ben_label:"为什么选择这门课程",ben_title:"专为法语使用者设计的完整方法",ben1_title:"每个字母都有音频",ben1_desc:"每个字母、元音和关键词都有音频按钮，可以听到准确发音。",ben2_title:"法语语法",ben2_desc:"所有规则用法语解释，有具体例子、清晰表格和批改练习。",ben3_title:"每周课程计划",ben3_desc:"6个月分成24周。你确切知道每周该做什么。",ben4_title:"终身访问",ben4_desc:"一次付款。永久访问所有内容，包括未来更新。",ben5_title:"会员专属内容",ben5_desc:"完整课程、表格和练习仅供注册会员使用。",ben6_title:"在所有设备上",ben6_desc:"网站在智能手机、平板电脑和电脑上完美运行。随时随地学习。",tarif_label:"唯一优惠",tarif_title:"一个价格。全部包含。永远。",tarif_badge:"✦ 完整访问",tarif_name:"完整课程",tarif_once:"一次性付款 — 终身访问 — 无需订阅",tf1:"完整字母表：28个字母带音频",tf2:"短、长元音和坦温 + 音频",tf3:"语法：名词、代词、动词",tf4:"变位：过去时、现在时、命令式",tf5:"每节课的批改练习",tf6:"阿吉鲁米亚6个月课程",tf7:"基本词汇带音频",tf8:"未来更新免费包含",tf9:"无限访问，无到期日期",tarif_cta:"立即注册 →",tarif_note:"安全付款 · 立即访问",faq_label:"常见问题",faq_title:"你的问题，我们的答案",faq1_q:"开始学习需要了解阿拉伯语吗？",faq1_a:"不，完全不需要。课程从零开始：字母、音素、元音。不需要任何预备知识。",faq2_q:"教的是哪种阿拉伯语？",faq2_a:"课程教授古典阿拉伯语（فصحى），即《古兰经》和伊斯兰传统文本的语言。",faq3_q:"付款后如何访问内容？",faq3_a:"注册后，您会收到一封包含访问凭据的电子邮件。您立即访问所有模块。",faq4_q:"我应该花多少时间在课程上？",faq4_a:"每天30-60分钟就足够了。该计划旨在按照自己的节奏进行。",faq5_q:"我能永久访问吗？",faq5_a:"是的。一次性付款，无限访问。未来更新也免费包含。",faq6_q:"网站在手机上能用吗？",faq6_a:"是的，完全响应式。音频按钮和所有内容在智能手机、平板电脑和电脑上都能使用。",insc_label:"加入课程",insc_title:"今天开始",insc_left_title:"学习古典阿拉伯语所需的一切",insc_left_desc:"系统化方法、带音频的完整课程和6个月课程——仅一次49,99 €。",insc_li1:"带音频的完整字母表",insc_li2:"语法：名词、代词、动词",insc_li3:"3种形式的完整变位",insc_li4:"阿吉鲁米亚6个月课程",insc_li5:"包含批改练习",insc_li6:"终身无限访问",form_name:"名字 *",form_name_ph:"你的名字",form_email:"电子邮件地址 *",form_level:"你目前的水平",form_level_0:"选择你的水平",form_level_1:"完全初学者",form_level_2:"我知道一些字母",form_level_3:"我能读但语法有空缺",form_submit:"注册并访问课程 — 49,99 €",form_priv:"您的数据安全，绝不会被共享。",footer_desc:"从零开始学习古典阿拉伯语的法语方法，按你的节奏，终身学习。",footer_col1:"课程",footer_col2:"信息",footer_register:"注册",footer_legal:"法律声明",footer_contact:"联系",notif_ok:"✓ 注册已记录！我们将尽快与您联系。",cgv_text:"我已阅读并接受<a href='mentions-legales.html#cgv' target='_blank'>销售条款</a>和<a href='mentions-legales.html#confidentialite' target='_blank'>隐私政策</a>。"},
-hi:{nav_modules:"कोर्स",nav_alphabet:"वर्णमाला",nav_tarif:"मूल्य",nav_faq:"FAQ",nav_cta:"अभी जुड़ें",nav_cta_mobile:"अभी जुड़ें — 49,99 €",hero_badge:"✦ शास्त्रीय अरबी कोर्स · 100% फ्रेंच में",hero_desc:"संरचित पद्धति, संपूर्ण पाठ और उत्तम उच्चारण के लिए ऑडियो अभ्यास के साथ शून्य से शास्त्रीय अरबी सीखें।",pill_audio:"एकीकृत ऑडियो",pill_letters:"28 अक्षर",pill_program:"6 महीने का कार्यक्रम",hero_cta:"अभी शुरू करें — 49,99 €",hero_discover:"कोर्स जानें",stat_letters:"अक्षर + ऑडियो",stat_months:"संरचित महीने",stat_modules:"पूर्ण मॉड्यूल",stat_access:"आजीवन पहुँच",pb_label:"क्या आप खुद को पहचानते हैं?",pb_title:"लोग अरबी सीखने में क्यों विफल होते हैं",pb1_title:"बिना मार्गदर्शन के बहुत कठिन",pb1_desc:"वर्णमाला, स्वर, व्याकरण... बिना क्रमिक विधि के लोग जल्दी छोड़ देते हैं।",pb2_title:"आपकी भाषा में संसाधन नहीं",pb2_desc:"अधिकांश अच्छे संसाधन अरबी या अंग्रेजी में हैं। विदेशी भाषा में सीखना सब कुछ धीमा कर देता है।",pb3_title:"कोई वास्तविक उच्चारण नहीं",pb3_desc:"ऑडियो के बिना अरबी की विशेष ध्वनियों का सही उच्चारण असंभव है।",pb_solution:"इसीलिए <strong>L'Arabe Accessible</strong> बनाया गया : <strong>फ्रेंच में</strong> एक क्रमिक विधि, <strong>हर अक्षर और शब्द पर ऑडियो</strong> के साथ।",mod_label:"कोर्स सामग्री",mod_title:"शास्त्रीय अरबी में महारत के लिए 4 मॉड्यूल",mod_sub:"पंजीकरण के बाद सभी मॉड्यूल तक पूर्ण पहुँच।",mod_free_badge:"निःशुल्क पूर्वावलोकन",mod1_name:"वर्णमाला और उच्चारण",mod1_desc:"28 अरबी अक्षर, उनके 4 रूप, लघु और दीर्घ स्वर — सभी एकीकृत ऑडियो के साथ।",mod1_t1:"28 अक्षर",mod1_t2:"लघु स्वर",mod1_t3:"दीर्घ स्वर",mod1_t4:"तनवीन",mod1_t5:"हर ध्वनि पर ऑडियो",mod1_lock:"नीचे पूर्वावलोकन — <strong>पंजीकरण के बाद पूर्ण सामग्री</strong>",mod2_name:"संपूर्ण व्याकरण",mod2_desc:"संज्ञा, सर्वनाम, क्रिया और कण — उनकी भूमिकाएँ, रूप और व्याकरणिक कारक।",mod2_t1:"संज्ञा",mod2_t2:"सर्वनाम",mod2_t3:"क्रिया",mod2_t4:"कण",mod2_t5:"व्याकरणिक कारक",mod3_name:"क्रिया रूप",mod3_desc:"भूतकाल, वर्तमान और आज्ञार्थ — स्पष्ट तालिकाओं और सुधरे अभ्यासों के साथ।",mod3_t1:"भूतकाल",mod3_t2:"वर्तमान",mod3_t3:"आज्ञार्थ",mod3_t4:"निषेध",mod3_t5:"सुधरे अभ्यास",mod4_name:"अल-अजरूमिय्या",mod4_desc:"24 सप्ताह का शास्त्रीय कार्यक्रम। शुरुआती से शास्त्रीय ग्रंथ पढ़ने तक।",mod4_t1:"6 महीने · 24 सप्ताह",mod4_t2:"निर्देशित प्रगति",mod4_t3:"शास्त्रीय ग्रंथ",mod4_t4:"व्याकरण विश्लेषण",mod_locked:"केवल सदस्यों के लिए — <strong>पंजीकरण के बाद पहुँच</strong>",alph_label:"निःशुल्क पूर्वावलोकन",alph_title:"अरबी वर्णमाला — हर अक्षर सुनें",alph_sub:"वास्तविक उच्चारण सुनने के लिए ▶ दबाएँ। पूर्ण सामग्री पंजीकरण के बाद उपलब्ध।",alph_cta_text:"स्वर, शब्दावली, व्याकरण और 6 महीने का कार्यक्रम केवल सदस्यों के लिए।",alph_cta_btn:"सभी सामग्री तक पहुँचें — 49,99 €",ben_label:"यह कोर्स क्यों",ben_title:"फ्रेंच भाषियों के लिए एक संपूर्ण विधि",ben1_title:"हर अक्षर पर ऑडियो",ben1_desc:"हर अक्षर और शब्द में सटीक उच्चारण सुनने के लिए ऑडियो बटन है।",ben2_title:"फ्रेंच में व्याकरण",ben2_desc:"सभी नियम फ्रेंच में स्पष्ट तालिकाओं और सुधरे अभ्यासों के साथ समझाए गए हैं।",ben3_title:"सप्ताह-दर-सप्ताह कार्यक्रम",ben3_desc:"6 महीने को 24 सप्ताहों में विभाजित किया गया है।",ben4_title:"आजीवन पहुँच",ben4_desc:"एक बार भुगतान करें। हमेशा के लिए सभी सामग्री तक पहुँचें।",ben5_title:"विशेष सदस्य सामग्री",ben5_desc:"संपूर्ण पाठ और अभ्यास केवल पंजीकृत सदस्यों के लिए आरक्षित हैं।",ben6_title:"सभी डिवाइस पर",ben6_desc:"साइट स्मार्टफोन, टैबलेट और कंप्यूटर पर पूरी तरह काम करती है।",tarif_label:"विशेष ऑफर",tarif_title:"एक मूल्य। सब कुछ शामिल। हमेशा के लिए।",tarif_badge:"✦ पूर्ण पहुँच",tarif_name:"संपूर्ण कोर्स",tarif_once:"एकमुश्त भुगतान — आजीवन पहुँच — कोई सदस्यता नहीं",tf1:"वर्णमाला : 28 अक्षर ऑडियो के साथ",tf2:"लघु, दीर्घ स्वर और तनवीन + ऑडियो",tf3:"व्याकरण : संज्ञा, सर्वनाम, क्रिया",tf4:"क्रिया रूप : भूत, वर्तमान, आज्ञार्थ",tf5:"हर पाठ में सुधरे अभ्यास",tf6:"अल-अजरूमिय्या 6 महीने का कार्यक्रम",tf7:"ऑडियो के साथ आवश्यक शब्दावली",tf8:"भविष्य के अपडेट मुफ्त",tf9:"असीमित पहुँच",tarif_cta:"अभी पंजीकरण करें →",tarif_note:"सुरक्षित भुगतान · तत्काल पहुँच",faq_label:"अक्सर पूछे जाने वाले सवाल",faq_title:"आपके सवाल, हमारे जवाब",faq1_q:"क्या शुरू करने के लिए अरबी जाननी जरूरी है?",faq1_a:"नहीं, बिल्कुल नहीं। कोर्स शून्य से शुरू होता है। कोई पूर्व ज्ञान आवश्यक नहीं।",faq2_q:"कौन सी अरबी सिखाई जाती है?",faq2_a:"कोर्स शास्त्रीय अरबी (فصحى) सिखाता है, कुरान और इस्लामी ग्रंथों की भाषा।",faq3_q:"भुगतान के बाद सामग्री तक कैसे पहुँचें?",faq3_a:"पंजीकरण पर आपको लॉगिन विवरण के साथ ईमेल मिलता है। आप तुरंत सभी मॉड्यूल तक पहुँचते हैं।",faq4_q:"कितना समय देना होगा?",faq4_a:"नियमित प्रगति के लिए प्रतिदिन 30-60 मिनट पर्याप्त है।",faq5_q:"क्या पहुँच हमेशा के लिए है?",faq5_a:"हाँ। एकमुश्त भुगतान, असीमित पहुँच।",faq6_q:"क्या साइट मोबाइल पर काम करती है?",faq6_a:"हाँ, पूरी तरह रेस्पॉन्सिव।",insc_label:"कोर्स से जुड़ें",insc_title:"आज ही शुरू करें",insc_left_title:"शास्त्रीय अरबी सीखने के लिए सब कुछ",insc_left_desc:"6 महीने का कार्यक्रम — केवल एक बार 49,99 €।",insc_li1:"ऑडियो के साथ संपूर्ण वर्णमाला",insc_li2:"व्याकरण : संज्ञा, सर्वनाम, क्रिया",insc_li3:"3 रूपों का संपूर्ण संयुग्मन",insc_li4:"अल-अजरूमिय्या 6 महीने का कार्यक्रम",insc_li5:"सुधरे अभ्यास शामिल",insc_li6:"आजीवन असीमित पहुँच",form_name:"नाम *",form_name_ph:"आपका नाम",form_email:"ईमेल पता *",form_level:"आपका स्तर",form_level_0:"अपना स्तर चुनें",form_level_1:"पूर्ण शुरुआती",form_level_2:"कुछ अक्षर जानता हूँ",form_level_3:"पढ़ सकता हूँ पर व्याकरण में कमी है",form_submit:"पंजीकरण करें — 49,99 €",form_priv:"आपका डेटा सुरक्षित है।",footer_desc:"फ्रेंच भाषा विधि से शास्त्रीय अरबी शून्य से सीखें।",footer_col1:"कोर्स",footer_col2:"जानकारी",footer_register:"पंजीकरण",footer_legal:"कानूनी नोटिस",footer_contact:"संपर्क",notif_ok:"✓ पंजीकरण दर्ज! जल्द संपर्क किया जाएगा।",cgv_text:"मैंने <a href='mentions-legales.html#cgv' target='_blank'>नियम और शर्तें</a> और <a href='mentions-legales.html#confidentialite' target='_blank'>गोपनीयता नीति</a> पढ़ी और स्वीकार की।"},
-ur:{nav_modules:"کورس",nav_alphabet:"حروف تہجی",nav_tarif:"قیمت",nav_faq:"سوالات",nav_cta:"ابھی شامل ہوں",nav_cta_mobile:"ابھی شامل ہوں — 49,99 €",hero_badge:"✦ کلاسیکی عربی کورس · 100% فرانسیسی میں",hero_desc:"منظم طریقہ، مکمل اسباق اور بہترین تلفظ کے لیے آڈیو مشقوں کے ساتھ صفر سے کلاسیکی عربی سیکھیں۔",pill_audio:"مربوط آڈیو",pill_letters:"28 حروف",pill_program:"6 ماہ کا پروگرام",hero_cta:"ابھی شروع کریں — 49,99 €",hero_discover:"کورس جانیں",stat_letters:"حروف + آڈیو",stat_months:"منظم مہینے",stat_modules:"مکمل ماڈیول",stat_access:"تاحیات رسائی",pb_label:"کیا آپ خود کو پہچانتے ہیں؟",pb_title:"لوگ عربی سیکھنے میں کیوں ناکام ہوتے ہیں",pb1_title:"رہنمائی کے بغیر بہت مشکل",pb1_desc:"حروف تہجی، حرکات، قواعد... بتدریج طریقہ کے بغیر لوگ جلدی ہار مان لیتے ہیں۔",pb2_title:"آپ کی زبان میں وسائل نہیں",pb2_desc:"زیادہ تر اچھے وسائل عربی یا انگریزی میں ہیں۔ غیر ملکی زبان میں سیکھنا سب کچھ سست کر دیتا ہے۔",pb3_title:"کوئی حقیقی تلفظ نہیں",pb3_desc:"آڈیو کے بغیر عربی کی مخصوص آوازوں کا صحیح تلفظ ناممکن ہے۔",pb_solution:"اسی لیے <strong>L'Arabe Accessible</strong> بنایا گیا : <strong>فرانسیسی میں</strong> ایک بتدریج طریقہ، <strong>ہر حرف اور لفظ پر آڈیو</strong> کے ساتھ۔",mod_label:"کورس مواد",mod_title:"کلاسیکی عربی میں مہارت کے لیے 4 ماڈیول",mod_sub:"رجسٹریشن کے بعد تمام ماڈیول تک مکمل رسائی۔",mod_free_badge:"مفت پیش نظارہ",mod1_name:"حروف تہجی اور تلفظ",mod1_desc:"28 عربی حروف، ان کی 4 شکلیں، مختصر اور طویل حرکات — سب مربوط آڈیو کے ساتھ۔",mod1_t1:"28 حروف",mod1_t2:"مختصر حرکات",mod1_t3:"طویل حرکات",mod1_t4:"تنوین",mod1_t5:"ہر آواز پر آڈیو",mod1_lock:"نیچے پیش نظارہ — <strong>رجسٹریشن کے بعد مکمل مواد</strong>",mod2_name:"مکمل قواعد",mod2_desc:"اسم، ضمیر، فعل اور حرف — ان کے کردار، شکلیں اور اعرابی حالتیں۔",mod2_t1:"اسم",mod2_t2:"ضمیر",mod2_t3:"فعل",mod2_t4:"حروف",mod2_t5:"اعرابی حالتیں",mod3_name:"فعل کی گردان",mod3_desc:"تمام ضمائر کے لیے ماضی، مضارع اور امر — واضح جداول اور مصحح مشقوں کے ساتھ۔",mod3_t1:"ماضی",mod3_t2:"مضارع",mod3_t3:"امر",mod3_t4:"نفی",mod3_t5:"مصحح مشقیں",mod4_name:"الآجرومیہ پروگرام",mod4_desc:"کلاسیکی رسالہ پر مبنی 24 ہفتے۔ ابتدائی سے کلاسیکی متون پڑھنے تک۔",mod4_t1:"6 ماہ · 24 ہفتے",mod4_t2:"رہنمائی شدہ ترقی",mod4_t3:"کلاسیکی متون",mod4_t4:"نحوی تجزیہ",mod_locked:"صرف اراکین کے لیے — <strong>رجسٹریشن کے بعد رسائی</strong>",alph_label:"مفت پیش نظارہ",alph_title:"عربی حروف تہجی — ہر حرف سنیں",alph_sub:"حقیقی تلفظ سننے کے لیے ▶ دبائیں۔ مکمل مواد رجسٹریشن کے بعد دستیاب۔",alph_cta_text:"حرکات، ذخیرہ الفاظ، قواعد اور 6 ماہ کا پروگرام صرف اراکین کے لیے۔",alph_cta_btn:"تمام مواد تک رسائی — 49,99 €",ben_label:"یہ کورس کیوں",ben_title:"فرانسیسی بولنے والوں کے لیے ایک مکمل طریقہ",ben1_title:"ہر حرف پر آڈیو",ben1_desc:"ہر حرف اور اہم لفظ میں درست تلفظ سننے کے لیے آڈیو بٹن ہے۔",ben2_title:"فرانسیسی میں قواعد",ben2_desc:"تمام اصول فرانسیسی میں واضح جداول اور مصحح مشقوں کے ساتھ سمجھائے گئے ہیں۔",ben3_title:"ہفتہ وار پروگرام",ben3_desc:"6 ماہ کو 24 ہفتوں میں تقسیم۔ آپ جانتے ہیں کہ ہر ہفتے کیا کرنا ہے۔",ben4_title:"تاحیات رسائی",ben4_desc:"ایک بار ادائیگی۔ ہمیشہ کے لیے تمام مواد تک رسائی۔",ben5_title:"خصوصی رکنیت مواد",ben5_desc:"مکمل اسباق اور مشقیں صرف رجسٹرڈ اراکین کے لیے مخصوص ہیں۔",ben6_title:"تمام آلات پر",ben6_desc:"سائٹ اسمارٹ فون، ٹیبلیٹ اور کمپیوٹر پر بالکل کام کرتی ہے۔",tarif_label:"خصوصی پیشکش",tarif_title:"ایک قیمت۔ سب شامل۔ ہمیشہ کے لیے۔",tarif_badge:"✦ مکمل رسائی",tarif_name:"مکمل کورس",tarif_once:"یکمشت ادائیگی — تاحیات رسائی — کوئی سبسکرپشن نہیں",tf1:"حروف تہجی : 28 حروف آڈیو کے ساتھ",tf2:"مختصر، طویل حرکات اور تنوین + آڈیو",tf3:"قواعد : اسم، ضمیر، فعل",tf4:"گردان : ماضی، مضارع، امر",tf5:"ہر سبق میں مصحح مشقیں",tf6:"الآجرومیہ 6 ماہ کا پروگرام",tf7:"آڈیو کے ساتھ ضروری ذخیرہ الفاظ",tf8:"مستقبل کی تازہ کاریاں مفت",tf9:"لامحدود رسائی",tarif_cta:"ابھی رجسٹر کریں ←",tarif_note:"محفوظ ادائیگی · فوری رسائی",faq_label:"اکثر پوچھے جانے والے سوالات",faq_title:"آپ کے سوالات، ہمارے جوابات",faq1_q:"کیا شروع کرنے کے لیے عربی جاننا ضروری ہے؟",faq1_a:"نہیں، بالکل نہیں۔ کورس صفر سے شروع ہوتا ہے۔ کوئی پیشگی علم ضروری نہیں۔",faq2_q:"کون سی عربی سکھائی جاتی ہے؟",faq2_a:"کورس کلاسیکی عربی (فصحیٰ) سکھاتا ہے، قرآن اور اسلامی متون کی زبان۔",faq3_q:"ادائیگی کے بعد مواد تک کیسے پہنچیں؟",faq3_a:"رجسٹریشن پر آپ کو لاگ ان تفصیلات کے ساتھ ای میل ملتی ہے۔ آپ فوری طور پر تمام ماڈیول تک پہنچتے ہیں۔",faq4_q:"کورس کے لیے کتنا وقت دینا ہوگا؟",faq4_a:"باقاعدہ ترقی کے لیے روزانہ 30-60 منٹ کافی ہیں۔",faq5_q:"کیا رسائی ہمیشہ کے لیے ہے؟",faq5_a:"ہاں۔ یکمشت ادائیگی، لامحدود رسائی۔",faq6_q:"کیا سائٹ موبائل پر کام کرتی ہے؟",faq6_a:"ہاں، مکمل طور پر ریسپانسیو۔",insc_label:"کورس میں شامل ہوں",insc_title:"آج ہی شروع کریں",insc_left_title:"کلاسیکی عربی سیکھنے کے لیے سب کچھ",insc_left_desc:"6 ماہ کا پروگرام — صرف ایک بار 49,99 €۔",insc_li1:"آڈیو کے ساتھ مکمل حروف تہجی",insc_li2:"قواعد : اسم، ضمیر، فعل",insc_li3:"3 شکلوں کی مکمل گردان",insc_li4:"الآجرومیہ 6 ماہ کا پروگرام",insc_li5:"مصحح مشقیں شامل",insc_li6:"تاحیات لامحدود رسائی",form_name:"نام *",form_name_ph:"آپ کا نام",form_email:"ای میل پتہ *",form_level:"آپ کی سطح",form_level_0:"اپنی سطح منتخب کریں",form_level_1:"مکمل ابتدائی",form_level_2:"کچھ حروف جانتا ہوں",form_level_3:"پڑھ سکتا ہوں لیکن قواعد میں کمزوری ہے",form_submit:"رجسٹر کریں — 49,99 €",form_priv:"آپ کا ڈیٹا محفوظ ہے۔",footer_desc:"فرانسیسی طریقہ سے کلاسیکی عربی صفر سے سیکھیں۔",footer_col1:"کورس",footer_col2:"معلومات",footer_register:"رجسٹریشن",footer_legal:"قانونی نوٹس",footer_contact:"رابطہ",notif_ok:"✓ رجسٹریشن درج! آپ سے جلد رابطہ کیا جائے گا۔",cgv_text:"میں نے <a href='mentions-legales.html#cgv' target='_blank'>شرائط و ضوابط</a> اور <a href='mentions-legales.html#confidentialite' target='_blank'>رازداری کی پالیسی</a> پڑھی اور قبول کی۔"}
-};
-
-/* Moteur de traduction */
-let currentLang='fr';
-const langCodes={fr:'FR',en:'EN',es:'ES',pt:'PT',de:'DE',tr:'TR',ru:'RU',id:'ID',it:'IT',zh:'ZH',hi:'HI',ur:'UR'};
-const rtlLangs=['ur'];
-
-function setLang(lang){
- currentLang=lang;
- const t=T[lang]||T.fr;
- const isRTL=rtlLangs.includes(lang);
- document.documentElement.setAttribute('dir',isRTL?'rtl':'ltr');
- document.documentElement.setAttribute('lang',lang);
- document.getElementById('currentLang').textContent=langCodes[lang]||lang.toUpperCase();
- document.querySelectorAll('.lang-item').forEach(el=>{
- el.classList.remove('active');
- if(el.getAttribute('onclick')&&el.getAttribute('onclick').includes("'"+lang+"'"))el.classList.add('active');
- });
- document.querySelectorAll('[data-i18n]').forEach(el=>{
- const key=el.getAttribute('data-i18n');
- if(t[key]!==undefined)el.innerHTML=t[key];
- });
-}
-
-/* Init langue au chargement */
-document.addEventListener('DOMContentLoaded',function(){
-  const saved=localStorage.getItem('lang')||'fr';
-  setLang(saved);
-});
 </script>
-
 </body>
 </html>
