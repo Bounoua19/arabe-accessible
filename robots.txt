@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /membres.html
+
+Sitemap: https://www.arabeaccessible.com/sitemap.xml
