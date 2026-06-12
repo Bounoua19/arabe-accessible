@@ -309,6 +309,23 @@ body.dark .sidebar-sep{background:#2a2a4a}
     </div>
   </div>
 
+  <!-- CHAPITRE 5 : LE SARF -->
+  <div class="sidebar-section">
+    <button class="chapter-btn" onclick="toggleChapter(this)">
+      <div class="chapter-num">5</div>
+      <span class="chapter-title">Le Sarf — Morphologie</span>
+      <span class="chapter-icon">›</span>
+    </button>
+    <div class="lesson-list">
+      <div class="lesson-item" onclick="showLesson('sarf-intro',this)">Introduction au Sarf</div>
+      <div class="lesson-item" onclick="showLesson('sarf-racines',this)">Les racines et dérivés</div>
+      <div class="lesson-item" onclick="showLesson('sarf-modeles',this)">Les modèles (الأوزان)</div>
+      <div class="lesson-item" onclick="showLesson('sarf-verbes',this)">Les formes verbales</div>
+      <div class="lesson-item" onclick="showLesson('sarf-derives',this)">Les dérivés du verbe</div>
+      <div class="lesson-item" onclick="showLesson('sarf-dix',this)">Les 10 formes verbales</div>
+    </div>
+  </div>
+
   <div class="sidebar-sep"></div>
   <div class="sidebar-prog-wrap">
     <div class="prog-label">Progression globale</div>
@@ -2116,6 +2133,463 @@ body.dark .sidebar-sep{background:#2a2a4a}
   </div>
 </div>
 
+<!-- ═══ CHAPITRE 5 : LE SARF ═══ -->
+
+<!-- Leçon : Introduction au Sarf -->
+<div class="lesson-panel" id="lesson-sarf-intro">
+  <div class="lesson-top">
+    <span class="lesson-num">18</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Introduction au Sarf</div>
+      <div class="lesson-ar-title ar">علم الصرف</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Morphologie arabe</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-intro" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-intro">0/3</span></div>
+  <div class="step-dots" id="steps-sarf-intro">
+    <div class="step-dot current" id="sd-sarf-intro-1" onclick="setStep('sarf-intro',1,3)">1</div>
+    <div class="step-dot" id="sd-sarf-intro-2" onclick="setStep('sarf-intro',2,3)">2</div>
+    <div class="step-dot" id="sd-sarf-intro-3" onclick="setStep('sarf-intro',3,3)">3</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Qu'est-ce que le Sarf ?</span></div>
+    <div class="etape-body">
+      <div class="definition">
+        <div class="def-term ar">الصَّرْفُ</div>
+        <div class="def-text">Le <strong>Sarf</strong> (الصرف) est la science qui étudie la <strong>construction des mots arabes</strong>. C'est la morphologie de la langue arabe.</div>
+      </div>
+      <div class="regle" style="margin-top:14px">
+        <strong>La différence entre le Nahw et le Sarf :</strong><br><br>
+        Si le <strong>Nahw (النحو)</strong> étudie la <strong>place du mot dans la phrase</strong> et ses cas grammaticaux,<br>
+        le <strong>Sarf (الصرف)</strong> étudie le <strong>mot lui-même</strong> :
+      </div>
+      <div class="exemples" style="margin-top:12px">
+        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الجذر (racine)</div><div class="ex-fr">Les 3 lettres fondamentales qui portent le sens</div></div>
+        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الوزن (modèle)</div><div class="ex-fr">Le schème qui donne la forme au mot</div></div>
+        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">التحويل (transformation)</div><div class="ex-fr">Les changements que subit le mot</div></div>
+        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الاشتقاق (dérivation)</div><div class="ex-fr">Les mots qui naissent d'une même racine</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Pourquoi apprendre le Sarf ?</span></div>
+    <div class="etape-body">
+      <div class="regle">Le Sarf est l'une des deux grandes sciences fondamentales de l'arabe classique. Une fois le <strong>Nahw</strong> et le <strong>Sarf</strong> maîtrisés ensemble, vous possédez les outils pour lire et comprendre n'importe quel texte arabe classique.</div>
+      <table style="margin-top:14px">
+        <tr><th>Avantage</th><th>Explication</th></tr>
+        <tr><td>Comprendre des milliers de mots</td><td>À partir d'une seule racine, des dizaines de mots s'ouvrent à vous</td></tr>
+        <tr><td>Reconnaître les racines</td><td>Même un mot inconnu devient déchiffrable si vous connaissez sa racine</td></tr>
+        <tr><td>Deviner le sens</td><td>Les modèles vous donnent le sens avant même de chercher dans le dictionnaire</td></tr>
+        <tr><td>Maîtriser les verbes</td><td>Les 10 formes verbales couvrent toute la conjugaison arabe</td></tr>
+        <tr><td>Lire plus vite</td><td>Vous comprenez les textes arabes sans avoir à tout chercher</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 3</span><span class="etape-title">Les éléments fondamentaux du Sarf</span></div>
+    <div class="etape-body">
+      <div class="regle">Voici les 7 éléments que vous allez maîtriser dans ce chapitre :</div>
+      <table style="margin-top:12px">
+        <tr><th>Élément</th><th>Arabe</th><th>Définition</th></tr>
+        <tr><td><strong>La racine</strong></td><td class="ar-cell">الجذر</td><td>3 lettres qui portent le sens fondamental</td></tr>
+        <tr><td><strong>Le modèle</strong></td><td class="ar-cell">الوزن</td><td>Le schème فَعَلَ qui donne la forme</td></tr>
+        <tr><td><strong>Le masdar</strong></td><td class="ar-cell">المصدر</td><td>Le nom de l'action (l'infinitif arabe)</td></tr>
+        <tr><td><strong>Le participe actif</strong></td><td class="ar-cell">اسم الفاعل</td><td>Celui qui fait l'action</td></tr>
+        <tr><td><strong>Le participe passif</strong></td><td class="ar-cell">اسم المفعول</td><td>Ce qui subit l'action</td></tr>
+        <tr><td><strong>Le nom de lieu</strong></td><td class="ar-cell">اسم المكان</td><td>Le lieu où l'action se produit</td></tr>
+        <tr><td><strong>Les 10 formes</strong></td><td class="ar-cell">الأوزان العشرة</td><td>Les 10 grandes formes verbales de l'arabe</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('adj-m8')">‹ Al-Adjroumiyya</button>
+    <button class="ln-btn primary" onclick="goNext('sarf-racines')">Les racines ›</button>
+  </div>
+</div>
+
+<!-- Leçon : Racines et dérivés -->
+<div class="lesson-panel" id="lesson-sarf-racines">
+  <div class="lesson-top">
+    <span class="lesson-num">19</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Les Racines et Dérivés</div>
+      <div class="lesson-ar-title ar">الجذور والمشتقات</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 1-2</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-racines" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-racines">0/2</span></div>
+  <div class="step-dots" id="steps-sarf-racines">
+    <div class="step-dot current" id="sd-sarf-racines-1" onclick="setStep('sarf-racines',1,2)">1</div>
+    <div class="step-dot" id="sd-sarf-racines-2" onclick="setStep('sarf-racines',2,2)">2</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Qu'est-ce qu'une racine ?</span></div>
+    <div class="etape-body">
+      <div class="regle">La plupart des mots arabes proviennent d'une <strong>racine composée de trois lettres</strong>. Ces trois lettres portent l'idée fondamentale du mot.</div>
+      <div class="definition" style="margin-top:14px">
+        <div class="def-term ar">كَتَبَ</div>
+        <div class="def-text">La racine de كَتَبَ (kataba = il a écrit) est :<br>
+        <span style="font-family:'Amiri',serif;font-size:28px;color:var(--gold2);letter-spacing:12px">ك ت ب</span><br>
+        Cette racine contient l'idée générale de <strong>l'écriture</strong>.</div>
+      </div>
+      <div class="regle" style="margin-top:14px">Comment identifier une racine ? Enlevez les voyelles et les lettres ajoutées — il reste 3 lettres fondamentales.</div>
+      <table style="margin-top:12px">
+        <tr><th>Mot</th><th>Racine</th><th>Idée</th></tr>
+        <tr><td class="ar-cell">كَتَبَ / كِتَاب / كَاتِب</td><td class="ar-cell" style="letter-spacing:8px">ك ت ب</td><td>L'écriture</td></tr>
+        <tr><td class="ar-cell">دَرَسَ / دِرَاسَة / مَدْرَسَة</td><td class="ar-cell" style="letter-spacing:8px">د ر س</td><td>L'étude</td></tr>
+        <tr><td class="ar-cell">عَلِمَ / عِلْم / عَالِم</td><td class="ar-cell" style="letter-spacing:8px">ع ل م</td><td>Le savoir</td></tr>
+        <tr><td class="ar-cell">قَرَأَ / قِرَاءَة / قَارِئ</td><td class="ar-cell" style="letter-spacing:8px">ق ر أ</td><td>La lecture</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Les mots dérivés d'une même racine</span></div>
+    <div class="etape-body">
+      <div class="regle">À partir d'une seule racine de 3 lettres, l'arabe peut générer des dizaines de mots. C'est la richesse du Sarf.</div>
+      <div class="definition" style="margin-top:14px">
+        <div class="def-text" style="text-align:center;margin-bottom:12px">À partir de la racine <span style="font-family:'Amiri',serif;font-size:28px;color:var(--gold2);letter-spacing:8px">ك ت ب</span></div>
+      </div>
+      <table>
+        <tr><th>Mot arabe</th><th>Translittération</th><th>Sens</th><th>Nature</th></tr>
+        <tr><td class="ar-cell">كَتَبَ</td><td class="tr-cell">kataba</td><td>Il a écrit</td><td>Verbe (accompli)</td></tr>
+        <tr><td class="ar-cell">يَكْتُبُ</td><td class="tr-cell">yaktoubou</td><td>Il écrit</td><td>Verbe (inaccompli)</td></tr>
+        <tr><td class="ar-cell">كِتَاب</td><td class="tr-cell">kitāb</td><td>Livre</td><td>Nom</td></tr>
+        <tr><td class="ar-cell">كَاتِب</td><td class="tr-cell">kātib</td><td>Écrivain</td><td>Participe actif</td></tr>
+        <tr><td class="ar-cell">مَكْتَب</td><td class="tr-cell">maktab</td><td>Bureau</td><td>Nom de lieu</td></tr>
+        <tr><td class="ar-cell">مَكْتَبَة</td><td class="tr-cell">maktaba</td><td>Bibliothèque</td><td>Nom de lieu</td></tr>
+        <tr><td class="ar-cell">مَكْتُوب</td><td class="tr-cell">maktoub</td><td>Écrit</td><td>Participe passif</td></tr>
+        <tr><td class="ar-cell">كِتَابَة</td><td class="tr-cell">kitābah</td><td>L'écriture</td><td>Masdar</td></tr>
+      </table>
+      <div class="regle" style="margin-top:14px">Tous ces mots ont un lien avec l'écriture. En apprenant une racine, vous comprenez automatiquement tous ses dérivés !</div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('sarf-intro')">‹ Introduction</button>
+    <button class="ln-btn primary" onclick="goNext('sarf-modeles')">Les modèles ›</button>
+  </div>
+</div>
+
+<!-- Leçon : Les modèles -->
+<div class="lesson-panel" id="lesson-sarf-modeles">
+  <div class="lesson-top">
+    <span class="lesson-num">20</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Les Modèles (الأوزان)</div>
+      <div class="lesson-ar-title ar">أوزان الصرف</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 3-4</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-modeles" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-modeles">0/2</span></div>
+  <div class="step-dots" id="steps-sarf-modeles">
+    <div class="step-dot current" id="sd-sarf-modeles-1" onclick="setStep('sarf-modeles',1,2)">1</div>
+    <div class="step-dot" id="sd-sarf-modeles-2" onclick="setStep('sarf-modeles',2,2)">2</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 3</span><span class="etape-title">Le modèle de base — فَعَلَ</span></div>
+    <div class="etape-body">
+      <div class="regle">Les Arabes ont créé des <strong>modèles (أوزان)</strong> permettant de construire les mots. Le modèle de base est <strong class="ar">فَعَلَ</strong>.</div>
+      <div class="definition" style="margin-top:14px">
+        <div class="def-term ar">فَعَلَ</div>
+        <div class="def-text">Les lettres <span style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2);letter-spacing:8px">ف ع ل</span> ne sont pas un vrai mot. Elles servent <strong>uniquement de modèle</strong>.<br><br>
+        ف = représente la 1ère lettre de la racine<br>
+        ع = représente la 2ème lettre de la racine<br>
+        ل = représente la 3ème lettre de la racine</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 4</span><span class="etape-title">Remplacer les lettres du modèle</span></div>
+    <div class="etape-body">
+      <div class="regle">Pour former un mot, on <strong>remplace les lettres du modèle</strong> par les lettres de la racine.</div>
+      <table style="margin-top:12px">
+        <tr><th>Modèle</th><th>Racine</th><th>Remplacement</th><th>Résultat</th><th>Sens</th></tr>
+        <tr>
+          <td class="ar-cell">فَعَلَ</td>
+          <td class="ar-cell" style="letter-spacing:6px">ك ت ب</td>
+          <td style="font-size:13px">ف←ك · ع←ت · ل←ب</td>
+          <td class="ar-cell">كَتَبَ</td>
+          <td>Il a écrit</td>
+        </tr>
+        <tr>
+          <td class="ar-cell">فَعَلَ</td>
+          <td class="ar-cell" style="letter-spacing:6px">د ر س</td>
+          <td style="font-size:13px">ف←د · ع←ر · ل←س</td>
+          <td class="ar-cell">دَرَسَ</td>
+          <td>Il a étudié</td>
+        </tr>
+        <tr>
+          <td class="ar-cell">فَعَلَ</td>
+          <td class="ar-cell" style="letter-spacing:6px">ذ ه ب</td>
+          <td style="font-size:13px">ف←ذ · ع←ه · ل←ب</td>
+          <td class="ar-cell">ذَهَبَ</td>
+          <td>Il est allé</td>
+        </tr>
+        <tr>
+          <td class="ar-cell">فَعَلَ</td>
+          <td class="ar-cell" style="letter-spacing:6px">ف ه م</td>
+          <td style="font-size:13px">ف←ف · ع←ه · ل←م</td>
+          <td class="ar-cell">فَهِمَ</td>
+          <td>Il a compris</td>
+        </tr>
+        <tr>
+          <td class="ar-cell">فَعَلَ</td>
+          <td class="ar-cell" style="letter-spacing:6px">ق ر أ</td>
+          <td style="font-size:13px">ف←ق · ع←ر · ل←أ</td>
+          <td class="ar-cell">قَرَأَ</td>
+          <td>Il a lu</td>
+        </tr>
+      </table>
+      <div class="regle" style="margin-top:14px">Une fois ce système compris, vous pouvez <strong>analyser n'importe quel verbe arabe</strong> et identifier sa racine instantanément.</div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('sarf-racines')">‹ Les racines</button>
+    <button class="ln-btn primary" onclick="goNext('sarf-verbes')">Les formes verbales ›</button>
+  </div>
+</div>
+
+<!-- Leçon : Les formes verbales passé/présent/impératif -->
+<div class="lesson-panel" id="lesson-sarf-verbes">
+  <div class="lesson-top">
+    <span class="lesson-num">21</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Les Formes Verbales</div>
+      <div class="lesson-ar-title ar">صيغ الفعل</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 5-7</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-verbes" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-verbes">0/3</span></div>
+  <div class="step-dots" id="steps-sarf-verbes">
+    <div class="step-dot current" id="sd-sarf-verbes-1" onclick="setStep('sarf-verbes',1,3)">1</div>
+    <div class="step-dot" id="sd-sarf-verbes-2" onclick="setStep('sarf-verbes',2,3)">2</div>
+    <div class="step-dot" id="sd-sarf-verbes-3" onclick="setStep('sarf-verbes',3,3)">3</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 5</span><span class="etape-title">Le passé — الماضي</span></div>
+    <div class="etape-body">
+      <div class="regle">Le modèle le plus fréquent du passé est <strong class="ar">فَعَلَ</strong>. C'est la forme de base à partir de laquelle tout se construit.</div>
+      <table style="margin-top:12px">
+        <tr><th>Verbe</th><th>Translittération</th><th>Sens</th></tr>
+        <tr><td class="ar-cell">كَتَبَ</td><td class="tr-cell">kataba</td><td>Il a écrit</td></tr>
+        <tr><td class="ar-cell">دَرَسَ</td><td class="tr-cell">darasa</td><td>Il a étudié</td></tr>
+        <tr><td class="ar-cell">ذَهَبَ</td><td class="tr-cell">dhahaba</td><td>Il est allé</td></tr>
+        <tr><td class="ar-cell">فَهِمَ</td><td class="tr-cell">fahima</td><td>Il a compris</td></tr>
+        <tr><td class="ar-cell">قَرَأَ</td><td class="tr-cell">qara'a</td><td>Il a lu</td></tr>
+        <tr><td class="ar-cell">سَمِعَ</td><td class="tr-cell">sami'a</td><td>Il a entendu</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 6</span><span class="etape-title">Le présent — المضارع</span></div>
+    <div class="etape-body">
+      <div class="regle">À partir du passé <strong class="ar">فَعَلَ</strong>, on obtient le présent <strong class="ar">يَفْعَلُ</strong>. Le présent commence par les préfixes : أ · ن · ي · ت</div>
+      <table style="margin-top:12px">
+        <tr><th>Pronom</th><th>Arabe</th><th>Translittération</th><th>Sens</th></tr>
+        <tr><td>Je</td><td class="ar-cell">أَكْتُبُ</td><td class="tr-cell">aktoubou</td><td>J'écris</td></tr>
+        <tr><td>Nous</td><td class="ar-cell">نَكْتُبُ</td><td class="tr-cell">naktoubou</td><td>Nous écrivons</td></tr>
+        <tr><td>Il</td><td class="ar-cell">يَكْتُبُ</td><td class="tr-cell">yaktoubou</td><td>Il écrit</td></tr>
+        <tr><td>Tu / Elle</td><td class="ar-cell">تَكْتُبُ</td><td class="tr-cell">taktoubou</td><td>Tu écris / Elle écrit</td></tr>
+      </table>
+      <div class="regle" style="margin-top:12px">Le même modèle s'applique à tous les verbes : دَرَسَ → يَدْرُسُ · ذَهَبَ → يَذْهَبُ · فَهِمَ → يَفْهَمُ</div>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 7</span><span class="etape-title">L'impératif — الأمر</span></div>
+    <div class="etape-body">
+      <div class="regle">L'impératif sert à donner un ordre. Il se forme à partir de l'inaccompli en retirant le préfixe et en ajoutant une hamza de liaison.</div>
+      <table style="margin-top:12px">
+        <tr><th>Inaccompli</th><th>Impératif</th><th>Translittération</th><th>Sens</th></tr>
+        <tr><td class="ar-cell">يَكْتُبُ</td><td class="ar-cell">اُكْتُبْ</td><td class="tr-cell">ouktoub</td><td>Écris !</td></tr>
+        <tr><td class="ar-cell">يَدْرُسُ</td><td class="ar-cell">اُدْرُسْ</td><td class="tr-cell">oudrous</td><td>Étudie !</td></tr>
+        <tr><td class="ar-cell">يَذْهَبُ</td><td class="ar-cell">اِذْهَبْ</td><td class="tr-cell">idhhab</td><td>Va !</td></tr>
+        <tr><td class="ar-cell">يَقْرَأُ</td><td class="ar-cell">اِقْرَأْ</td><td class="tr-cell">iqra'</td><td>Lis !</td></tr>
+        <tr><td class="ar-cell">يَسْمَعُ</td><td class="ar-cell">اِسْمَعْ</td><td class="tr-cell">isma'</td><td>Écoute !</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('sarf-modeles')">‹ Les modèles</button>
+    <button class="ln-btn primary" onclick="goNext('sarf-derives')">Les dérivés ›</button>
+  </div>
+</div>
+
+<!-- Leçon : Les dérivés -->
+<div class="lesson-panel" id="lesson-sarf-derives">
+  <div class="lesson-top">
+    <span class="lesson-num">22</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Les Dérivés du Verbe</div>
+      <div class="lesson-ar-title ar">المشتقات</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 8-11</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-derives" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-derives">0/4</span></div>
+  <div class="step-dots" id="steps-sarf-derives">
+    <div class="step-dot current" id="sd-sarf-derives-1" onclick="setStep('sarf-derives',1,4)">1</div>
+    <div class="step-dot" id="sd-sarf-derives-2" onclick="setStep('sarf-derives',2,4)">2</div>
+    <div class="step-dot" id="sd-sarf-derives-3" onclick="setStep('sarf-derives',3,4)">3</div>
+    <div class="step-dot" id="sd-sarf-derives-4" onclick="setStep('sarf-derives',4,4)">4</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 8</span><span class="etape-title">Le Masdar — المصدر (nom d'action)</span></div>
+    <div class="etape-body">
+      <div class="definition">
+        <div class="def-term ar">الْمَصْدَرُ</div>
+        <div class="def-text">Le <strong>masdar</strong> est le <strong>nom de l'action</strong> — l'équivalent de l'infinitif en français. Il désigne l'action en elle-même, sans indication de temps.</div>
+      </div>
+      <div class="regle" style="margin-top:12px">Le masdar de la forme I (فَعَلَ) est généralement sur le modèle <strong class="ar">فِعَالَة</strong> ou <strong class="ar">فُعُول</strong> ou <strong class="ar">فَعْل</strong> — il varie selon le verbe.</div>
+      <table style="margin-top:12px">
+        <tr><th>Verbe</th><th>Masdar</th><th>Translittération</th><th>Sens</th></tr>
+        <tr><td class="ar-cell">كَتَبَ (écrire)</td><td class="ar-cell">كِتَابَة</td><td class="tr-cell">kitābah</td><td>L'écriture</td></tr>
+        <tr><td class="ar-cell">دَرَسَ (étudier)</td><td class="ar-cell">دِرَاسَة</td><td class="tr-cell">dirāsah</td><td>L'étude</td></tr>
+        <tr><td class="ar-cell">قَرَأَ (lire)</td><td class="ar-cell">قِرَاءَة</td><td class="tr-cell">qirā'ah</td><td>La lecture</td></tr>
+        <tr><td class="ar-cell">ذَهَبَ (aller)</td><td class="ar-cell">ذَهَاب</td><td class="tr-cell">dhahāb</td><td>L'aller / le voyage</td></tr>
+        <tr><td class="ar-cell">فَهِمَ (comprendre)</td><td class="ar-cell">فَهْم</td><td class="tr-cell">fahm</td><td>La compréhension</td></tr>
+        <tr><td class="ar-cell">سَمِعَ (entendre)</td><td class="ar-cell">سَمَاع</td><td class="tr-cell">samā'</td><td>L'écoute</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 9</span><span class="etape-title">Le Participe actif — اسم الفاعل</span></div>
+    <div class="etape-body">
+      <div class="definition">
+        <div class="def-term ar">اسْمُ الفَاعِلِ</div>
+        <div class="def-text">Le <strong>ism al-fā'il</strong> désigne <strong>celui qui fait l'action</strong>. Son modèle est toujours <span style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2)">فَاعِل</span></div>
+      </div>
+      <table style="margin-top:12px">
+        <tr><th>Verbe</th><th>Participe actif</th><th>Translittération</th><th>Sens</th></tr>
+        <tr><td class="ar-cell">كَتَبَ (écrire)</td><td class="ar-cell">كَاتِب</td><td class="tr-cell">kātib</td><td>Écrivain / celui qui écrit</td></tr>
+        <tr><td class="ar-cell">دَرَسَ (étudier)</td><td class="ar-cell">دَارِس</td><td class="tr-cell">dāris</td><td>Étudiant / celui qui étudie</td></tr>
+        <tr><td class="ar-cell">عَلِمَ (savoir)</td><td class="ar-cell">عَالِم</td><td class="tr-cell">'ālim</td><td>Savant / celui qui sait</td></tr>
+        <tr><td class="ar-cell">سَمِعَ (entendre)</td><td class="ar-cell">سَامِع</td><td class="tr-cell">sāmi'</td><td>Celui qui écoute</td></tr>
+        <tr><td class="ar-cell">قَرَأَ (lire)</td><td class="ar-cell">قَارِئ</td><td class="tr-cell">qāri'</td><td>Lecteur / celui qui lit</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 10</span><span class="etape-title">Le Participe passif — اسم المفعول</span></div>
+    <div class="etape-body">
+      <div class="definition">
+        <div class="def-term ar">اسْمُ الْمَفْعُولِ</div>
+        <div class="def-text">Le <strong>ism al-maf'ūl</strong> désigne <strong>ce qui subit l'action</strong>. Son modèle est toujours <span style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2)">مَفْعُول</span></div>
+      </div>
+      <table style="margin-top:12px">
+        <tr><th>Verbe</th><th>Participe passif</th><th>Translittération</th><th>Sens</th></tr>
+        <tr><td class="ar-cell">كَتَبَ (écrire)</td><td class="ar-cell">مَكْتُوب</td><td class="tr-cell">maktoub</td><td>Écrit / ce qui est écrit</td></tr>
+        <tr><td class="ar-cell">سَمِعَ (entendre)</td><td class="ar-cell">مَسْمُوع</td><td class="tr-cell">masmou'</td><td>Entendu</td></tr>
+        <tr><td class="ar-cell">قَرَأَ (lire)</td><td class="ar-cell">مَقْرُوء</td><td class="tr-cell">maqrū'</td><td>Lu</td></tr>
+        <tr><td class="ar-cell">عَلِمَ (savoir)</td><td class="ar-cell">مَعْلُوم</td><td class="tr-cell">ma'loum</td><td>Connu / su</td></tr>
+        <tr><td class="ar-cell">فَهِمَ (comprendre)</td><td class="ar-cell">مَفْهُوم</td><td class="tr-cell">mafhoum</td><td>Compris / concept</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 11</span><span class="etape-title">Le Nom de lieu — اسم المكان</span></div>
+    <div class="etape-body">
+      <div class="definition">
+        <div class="def-term ar">اسْمُ الْمَكَانِ</div>
+        <div class="def-text">Le <strong>ism al-makān</strong> désigne <strong>le lieu où l'action se produit</strong>. Son modèle est généralement <span style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2)">مَفْعَل / مَفْعِل</span></div>
+      </div>
+      <table style="margin-top:12px">
+        <tr><th>Verbe</th><th>Nom de lieu</th><th>Translittération</th><th>Sens</th></tr>
+        <tr><td class="ar-cell">كَتَبَ (écrire)</td><td class="ar-cell">مَكْتَب</td><td class="tr-cell">maktab</td><td>Bureau (lieu où on écrit)</td></tr>
+        <tr><td class="ar-cell">دَرَسَ (étudier)</td><td class="ar-cell">مَدْرَسَة</td><td class="tr-cell">madrasah</td><td>École (lieu où on étudie)</td></tr>
+        <tr><td class="ar-cell">سَجَدَ (se prosterner)</td><td class="ar-cell">مَسْجِد</td><td class="tr-cell">masjid</td><td>Mosquée (lieu de prosternation)</td></tr>
+        <tr><td class="ar-cell">لَعِبَ (jouer)</td><td class="ar-cell">مَلْعَب</td><td class="tr-cell">mal'ab</td><td>Terrain de jeu</td></tr>
+        <tr><td class="ar-cell">قَبَرَ (enterrer)</td><td class="ar-cell">مَقْبَرَة</td><td class="tr-cell">maqbarah</td><td>Cimetière</td></tr>
+      </table>
+      <div class="regle" style="margin-top:12px">Astuce : un mot arabe qui commence par <strong class="ar">مَـ</strong> et se termine par <strong class="ar">ة</strong> ou a la forme مَفْعَل est souvent un nom de lieu !</div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('sarf-verbes')">‹ Les formes verbales</button>
+    <button class="ln-btn primary" onclick="goNext('sarf-dix')">Les 10 formes ›</button>
+  </div>
+</div>
+
+<!-- Leçon : Les 10 formes verbales -->
+<div class="lesson-panel" id="lesson-sarf-dix">
+  <div class="lesson-top">
+    <span class="lesson-num">23</span>
+    <div class="lesson-info">
+      <div class="lesson-main-title">Les 10 Formes Verbales</div>
+      <div class="lesson-ar-title ar">الأوزان العشرة</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 12-14</div>
+    </div>
+  </div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-dix" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-dix">0/2</span></div>
+  <div class="step-dots" id="steps-sarf-dix">
+    <div class="step-dot current" id="sd-sarf-dix-1" onclick="setStep('sarf-dix',1,2)">1</div>
+    <div class="step-dot" id="sd-sarf-dix-2" onclick="setStep('sarf-dix',2,2)">2</div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPE 12</span><span class="etape-title">Les dix grandes formes verbales</span></div>
+    <div class="etape-body">
+      <div class="regle">Le Sarf enseigne <strong>10 grandes formes verbales</strong>. Chaque forme a un sens particulier et se construit sur un modèle précis. La maîtrise de ces 10 formes permet de comprendre la quasi-totalité des verbes arabes.</div>
+      <table style="margin-top:14px">
+        <tr><th>Forme</th><th>Modèle</th><th>Exemple</th><th>Translittération</th><th>Sens de l'exemple</th></tr>
+        <tr><td><strong>Forme I</strong></td><td class="ar-cell">فَعَلَ</td><td class="ar-cell">كَتَبَ</td><td class="tr-cell">kataba</td><td>Écrire (sens de base)</td></tr>
+        <tr><td><strong>Forme II</strong></td><td class="ar-cell">فَعَّلَ</td><td class="ar-cell">عَلَّمَ</td><td class="tr-cell">'allama</td><td>Faire apprendre / enseigner</td></tr>
+        <tr><td><strong>Forme III</strong></td><td class="ar-cell">فَاعَلَ</td><td class="ar-cell">جَاهَدَ</td><td class="tr-cell">jāhada</td><td>Combattre / s'efforcer</td></tr>
+        <tr><td><strong>Forme IV</strong></td><td class="ar-cell">أَفْعَلَ</td><td class="ar-cell">أَكْرَمَ</td><td class="tr-cell">akrama</td><td>Honorer</td></tr>
+        <tr><td><strong>Forme V</strong></td><td class="ar-cell">تَفَعَّلَ</td><td class="ar-cell">تَعَلَّمَ</td><td class="tr-cell">ta'allama</td><td>Apprendre (pour soi)</td></tr>
+        <tr><td><strong>Forme VI</strong></td><td class="ar-cell">تَفَاعَلَ</td><td class="ar-cell">تَعَاوَنَ</td><td class="tr-cell">ta'āwana</td><td>Coopérer (mutuellement)</td></tr>
+        <tr><td><strong>Forme VII</strong></td><td class="ar-cell">اِنْفَعَلَ</td><td class="ar-cell">اِنْكَسَرَ</td><td class="tr-cell">inkasara</td><td>Se casser (passif)</td></tr>
+        <tr><td><strong>Forme VIII</strong></td><td class="ar-cell">اِفْتَعَلَ</td><td class="ar-cell">اِجْتَمَعَ</td><td class="tr-cell">ijtama'a</td><td>Se réunir</td></tr>
+        <tr><td><strong>Forme IX</strong></td><td class="ar-cell">اِفْعَلَّ</td><td class="ar-cell">اِحْمَرَّ</td><td class="tr-cell">ihmarra</td><td>Rougir (couleurs)</td></tr>
+        <tr><td><strong>Forme X</strong></td><td class="ar-cell">اِسْتَفْعَلَ</td><td class="ar-cell">اِسْتَغْفَرَ</td><td class="tr-cell">istaghfara</td><td>Demander le pardon</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="etape">
+    <div class="etape-header"><span class="etape-num">ÉTAPES 13-14 — CONCLUSION</span><span class="etape-title">Pourquoi le Sarf est essentiel</span></div>
+    <div class="etape-body">
+      <div class="regle"><strong>Le Sarf vous donne :</strong></div>
+      <div class="exemples" style="margin-top:12px">
+        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الجذور</div><div class="ex-fr">Reconnaître les racines de n'importe quel mot</div></div>
+        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الأوزان</div><div class="ex-fr">Utiliser les modèles pour former et analyser les mots</div></div>
+        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">المشتقات</div><div class="ex-fr">Comprendre masdar, participes actif/passif, nom de lieu</div></div>
+        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الأوزان العشرة</div><div class="ex-fr">Maîtriser les 10 formes verbales de l'arabe classique</div></div>
+      </div>
+
+      <div style="text-align:center;margin-top:28px;padding:28px;background:var(--dark);border-radius:var(--r);border:1px solid rgba(201,162,39,.3)">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#fff;margin-bottom:8px">Félicitations !</div>
+        <div style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2);margin-bottom:14px">أَتْمَمْتَ عِلْمَ الصَّرْفِ</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.8;max-width:500px;margin:0 auto">Vous avez maintenant les deux grandes sciences fondamentales de l'arabe classique : le <strong style="color:var(--gold2)">Nahw (النحو)</strong> avec l'Al-Adjroumiyya et le <strong style="color:var(--gold2)">Sarf (الصرف)</strong>. Ensemble, ils vous ouvrent les portes de la langue arabe classique.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="ln-btn" onclick="goPrev('sarf-derives')">‹ Les dérivés</button>
+    <div style="font-size:14px;color:var(--green2);font-weight:600;display:flex;align-items:center;gap:8px">
+      <span style="background:var(--gold);color:var(--dark);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700">COMPLET</span>
+      Formation complète terminée !
+    </div>
+  </div>
+</div>
+
 </main>
 </div><!-- fin layout -->
 
@@ -2199,14 +2673,16 @@ const ALL_LESSONS = [
   'alph-lettres','alph-formes','alph-voyelles',
   'gram-nom','gram-pronom','gram-verbe',
   'conj-accompli','conj-inaccompli','conj-imperatif',
-  'adj-m1','adj-m2','adj-m3','adj-m4','adj-m5','adj-m6','adj-m7','adj-m8'
+  'adj-m1','adj-m2','adj-m3','adj-m4','adj-m5','adj-m6','adj-m7','adj-m8',
+  'sarf-intro','sarf-racines','sarf-modeles','sarf-verbes','sarf-derives','sarf-dix'
 ];
 const STEPS_MAP = {
   'alph-lettres':2,'alph-formes':2,'alph-voyelles':3,
   'gram-nom':10,'gram-pronom':20,'gram-verbe':10,
   'conj-accompli':10,'conj-inaccompli':10,'conj-imperatif':9,
   'adj-m1':5,'adj-m2':5,'adj-m3':5,'adj-m4':5,
-  'adj-m5':6,'adj-m6':6,'adj-m7':2,'adj-m8':6
+  'adj-m5':6,'adj-m6':6,'adj-m7':2,'adj-m8':6,
+  'sarf-intro':3,'sarf-racines':2,'sarf-modeles':2,'sarf-verbes':3,'sarf-derives':4,'sarf-dix':2
 };
 
 let completed = [];
