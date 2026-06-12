@@ -196,6 +196,33 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
   .nav-cta{display:none}
 }
 @media(max-width:500px){.alpha-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* DARK MODE */
+body.dark{--off:#0e1a14;--white:#132018;--gray:#1e3028;--muted:#8a9e94;--text:#e8f0ec;background:var(--off)}
+body.dark .module-card{background:var(--white);border-color:var(--gray)}
+body.dark .ben-card{background:var(--white);border-color:var(--gray)}
+body.dark .faq-item{background:var(--white);border-color:var(--gray)}
+body.dark .faq-q:hover{background:var(--gray)}
+body.dark .temo-card{background:var(--white);border-color:var(--gray)}
+body.dark .tarif-card{background:rgba(255,255,255,.03)}
+body.dark footer{background:#060e09}
+
+/* MODE TOGGLE */
+.mode-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);padding:7px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .2s}
+.mode-btn:hover{background:rgba(255,255,255,.15);color:#fff}
+
+/* LANGUE DROPDOWN */
+.lang-wrap{position:relative}
+.lang-trigger{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);padding:7px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;transition:all .2s}
+.lang-trigger:hover{background:rgba(255,255,255,.15);color:#fff}
+.lang-trigger span{font-size:10px;opacity:.6}
+.lang-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:#0e1f15;border:1px solid rgba(201,162,39,.2);border-radius:8px;min-width:160px;box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:200;display:none;padding:6px 0}
+.lang-wrap:hover .lang-dropdown,.lang-dropdown:hover{display:block}
+.lang-item{padding:9px 16px;font-size:13px;color:rgba(255,255,255,.65);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif}
+.lang-item:hover{background:rgba(201,162,39,.1);color:var(--gold2)}
+.lang-item.active{color:var(--gold2);font-weight:600}
+.lang-notice{display:none;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.25);color:var(--gold2);font-size:13px;padding:10px 20px;text-align:center;position:fixed;top:68px;left:0;right:0;z-index:99}
+.lang-notice.show{display:block}
 </style>
 </head>
 <body>
@@ -206,8 +233,29 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
     <img src="logo.png" onerror="this.src='images/logo.png'" alt="Logo">
     <span class="nav-name">L'<span>Arabe</span> Accessible</span>
   </div>
-  <a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" class="nav-cta">S'inscrire</a>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button class="mode-btn" onclick="toggleMode()" id="mode-btn">Clair</button>
+    <div class="lang-wrap">
+      <button class="lang-trigger"><span id="cur-lang">FR</span> <span>▾</span></button>
+      <div class="lang-dropdown">
+        <div class="lang-item active" onclick="setLang('fr','FR')">Français</div>
+        <div class="lang-item" onclick="setLang('en','EN')">English</div>
+        <div class="lang-item" onclick="setLang('es','ES')">Español</div>
+        <div class="lang-item" onclick="setLang('pt','PT')">Português</div>
+        <div class="lang-item" onclick="setLang('de','DE')">Deutsch</div>
+        <div class="lang-item" onclick="setLang('tr','TR')">Türkçe</div>
+        <div class="lang-item" onclick="setLang('ru','RU')">Русский</div>
+        <div class="lang-item" onclick="setLang('id','ID')">Indonesia</div>
+        <div class="lang-item" onclick="setLang('it','IT')">Italiano</div>
+        <div class="lang-item" onclick="setLang('zh','ZH')">中文</div>
+        <div class="lang-item" onclick="setLang('hi','HI')">हिन्दी</div>
+        <div class="lang-item" onclick="setLang('ur','UR')">اردو</div>
+      </div>
+    </div>
+    <a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" class="nav-cta">S'inscrire</a>
+  </div>
 </nav>
+<div class="lang-notice" id="lang-notice"></div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -588,6 +636,52 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
 </div>
 
 <script>
+
+/* DARK MODE */
+function toggleMode(){
+  document.body.classList.toggle('dark');
+  const btn = document.getElementById('mode-btn');
+  const isDark = document.body.classList.contains('dark');
+  btn.textContent = isDark ? 'Clair' : 'Sombre';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+if(localStorage.getItem('theme')==='dark'){
+  document.body.classList.add('dark');
+  document.addEventListener('DOMContentLoaded',()=>{
+    const btn=document.getElementById('mode-btn');
+    if(btn) btn.textContent='Clair';
+  });
+}
+
+/* LANGUES */
+const LANG_NAMES = {
+  fr:'Version française',en:'English version coming soon — currently in French',
+  es:'Versión en español próximamente — actualmente en francés',
+  pt:'Versão em português em breve — actualmente em francês',
+  de:'Deutsche Version demnächst — aktuell auf Französisch',
+  tr:'Türkçe sürüm yakında — şu an Fransızca',
+  ru:'Русская версия скоро — сейчас на французском',
+  id:'Versi Indonesia segera hadir — saat ini dalam bahasa Prancis',
+  it:'Versione italiana in arrivo — attualmente in francese',
+  zh:'中文版即将推出 — 目前为法语版',
+  hi:'हिंदी संस्करण जल्द आएगा — वर्तमान में फ्रेंच में',
+  ur:'اردو ورژن جلد آئے گا — ابھی فرانسیسی میں'
+};
+function setLang(code, label){
+  document.getElementById('cur-lang').textContent = label;
+  document.querySelectorAll('.lang-item').forEach(el=>el.classList.remove('active'));
+  event.target.classList.add('active');
+  const notice = document.getElementById('lang-notice');
+  if(code !== 'fr'){
+    notice.textContent = LANG_NAMES[code];
+    notice.classList.add('show');
+    setTimeout(()=>notice.classList.remove('show'), 4000);
+  } else {
+    notice.classList.remove('show');
+  }
+  localStorage.setItem('lang', code);
+}
+
 /* Audio */
 let ca=null,cb=null;
 function playAud(f,b){
