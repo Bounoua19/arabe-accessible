@@ -37,12 +37,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;min-heig
 @keyframes fall{0%{transform:translateY(-100px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
 .c{position:fixed;width:10px;height:10px;border-radius:2px;animation:fall linear infinite}
 </style>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0YPP7Y51K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L0YPP7Y51K');
+</script>
 </head>
 <body>
 <canvas class="confetti" id="confetti"></canvas>
 
 <div class="wrap">
-  <img src="logo.png" class="logo" alt="Logo">
+  <img src="images/logo.png" class="logo" alt="Logo">
   <div class="check-circle">✓</div>
   <h1 class="title">Bienvenue dans <span class="g">L'Arabe</span> Accessible !</h1>
   <p class="subtitle" style="font-family:'Amiri',serif">مرحباً بك في رحلة تعلم العربية</p>
