@@ -2653,8 +2653,7 @@ function declineCookies(){
   localStorage.setItem('cookie-consent','declined');
   document.getElementById('cookie-banner').classList.remove('show');
 }
-if(!localStorage.getItem('cookie-consent')){
-  document.addEventListener('DOMContentLoaded',function(){
+document.addEventListener('DOMContentLoaded',function(){
   // Vérifier si déjà connecté
   const savedMembre = sessionStorage.getItem('membre');
   if(savedMembre && MEMBERS[savedMembre]){
@@ -2811,7 +2810,7 @@ let curAud=null,curBtn=null;
 function playAud(file,btn){
   if(curAud){curAud.pause();curAud.currentTime=0;if(curBtn){curBtn.classList.remove('playing');curBtn.innerHTML='&#9654;'}}
   if(curBtn===btn){curAud=null;curBtn=null;return}
-  const a=new Audio('+file);
+  const a=new Audio(file);
   a.play().catch(()=>{});
   curAud=a;curBtn=btn;btn.classList.add('playing');btn.innerHTML='&#9646;&#9646;';
   a.onended=()=>{btn.classList.remove('playing');btn.innerHTML='&#9654;';curAud=null;curBtn=null}
