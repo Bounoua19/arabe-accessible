@@ -2664,10 +2664,12 @@ if(!localStorage.getItem('cookie-consent')){
       screen.style.visibility='hidden';
     }
   }
-
-    document.getElementById('cookie-banner').classList.add('show');
-  });
-}
+  // Cookie banner
+  if(!localStorage.getItem('cookie-consent')){
+    const banner = document.getElementById('cookie-banner');
+    if(banner) banner.classList.add('show');
+  }
+});
 
 /* ── DARK MODE ── */
 function toggleDark(){
