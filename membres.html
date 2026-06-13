@@ -198,6 +198,15 @@ body.dark .sidebar-sep{background:#2a2a4a}
 /* RESPONSIVE */
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.main{padding:20px 16px}.ex-grid{grid-template-columns:1fr}}
 </style>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0YPP7Y51K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L0YPP7Y51K');
+</script>
 </head>
 <body>
 
@@ -2601,11 +2610,24 @@ const MEMBERS = {
 };
 
 function doLogin(){
-  const email = document.getElementById('login-email').value.trim().toLowerCase();
-  const pass  = document.getElementById('login-pass').value;
+  const emailRaw = document.getElementById('login-email').value;
+  const passRaw  = document.getElementById('login-pass').value;
+  const email = emailRaw.trim().toLowerCase();
+  const pass  = passRaw.trim();
   const err   = document.getElementById('login-err');
+  const screen = document.getElementById('login-screen');
+  
+  if(!email || !pass){
+    err.textContent = 'Veuillez remplir tous les champs.';
+    err.style.display='block';
+    setTimeout(()=>err.style.display='none', 3000);
+    return;
+  }
+  
   if(MEMBERS[email] && MEMBERS[email] === pass){
-    document.getElementById('login-screen').style.display='none';
+    screen.style.display='none';
+    screen.style.visibility='hidden';
+    screen.style.opacity='0';
     sessionStorage.setItem('membre', email);
     loadSavedProgress();
   } else {
@@ -2633,6 +2655,16 @@ function declineCookies(){
 }
 if(!localStorage.getItem('cookie-consent')){
   document.addEventListener('DOMContentLoaded',function(){
+  // Vérifier si déjà connecté
+  const savedMembre = sessionStorage.getItem('membre');
+  if(savedMembre && MEMBERS[savedMembre]){
+    const screen = document.getElementById('login-screen');
+    if(screen){
+      screen.style.display='none';
+      screen.style.visibility='hidden';
+    }
+  }
+
     document.getElementById('cookie-banner').classList.add('show');
   });
 }
