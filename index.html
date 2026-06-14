@@ -1106,17 +1106,19 @@ function saveCustomCookies(all){
   }
 }
 // Fermer modal en cliquant dehors
-document.getElementById('cookie-modal').addEventListener('click', function(e){
-  if(e.target === this) this.classList.remove('show');
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('cookie-modal').addEventListener('click', function(e){
+    if(e.target === this) this.classList.remove('show');
+  });
+  // Afficher bannière si pas de consentement
+  if(!localStorage.getItem('cookie-consent')){
+    document.getElementById('cookie-banner').classList.add('show');
+  }
+  // Désactiver GA si refusé
+  if(localStorage.getItem('cookie-consent') === 'declined' || localStorage.getItem('cookie-analytics') === '0'){
+    window['ga-disable-G-L0YPP7Y51K'] = true;
+  }
 });
-// Afficher bannière si pas de consentement
-if(!localStorage.getItem('cookie-consent')){
-  document.getElementById('cookie-banner').classList.add('show');
-}
-// Désactiver GA si refusé
-if(localStorage.getItem('cookie-consent') === 'declined' || localStorage.getItem('cookie-analytics') === '0'){
-  window['ga-disable-G-L0YPP7Y51K'] = true;
-}
 
 /* Audio */
 let ca=null,cb=null;
