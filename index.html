@@ -266,6 +266,27 @@ section{padding:80px 24px}
 .btn-stripe.active:hover{background:var(--gold2);transform:translateY(-2px)}
 .tarif-note{font-size:12px;color:rgba(255,255,255,.35);text-align:center;margin-top:12px}
 
+
+/* COOKIES CNIL */
+function setCookies(choice){
+  localStorage.setItem('cookie-consent', choice);
+  const banner = document.getElementById('cookie-banner');
+  if(banner) banner.classList.remove('show');
+  if(choice === 'declined') window['ga-disable-G-L0YPP7Y51K'] = true;
+}
+function openCookieModal(){
+  const modal = document.getElementById('cookie-modal');
+  if(modal) modal.classList.add('show');
+}
+function saveCustomCookies(all){
+  const analytics = all ? true : (document.getElementById('ck-analytics') && document.getElementById('ck-analytics').checked);
+  setCookies(analytics ? 'accepted' : 'declined');
+  localStorage.setItem('cookie-analytics', analytics ? '1' : '0');
+  const modal = document.getElementById('cookie-modal');
+  if(modal) modal.classList.remove('show');
+  if(!analytics) window['ga-disable-G-L0YPP7Y51K'] = true;
+}
+
 /* FAQ */
 #faq{background:var(--off);text-align:center}
 .faq-list{max-width:720px;margin:48px auto 0;text-align:left}
@@ -275,7 +296,7 @@ section{padding:80px 24px}
 .faq-q::after{content:'+';font-size:20px;color:var(--gold);flex-shrink:0;font-weight:300}
 .faq-item.open .faq-q::after{content:'−'}
 .faq-a{display:none;padding:0 24px 18px;font-size:14px;color:var(--muted);line-height:1.8}
-.faq-item.open .faq-a{display:block}
+.faq-item.open 
 
 /* INSCRIPTION */
 #inscription{background:var(--dark2,#122218);text-align:center;padding:80px 24px}
@@ -327,14 +348,33 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
 @media(max-width:500px){.alpha-grid{grid-template-columns:repeat(3,1fr)}}
 
 /* DARK MODE */
-body.dark{--off:#0e1a14;--white:#132018;--gray:#1e3028;--muted:#8a9e94;--text:#e8f0ec;background:var(--off)}
+body.dark{--off:#0e1a14;--white:#132018;--gray:#1e3028;--muted:#9ab0a4;--text:#e8f0ec;background:var(--off);color:var(--text)}
 body.dark .module-card{background:var(--white);border-color:var(--gray)}
+body.dark .module-card .mod-body p{color:var(--muted)}
+body.dark .module-card .mod-lock{color:var(--muted);border-color:var(--gray)}
+body.dark .module-card .mod-tag{background:rgba(255,255,255,.06);border-color:var(--gray);color:var(--muted)}
 body.dark .ben-card{background:var(--white);border-color:var(--gray)}
+body.dark .ben-card h3{color:#fff}
+body.dark .ben-card p{color:var(--muted)}
 body.dark .faq-item{background:var(--white);border-color:var(--gray)}
+body.dark .faq-q{color:#fff}
 body.dark .faq-q:hover{background:var(--gray)}
-body.dark .temo-card{background:var(--white);border-color:var(--gray)}
+body.dark .faq-a{color:var(--muted)}
 body.dark .tarif-card{background:rgba(255,255,255,.03)}
+body.dark .tarif-features li{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.07)}
+body.dark .cgv-box{background:rgba(255,255,255,.03);border-color:rgba(201,162,39,.15)}
+body.dark .cgv-text{color:rgba(255,255,255,.6)}
+body.dark .pb-card h3{color:#fff}
+body.dark .pb-card p{color:rgba(255,255,255,.55)}
+body.dark .s-title{color:#fff}
+body.dark .s-sub{color:var(--muted)}
+body.dark .methode-card h4{color:#fff}
+body.dark .methode-card p{color:rgba(255,255,255,.5)}
+body.dark .f-col ul a{color:rgba(255,255,255,.4)}
+body.dark .f-desc{color:rgba(255,255,255,.4)}
 body.dark footer{background:#060e09}
+body.dark .mod-name{color:#fff}
+body.dark .mod-lock strong{color:var(--gold2)}
 
 /* MODE TOGGLE */
 .mode-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);padding:7px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .2s}
@@ -399,6 +439,14 @@ body.dark footer{background:#060e09}
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-L0YPP7Y51K');
+
+/* FAQ */
+function toggleFaq(el){
+  const item = el.closest ? el.closest('.faq-item') : el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
 </script>
 </head>
 <body>
@@ -416,19 +464,11 @@ body.dark footer{background:#060e09}
       <div class="lang-dropdown">
         <div class="lang-item active" onclick="setLang('fr','FR')">Français</div>
         <div class="lang-item" onclick="setLang('en','EN')">English</div>
-        <div class="lang-item" onclick="setLang('es','ES')">Español</div>
-        <div class="lang-item" onclick="setLang('pt','PT')">Português</div>
         <div class="lang-item" onclick="setLang('de','DE')">Deutsch</div>
-        <div class="lang-item" onclick="setLang('tr','TR')">Türkçe</div>
-        <div class="lang-item" onclick="setLang('ru','RU')">Русский</div>
-        <div class="lang-item" onclick="setLang('id','ID')">Indonesia</div>
-        <div class="lang-item" onclick="setLang('it','IT')">Italiano</div>
         <div class="lang-item" onclick="setLang('zh','ZH')">中文</div>
-        <div class="lang-item" onclick="setLang('hi','HI')">हिन्दी</div>
-        <div class="lang-item" onclick="setLang('ur','UR')">اردو</div>
       </div>
     </div>
-    <a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" class="nav-cta">S'inscrire</a>
+    <a href="https://buy.stripe.com/cNiaEZfDT8OxeLM83a1VK00" target="_blank" class="nav-cta" data-lang="nav-cta">S'inscrire</a>
   </div>
 </nav>
 <div class="lang-notice" id="lang-notice"></div>
@@ -442,13 +482,13 @@ body.dark footer{background:#060e09}
     <img src="images/hero-letters.png" onerror="this.src='images/hero-letters.png'" alt="Lettres arabes" class="hero-img">
     <p class="hero-desc">Apprenez l'arabe classique depuis zéro avec une méthode structurée, des leçons complètes et des exercices audio pour une prononciation parfaite.</p>
     <div class="hero-pills">
-      <span class="pill" id="pill-1">Audio intégré</span>
-      <span class="pill" id="pill-2">28 lettres</span>
-      <span class="pill" id="pill-3">6 mois de programme</span>
+      <span class="pill" data-lang="pill-1">Audio intégré</span>
+      <span class="pill" data-lang="pill-2">28 lettres</span>
+      <span class="pill" data-lang="pill-3">6 mois de programme</span>
     </div>
     <div class="hero-btns">
-      <a href="inscription.html" class="btn-main">Commencer maintenant — 49,99 €</a>
-      <a href="#modules" class="btn-sec">Découvrir la formation</a>
+      <a href="inscription.html" class="btn-main" data-lang="btn-main">Commencer maintenant — 49,99 €</a>
+      <a href="#modules" class="btn-sec" data-lang="btn-sec">Découvrir la formation</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-n">28</div><div class="stat-l">Lettres + audio</div></div>
@@ -462,7 +502,7 @@ body.dark footer{background:#060e09}
 <!-- PROBLÈME -->
 <section id="probleme">
   <div class="wrap">
-    <p class="s-label">Vous vous reconnaissez ?</p>
+    <p class="s-label" data-lang="pb-label">Vous vous reconnaissez ?</p>
     <h2 class="s-title" style="color:#fff">Pourquoi tant de gens échouent à apprendre l'arabe</h2>
     <div class="pb-grid">
       <div class="pb-card">
@@ -488,8 +528,8 @@ body.dark footer{background:#060e09}
 <!-- MODULES -->
 <section id="modules">
   <div class="wrap">
-    <p class="s-label">Contenu de la formation</p>
-    <h2 class="s-title">4 Modules pour maîtriser l'arabe classique</h2>
+    <p class="s-label" data-lang="mod-label">Contenu de la formation</p>
+    <h2 class="s-title" data-lang="mod-title">4 Modules pour maîtriser l'arabe classique</h2>
     <p class="s-sub">Un accès complet à tous les modules après votre inscription.</p>
     <div class="mod-grid">
 
@@ -603,7 +643,7 @@ body.dark footer{background:#060e09}
 <!-- ALPHABET -->
 <section id="alphabet-preview">
   <div class="wrap">
-    <p class="s-label">Aperçu gratuit</p>
+    <p class="s-label" data-lang="alph-label">Aperçu gratuit</p>
     <h2 class="s-title" style="color:#fff">L'Alphabet Arabe — Écoutez chaque lettre</h2>
     <p class="s-sub" style="color:rgba(255,255,255,.55)">Cliquez sur ▶ pour entendre la prononciation réelle. Le contenu complet est disponible après inscription.</p>
     <div class="alpha-grid">
@@ -646,8 +686,8 @@ body.dark footer{background:#060e09}
 <!-- BÉNÉFICES -->
 <section id="benefices">
   <div class="wrap">
-    <p class="s-label">Pourquoi cette formation</p>
-    <h2 class="s-title">Une méthode complète, pensée pour les francophones</h2>
+    <p class="s-label" data-lang="ben-label">Pourquoi cette formation</p>
+    <h2 class="s-title" data-lang="ben-title">Une méthode complète, pensée pour les francophones</h2>
     <div class="ben-grid">
       <div class="ben-card"><h3>Audio sur chaque lettre</h3><p>Chaque lettre, voyelle et mot clé est accompagné d'un bouton audio pour entendre la prononciation exacte par un locuteur natif.</p></div>
       <div class="ben-card"><h3>Grammaire en français</h3><p>Toutes les règles sont expliquées en français avec des exemples concrets, des tableaux clairs et des exercices corrigés à chaque leçon.</p></div>
@@ -663,14 +703,14 @@ body.dark footer{background:#060e09}
 <!-- TARIF -->
 <section id="tarif">
   <div class="wrap">
-    <p class="s-label">Offre unique</p>
-    <h2 class="s-title">Un seul tarif. Tout inclus. Pour toujours.</h2>
+    <p class="s-label" data-lang="tarif-label">Offre unique</p>
+    <h2 class="s-title" data-lang="tarif-title">Un seul tarif. Tout inclus. Pour toujours.</h2>
     <div class="tarif-card">
       <div class="tarif-badge">✦ ACCÈS COMPLET</div>
-      <div class="tarif-name">Formation Complète</div>
+      <div class="tarif-name" data-lang="tarif-name">Formation Complète</div>
       <div class="tarif-ar">العربية الكلاسيكية الكاملة</div>
       <div class="tarif-price"><sup>€</sup>49,99</div>
-      <div class="tarif-once">Paiement unique — Accès à vie — Sans abonnement</div>
+      <div class="tarif-once" data-lang="tarif-once">Paiement unique — Accès à vie — Sans abonnement</div>
       <ul class="tarif-features">
         <li>Alphabet complet : 28 lettres avec audio</li>
         <li>Voyelles courtes, longues et tanwīn + audio</li>
@@ -682,14 +722,8 @@ body.dark footer{background:#060e09}
         <li>Mises à jour futures incluses gratuitement</li>
         <li>Accès illimité, sans date d'expiration</li>
       </ul>
-      <div class="cgv-box">
-        <label>
-          <input type="checkbox" id="cgv-tarif" onchange="toggleBtn('cgv-tarif','btn-tarif')">
-          <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank">CGV</a> et la <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</span>
-        </label>
-      </div>
       <a href="inscription.html" id="btn-tarif" class="btn-stripe">Je m'inscris maintenant →</a>
-      <div class="tarif-note">Paiement sécurisé via Stripe · Accès immédiat</div>
+      <div class="tarif-note" data-lang="tarif-note">Paiement sécurisé via Stripe · Accès immédiat</div>
     </div>
   </div>
 </section>
@@ -697,8 +731,8 @@ body.dark footer{background:#060e09}
 <!-- FAQ -->
 <section id="faq">
   <div class="wrap">
-    <p class="s-label">Questions fréquentes</p>
-    <h2 class="s-title">Vos questions, nos réponses</h2>
+    <p class="s-label" data-lang="faq-label">Questions fréquentes</p>
+    <h2 class="s-title" data-lang="faq-title">Vos questions, nos réponses</h2>
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Faut-il connaître l'arabe pour commencer ?</div>
@@ -731,14 +765,10 @@ body.dark footer{background:#060e09}
 <!-- INSCRIPTION -->
 <section id="inscription">
   <div class="wrap">
-    <p class="s-label">Rejoignez la formation</p>
-    <h2 class="s-title">Commencez Dès Aujourd'hui</h2>
+    <p class="s-label" data-lang="insc-label">Rejoignez la formation</p>
+    <h2 class="s-title" data-lang="insc-title">Commencez Dès Aujourd'hui</h2>
     <p class="insc-desc">Une méthode structurée, des leçons complètes avec audio et un programme de 6 mois — pour une seule fois 49,99 €.</p>
-    <div class="insc-cgv">
-      <input type="checkbox" id="cgv-insc" onchange="toggleBtn('cgv-insc','btn-insc')">
-      <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank">Conditions Générales de Vente</a> et la <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</span>
-    </div>
-    <a href="inscription.html" id="btn-insc" class="btn-insc">Commencer maintenant — 49,99 €</a>
+    <a href="inscription.html" id="btn-insc" data-lang="btn-insc" class="btn-insc">Commencer maintenant — 49,99 €</a>
     <div class="insc-note">Paiement sécurisé via Stripe · Accès immédiat</div>
   </div>
 </section>
@@ -751,7 +781,7 @@ body.dark footer{background:#060e09}
         <img src="images/logo.png" onerror="this.src='images/logo.png'" alt="Logo">
         <span class="f-logo-name">L'<span>Arabe</span> Accessible</span>
       </div>
-      <p class="f-desc">La méthode francophone pour apprendre l'arabe classique depuis zéro, à votre rythme et à vie.</p>
+      <p class="f-desc" data-lang="footer-desc">La méthode francophone pour apprendre l'arabe classique depuis zéro, à votre rythme et à vie.</p>
       <a href="mailto:contact@arabeaccessible.com" class="f-email">contact@arabeaccessible.com</a>
     </div>
     <div class="f-col">
@@ -776,11 +806,51 @@ body.dark footer{background:#060e09}
 </footer>
 
 <!-- COOKIE BANNER -->
-<div id="cookie-banner">
-  <div class="ck-text">Nous utilisons des cookies essentiels pour le fonctionnement du site. <a href="mentions-legales.html" target="_blank">En savoir plus</a></div>
-  <div class="ck-btns">
-    <button class="ck-no" onclick="setCookie('declined')">Refuser</button>
-    <button class="ck-ok" onclick="setCookie('accepted')">Accepter</button>
+<!-- BANNIÈRE COOKIES CNIL CONFORME -->
+<div id="cookie-banner" role="dialog" aria-label="Gestion des cookies">
+  <div class="ck-inner">
+    <div class="ck-text">
+      <div class="ck-title">Gestion des cookies</div>
+      <div class="ck-desc">Nous utilisons des cookies pour assurer le bon fonctionnement du site, mesurer son audience et améliorer votre expérience. Vous pouvez accepter, refuser ou personnaliser leur utilisation à tout moment. <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a></div>
+    </div>
+    <div class="ck-btns">
+      <button class="ck-decline" onclick="setCookies('declined')">Refuser</button>
+      <button class="ck-custom" onclick="openCookieModal()">Personnaliser</button>
+      <button class="ck-accept" onclick="setCookies('accepted')">Accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PERSONNALISATION COOKIES -->
+<div id="cookie-modal" role="dialog" aria-modal="true">
+  <div class="ck-modal-box">
+    <div class="ck-modal-title">Personnaliser les cookies</div>
+    <div class="ck-modal-sub">Choisissez les catégories de cookies que vous acceptez.</div>
+    <div class="ck-option">
+      <div class="ck-option-header">
+        <span class="ck-option-name">Cookies essentiels</span>
+        <label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-slider"></span></label>
+      </div>
+      <div class="ck-option-desc">Nécessaires au fonctionnement du site. Ne peuvent pas être désactivés.</div>
+    </div>
+    <div class="ck-option">
+      <div class="ck-option-header">
+        <span class="ck-option-name">Mesure d'audience (Google Analytics)</span>
+        <label class="ck-toggle"><input type="checkbox" id="ck-analytics"><span class="ck-slider"></span></label>
+      </div>
+      <div class="ck-option-desc">Permettent de mesurer le trafic et améliorer le site. Aucune donnée vendue.</div>
+    </div>
+    <div class="ck-option">
+      <div class="ck-option-header">
+        <span class="ck-option-name">Cookies de paiement (Stripe)</span>
+        <label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-slider"></span></label>
+      </div>
+      <div class="ck-option-desc">Nécessaires à la sécurité lors du paiement. Ne peuvent pas être désactivés.</div>
+    </div>
+    <div class="ck-modal-btns">
+      <button class="ck-decline" onclick="saveCustomCookies(false)" style="flex:1">Tout refuser</button>
+      <button class="ck-save" onclick="saveCustomCookies(true)">Enregistrer mes choix</button>
+    </div>
   </div>
 </div>
 
@@ -804,412 +874,289 @@ if(localStorage.getItem('theme')==='dark'){
 
 
 /* ═══ TRADUCTIONS ═══ */
-const TRANSLATIONS = {
-  fr: {},  // français = défaut, déjà dans le HTML
+
+/* ═══ SYSTÈME DE TRADUCTION 4 LANGUES ═══ */
+const T = {
+  fr: {
+    'nav-cta': "S'inscrire",
+    'hero-badge': "✦ Formation arabe classique · 100% en français",
+    'hero-h1': "L'<span class='g'>Arabe</span> Accessible",
+    'hero-desc': "Apprenez l'arabe classique depuis zéro avec une méthode structurée, des leçons complètes et des exercices audio pour une prononciation parfaite.",
+    'pill-1': "Audio intégré", 'pill-2': "28 lettres", 'pill-3': "6 mois de programme",
+    'btn-main': "Commencer maintenant — 49,99 €", 'btn-sec': "Découvrir la formation",
+    'stat-1': "Lettres + audio", 'stat-2': "Mois structurés", 'stat-3': "Modules complets", 'stat-4': "Accès à vie",
+    'pb-label': "Vous vous reconnaissez ?",
+    'pb-title': "Pourquoi tant de gens échouent à apprendre l'arabe",
+    'pb1-t': "Trop compliqué sans guide", 'pb1-d': "L'alphabet, les voyelles, les cas grammaticaux… sans méthode progressive, on abandonne rapidement.",
+    'pb2-t': "Ressources pas en français", 'pb2-d': "La majorité des bonnes ressources sont en anglais ou en arabe. Comprendre dans une langue étrangère ralentit tout.",
+    'pb3-t': "Pas de prononciation réelle", 'pb3-d': "Sans audio, impossible de prononcer correctement les sons spécifiques à l'arabe absents du français.",
+    'pb-sol': "C'est pour ça qu'existe <strong>L'Arabe Accessible</strong> : une méthode <strong>100% en français</strong>, progressive, avec <strong>audio sur chaque lettre et chaque mot</strong>. Suivez une feuille de route claire, semaine par semaine.",
+    'mod-label': "Contenu de la formation", 'mod-title': "4 Modules pour maîtriser l'arabe classique",
+    'mod-sub': "Un accès complet à tous les modules après votre inscription.",
+    'mod1-name': "Alphabet & Prononciation", 'mod1-desc': "Maîtrisez les 28 lettres arabes, leurs 4 formes, les voyelles courtes et longues, le tanwīn — tout avec audio intégré.",
+    'mod2-name': "Grammaire Complète", 'mod2-desc': "Le nom, le pronom, le verbe et la particule — leurs rôles, formes, cas grammaticaux et usage dans la phrase, expliqués en français.",
+    'mod3-name': "Conjugaison & Verbes", 'mod3-desc': "L'accompli, l'inaccompli et l'impératif conjugués pour toutes les personnes avec tableaux clairs, exemples et exercices corrigés.",
+    'mod4-name': "Programme Al-Adjroumiyya", 'mod4-desc': "24 semaines de programme basé sur le traité classique. Une feuille de route du débutant jusqu'à la lecture de textes classiques.",
+    'mod5-name': "Le Sarf — Morphologie", 'mod5-desc': "La science de la morphologie arabe — les racines, les modèles, les dérivés et les 10 grandes formes verbales.",
+    'mod-lock': "Contenu réservé aux membres — <strong>Accès après inscription</strong>",
+    'alph-label': "Aperçu gratuit", 'alph-title': "L'Alphabet Arabe — Écoutez chaque lettre",
+    'alph-sub': "Cliquez sur ▶ pour entendre la prononciation réelle. Le contenu complet est disponible après inscription.",
+    'alph-cta': "Les voyelles, vocabulaire audio, grammaire complète et programme 6 mois sont réservés aux membres.",
+    'alph-btn': "Accéder à tout le contenu — 49,99 €",
+    'ben-label': "Pourquoi cette formation", 'ben-title': "Une méthode complète, pensée pour les francophones",
+    'ben1-t': "Audio sur chaque lettre", 'ben1-d': "Chaque lettre, voyelle et mot clé est accompagné d'un bouton audio pour entendre la prononciation exacte.",
+    'ben2-t': "Grammaire en français", 'ben2-d': "Toutes les règles sont expliquées en français avec des exemples concrets, des tableaux clairs et des exercices corrigés.",
+    'ben3-t': "Programme semaine par semaine", 'ben3-d': "6 mois de programme Al-Adjroumiyya découpé en 24 semaines. Vous savez exactement quoi faire chaque semaine, sans jamais vous perdre.",
+    'ben4-t': "Accès à vie", 'ben4-d': "Vous payez une seule fois. Vous accédez à tout le contenu pour toujours, y compris les futures mises à jour, sans abonnement mensuel.",
+    'ben5-t': "Contenu exclusif membres", 'ben5-d': "Les leçons complètes, tableaux de conjugaison et exercices corrigés sont réservés aux membres inscrits.",
+    'ben6-t': "Sur tous vos appareils", 'ben6-d': "Le site fonctionne parfaitement sur smartphone, tablette et ordinateur. Apprenez où vous voulez, quand vous voulez.",
+    'tarif-label': "Offre unique", 'tarif-title': "Un seul tarif. Tout inclus. Pour toujours.",
+    'tarif-name': "Formation Complète", 'tarif-once': "Paiement unique — Accès à vie — Sans abonnement",
+    'tf1': "Alphabet complet : 28 lettres avec audio", 'tf2': "Voyelles courtes, longues et tanwīn + audio",
+    'tf3': "Grammaire : Nom, Pronom, Verbe, Particule", 'tf4': "Conjugaison : accompli, inaccompli, impératif",
+    'tf5': "Exercices corrigés à chaque leçon", 'tf6': "Programme Al-Adjroumiyya 6 mois (24 semaines)",
+    'tf7': "Vocabulaire essentiel avec prononciation audio", 'tf8': "Mises à jour futures incluses gratuitement",
+    'tf9': "Accès illimité, sans date d'expiration",
+    'tarif-cta': "Je m'inscris maintenant →", 'tarif-note': "Paiement sécurisé via Stripe · Accès immédiat",
+    'faq-label': "Questions fréquentes", 'faq-title': "Vos questions, nos réponses",
+    'faq1-q': "Faut-il connaître l'arabe pour commencer ?", 'faq1-a': "Non, absolument pas. La formation commence depuis zéro : alphabet, sons, voyelles. Aucune connaissance préalable n'est requise.",
+    'faq2-q': "Quel arabe est enseigné — classique ou dialectal ?", 'faq2-a': "La formation enseigne l'arabe classique (فصحى), la langue du Coran et des textes islamiques traditionnels.",
+    'faq3-q': "Comment accéder au contenu après paiement ?", 'faq3-a': "Dès votre inscription, vous recevez un email avec vos identifiants d'accès. Vous accédez immédiatement à tous les modules.",
+    'faq4-q': "Combien de temps faut-il consacrer à la formation ?", 'faq4-a': "30 à 60 minutes par jour suffisent pour progresser régulièrement. Le programme est conçu pour être suivi à votre propre rythme.",
+    'faq5-q': "Est-ce que j'ai accès pour toujours ?", 'faq5-a': "Oui. Paiement unique, accès illimité. Les futures mises à jour sont également incluses gratuitement, sans aucun abonnement.",
+    'faq6-q': "Le site fonctionne-t-il sur mobile ?", 'faq6-a': "Oui, le site est entièrement responsive. Les boutons audio et tous les contenus fonctionnent sur smartphone, tablette et ordinateur.",
+    'insc-label': "Rejoignez la formation", 'insc-title': "Commencez Dès Aujourd'hui",
+    'insc-desc': "Une méthode structurée, des leçons complètes avec audio et un programme de 6 mois — pour une seule fois 49,99 €.",
+    'btn-insc': "Commencer maintenant — 49,99 €", 'insc-note': "Paiement sécurisé via Stripe · Accès immédiat",
+    'footer-desc': "La méthode francophone pour apprendre l'arabe classique depuis zéro, à votre rythme et à vie.",
+    'footer-col1': "Formation", 'footer-col2': "Informations",
+    'f-modules': "Les Modules", 'f-alpha': "L'Alphabet", 'f-tarif': "Tarif", 'f-faq': "FAQ",
+    'f-signup': "S'inscrire", 'f-legal': "Mentions légales", 'f-contact': "Contact",
+    'mode-btn-dark': "Sombre", 'mode-btn-light': "Clair",
+  },
 
   en: {
-    'nav-cta': 'Sign up',
-    'hero-badge': '✦ Classical Arabic Course · 100% in French',
-    'hero-h1': "The <span class='g'>Arabic</span> Language Made Accessible",
-    'hero-ar': 'العربية في متناول الجميع',
-    'hero-desc': 'Learn classical Arabic from scratch with a structured method, complete lessons and audio exercises for perfect pronunciation.',
-    'pill-1': 'Integrated Audio',
-    'pill-2': '28 Letters',
-    'pill-3': '6-month Program',
-    'btn-main': 'Start now — €49.99',
-    'btn-sec': 'Discover the course',
-    'stat-1': 'Letters + Audio', 'stat-2': 'Structured months', 'stat-3': 'Complete modules', 'stat-4': 'Lifetime access',
-    'pb-label': 'Do you recognise yourself?',
-    'pb-title': 'Why so many people fail to learn Arabic',
-    'pb1-t': 'Too difficult without guidance', 'pb1-d': 'The alphabet, vowels, grammar... without a progressive method, people give up quickly.',
-    'pb2-t': 'No resources in your language', 'pb2-d': 'Most good resources are in English or Arabic. Learning in a foreign language slows everything down.',
-    'pb3-t': 'No real pronunciation', 'pb3-d': 'Without audio, it is impossible to correctly pronounce Arabic sounds absent from English.',
-    'pb-sol': 'That is why <strong>L'Arabe Accessible</strong> exists: a method <strong>100% in French</strong>, progressive, with <strong>audio on every letter and word</strong>.',
-    'mod-label': 'Course content',
-    'mod-title': '4 Modules to master classical Arabic',
-    'mod-sub': 'Full access to all modules after registration.',
-    'mod1-name': 'Alphabet & Pronunciation', 'mod1-desc': 'Master the 28 Arabic letters, their 4 forms, short and long vowels, tanwīn — all with integrated audio.',
-    'mod2-name': 'Complete Grammar', 'mod2-desc': 'The noun, pronoun, verb and particle — their roles, forms, grammatical cases explained in French.',
-    'mod3-name': 'Conjugation & Verbs', 'mod3-desc': 'Past, present and imperative conjugated for all persons with clear tables and corrected exercises.',
-    'mod4-name': 'Al-Adjroumiyya Program', 'mod4-desc': '24 weeks of program based on the classical treatise. A roadmap from beginner to reading classical texts.',
-    'mod5-name': 'Sarf — Morphology', 'mod5-desc': 'Arabic morphology — roots, patterns, derivatives and the 10 great verbal forms. Sarf completes Nahw.',
-    'mod-lock': 'Reserved for members — <strong>Access after registration</strong>',
-    'alph-label': 'Free preview',
-    'alph-title': 'The Arabic Alphabet — Listen to each letter',
-    'alph-sub': 'Click ▶ to hear the real pronunciation. Full content available after registration.',
-    'alph-cta': 'Vowels, audio vocabulary, complete grammar and 6-month program are reserved for members.',
-    'alph-btn': 'Access all content — €49.99',
-    'ben-label': 'Why this course',
-    'ben-title': 'A complete method, designed for French speakers',
-    'ben1-t': 'Audio on every letter', 'ben1-d': 'Every letter, vowel and key word has an audio button to hear the exact pronunciation.',
-    'ben2-t': 'Grammar in French', 'ben2-d': 'All rules explained in French with concrete examples, clear tables and corrected exercises.',
-    'ben3-t': 'Week-by-week program', 'ben3-d': '6-month Al-Adjroumiyya program split into 24 weeks. You know exactly what to do each week.',
-    'ben4-t': 'Lifetime access', 'ben4-d': 'Pay once. Access all content forever, including future updates, with no monthly subscription.',
-    'ben5-t': 'Exclusive member content', 'ben5-d': 'Complete lessons, conjugation tables and corrected exercises are reserved for registered members.',
-    'ben6-t': 'On all your devices', 'ben6-d': 'The site works perfectly on smartphone, tablet and computer. Learn wherever you want, whenever you want.',
-    'tarif-label': 'Unique offer',
-    'tarif-title': 'One price. Everything included. Forever.',
-    'tarif-name': 'Complete Course',
-    'tarif-once': 'One-time payment — Lifetime access — No subscription',
-    'tf1': 'Complete alphabet: 28 letters with audio',
-    'tf2': 'Short, long vowels and tanwīn + audio',
-    'tf3': 'Grammar: Noun, Pronoun, Verb, Particle',
-    'tf4': 'Conjugation: past, present, imperative',
-    'tf5': 'Corrected exercises at each lesson',
-    'tf6': 'Al-Adjroumiyya 6-month program (24 weeks)',
-    'tf7': 'Essential vocabulary with audio pronunciation',
-    'tf8': 'Future updates included free of charge',
-    'tf9': 'Unlimited access, no expiry date',
-    'tarif-cta': 'Register now →',
-    'tarif-note': 'Secure payment via Stripe · Immediate access',
-    'cgv-txt': 'I have read and accept the <a href="mentions-legales.html#cgv" target="_blank">Terms & Conditions</a> and <a href="mentions-legales.html#confidentialite" target="_blank">Privacy Policy</a>.',
-    'faq-label': 'Frequently asked questions',
-    'faq-title': 'Your questions, our answers',
-    'faq1-q': 'Do I need to know Arabic to start?', 'faq1-a': 'No, not at all. The course starts from scratch: alphabet, sounds, vowels. No prior knowledge required.',
-    'faq2-q': 'Which Arabic is taught — classical or dialect?', 'faq2-a': 'The course teaches classical Arabic (فصحى), the language of the Quran and Islamic texts.',
-    'faq3-q': 'How do I access the content after payment?', 'faq3-a': 'Upon registration, you receive an email with your access credentials. You immediately access all modules.',
-    'faq4-q': 'How much time should I dedicate?', 'faq4-a': '30 to 60 minutes per day is enough to progress regularly. The program is designed to follow at your own pace.',
-    'faq5-q': 'Do I have access forever?', 'faq5-a': 'Yes. One-time payment, unlimited access. Future updates are also included free of charge.',
-    'faq6-q': 'Does the site work on mobile?', 'faq6-a': 'Yes, the site is fully responsive. Audio buttons and all content work on smartphone, tablet and computer.',
-    'insc-label': 'Join the course',
-    'insc-title': 'Start Today',
-    'insc-desc': 'Structured method, complete lessons with audio and a 6-month program — for a one-time fee of €49.99.',
-    'btn-insc': 'Start now — €49.99',
-    'insc-note': 'Secure payment via Stripe · Immediate access',
-    'footer-desc': 'The French-language method to learn classical Arabic from scratch, at your own pace, for life.',
-    'footer-col1': 'Course', 'footer-col2': 'Information',
-    'f-modules': 'The Modules', 'f-alpha': 'Alphabet', 'f-tarif': 'Pricing', 'f-faq': 'FAQ',
-    'f-signup': 'Sign up', 'f-legal': 'Legal', 'f-contact': 'Contact',
-    'mode-btn': 'Light',
-  },
-
-  ru: {
-    'nav-cta': 'Записаться',
-    'hero-badge': '✦ Курс классического арабского · 100% на французском',
-    'hero-desc': 'Изучайте классический арабский с нуля с помощью структурированного метода, полных уроков и аудиоупражнений для идеального произношения.',
-    'pill-1': 'Интегрированное аудио', 'pill-2': '28 букв', 'pill-3': 'Программа на 6 месяцев',
-    'btn-main': 'Начать сейчас — 49,99 €',
-    'btn-sec': 'Узнать о курсе',
-    'pb-label': 'Узнаёте себя?',
-    'pb-title': 'Почему многие не могут выучить арабский',
-    'pb1-t': 'Слишком сложно без руководства', 'pb2-t': 'Нет ресурсов на вашем языке', 'pb3-t': 'Нет настоящего произношения',
-    'mod-label': 'Содержание курса', 'mod-title': '4 модуля для освоения классического арабского',
-    'tarif-label': 'Уникальное предложение', 'tarif-title': 'Одна цена. Всё включено. Навсегда.',
-    'tarif-cta': 'Зарегистрироваться →',
-    'btn-insc': 'Начать сейчас — 49,99 €',
-    'faq-label': 'Часто задаваемые вопросы', 'faq-title': 'Ваши вопросы, наши ответы',
-    'footer-col1': 'Курс', 'footer-col2': 'Информация',
-  },
-
-  es: {
-    'nav-cta': 'Inscribirse',
-    'hero-badge': '✦ Curso de árabe clásico · 100% en francés',
-    'hero-desc': 'Aprende árabe clásico desde cero con un método estructurado, lecciones completas y ejercicios de audio para una pronunciación perfecta.',
-    'pill-1': 'Audio integrado', 'pill-2': '28 letras', 'pill-3': 'Programa de 6 meses',
-    'btn-main': 'Comenzar ahora — 49,99 €', 'btn-sec': 'Descubrir el curso',
-    'pb-label': '¿Te reconoces?', 'pb-title': 'Por qué tanta gente fracasa en aprender árabe',
-    'mod-label': 'Contenido del curso', 'mod-title': '4 módulos para dominar el árabe clásico',
-    'tarif-label': 'Oferta única', 'tarif-title': 'Un precio. Todo incluido. Para siempre.',
-    'tarif-cta': 'Inscribirse ahora →',
-    'btn-insc': 'Comenzar ahora — 49,99 €',
-    'faq-label': 'Preguntas frecuentes', 'faq-title': 'Sus preguntas, nuestras respuestas',
-    'footer-col1': 'Curso', 'footer-col2': 'Información',
+    'nav-cta': "Sign up",
+    'hero-badge': "✦ Classical Arabic Course · 100% in French",
+    'hero-desc': "Learn classical Arabic from scratch with a structured method, complete lessons and audio exercises for perfect pronunciation.",
+    'pill-1': "Integrated Audio", 'pill-2': "28 Letters", 'pill-3': "6-month Program",
+    'btn-main': "Start now — €49.99", 'btn-sec': "Discover the course",
+    'stat-1': "Letters + audio", 'stat-2': "Structured months", 'stat-3': "Complete modules", 'stat-4': "Lifetime access",
+    'pb-label': "Do you recognise yourself?",
+    'pb-title': "Why so many people fail to learn Arabic",
+    'pb1-t': "Too difficult without guidance", 'pb1-d': "The alphabet, vowels, grammar... without a progressive method, people give up quickly.",
+    'pb2-t': "No resources in your language", 'pb2-d': "Most good resources are in English or Arabic. Learning in a foreign language slows everything down.",
+    'pb3-t': "No real pronunciation", 'pb3-d': "Without audio, it is impossible to correctly pronounce Arabic sounds absent from your language.",
+    'pb-sol': "That is why <strong>L'Arabe Accessible</strong> exists: a <strong>100% French</strong> progressive method with <strong>audio on every letter and word</strong>. Follow a clear roadmap, week by week.",
+    'mod-label': "Course content", 'mod-title': "4 Modules to master classical Arabic",
+    'mod-sub': "Full access to all modules after registration.",
+    'mod1-name': "Alphabet & Pronunciation", 'mod1-desc': "Master the 28 Arabic letters, their 4 forms, short and long vowels, tanwīn — all with integrated audio.",
+    'mod2-name': "Complete Grammar", 'mod2-desc': "The noun, pronoun, verb and particle — their roles, forms, grammatical cases and usage in the sentence, explained in French.",
+    'mod3-name': "Conjugation & Verbs", 'mod3-desc': "Past, present and imperative conjugated for all persons with clear tables, examples and corrected exercises.",
+    'mod4-name': "Al-Adjroumiyya Program", 'mod4-desc': "24 weeks of program based on the classical treatise. A roadmap from beginner to reading classical texts.",
+    'mod5-name': "Sarf — Morphology", 'mod5-desc': "Arabic morphology science — roots, patterns, derivatives and the 10 great verbal forms.",
+    'mod-lock': "Reserved for members — <strong>Access after registration</strong>",
+    'alph-label': "Free preview", 'alph-title': "The Arabic Alphabet — Listen to each letter",
+    'alph-sub': "Click ▶ to hear the real pronunciation. Full content available after registration.",
+    'alph-cta': "Vowels, audio vocabulary, complete grammar and 6-month program are reserved for members.",
+    'alph-btn': "Access all content — €49.99",
+    'ben-label': "Why this course", 'ben-title': "A complete method, designed for French speakers",
+    'ben1-t': "Audio on every letter", 'ben1-d': "Every letter, vowel and key word has an audio button to hear the exact pronunciation.",
+    'ben2-t': "Grammar in French", 'ben2-d': "All rules explained in French with concrete examples, clear tables and corrected exercises at every lesson.",
+    'ben3-t': "Week-by-week program", 'ben3-d': "6-month Al-Adjroumiyya program split into 24 weeks. You know exactly what to do each week.",
+    'ben4-t': "Lifetime access", 'ben4-d': "Pay once. Access all content forever, including future updates, with no monthly subscription.",
+    'ben5-t': "Exclusive member content", 'ben5-d': "Complete lessons, conjugation tables and corrected exercises are reserved for registered members.",
+    'ben6-t': "On all your devices", 'ben6-d': "The site works perfectly on smartphone, tablet and computer. Learn wherever you want, whenever you want.",
+    'tarif-label': "Unique offer", 'tarif-title': "One price. Everything included. Forever.",
+    'tarif-name': "Complete Course", 'tarif-once': "One-time payment — Lifetime access — No subscription",
+    'tf1': "Complete alphabet: 28 letters with audio", 'tf2': "Short, long vowels and tanwīn + audio",
+    'tf3': "Grammar: Noun, Pronoun, Verb, Particle", 'tf4': "Conjugation: past, present, imperative",
+    'tf5': "Corrected exercises at each lesson", 'tf6': "Al-Adjroumiyya 6-month program (24 weeks)",
+    'tf7': "Essential vocabulary with audio pronunciation", 'tf8': "Future updates included free of charge",
+    'tf9': "Unlimited access, no expiry date",
+    'tarif-cta': "Register now →", 'tarif-note': "Secure payment via Stripe · Immediate access",
+    'faq-label': "Frequently asked questions", 'faq-title': "Your questions, our answers",
+    'faq1-q': "Do I need to know Arabic to start?", 'faq1-a': "No, not at all. The course starts from zero: alphabet, sounds, vowels. No prior knowledge required.",
+    'faq2-q': "Which Arabic is taught — classical or dialect?", 'faq2-a': "The course teaches classical Arabic (فصحى), the language of the Quran and Islamic texts.",
+    'faq3-q': "How do I access the content after payment?", 'faq3-a': "Upon registration, you receive an email with your access credentials. You immediately access all modules.",
+    'faq4-q': "How much time should I dedicate?", 'faq4-a': "30 to 60 minutes per day is enough to progress regularly. The program is designed to follow at your own pace.",
+    'faq5-q': "Do I have access forever?", 'faq5-a': "Yes. One-time payment, unlimited access. Future updates are also included free of charge.",
+    'faq6-q': "Does the site work on mobile?", 'faq6-a': "Yes, the site is fully responsive. Audio buttons and all content work on smartphone, tablet and computer.",
+    'insc-label': "Join the course", 'insc-title': "Start Today",
+    'insc-desc': "Structured method, complete lessons with audio and a 6-month program — for a one-time fee of €49.99.",
+    'btn-insc': "Start now — €49.99", 'insc-note': "Secure payment via Stripe · Immediate access",
+    'footer-desc': "The French-language method to learn classical Arabic from scratch, at your own pace, for life.",
+    'footer-col1': "Course", 'footer-col2': "Information",
+    'f-modules': "The Modules", 'f-alpha': "Alphabet", 'f-tarif': "Pricing", 'f-faq': "FAQ",
+    'f-signup': "Sign up", 'f-legal': "Legal notices", 'f-contact': "Contact",
+    'mode-btn-dark': "Dark", 'mode-btn-light': "Light",
   },
 
   de: {
-    'nav-cta': 'Anmelden',
-    'hero-badge': '✦ Klassischer Arabisch-Kurs · 100% auf Französisch',
-    'hero-desc': 'Lernen Sie klassisches Arabisch von Grund auf mit einer strukturierten Methode, vollständigen Lektionen und Audioübungen.',
-    'pill-1': 'Integriertes Audio', 'pill-2': '28 Buchstaben', 'pill-3': '6-Monats-Programm',
-    'btn-main': 'Jetzt beginnen — 49,99 €', 'btn-sec': 'Kurs entdecken',
-    'mod-label': 'Kursinhalt', 'mod-title': '4 Module zur Beherrschung des klassischen Arabisch',
-    'tarif-label': 'Einmaliges Angebot', 'tarif-title': 'Ein Preis. Alles inklusive. Für immer.',
-    'tarif-cta': 'Jetzt anmelden →',
-    'btn-insc': 'Jetzt beginnen — 49,99 €',
-    'faq-label': 'Häufig gestellte Fragen',
-  },
-
-  tr: {
-    'nav-cta': 'Kayıt Ol',
-    'hero-badge': '✦ Klasik Arapça Kursu · 100% Fransızca',
-    'hero-desc': 'Sıfırdan klasik Arapça öğrenin — yapılandırılmış yöntem, tam dersler ve mükemmel telaffuz için sesli alıştırmalar.',
-    'pill-1': 'Entegre Ses', 'pill-2': '28 Harf', 'pill-3': '6 Aylık Program',
-    'btn-main': 'Şimdi başla — 49,99 €', 'btn-sec': 'Kursu keşfet',
-    'mod-label': 'Kurs içeriği', 'mod-title': 'Klasik Arapçayı öğrenmek için 4 modül',
-    'tarif-label': 'Benzersiz teklif', 'tarif-title': 'Tek fiyat. Her şey dahil. Sonsuza dek.',
-    'tarif-cta': 'Şimdi kayıt ol →',
-    'btn-insc': 'Şimdi başla — 49,99 €',
-  },
-
-  id: {
-    'nav-cta': 'Daftar',
-    'hero-badge': '✦ Kursus Bahasa Arab Klasik · 100% dalam Bahasa Prancis',
-    'hero-desc': 'Pelajari bahasa Arab klasik dari nol dengan metode terstruktur, pelajaran lengkap, dan latihan audio untuk pengucapan sempurna.',
-    'pill-1': 'Audio Terintegrasi', 'pill-2': '28 Huruf', 'pill-3': 'Program 6 Bulan',
-    'btn-main': 'Mulai sekarang — 49,99 €', 'btn-sec': 'Temukan kursus',
-    'mod-label': 'Konten kursus', 'mod-title': '4 Modul untuk menguasai bahasa Arab klasik',
-    'tarif-cta': 'Daftar sekarang →', 'btn-insc': 'Mulai sekarang — 49,99 €',
-  },
-
-  it: {
-    'nav-cta': 'Iscriviti',
-    'hero-badge': '✦ Corso di arabo classico · 100% in francese',
-    'hero-desc': 'Impara l'arabo classico da zero con un metodo strutturato, lezioni complete ed esercizi audio per una pronuncia perfetta.',
-    'pill-1': 'Audio integrato', 'pill-2': '28 lettere', 'pill-3': 'Programma 6 mesi',
-    'btn-main': 'Inizia ora — 49,99 €', 'btn-sec': 'Scopri il corso',
-    'mod-label': 'Contenuto del corso', 'mod-title': '4 moduli per padroneggiare l'arabo classico',
-    'tarif-cta': 'Iscriviti ora →', 'btn-insc': 'Inizia ora — 49,99 €',
+    'nav-cta': "Anmelden",
+    'hero-badge': "✦ Klassischer Arabisch-Kurs · 100% auf Französisch",
+    'hero-desc': "Lernen Sie klassisches Arabisch von Grund auf mit einer strukturierten Methode, vollständigen Lektionen und Audioübungen für eine perfekte Aussprache.",
+    'pill-1': "Integriertes Audio", 'pill-2': "28 Buchstaben", 'pill-3': "6-Monats-Programm",
+    'btn-main': "Jetzt beginnen — 49,99 €", 'btn-sec': "Kurs entdecken",
+    'stat-1': "Buchstaben + Audio", 'stat-2': "Strukturierte Monate", 'stat-3': "Vollständige Module", 'stat-4': "Lebenslanger Zugang",
+    'pb-label': "Erkennen Sie sich wieder?",
+    'pb-title': "Warum so viele Menschen beim Arabischlernen scheitern",
+    'pb1-t': "Zu schwierig ohne Anleitung", 'pb1-d': "Alphabet, Vokale, Grammatik… ohne schrittweise Methode geben die meisten schnell auf.",
+    'pb2-t': "Keine Ressourcen in Ihrer Sprache", 'pb2-d': "Die meisten guten Ressourcen sind auf Englisch oder Arabisch. Das Lernen in einer Fremdsprache verlangsamt alles.",
+    'pb3-t': "Keine echte Aussprache", 'pb3-d': "Ohne Audio ist es unmöglich, die spezifischen arabischen Laute korrekt auszusprechen.",
+    'pb-sol': "Deshalb gibt es <strong>L'Arabe Accessible</strong>: eine <strong>100% französischsprachige</strong> schrittweise Methode mit <strong>Audio für jeden Buchstaben und jedes Wort</strong>.",
+    'mod-label': "Kursinhalt", 'mod-title': "4 Module zur Beherrschung des klassischen Arabisch",
+    'mod-sub': "Vollständiger Zugang zu allen Modulen nach der Anmeldung.",
+    'mod1-name': "Alphabet & Aussprache", 'mod1-desc': "Beherrschen Sie die 28 arabischen Buchstaben, ihre 4 Formen, kurze und lange Vokale, Tanwīn — alles mit integriertem Audio.",
+    'mod2-name': "Vollständige Grammatik", 'mod2-desc': "Das Substantiv, Pronomen, Verb und die Partikel — ihre Rollen, Formen und grammatikalischen Fälle auf Französisch erklärt.",
+    'mod3-name': "Konjugation & Verben", 'mod3-desc': "Vergangenheit, Gegenwart und Imperativ für alle Personen mit klaren Tabellen und korrigierten Übungen.",
+    'mod4-name': "Al-Adjroumiyya-Programm", 'mod4-desc': "24 Wochen Programm basierend auf dem klassischen Traktat. Ein Fahrplan vom Anfänger bis zur Lektüre klassischer Texte.",
+    'mod5-name': "Sarf — Morphologie", 'mod5-desc': "Die Wissenschaft der arabischen Morphologie — Wurzeln, Muster, Ableitungen und die 10 großen Verbformen.",
+    'mod-lock': "Nur für Mitglieder — <strong>Zugang nach der Anmeldung</strong>",
+    'alph-label': "Kostenlose Vorschau", 'alph-title': "Das arabische Alphabet — Hören Sie jeden Buchstaben",
+    'alph-sub': "Klicken Sie auf ▶, um die echte Aussprache zu hören. Vollständiger Inhalt nach der Anmeldung verfügbar.",
+    'alph-cta': "Vokale, Audio-Wortschatz, vollständige Grammatik und 6-Monats-Programm sind nur für Mitglieder.",
+    'alph-btn': "Auf alle Inhalte zugreifen — 49,99 €",
+    'ben-label': "Warum dieser Kurs", 'ben-title': "Eine vollständige Methode für französischsprachige Lernende",
+    'ben1-t': "Audio für jeden Buchstaben", 'ben1-d': "Jeder Buchstabe, Vokal und Schlüsselwort hat einen Audio-Button.",
+    'ben2-t': "Grammatik auf Französisch", 'ben2-d': "Alle Regeln werden auf Französisch mit konkreten Beispielen und Tabellen erklärt.",
+    'ben3-t': "Wöchentliches Programm", 'ben3-d': "6 Monate Al-Adjroumiyya-Programm in 24 Wochen unterteilt. Sie wissen genau, was jede Woche zu tun ist.",
+    'ben4-t': "Lebenslanger Zugang", 'ben4-d': "Einmalige Zahlung. Zugang zu allen Inhalten für immer, einschließlich zukünftiger Updates.",
+    'ben5-t': "Exklusiver Mitgliederinhalt", 'ben5-d': "Vollständige Lektionen, Konjugationstabellen und Übungen sind für registrierte Mitglieder reserviert.",
+    'ben6-t': "Auf allen Ihren Geräten", 'ben6-d': "Die Website funktioniert perfekt auf Smartphone, Tablet und Computer.",
+    'tarif-label': "Einmaliges Angebot", 'tarif-title': "Ein Preis. Alles inklusive. Für immer.",
+    'tarif-name': "Vollständiger Kurs", 'tarif-once': "Einmalige Zahlung — Lebenslanger Zugang — Kein Abonnement",
+    'tf1': "Vollständiges Alphabet: 28 Buchstaben mit Audio", 'tf2': "Kurze, lange Vokale und Tanwīn + Audio",
+    'tf3': "Grammatik: Substantiv, Pronomen, Verb, Partikel", 'tf4': "Konjugation: Vergangenheit, Gegenwart, Imperativ",
+    'tf5': "Korrigierte Übungen in jeder Lektion", 'tf6': "Al-Adjroumiyya 6-Monats-Programm (24 Wochen)",
+    'tf7': "Wesentlicher Wortschatz mit Audio-Aussprache", 'tf8': "Zukünftige Updates kostenlos enthalten",
+    'tf9': "Unbegrenzter Zugang, kein Ablaufdatum",
+    'tarif-cta': "Jetzt anmelden →", 'tarif-note': "Sichere Zahlung über Stripe · Sofortiger Zugang",
+    'faq-label': "Häufig gestellte Fragen", 'faq-title': "Ihre Fragen, unsere Antworten",
+    'faq1-q': "Muss ich Arabisch kennen, um anzufangen?", 'faq1-a': "Nein, überhaupt nicht. Der Kurs beginnt von Grund auf: Alphabet, Laute, Vokale. Keine Vorkenntnisse erforderlich.",
+    'faq2-q': "Welches Arabisch wird gelehrt — klassisch oder Dialekt?", 'faq2-a': "Der Kurs lehrt klassisches Arabisch (فصحى), die Sprache des Korans und islamischer Texte.",
+    'faq3-q': "Wie greife ich nach der Zahlung auf die Inhalte zu?", 'faq3-a': "Nach der Anmeldung erhalten Sie eine E-Mail mit Ihren Zugangsdaten. Sie greifen sofort auf alle Module zu.",
+    'faq4-q': "Wie viel Zeit muss ich aufwenden?", 'faq4-a': "30 bis 60 Minuten pro Tag reichen für regelmäßigen Fortschritt. Das Programm ist für Ihr eigenes Tempo konzipiert.",
+    'faq5-q': "Habe ich dauerhaften Zugang?", 'faq5-a': "Ja. Einmalige Zahlung, unbegrenzter Zugang. Zukünftige Updates sind ebenfalls kostenlos enthalten.",
+    'faq6-q': "Funktioniert die Website auf dem Handy?", 'faq6-a': "Ja, die Website ist vollständig responsiv. Audio-Buttons und alle Inhalte funktionieren auf allen Geräten.",
+    'insc-label': "Dem Kurs beitreten", 'insc-title': "Heute beginnen",
+    'insc-desc': "Strukturierte Methode, vollständige Lektionen mit Audio und ein 6-Monats-Programm — für einmalig 49,99 €.",
+    'btn-insc': "Jetzt beginnen — 49,99 €", 'insc-note': "Sichere Zahlung über Stripe · Sofortiger Zugang",
+    'footer-desc': "Die französischsprachige Methode zum Erlernen des klassischen Arabisch von Grund auf, in Ihrem eigenen Tempo, lebenslang.",
+    'footer-col1': "Kurs", 'footer-col2': "Informationen",
+    'f-modules': "Die Module", 'f-alpha': "Alphabet", 'f-tarif': "Preise", 'f-faq': "FAQ",
+    'f-signup': "Anmelden", 'f-legal': "Impressum", 'f-contact': "Kontakt",
+    'mode-btn-dark': "Dunkel", 'mode-btn-light': "Hell",
   },
 
   zh: {
-    'nav-cta': '立即注册',
-    'hero-badge': '✦ 古典阿拉伯语课程 · 100%法语授课',
-    'hero-desc': '从零开始学习古典阿拉伯语，采用系统化方法，完整课程和音频练习，发音完美。',
-    'pill-1': '集成音频', 'pill-2': '28个字母', 'pill-3': '6个月课程',
-    'btn-main': '立即开始 — 49,99 €', 'btn-sec': '了解课程',
-    'mod-label': '课程内容', 'mod-title': '4个模块掌握古典阿拉伯语',
-    'tarif-cta': '立即注册 →', 'btn-insc': '立即开始 — 49,99 €',
-  },
-
-  pt: {
-    'nav-cta': 'Inscrever-se',
-    'hero-badge': '✦ Curso de árabe clássico · 100% em francês',
-    'hero-desc': 'Aprenda árabe clássico do zero com um método estruturado, lições completas e exercícios de áudio para uma pronúncia perfeita.',
-    'pill-1': 'Áudio integrado', 'pill-2': '28 letras', 'pill-3': 'Programa de 6 meses',
-    'btn-main': 'Começar agora — 49,99 €', 'btn-sec': 'Descobrir o curso',
-    'mod-label': 'Conteúdo do curso', 'mod-title': '4 módulos para dominar o árabe clássico',
-    'tarif-cta': 'Inscrever-se agora →', 'btn-insc': 'Começar agora — 49,99 €',
-  },
-
-  hi: {
-    'nav-cta': 'अभी जुड़ें',
-    'hero-badge': '✦ शास्त्रीय अरबी कोर्स · 100% फ्रेंच में',
-    'hero-desc': 'संरचित पद्धति, संपूर्ण पाठ और उत्तम उच्चारण के लिए ऑडियो अभ्यास के साथ शून्य से शास्त्रीय अरबी सीखें।',
-    'pill-1': 'एकीकृत ऑडियो', 'pill-2': '28 अक्षर', 'pill-3': '6 महीने का कार्यक्रम',
-    'btn-main': 'अभी शुरू करें — 49,99 €', 'btn-sec': 'कोर्स जानें',
-    'tarif-cta': 'अभी पंजीकरण करें →', 'btn-insc': 'अभी शुरू करें — 49,99 €',
-  },
-
-  ur: {
-    'nav-cta': 'ابھی شامل ہوں',
-    'hero-badge': '✦ کلاسیکی عربی کورس · 100% فرانسیسی میں',
-    'hero-desc': 'منظم طریقہ، مکمل اسباق اور بہترین تلفظ کے لیے آڈیو مشقوں کے ساتھ صفر سے کلاسیکی عربی سیکھیں۔',
-    'pill-1': 'مربوط آڈیو', 'pill-2': '28 حروف', 'pill-3': '6 ماہ کا پروگرام',
-    'btn-main': 'ابھی شروع کریں — 49,99 €', 'btn-sec': 'کورس جانیں',
-    'tarif-cta': 'ابھی رجسٹر کریں ←', 'btn-insc': 'ابھی شروع کریں — 49,99 €',
+    'nav-cta': "立即注册",
+    'hero-badge': "✦ 古典阿拉伯语课程 · 100%法语授课",
+    'hero-desc': "从零开始学习古典阿拉伯语，采用系统化方法，完整课程和音频练习，发音完美。",
+    'pill-1': "集成音频", 'pill-2': "28个字母", 'pill-3': "6个月课程",
+    'btn-main': "立即开始 — 49,99 €", 'btn-sec': "了解课程",
+    'stat-1': "字母 + 音频", 'stat-2': "系统化月份", 'stat-3': "完整模块", 'stat-4': "终身访问",
+    'pb-label': "您认识自己吗？",
+    'pb-title': "为什么那么多人学阿拉伯语失败",
+    'pb1-t': "没有指导太复杂", 'pb1-d': "字母、元音、语法……没有渐进式方法，人们很快就放弃了。",
+    'pb2-t': "没有您语言的资源", 'pb2-d': "大多数好资源是英语或阿拉伯语的。用外语学习会拖慢一切。",
+    'pb3-t': "没有真正的发音", 'pb3-d': "没有音频，就不可能正确发出阿拉伯语特有的音。",
+    'pb-sol': "这就是<strong>L'Arabe Accessible</strong>存在的原因：一种<strong>100%法语</strong>渐进式方法，<strong>每个字母和单词都有音频</strong>。按照清晰的路线图，一周一周地学习。",
+    'mod-label': "课程内容", 'mod-title': "4个模块掌握古典阿拉伯语",
+    'mod-sub': "注册后可完整访问所有模块。",
+    'mod1-name': "字母与发音", 'mod1-desc': "掌握28个阿拉伯字母、4种形式、短长元音、坦温——全部集成音频。",
+    'mod2-name': "完整语法", 'mod2-desc': "名词、代词、动词和虚词——它们的角色、形式、语法格，用法语解释。",
+    'mod3-name': "变位与动词", 'mod3-desc': "所有人称的过去时、现在时和命令式，配有清晰表格和批改练习。",
+    'mod4-name': "阿吉鲁米亚课程", 'mod4-desc': "基于古典论著的24周课程。从初学者到阅读古典文本的路线图。",
+    'mod5-name': "萨尔夫——形态学", 'mod5-desc': "阿拉伯语形态学——词根、模式、衍生词和10大动词形式。",
+    'mod-lock': "仅会员内容 — <strong>注册后访问</strong>",
+    'alph-label': "免费预览", 'alph-title': "阿拉伯字母——听每个字母",
+    'alph-sub': "点击▶听真实发音。完整内容注册后可用。",
+    'alph-cta': "元音、词汇、语法和6个月课程仅限会员。",
+    'alph-btn': "访问所有内容 — 49,99 €",
+    'ben-label': "为什么选择这门课程", 'ben-title': "专为法语使用者设计的完整方法",
+    'ben1-t': "每个字母都有音频", 'ben1-d': "每个字母、元音和关键词都有音频按钮。",
+    'ben2-t': "法语语法", 'ben2-d': "所有规则用法语解释，有具体例子、清晰表格和批改练习。",
+    'ben3-t': "每周课程计划", 'ben3-d': "6个月课程分成24周。您知道每周该做什么。",
+    'ben4-t': "终身访问", 'ben4-d': "一次付款。永久访问所有内容，包括未来更新。",
+    'ben5-t': "会员专属内容", 'ben5-d': "完整课程、表格和练习仅供注册会员使用。",
+    'ben6-t': "在所有设备上", 'ben6-d': "网站在智能手机、平板电脑和电脑上完美运行。",
+    'tarif-label': "唯一优惠", 'tarif-title': "一个价格。全部包含。永远。",
+    'tarif-name': "完整课程", 'tarif-once': "一次性付款 — 终身访问 — 无需订阅",
+    'tf1': "完整字母表：28个字母带音频", 'tf2': "短、长元音和坦温 + 音频",
+    'tf3': "语法：名词、代词、动词、虚词", 'tf4': "变位：过去时、现在时、命令式",
+    'tf5': "每节课的批改练习", 'tf6': "阿吉鲁米亚6个月课程（24周）",
+    'tf7': "基本词汇带音频发音", 'tf8': "未来更新免费包含",
+    'tf9': "无限访问，无到期日期",
+    'tarif-cta': "立即注册 →", 'tarif-note': "安全支付通过Stripe · 立即访问",
+    'faq-label': "常见问题", 'faq-title': "您的问题，我们的答案",
+    'faq1-q': "开始学习需要了解阿拉伯语吗？", 'faq1-a': "不，完全不需要。课程从零开始：字母、音素、元音。不需要任何预备知识。",
+    'faq2-q': "教的是哪种阿拉伯语？", 'faq2-a': "课程教授古典阿拉伯语（فصحى），即《古兰经》和伊斯兰传统文本的语言。",
+    'faq3-q': "付款后如何访问内容？", 'faq3-a': "注册后，您会收到一封包含访问凭据的电子邮件。您立即访问所有模块。",
+    'faq4-q': "应该花多少时间？", 'faq4-a': "每天30-60分钟就足够了。该课程旨在按照自己的节奏进行。",
+    'faq5-q': "我能永久访问吗？", 'faq5-a': "是的。一次性付款，无限访问。未来更新也免费包含。",
+    'faq6-q': "网站在手机上能用吗？", 'faq6-a': "是的，完全响应式。音频按钮和所有内容在所有设备上都能使用。",
+    'insc-label': "加入课程", 'insc-title': "今天开始",
+    'insc-desc': "系统化方法、带音频的完整课程和6个月课程——仅一次49,99 €。",
+    'btn-insc': "立即开始 — 49,99 €", 'insc-note': "安全支付通过Stripe · 立即访问",
+    'footer-desc': "从零开始学习古典阿拉伯语的法语方法，按您的节奏，终身学习。",
+    'footer-col1': "课程", 'footer-col2': "信息",
+    'f-modules': "模块", 'f-alpha': "字母", 'f-tarif': "价格", 'f-faq': "FAQ",
+    'f-signup': "注册", 'f-legal': "法律声明", 'f-contact': "联系",
+    'mode-btn-dark': "深色", 'mode-btn-light': "浅色",
   }
 };
 
-function applyTranslation(lang) {
-  const t = TRANSLATIONS[lang];
-  if (!t || lang === 'fr') return;
+/* Moteur de traduction */
+let currentLang = localStorage.getItem('lang') || 'fr';
+
+function applyLang(lang) {
+  const t = T[lang] || T['fr'];
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
   
-  // Appliquer chaque traduction
-  const map = {
-    'nav-cta': '.nav-cta',
-    'hero-badge': '.hero-badge',
-    'hero-desc': '.hero-desc',
-    'btn-main': '.btn-main',
-    'btn-sec': '.btn-sec',
-    'pb-label': '#probleme .s-label',
-    'pb-title': '#probleme .s-title',
-    'mod-label': '#modules .s-label',
-    'mod-title': '#modules .s-title',
-    'mod-sub': '#modules .s-sub',
-    'tarif-label': '#tarif .s-label',
-    'tarif-title': '#tarif .s-title',
-    'tarif-cta': '#btn-tarif',
-    'faq-label': '#faq .s-label',
-    'faq-title': '#faq .s-title',
-    'btn-insc': '#btn-insc',
-    'footer-col1': '.f-col-title:first-of-type',
-  };
+  // Mettre à jour le label
+  const labels = {fr:'FR', en:'EN', de:'DE', zh:'ZH'};
+  const curEl = document.getElementById('cur-lang');
+  if(curEl) curEl.textContent = labels[lang] || 'FR';
   
-  Object.keys(map).forEach(key => {
-    if (t[key]) {
-      const el = document.querySelector(map[key]);
-      if (el) el.innerHTML = t[key];
+  // Mettre à jour les items actifs
+  document.querySelectorAll('.lang-item').forEach(el => {
+    el.classList.remove('active');
+    if(el.getAttribute('onclick') && el.getAttribute('onclick').includes("'" + lang + "'")) {
+      el.classList.add('active');
     }
   });
 
-  // Pills
-  const pills = document.querySelectorAll('.pill');
-  if (t['pill-1'] && pills[0]) pills[0].textContent = t['pill-1'];
-  if (t['pill-2'] && pills[1]) pills[1].textContent = t['pill-2'];
-  if (t['pill-3'] && pills[2]) pills[2].textContent = t['pill-3'];
+  // Appliquer les traductions aux éléments avec data-lang
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const key = el.getAttribute('data-lang');
+    if(t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
   
-  // Direction RTL pour ourdou
-  if (lang === 'ur') {
-    document.body.setAttribute('dir', 'rtl');
-  } else {
-    document.body.setAttribute('dir', 'ltr');
+  // Direction RTL/LTR
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', 'ltr');
+  
+  // Mettre à jour le bouton mode
+  const modeBtn = document.getElementById('mode-btn');
+  if(modeBtn) {
+    const isDark = document.body.classList.contains('dark');
+    modeBtn.textContent = isDark ? (t['mode-btn-light'] || 'Clair') : (t['mode-btn-dark'] || 'Sombre');
   }
 }
 
 function setLang(code, label) {
-  document.getElementById('cur-lang').textContent = label;
-  document.querySelectorAll('.lang-item').forEach(el => el.classList.remove('active'));
-  if (event && event.target) event.target.classList.add('active');
-  
-  // Appliquer traduction
-  applyTranslation(code);
-  
-  // Notification si langue non complète
+  applyLang(code);
+  // Notification
   const notice = document.getElementById('lang-notice');
-  const partialLangs = ['ru','es','de','tr','id','it','zh','pt','hi','ur'];
-  if (partialLangs.includes(code)) {
-    const msgs = {
-      ru:'🇷🇺 Русский — traduction partielle disponible',
-      es:'🇪🇸 Español — traducción parcial disponible',
-      de:'🇩🇪 Deutsch — teilweise Übersetzung verfügbar',
-      tr:'🇹🇷 Türkçe — kısmi çeviri mevcut',
-      id:'🇮🇩 Indonesia — terjemahan sebagian tersedia',
-      it:'🇮🇹 Italiano — traduzione parziale disponibile',
-      zh:'🇨🇳 中文 — 部分翻译可用',
-      pt:'🇧🇷 Português — tradução parcial disponível',
-      hi:'🇮🇳 हिन्दी — आंशिक अनुवाद उपलब्ध',
-      ur:'🇵🇰 اردو — جزوی ترجمہ دستیاب ہے'
-    };
-    notice.textContent = msgs[code] || '';
-    notice.classList.add('show');
-    setTimeout(() => notice.classList.remove('show'), 3000);
-  } else {
-    notice.classList.remove('show');
-  }
-  
-  localStorage.setItem('lang', code);
+  if(notice) notice.classList.remove('show');
 }
 
-
-
-/* COOKIES CNIL */
-function setCookies(choice){
-  localStorage.setItem('cookie-consent', choice);
-  document.getElementById('cookie-banner').classList.remove('show');
-  if(choice === 'declined'){
-    // Désactiver Google Analytics
-    window['ga-disable-G-L0YPP7Y51K'] = true;
-  }
-}
-function openCookieModal(){
-  document.getElementById('cookie-modal').classList.add('show');
-}
-function saveCustomCookies(all){
-  const analytics = all ? true : document.getElementById('ck-analytics').checked;
-  const choice = analytics ? 'accepted' : 'declined';
-  localStorage.setItem('cookie-consent', choice);
-  localStorage.setItem('cookie-analytics', analytics ? '1' : '0');
-  document.getElementById('cookie-modal').classList.remove('show');
-  document.getElementById('cookie-banner').classList.remove('show');
-  if(!analytics){
-    window['ga-disable-G-L0YPP7Y51K'] = true;
-  }
-}
-// Fermer modal en cliquant dehors
-document.addEventListener('DOMContentLoaded', function(){
-  document.getElementById('cookie-modal').addEventListener('click', function(e){
-    if(e.target === this) this.classList.remove('show');
-  });
-  // Afficher bannière si pas de consentement
-  if(!localStorage.getItem('cookie-consent')){
-    document.getElementById('cookie-banner').classList.add('show');
-  }
-  // Désactiver GA si refusé
-  if(localStorage.getItem('cookie-consent') === 'declined' || localStorage.getItem('cookie-analytics') === '0'){
-    window['ga-disable-G-L0YPP7Y51K'] = true;
-  }
+// Initialiser au chargement
+document.addEventListener('DOMContentLoaded', function() {
+  applyLang(currentLang);
 });
 
-/* Audio */
-let ca=null,cb=null;
-function playAud(f,b){
-  if(ca){ca.pause();ca.currentTime=0;if(cb){cb.textContent='▶';cb.style.background=''}}
-  if(cb===b){ca=null;cb=null;return}
-  const a=new Audio(f);
-  a.play().catch(()=>{});
-  ca=a;cb=b;b.textContent='⏸';b.style.background='var(--gold)';b.style.color='var(--dark)';
-  a.onended=()=>{b.textContent='▶';b.style.background='';ca=null;cb=null}
-}
-
-/* FAQ */
-function toggleFaq(el){
-  const item=el.parentElement;
-  const isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!isOpen)item.classList.add('open');
-}
-
-/* CGV → active bouton */
-function toggleBtn(cbId, btnId){
-  const cb=document.getElementById(cbId);
-  const btn=document.getElementById(btnId);
-  if(cb&&btn){
-    if(cb.checked){btn.classList.add('active');btn.style.pointerEvents='auto';}
-    else{btn.classList.remove('active');btn.style.pointerEvents='none';}
-  }
-}
-
-/* Cookies */
-function setCookie(v){
-  localStorage.setItem('cookie-consent',v);
-  document.getElementById('cookie-banner').classList.remove('show');
-}
-if(!localStorage.getItem('cookie-consent')){
-  document.getElementById('cookie-banner').classList.add('show');
-}
-</script>
-
-<!-- BANNIÈRE COOKIES CNIL CONFORME -->
-<div id="cookie-banner" role="dialog" aria-label="Gestion des cookies">
-  <div class="ck-inner">
-    <div class="ck-text">
-      <div class="ck-title">Gestion des cookies</div>
-      <div class="ck-desc">Nous utilisons des cookies pour assurer le bon fonctionnement du site, mesurer son audience et améliorer votre expérience. Vous pouvez accepter, refuser ou personnaliser l'utilisation des cookies à tout moment. Pour en savoir plus, consultez notre <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</div>
-    </div>
-    <div class="ck-btns">
-      <button class="ck-decline" onclick="setCookies('declined')">Refuser</button>
-      <button class="ck-custom" onclick="openCookieModal()">Personnaliser</button>
-      <button class="ck-accept" onclick="setCookies('accepted')">Accepter</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL PERSONNALISATION COOKIES -->
-<div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Personnaliser les cookies">
-  <div class="ck-modal-box">
-    <div class="ck-modal-title">Personnaliser les cookies</div>
-    <div class="ck-modal-sub">Choisissez les catégories de cookies que vous acceptez.</div>
-
-    <div class="ck-option">
-      <div class="ck-option-header">
-        <span class="ck-option-name">Cookies essentiels</span>
-        <label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-slider"></span></label>
-      </div>
-      <div class="ck-option-desc">Nécessaires au fonctionnement du site (session, préférences). Ne peuvent pas être désactivés.</div>
-    </div>
-
-    <div class="ck-option">
-      <div class="ck-option-header">
-        <span class="ck-option-name">Cookies de mesure d'audience</span>
-        <label class="ck-toggle"><input type="checkbox" id="ck-analytics"><span class="ck-slider"></span></label>
-      </div>
-      <div class="ck-option-desc">Google Analytics — permettent de mesurer le trafic et d'améliorer le site. Aucune donnée vendue à des tiers.</div>
-    </div>
-
-    <div class="ck-option">
-      <div class="ck-option-header">
-        <span class="ck-option-name">Cookies de paiement</span>
-        <label class="ck-toggle"><input type="checkbox" id="ck-payment" checked disabled><span class="ck-slider"></span></label>
-      </div>
-      <div class="ck-option-desc">Stripe — nécessaires à la sécurité et à la prévention de la fraude lors du paiement. Ne peuvent pas être désactivés.</div>
-    </div>
-
-    <div class="ck-modal-btns">
-      <button class="ck-decline" onclick="saveCustomCookies(false)" style="flex:1">Tout refuser</button>
-      <button class="ck-save" onclick="saveCustomCookies(true)">Enregistrer mes choix</button>
-    </div>
-  </div>
-</div>
-
-</body>
-</html>
