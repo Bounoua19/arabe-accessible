@@ -12,6 +12,7 @@
 <meta name="robots" content="index, follow">
 <meta name="language" content="fr">
 <meta name="revisit-after" content="7 days">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="canonical" href="https://www.arabeaccessible.com/">
 
 <!-- ═══ OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ═══ -->
@@ -285,6 +286,19 @@ function saveCustomCookies(all){
   const modal = document.getElementById('cookie-modal');
   if(modal) modal.classList.remove('show');
   if(!analytics) window['ga-disable-G-L0YPP7Y51K'] = true;
+}
+
+
+/* Audio */
+let ca=null,cb=null;
+function playAud(f,b){
+  if(ca){ca.pause();ca.currentTime=0;if(cb){cb.textContent='▶';cb.style.background='';cb.style.color=''}}
+  if(cb===b){ca=null;cb=null;return}
+  const a=new Audio(f);
+  a.play().catch(()=>{});
+  ca=a;cb=b;
+  b.textContent='⏸';b.style.background='var(--gold)';b.style.color='var(--dark)';
+  a.onended=()=>{b.textContent='▶';b.style.background='';b.style.color='';ca=null;cb=null}
 }
 
 /* FAQ */
@@ -339,6 +353,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
 <meta name="robots" content="index, follow">
 <meta name="language" content="fr">
 <meta name="revisit-after" content="7 days">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="canonical" href="https://www.arabeaccessible.com/">
 
 <!-- ═══ OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ═══ -->
@@ -612,6 +627,19 @@ function saveCustomCookies(all){
   const modal = document.getElementById('cookie-modal');
   if(modal) modal.classList.remove('show');
   if(!analytics) window['ga-disable-G-L0YPP7Y51K'] = true;
+}
+
+
+/* Audio */
+let ca=null,cb=null;
+function playAud(f,b){
+  if(ca){ca.pause();ca.currentTime=0;if(cb){cb.textContent='▶';cb.style.background='';cb.style.color=''}}
+  if(cb===b){ca=null;cb=null;return}
+  const a=new Audio(f);
+  a.play().catch(()=>{});
+  ca=a;cb=b;
+  b.textContent='⏸';b.style.background='var(--gold)';b.style.color='var(--dark)';
+  a.onended=()=>{b.textContent='▶';b.style.background='';b.style.color='';ca=null;cb=null}
 }
 
 /* FAQ */
@@ -692,6 +720,40 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
 .ck-save{flex:1;padding:12px;background:var(--gold);color:var(--dark);font-size:14px;font-weight:700;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif}
 .ck-save:hover{background:var(--gold2)}
 @media(max-width:600px){.ck-inner{flex-direction:column}.ck-btns{width:100%}.ck-accept,.ck-decline,.ck-custom{flex:1;text-align:center}}
+
+/* DARK MODE */
+body.dark{--off:#0e1a14;--white:#132018;--gray:#1e3028;--muted:#8a9e94;background:var(--off);color:#dce8e2}
+body.dark .module-card{background:#132018;border-color:#1e3028}
+body.dark .module-card .mod-body p{color:#8a9e94}
+body.dark .module-card .mod-lock{color:#8a9e94;border-color:#1e3028}
+body.dark .module-card .mod-tag{background:rgba(255,255,255,.05);border-color:#1e3028;color:#8a9e94}
+body.dark .mod-name{color:#fff}
+body.dark .ben-card{background:#132018;border-color:#1e3028}
+body.dark .ben-card h3{color:#fff}
+body.dark .ben-card p{color:#8a9e94}
+body.dark .faq-item{background:#132018;border-color:#1e3028}
+body.dark .faq-q{color:#dce8e2}
+body.dark .faq-q:hover{background:#1e3028}
+body.dark .faq-a{color:#8a9e94}
+body.dark .pb-card{background:rgba(255,255,255,.03)}
+body.dark .pb-card h3{color:#fff}
+body.dark .pb-card p{color:rgba(255,255,255,.55)}
+body.dark .pb-solution{background:rgba(201,162,39,.06);border-color:rgba(201,162,39,.2)}
+body.dark .tarif-card{background:rgba(255,255,255,.03)}
+body.dark .tarif-features li{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.07)}
+body.dark .s-title{color:#fff}
+body.dark .s-sub{color:#8a9e94}
+body.dark .s-label{color:var(--gold)}
+body.dark footer{background:#060e09}
+body.dark .f-col ul a{color:rgba(255,255,255,.4)}
+body.dark .f-desc{color:rgba(255,255,255,.4)}
+body.dark .alpha-cta{background:rgba(201,162,39,.05);border-color:rgba(201,162,39,.15)}
+body.dark .alpha-cta p{color:rgba(255,255,255,.5)}
+body.dark .lcard{background:rgba(255,255,255,.04);border-color:#1e3028}
+body.dark .lcard:hover{background:rgba(201,162,39,.08)}
+body.dark h2,body.dark h3{color:#fff}
+body.dark p{color:#c0d8cc}
+
 </style>
 
 <!-- Google Analytics -->
@@ -701,6 +763,19 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-L0YPP7Y51K');
+
+
+/* Audio */
+let ca=null,cb=null;
+function playAud(f,b){
+  if(ca){ca.pause();ca.currentTime=0;if(cb){cb.textContent='▶';cb.style.background='';cb.style.color=''}}
+  if(cb===b){ca=null;cb=null;return}
+  const a=new Audio(f);
+  a.play().catch(()=>{});
+  ca=a;cb=b;
+  b.textContent='⏸';b.style.background='var(--gold)';b.style.color='var(--dark)';
+  a.onended=()=>{b.textContent='▶';b.style.background='';b.style.color='';ca=null;cb=null}
+}
 
 /* FAQ */
 function toggleFaq(el){
@@ -1440,4 +1515,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-
+</script>
+</body>
+</html>
