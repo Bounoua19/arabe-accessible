@@ -169,25 +169,7 @@ tr:hover td{background:var(--off)}
 .ln-btn.primary:hover{background:var(--green2)}
 
 /* DARK MODE */
-body.dark{background:#0f0f1e;color:#e0e0f0}
-body.dark .sidebar{background:#1a1a2e;border-color:#2a2a4a}
-body.dark .chapter-btn{color:#e0e0f0}
-body.dark .chapter-btn:hover{background:#252545}
-body.dark .lesson-item{color:#a0a0c0}
-body.dark .lesson-item:hover{background:#252545;color:#e0e0f0}
-body.dark .etape{background:#1e1e3a;border-color:#2a2a4a}
-body.dark .etape-body{background:#1e1e3a}
-body.dark table td{border-color:#2a2a4a;color:#e0e0f0}
-body.dark tr:hover td{background:#252545}
-body.dark .ex-row{background:#252545}
-body.dark .regle{background:rgba(201,162,39,.07);border-color:rgba(201,162,39,.2);color:#e0e0f0}
-body.dark .vocab-card{background:#252545;border-color:#2a2a4a}
-body.dark .vocab-fr{color:#e0e0f0}
-body.dark .lesson-progress{background:#1e1e3a;border-color:#2a2a4a}
-body.dark .prog-bar,.dark .lp-bar{background:#2a2a4a}
-body.dark .lesson-nav .ln-btn{background:#1e1e3a;border-color:#2a2a4a;color:#a0a0c0}
-body.dark .step-dot{background:#2a2a4a;color:#a0a0c0}
-body.dark .sidebar-sep{background:#2a2a4a}
+
 
 /* MODULE HEADER Al-Adjroumiyya */
 .module-header{background:linear-gradient(135deg,var(--dark) 0%,var(--green) 100%);border-radius:var(--r);padding:20px 24px;margin-bottom:16px;border-left:4px solid var(--gold)}
@@ -198,33 +180,133 @@ body.dark .sidebar-sep{background:#2a2a4a}
 /* RESPONSIVE */
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.main{padding:20px 16px}.ex-grid{grid-template-columns:1fr}}
 
-/* DARK MODE MEMBRES - CORRECTIONS TEXTES */
-body.dark .lesson-panel,
-body.dark .etape-body,
-body.dark .etape{color:var(--text2,#e0e8e4)}
-body.dark .regle{background:rgba(255,255,255,.05);border-color:rgba(201,162,39,.2);color:#e0e8e4}
-body.dark .definition{background:rgba(255,255,255,.04);border-color:rgba(201,162,39,.2)}
-body.dark .def-text{color:#c0d0ca}
-body.dark table{background:rgba(255,255,255,.03)}
-body.dark table th{background:rgba(0,0,0,.3);color:var(--gold2)}
-body.dark table td{color:#c0d0ca;border-color:rgba(255,255,255,.08)}
-body.dark .ex-row{border-color:rgba(255,255,255,.07)}
-body.dark .ex-fr{color:#c0d0ca}
+
+
+
+/* TABLEAU FORMES DES LETTRES */
+.formes-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;border:1px solid rgba(201,162,39,.2)}
+.formes-table th{padding:12px 8px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid rgba(201,162,39,.2);line-height:1.4}
+.formes-table td{padding:12px 8px;border-bottom:1px solid rgba(255,255,255,.05);line-height:1.2;vertical-align:middle}
+.formes-table tbody tr:last-child td{border-bottom:none}
+.formes-table tbody tr:hover td{opacity:.85;transition:opacity .15s}
+
+/* ═══ DARK MODE COMPLET ═══ */
+body.dark{
+  background:#0d1810;
+  color:#dce8e2;
+  --text:#dce8e2;
+  --muted:#8ab09a;
+  --white:#111e14;
+  --off:#0d1810;
+  --gray:#1e3024;
+}
+
+/* Sidebar */
+body.dark .sidebar{background:#0a1208;border-color:#1a2e20}
+body.dark .sidebar-section{border-color:#1a2e20}
+body.dark .sidebar-sep{background:#1a2e20}
+body.dark .chapter-btn{color:#dce8e2;background:transparent}
+body.dark .chapter-btn:hover{background:rgba(201,162,39,.08)}
+body.dark .chapter-num{background:rgba(201,162,39,.08);color:var(--gold2)}
+body.dark .chapter-title{color:#dce8e2}
+body.dark .lesson-item{color:#8ab09a}
+body.dark .lesson-item:hover{background:rgba(201,162,39,.08);color:#fff}
+body.dark .lesson-item.active{background:rgba(201,162,39,.12);color:var(--gold2)}
+
+/* Contenu principal */
+body.dark .main-content{background:#0d1810}
+body.dark .lesson-panel{color:#dce8e2;background:#0d1810}
 body.dark .lesson-main-title{color:#fff}
-body.dark .lesson-meta{color:rgba(255,255,255,.45)}
+body.dark .lesson-ar-title{color:var(--gold2)}
+body.dark .lesson-meta{color:#6a8a78}
+body.dark .lesson-num{background:rgba(201,162,39,.1);color:var(--gold2)}
+
+/* Étapes */
+body.dark .etape{background:#111e14;border-color:#1e3024}
+body.dark .etape-header{background:#0f1a12;border-color:#1e3024}
+body.dark .etape-num{color:var(--gold);background:rgba(201,162,39,.08)}
 body.dark .etape-title{color:#fff}
+body.dark .etape-body{background:#111e14;color:#dce8e2}
+body.dark .etape-body p{color:#c0d8cc}
+
+/* Définitions */
+body.dark .definition{background:rgba(201,162,39,.05);border-color:rgba(201,162,39,.2)}
+body.dark .def-term{color:var(--gold2)}
+body.dark .def-text{color:#dce8e2}
+
+/* Règles */
+body.dark .regle{background:rgba(201,162,39,.05);border-color:rgba(201,162,39,.2);color:#dce8e2}
+
+/* Tableaux */
+body.dark table{border-color:#1e3024;background:#0f1a12}
+body.dark table th{background:#0a1208;color:var(--gold2);border-color:#1e3024}
+body.dark table td{color:#dce8e2;border-color:#1e3024;background:transparent}
 body.dark .ar-cell{color:var(--gold2)}
-body.dark .tr-cell{color:#9ab0a4}
-body.dark .mod-body p,
-body.dark .mod-lock{color:#9ab0a4}
-body.dark .vocab-fr{color:#c0d0ca}
-body.dark .sidebar{background:#0a1a0f}
-body.dark .lesson-item{color:rgba(255,255,255,.6)}
-body.dark .lesson-item:hover{color:#fff;background:rgba(201,162,39,.1)}
-body.dark .chapter-title{color:rgba(255,255,255,.8)}
-body.dark .login-box{background:rgba(255,255,255,.04)}
+body.dark .tr-cell{color:#8ab09a}
+body.dark tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+body.dark tr:hover td{background:rgba(201,162,39,.05)}
+
+/* Exemples */
+body.dark .exemples{border-color:#1e3024}
+body.dark .ex-row{border-color:#1e3024}
+body.dark .ex-ar{color:var(--gold2)}
+body.dark .ex-fr{color:#dce8e2}
+
+/* Vocabulaire */
+body.dark .vocab-card{background:#111e14;border-color:#1e3024}
+body.dark .vocab-ar{color:var(--gold2)}
+body.dark .vocab-fr{color:#dce8e2}
+
+/* Progression */
+body.dark .lesson-progress{background:#0f1a12;border-color:#1e3024}
+body.dark .lp-label{color:#8ab09a}
+body.dark .lp-bar{background:#1e3024}
+body.dark .lp-pct{color:#8ab09a}
+body.dark .step-dot{background:#1e3024;color:#8ab09a;border-color:#2e4034}
+body.dark .step-dot.current{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+body.dark .step-dot.done{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* Navigation leçons */
+body.dark .lesson-nav{border-color:#1e3024}
+body.dark .ln-btn{background:#111e14;border-color:#1e3024;color:#8ab09a}
+body.dark .ln-btn:hover{background:#1a2e20;color:#dce8e2}
+body.dark .ln-btn.primary{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+
+/* Exercices */
+body.dark .ex-card{background:#111e14;border-color:#1e3024}
+body.dark .ex-question{color:#dce8e2}
+body.dark .ex-answer{background:#0f1a12;border-color:#1e3024;color:#dce8e2}
+
+/* Alphabet / lettres */
+body.dark .lcard{background:#111e14;border-color:#1e3024}
+body.dark .l-name{color:var(--gold2)}
+body.dark .l-tr{color:#8ab09a}
+
+/* Login */
+body.dark .login-box{background:#111e14;border-color:#1e3024}
 body.dark .login-title{color:#fff}
-body.dark .login-sub{color:rgba(255,255,255,.5)}
+body.dark .login-sub{color:#8ab09a}
+body.dark .login-input{background:#0f1a12;border-color:#1e3024;color:#dce8e2}
+body.dark .login-input::placeholder{color:#4a6a58}
+
+/* Navbar */
+body.dark nav{border-color:#1e3024}
+body.dark .nav-name{color:#fff}
+
+/* Sidebar progress */
+body.dark .sidebar-prog-wrap{border-color:#1e3024}
+body.dark .prog-label{color:#8ab09a}
+body.dark .prog-bar{background:#1e3024}
+
+/* Texte général */
+body.dark h1, body.dark h2, body.dark h3, body.dark h4{color:#fff}
+body.dark p{color:#c0d8cc}
+body.dark strong{color:#fff}
+body.dark a{color:var(--gold2)}
+
+/* Bouton audio */
+body.dark .aud{background:rgba(201,162,39,.1);border-color:rgba(201,162,39,.3);color:var(--gold2)}
+body.dark .aud:hover{background:var(--gold);color:var(--dark)}
 
 </style>
 
@@ -480,35 +562,207 @@ body.dark .login-sub{color:rgba(255,255,255,.5)}
   <div class="etape">
     <div class="etape-header"><span class="etape-num">TABLEAU</span><span class="etape-title">Les 28 lettres en 4 formes</span></div>
     <div class="etape-body">
-      <table>
-        <tr><th>Lettre</th><th>Isolée</th><th>Début</th><th>Milieu</th><th>Fin</th></tr>
-        <tr><td class="ar-cell">أ</td><td class="ar-cell">أ</td><td class="ar-cell">أ</td><td class="ar-cell">ـأ</td><td class="ar-cell">ـأ</td></tr>
-        <tr><td class="ar-cell">ب</td><td class="ar-cell">ب</td><td class="ar-cell">بـ</td><td class="ar-cell">ـبـ</td><td class="ar-cell">ـب</td></tr>
-        <tr><td class="ar-cell">ت</td><td class="ar-cell">ت</td><td class="ar-cell">تـ</td><td class="ar-cell">ـتـ</td><td class="ar-cell">ـت</td></tr>
-        <tr><td class="ar-cell">ث</td><td class="ar-cell">ث</td><td class="ar-cell">ثـ</td><td class="ar-cell">ـثـ</td><td class="ar-cell">ـث</td></tr>
-        <tr><td class="ar-cell">ج</td><td class="ar-cell">ج</td><td class="ar-cell">جـ</td><td class="ar-cell">ـجـ</td><td class="ar-cell">ـج</td></tr>
-        <tr><td class="ar-cell">ح</td><td class="ar-cell">ح</td><td class="ar-cell">حـ</td><td class="ar-cell">ـحـ</td><td class="ar-cell">ـح</td></tr>
-        <tr><td class="ar-cell">خ</td><td class="ar-cell">خ</td><td class="ar-cell">خـ</td><td class="ar-cell">ـخـ</td><td class="ar-cell">ـخ</td></tr>
-        <tr><td class="ar-cell">د</td><td class="ar-cell">د</td><td class="ar-cell">د</td><td class="ar-cell">ـد</td><td class="ar-cell">ـد</td></tr>
-        <tr><td class="ar-cell">ذ</td><td class="ar-cell">ذ</td><td class="ar-cell">ذ</td><td class="ar-cell">ـذ</td><td class="ar-cell">ـذ</td></tr>
-        <tr><td class="ar-cell">ر</td><td class="ar-cell">ر</td><td class="ar-cell">ر</td><td class="ar-cell">ـر</td><td class="ar-cell">ـر</td></tr>
-        <tr><td class="ar-cell">ز</td><td class="ar-cell">ز</td><td class="ar-cell">ز</td><td class="ar-cell">ـز</td><td class="ar-cell">ـز</td></tr>
-        <tr><td class="ar-cell">س</td><td class="ar-cell">س</td><td class="ar-cell">سـ</td><td class="ar-cell">ـسـ</td><td class="ar-cell">ـس</td></tr>
-        <tr><td class="ar-cell">ش</td><td class="ar-cell">ش</td><td class="ar-cell">شـ</td><td class="ar-cell">ـشـ</td><td class="ar-cell">ـش</td></tr>
-        <tr><td class="ar-cell">ص</td><td class="ar-cell">ص</td><td class="ar-cell">صـ</td><td class="ar-cell">ـصـ</td><td class="ar-cell">ـص</td></tr>
-        <tr><td class="ar-cell">ض</td><td class="ar-cell">ض</td><td class="ar-cell">ضـ</td><td class="ar-cell">ـضـ</td><td class="ar-cell">ـض</td></tr>
-        <tr><td class="ar-cell">ط</td><td class="ar-cell">ط</td><td class="ar-cell">طـ</td><td class="ar-cell">ـطـ</td><td class="ar-cell">ـط</td></tr>
-        <tr><td class="ar-cell">ع</td><td class="ar-cell">ع</td><td class="ar-cell">عـ</td><td class="ar-cell">ـعـ</td><td class="ar-cell">ـع</td></tr>
-        <tr><td class="ar-cell">غ</td><td class="ar-cell">غ</td><td class="ar-cell">غـ</td><td class="ar-cell">ـغـ</td><td class="ar-cell">ـغ</td></tr>
-        <tr><td class="ar-cell">ف</td><td class="ar-cell">ف</td><td class="ar-cell">فـ</td><td class="ar-cell">ـفـ</td><td class="ar-cell">ـف</td></tr>
-        <tr><td class="ar-cell">ق</td><td class="ar-cell">ق</td><td class="ar-cell">قـ</td><td class="ar-cell">ـقـ</td><td class="ar-cell">ـق</td></tr>
-        <tr><td class="ar-cell">ك</td><td class="ar-cell">ك</td><td class="ar-cell">كـ</td><td class="ar-cell">ـكـ</td><td class="ar-cell">ـك</td></tr>
-        <tr><td class="ar-cell">ل</td><td class="ar-cell">ل</td><td class="ar-cell">لـ</td><td class="ar-cell">ـلـ</td><td class="ar-cell">ـل</td></tr>
-        <tr><td class="ar-cell">م</td><td class="ar-cell">م</td><td class="ar-cell">مـ</td><td class="ar-cell">ـمـ</td><td class="ar-cell">ـم</td></tr>
-        <tr><td class="ar-cell">ن</td><td class="ar-cell">ن</td><td class="ar-cell">نـ</td><td class="ar-cell">ـنـ</td><td class="ar-cell">ـن</td></tr>
-        <tr><td class="ar-cell">ه</td><td class="ar-cell">ه</td><td class="ar-cell">هـ</td><td class="ar-cell">ـهـ</td><td class="ar-cell">ـه</td></tr>
-        <tr><td class="ar-cell">و</td><td class="ar-cell">و</td><td class="ar-cell">و</td><td class="ar-cell">ـو</td><td class="ar-cell">ـو</td></tr>
-        <tr><td class="ar-cell">ي</td><td class="ar-cell">ي</td><td class="ar-cell">يـ</td><td class="ar-cell">ـيـ</td><td class="ar-cell">ـي</td></tr>
+      <table class="formes-table">
+        <thead>
+          <tr>
+            <th style="background:#0a1208;color:var(--gold2);width:15%;text-align:center">Lettre</th>
+            <th style="background:rgba(201,162,39,.15);color:var(--gold2);width:21.25%;text-align:center">Isolée<br><span style="font-size:10px;opacity:.6;font-weight:400">seule</span></th>
+            <th style="background:rgba(30,200,100,.1);color:#4caf82;width:21.25%;text-align:center">Début<br><span style="font-size:10px;opacity:.6;font-weight:400">connexion →</span></th>
+            <th style="background:rgba(100,150,255,.1);color:#7aa3e0;width:21.25%;text-align:center">Milieu<br><span style="font-size:10px;opacity:.6;font-weight:400">← connexion →</span></th>
+            <th style="background:rgba(255,120,80,.1);color:#e08060;width:21.25%;text-align:center">Fin<br><span style="font-size:10px;opacity:.6;font-weight:400">← connexion</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">أ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">أ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">أ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـأ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـأ</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ب</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ب</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">بـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـبـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـب</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ت</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ت</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">تـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـتـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـت</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ث</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ث</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ثـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـثـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـث</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ج</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ج</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">جـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـجـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـج</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ح</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ح</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">حـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـحـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـح</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">خ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">خ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">خـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـخـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـخ</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">د</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">د</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">د</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـد</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـد</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ذ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ذ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ذ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـذ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـذ</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ر</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ر</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ر</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـر</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـر</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ز</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ز</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ز</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـز</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـز</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">س</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">س</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">سـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـسـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـس</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ش</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ش</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">شـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـشـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـش</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ص</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ص</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">صـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـصـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـص</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ض</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ض</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ضـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـضـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـض</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ط</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ط</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">طـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـطـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـط</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ع</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ع</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">عـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـعـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـع</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">غ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">غ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">غـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـغـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـغ</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ف</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ف</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">فـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـفـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـف</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ق</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ق</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">قـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـقـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـق</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ك</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ك</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">كـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـكـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـك</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ل</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ل</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">لـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـلـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـل</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">م</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">م</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">مـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـمـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـم</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ن</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ن</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">نـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـنـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـن</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ه</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ه</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">هـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـهـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـه</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">و</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">و</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">و</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـو</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـو</td>
+          </tr>
+          <tr>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ي</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ي</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">يـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـيـ</td>
+            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـي</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
