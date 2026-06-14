@@ -272,20 +272,11 @@ section{padding:80px 24px}
 function setCookies(choice){
   localStorage.setItem('cookie-consent', choice);
   const banner = document.getElementById('cookie-banner');
-  if(banner) banner.classList.remove('show');
+  if(banner){
+    banner.classList.remove('show');
+    banner.style.display = 'none';
+  }
   if(choice === 'declined') window['ga-disable-G-L0YPP7Y51K'] = true;
-}
-function openCookieModal(){
-  const modal = document.getElementById('cookie-modal');
-  if(modal) modal.classList.add('show');
-}
-function saveCustomCookies(all){
-  const analytics = all ? true : (document.getElementById('ck-analytics') && document.getElementById('ck-analytics').checked);
-  setCookies(analytics ? 'accepted' : 'declined');
-  localStorage.setItem('cookie-analytics', analytics ? '1' : '0');
-  const modal = document.getElementById('cookie-modal');
-  if(modal) modal.classList.remove('show');
-  if(!analytics) window['ga-disable-G-L0YPP7Y51K'] = true;
 }
 
 
@@ -613,20 +604,27 @@ section{padding:80px 24px}
 function setCookies(choice){
   localStorage.setItem('cookie-consent', choice);
   const banner = document.getElementById('cookie-banner');
-  if(banner) banner.classList.remove('show');
+  if(banner){
+    banner.classList.remove('show');
+    banner.style.display = 'none';
+  }
   if(choice === 'declined') window['ga-disable-G-L0YPP7Y51K'] = true;
 }
 function openCookieModal(){
   const modal = document.getElementById('cookie-modal');
-  if(modal) modal.classList.add('show');
+  if(modal){
+    modal.style.display = 'flex';
+    const saved = localStorage.getItem('cookie-analytics');
+    setAnalyticsToggle(saved === '1');
+  }
 }
 function saveCustomCookies(all){
-  const analytics = all ? true : (document.getElementById('ck-analytics') && document.getElementById('ck-analytics').checked);
-  setCookies(analytics ? 'accepted' : 'declined');
+  const cb = document.getElementById('ck-analytics');
+  const analytics = all ? true : (cb ? cb.checked : false);
   localStorage.setItem('cookie-analytics', analytics ? '1' : '0');
-  const modal = document.getElementById('cookie-modal');
-  if(modal) modal.classList.remove('show');
   if(!analytics) window['ga-disable-G-L0YPP7Y51K'] = true;
+  closeCookieModal();
+  setCookies(analytics ? 'accepted' : 'declined');
 }
 
 
@@ -1158,38 +1156,6 @@ function toggleFaq(el){
   </div>
 </div>
 
-<!-- MODAL PERSONNALISATION COOKIES -->
-<div id="cookie-modal" role="dialog" aria-modal="true">
-  <div class="ck-modal-box">
-    <div class="ck-modal-title">Personnaliser les cookies</div>
-    <div class="ck-modal-sub">Choisissez les catégories de cookies que vous acceptez.</div>
-    <div class="ck-option">
-      <div class="ck-option-header">
-        <span class="ck-option-name">Cookies essentiels</span>
-        <label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-slider"></span></label>
-      </div>
-      <div class="ck-option-desc">Nécessaires au fonctionnement du site. Ne peuvent pas être désactivés.</div>
-    </div>
-    <div class="ck-option">
-      <div class="ck-option-header">
-        <span class="ck-option-name">Mesure d'audience (Google Analytics)</span>
-        <label class="ck-toggle"><input type="checkbox" id="ck-analytics"><span class="ck-slider"></span></label>
-      </div>
-      <div class="ck-option-desc">Permettent de mesurer le trafic et améliorer le site. Aucune donnée vendue.</div>
-    </div>
-    <div class="ck-option">
-      <div class="ck-option-header">
-        <span class="ck-option-name">Cookies de paiement (Stripe)</span>
-        <label class="ck-toggle"><input type="checkbox" checked disabled><span class="ck-slider"></span></label>
-      </div>
-      <div class="ck-option-desc">Nécessaires à la sécurité lors du paiement. Ne peuvent pas être désactivés.</div>
-    </div>
-    <div class="ck-modal-btns">
-      <button class="ck-decline" onclick="saveCustomCookies(false)" style="flex:1">Tout refuser</button>
-      <button class="ck-save" onclick="saveCustomCookies(true)">Enregistrer mes choix</button>
-    </div>
-  </div>
-</div>
 
 <script>
 
@@ -1515,6 +1481,91 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+/* COOKIES MODAL */
+function openCookieModal(){
+  const modal = document.getElementById('cookie-modal');
+  if(modal){
+    modal.style.display = 'flex';
+    // Restaurer l'état du toggle analytics
+    const saved = localStorage.getItem('cookie-analytics');
+    if(saved === '1') setAnalyticsToggle(true);
+    else setAnalyticsToggle(false);
+  }
+}
+function closeCookieModal(){
+  const modal = document.getElementById('cookie-modal');
+  if(modal) modal.style.display = 'none';
+}
+function setAnalyticsToggle(on){
+  const slider = document.getElementById('ck-analytics-slider');
+  const thumb = document.getElementById('ck-analytics-thumb');
+  const cb = document.getElementById('ck-analytics');
+  if(slider) slider.style.background = on ? 'var(--gold,#c9a227)' : 'rgba(255,255,255,.2)';
+  if(thumb) thumb.style.transform = on ? 'translateX(20px)' : 'translateX(0)';
+  if(cb) cb.checked = on;
+}
+function toggleAnalytics(){
+  const cb = document.getElementById('ck-analytics');
+  if(cb) setAnalyticsToggle(!cb.checked);
+}
+function saveCustomCookies(all){
+  const cb = document.getElementById('ck-analytics');
+  const analytics = all ? true : (cb ? cb.checked : false);
+  localStorage.setItem('cookie-consent', analytics ? 'accepted' : 'declined');
+  localStorage.setItem('cookie-analytics', analytics ? '1' : '0');
+  if(!analytics) window['ga-disable-G-L0YPP7Y51K'] = true;
+  closeCookieModal();
+  setCookies(analytics ? 'accepted' : 'declined');
+}
 </script>
+
+<!-- MODAL PERSONNALISATION COOKIES -->
+<div id="cookie-modal" style="position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:10000;display:none;align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)closeCookieModal()">
+  <div style="background:#0e1f15;border:1px solid rgba(201,162,39,.3);border-radius:10px;max-width:500px;width:100%;padding:32px;max-height:90vh;overflow-y:auto">
+    
+    <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:#fff;margin-bottom:6px">Personnaliser les cookies</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:24px;line-height:1.6">Choisissez les catégories de cookies que vous autorisez. Votre choix est sauvegardé et peut être modifié à tout moment.</div>
+
+    <!-- Cookies essentiels -->
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:14px;font-weight:600;color:#fff">Cookies essentiels</span>
+        <span style="font-size:11px;background:rgba(201,162,39,.15);color:var(--gold2,#e8c96a);padding:3px 10px;border-radius:10px;font-weight:600">Toujours actifs</span>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.6">Nécessaires au bon fonctionnement du site : session de connexion, préférences de langue et de thème, progression dans les leçons. Ces cookies ne peuvent pas être désactivés.</div>
+    </div>
+
+    <!-- Google Analytics -->
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:14px;font-weight:600;color:#fff">Mesure d'audience</span>
+        <label style="position:relative;width:44px;height:24px;flex-shrink:0;cursor:pointer">
+          <input type="checkbox" id="ck-analytics" style="opacity:0;width:0;height:0;position:absolute">
+          <span id="ck-analytics-slider" style="position:absolute;inset:0;background:rgba(255,255,255,.2);border-radius:24px;transition:.3s;cursor:pointer" onclick="toggleAnalytics()"></span>
+          <span id="ck-analytics-thumb" style="position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.3s;pointer-events:none"></span>
+        </label>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.6"><strong style="color:rgba(255,255,255,.7)">Google Analytics (G-L0YPP7Y51K)</strong> — Mesure le nombre de visiteurs, les pages visitées et la source du trafic. Ces données sont anonymisées. Aucune donnée n'est vendue à des tiers.</div>
+    </div>
+
+    <!-- Stripe -->
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:16px;margin-bottom:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:14px;font-weight:600;color:#fff">Paiement sécurisé</span>
+        <span style="font-size:11px;background:rgba(201,162,39,.15);color:var(--gold2,#e8c96a);padding:3px 10px;border-radius:10px;font-weight:600">Toujours actifs</span>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.6"><strong style="color:rgba(255,255,255,.7)">Stripe (__stripe_mid, __stripe_sid)</strong> — Nécessaires à la sécurité et à la prévention de la fraude lors du paiement. Ces cookies ne peuvent pas être désactivés.</div>
+    </div>
+
+    <!-- Boutons -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button onclick="saveCustomCookies(false)" style="flex:1;padding:12px;background:transparent;color:rgba(255,255,255,.7);font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,.25);border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s" onmouseover="this.style.borderColor='#fff';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,.25)';this.style.color='rgba(255,255,255,.7)'">Tout refuser</button>
+      <button onclick="saveCustomCookies(true)" style="flex:1;padding:12px;background:var(--gold,#c9a227);color:#09190f;font-size:13px;font-weight:700;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s">Enregistrer mes choix</button>
+    </div>
+    <div style="text-align:center;margin-top:12px;font-size:11px;color:rgba(255,255,255,.3)">
+      <a href="mentions-legales.html#confidentialite" target="_blank" style="color:rgba(201,162,39,.5)">Politique de confidentialité</a>
+    </div>
+  </div>
+</div>
 </body>
 </html>
