@@ -755,9 +755,9 @@ section{padding:80px 24px}
       <div class="ck-desc">Nous utilisons des cookies pour assurer le bon fonctionnement du site, mesurer son audience et améliorer votre expérience. Vous pouvez accepter, refuser ou personnaliser leur utilisation à tout moment. <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a></div>
     </div>
     <div class="ck-btns">
-      <button class="ck-decline" onclick="setCookies('declined')">Refuser</button>
-      <button class="ck-custom" onclick="openCookieModal()">Personnaliser</button>
-      <button class="ck-accept" onclick="setCookies('accepted')">Accepter</button>
+      <button class="ck-decline" id="ck-btn-decline">Refuser</button>
+      <button class="ck-custom" id="ck-btn-custom">Personnaliser</button>
+      <button class="ck-accept" id="ck-btn-accept">Accepter</button>
     </div>
   </div>
 </div>
@@ -815,14 +815,46 @@ section{padding:80px 24px}
 </div>
 </body>
 <script>
+/* ═══ COOKIES ═══ */
+var BANNER = null;
+var MODAL = null;
+
+function hideBanner(){
+  if(!BANNER) BANNER = document.getElementById('cookie-banner');
+  if(BANNER){
+    BANNER.style.cssText += ';display:none!important';
+    BANNER.classList.remove('show');
+  }
+}
+
+function showBanner(){
+  if(!BANNER) BANNER = document.getElementById('cookie-banner');
+  if(BANNER){
+    BANNER.style.display = 'block';
+    BANNER.style.removeProperty('display');
+    BANNER.classList.add('show');
+  }
+}
+
 function setCookies(choice){
   localStorage.setItem('cookie-consent', choice);
-  const banner = document.getElementById('cookie-banner');
-  if(banner){
-    banner.classList.remove('show');
-    banner.style.display = 'none';
+  hideBanner();
+  if(choice === 'declined'){
+    window['ga-disable-G-L0YPP7Y51K'] = true;
+    localStorage.setItem('cookie-analytics','0');
+  } else {
+    localStorage.setItem('cookie-analytics','1');
   }
-  if(choice === 'declined') window['ga-disable-G-L0YPP7Y51K'] = true;
+}
+
+function openCookieModal(){
+  if(!MODAL) MODAL = document.getElementById('cookie-modal');
+  if(MODAL) MODAL.style.display = 'flex';
+}
+
+function closeCookieModal(){
+  if(!MODAL) MODAL = document.getElementById('cookie-modal');
+  if(MODAL) MODAL.style.display = 'none';
 }
 
 
@@ -1130,10 +1162,28 @@ function setLang(code, label) {
 document.addEventListener('DOMContentLoaded', function() {
   applyLang(currentLang);
 
-  // Bannière cookies — afficher si pas de consentement
+  // Bannière cookies
+  BANNER = document.getElementById('cookie-banner');
+  MODAL = document.getElementById('cookie-modal');
+  
+  // Attacher les événements aux boutons
+  var btnDecline = document.getElementById('ck-btn-decline');
+  var btnCustom = document.getElementById('ck-btn-custom');
+  var btnAccept = document.getElementById('ck-btn-accept');
+  if(btnDecline) btnDecline.addEventListener('click', function(){ setCookies('declined'); });
+  if(btnCustom) btnCustom.addEventListener('click', function(){ openCookieModal(); });
+  if(btnAccept) btnAccept.addEventListener('click', function(){ setCookies('accepted'); });
+  
+  // Afficher si pas de consentement
   if(!localStorage.getItem('cookie-consent')){
-    const banner = document.getElementById('cookie-banner');
-    if(banner) banner.classList.add('show');
+    showBanner();
+  }
+  
+  // Fermer modal clic dehors
+  if(MODAL){
+    MODAL.addEventListener('click', function(e){
+      if(e.target === this) closeCookieModal();
+    });
   }
 
   // Désactiver GA si refusé
@@ -1160,10 +1210,7 @@ function openCookieModal(){
     else setAnalyticsToggle(false);
   }
 }
-function closeCookieModal(){
-  const modal = document.getElementById('cookie-modal');
-  if(modal) modal.style.display = 'none';
-}
+
 function setAnalyticsToggle(on){
   const slider = document.getElementById('ck-analytics-slider');
   const thumb = document.getElementById('ck-analytics-thumb');
