@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mot de passe oublié — L'Arabe Accessible</title>
+<link rel="icon" type="image/png" href="images/logo.png">
+<meta name="theme-color" content="#09190f">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#09190f;--gold:#c9a227;--gold2:#e8c96a;--r:8px}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.box{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.3);border-top:4px solid var(--gold);border-radius:14px;padding:44px 40px;max-width:430px;width:100%;text-align:center}
+.logo{height:70px;width:70px;object-fit:contain;border-radius:50%;border:2px solid rgba(201,162,39,.4);margin:0 auto 18px;display:block}
+h1{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;margin-bottom:6px}
+.sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:24px;line-height:1.6}
+label{display:block;text-align:left;font-size:12px;color:rgba(255,255,255,.6);margin:12px 0 6px;font-weight:500}
+input{width:100%;padding:13px 16px;border:1px solid rgba(255,255,255,.2);border-radius:var(--r);background:rgba(255,255,255,.07);color:#fff;font-size:15px;font-family:'DM Sans',sans-serif;outline:none}
+input:focus{border-color:var(--gold)}
+button{width:100%;padding:15px;background:var(--gold);color:var(--dark);font-size:15px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:20px;transition:background .2s}
+button:hover{background:var(--gold2)}
+button:disabled{opacity:.6;cursor:not-allowed}
+.msg{font-size:13px;margin-top:16px;padding:12px 14px;border-radius:var(--r);display:none;line-height:1.6;text-align:left}
+.msg.err{display:block;background:rgba(224,80,80,.12);border:1px solid rgba(224,80,80,.4);color:#ff9a9a}
+.msg.ok{display:block;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.4);color:var(--gold2)}
+.foot{font-size:13px;color:rgba(255,255,255,.4);margin-top:20px}
+.foot a{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="box">
+  <img src="images/logo.png" class="logo" alt="Logo" onerror="this.src='logo.png'">
+
+  <!-- Vue 1 : demander la réinitialisation -->
+  <div id="request-view">
+    <h1>Mot de passe oublié</h1>
+    <div class="sub">Entrez votre adresse email. Nous vous enverrons un lien pour créer un nouveau mot de passe.</div>
+    <label for="email">Adresse email</label>
+    <input type="email" id="email" placeholder="vous@exemple.com" autocomplete="email" onkeydown="if(event.key==='Enter')sendReset()">
+    <button id="btn-req" onclick="sendReset()">Envoyer le lien</button>
+    <div class="msg" id="msg-req"></div>
+    <div class="foot"><a href="membres.html">← Retour à la connexion</a></div>
+  </div>
+
+  <!-- Vue 2 : définir le nouveau mot de passe (après clic sur le lien email) -->
+  <div id="set-view" style="display:none">
+    <h1>Nouveau mot de passe</h1>
+    <div class="sub">Choisissez votre nouveau mot de passe (8 caractères minimum).</div>
+    <label for="np">Nouveau mot de passe</label>
+    <input type="password" id="np" placeholder="Au moins 8 caractères" autocomplete="new-password">
+    <label for="np2">Confirmer</label>
+    <input type="password" id="np2" placeholder="Retapez le mot de passe" autocomplete="new-password" onkeydown="if(event.key==='Enter')setNewPassword()">
+    <button id="btn-set" onclick="setNewPassword()">Enregistrer le nouveau mot de passe</button>
+    <div class="msg" id="msg-set"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+function showMsg(id,text,type){const m=document.getElementById(id);m.textContent=text;m.className='msg '+type;}
+
+// Si l'utilisateur arrive via le lien reçu par email → Supabase déclenche PASSWORD_RECOVERY
+sb.auth.onAuthStateChange(function(event, session){
+  if(event === 'PASSWORD_RECOVERY'){
+    document.getElementById('request-view').style.display='none';
+    document.getElementById('set-view').style.display='block';
+  }
+});
+
+async function sendReset(){
+  const email=document.getElementById('email').value.trim().toLowerCase();
+  const btn=document.getElementById('btn-req');
+  if(!email || !email.includes('@')){ showMsg('msg-req',"Adresse email invalide.","err"); return; }
+  btn.disabled=true; btn.textContent="Envoi…";
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + '/mot-de-passe.html'
+  });
+  btn.disabled=false; btn.textContent="Envoyer le lien";
+  if(error){ showMsg('msg-req',traduireErreurAuth(error.message),"err"); return; }
+  showMsg('msg-req',"✓ Si un compte existe avec cette adresse, un email vient d'être envoyé. Vérifiez votre boîte mail (et vos spams).","ok");
+}
+
+async function setNewPassword(){
+  const p1=document.getElementById('np').value;
+  const p2=document.getElementById('np2').value;
+  if(p1.length<8){ showMsg('msg-set',"Le mot de passe doit contenir au moins 8 caractères.","err"); return; }
+  if(p1!==p2){ showMsg('msg-set',"Les deux mots de passe ne sont pas identiques.","err"); return; }
+  const { error } = await sb.auth.updateUser({ password: p1 });
+  if(error){ showMsg('msg-set',traduireErreurAuth(error.message),"err"); return; }
+  showMsg('msg-set',"✓ Mot de passe modifié ! Redirection vers votre formation…","ok");
+  setTimeout(()=>{ window.location.href='membres.html'; }, 1500);
+}
+</script>
+</body>
+</html>

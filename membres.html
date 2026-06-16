@@ -7,6 +7,8 @@
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="apple-touch-icon" href="images/logo.png">
 <meta name="theme-color" content="#09190f">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Amiri:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--dark:#09190f;--dark2:#122218;--green:#1a4029;--green2:#245c38;--gold:#c9a227;--gold2:#e8c96a;--gold-bg:rgba(201,162,39,.08);--white:#fff;--off:#f7f4ee;--gray:#e5e0d5;--text:#18180f;--muted:#5a5a4a;--r:8px}
@@ -246,7 +248,9 @@ body.dark th{color:var(--gold2)}
     <input class="login-input" type="password" id="login-pass" placeholder="Votre mot de passe" onkeydown="if(event.key==='Enter')doLogin()">
     <button class="login-btn" onclick="doLogin()">Accéder à ma formation</button>
     <div class="login-err" id="login-err">Email ou mot de passe incorrect</div>
-    <div class="login-hint">Pas encore accès ? <a href="index.html" style="color:var(--gold)">Voir la formation</a></div>
+    <div class="login-hint" style="margin-top:18px">Pas encore de compte ? <a href="inscription.html" style="color:var(--gold);font-weight:600">Créer mon compte</a></div>
+    <div class="login-hint" style="margin-top:8px"><a href="mot-de-passe.html" style="color:rgba(255,255,255,.55)">Mot de passe oublié ?</a></div>
+    <div class="login-hint" style="margin-top:14px"><a href="index.html" style="color:rgba(255,255,255,.3)">← Retour au site</a></div>
   </div>
 </div>
 
@@ -259,6 +263,7 @@ body.dark th{color:var(--gold2)}
   <div class="nav-right">
     <span class="nav-badge">Espace Membres</span>
     <a href="index.html" class="nav-home">Accueil</a>
+    <a href="mon-compte.html" class="nav-home">Mon compte</a>
     <button class="dark-btn" onclick="toggleDark()" id="darkBtnM">Sombre</button>
     <button class="nav-logout" onclick="logout()">Déconnexion</button>
   </div>
@@ -2609,32 +2614,35 @@ body.dark th{color:var(--gold2)}
 </div><!-- fin layout -->
 
 <script>
-/* ── MEMBRES ── */
-const MEMBERS = {
-  "demo@arabe-accessible.fr": "arabe2024",
-  "test@test.fr": "test123"
-};
-
-function doLogin(){
+/* ── AUTHENTIFICATION (Supabase) ── */
+async function doLogin(){
   const email = document.getElementById('login-email').value.trim().toLowerCase();
   const pass  = document.getElementById('login-pass').value;
   const err   = document.getElementById('login-err');
-  if(MEMBERS[email] && MEMBERS[email] === pass){
-    document.getElementById('login-screen').style.display='none';
-    sessionStorage.setItem('membre', email);
-    loadSavedProgress();
-  } else {
+  err.style.display='none';
+  const { data, error } = await sb.auth.signInWithPassword({ email:email, password:pass });
+  if(error){
+    err.textContent = traduireErreurAuth(error.message);
     err.style.display='block';
-    setTimeout(()=>err.style.display='none', 3000);
+    return;
   }
+  onLoggedIn(data.user);
 }
-function logout(){
+function onLoggedIn(user){
+  sessionStorage.setItem('membre', user.email);
+  document.getElementById('login-screen').style.display='none';
+  loadSavedProgress();
+}
+async function logout(){
+  await sb.auth.signOut();
   sessionStorage.removeItem('membre');
   location.reload();
 }
-if(sessionStorage.getItem('membre')){
-  document.getElementById('login-screen').style.display='none';
-}
+/* Au chargement : si une session valide existe déjà, on ouvre directement la formation */
+(async function(){
+  const { data:{ session } } = await sb.auth.getSession();
+  if(session && session.user){ onLoggedIn(session.user); }
+})();
 
 
 /* ── COOKIES (consentement RGPD) ── */
@@ -2649,8 +2657,8 @@ function cookieRefuseAll(){ckStore({essential:true,analytics:false});ckBanner(fa
 function saveCookiePrefs(){var a=document.getElementById('ck-analytics').checked;ckStore({essential:true,analytics:a});ckBanner(false);closeCookiePrefs();if(a)ckApply({analytics:true});}
 function loadAnalytics(){
   if(window.__gaLoaded)return;
-  /* ⚠️ Remplacez G-XXXXXXXXXX par votre identifiant Google Analytics 4. Tant qu'il n'est pas renseigné, rien n'est chargé. */
-  var ID='G-XXXXXXXXXX';
+  /* Identifiant Google Analytics 4 configuré. Le suivi ne se charge qu'avec le consentement du visiteur. */
+  var ID='G-L0YPP7Y51K';
   if(ID.indexOf('XXXX')!==-1)return;
   window.__gaLoaded=true;
   var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+ID;document.head.appendChild(s);
@@ -2810,7 +2818,7 @@ function playAud(file,btn){
 }
 
 // Init
-if(sessionStorage.getItem('membre')) loadSavedProgress();
+/* La progression est chargée après connexion (voir onLoggedIn). */
 </script>
 <div style="text-align:center;padding:20px;font-size:12px;color:var(--muted);border-top:1px solid var(--gray)">Une question ? <a href="mailto:contact@arabeaccessible.com" style="color:var(--gold)">contact@arabeaccessible.com</a></div>
 </body>

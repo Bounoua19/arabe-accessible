@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon compte — L'Arabe Accessible</title>
+<link rel="icon" type="image/png" href="images/logo.png">
+<meta name="theme-color" content="#09190f">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#09190f;--green:#1a4029;--gold:#c9a227;--gold2:#e8c96a;--r:8px}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;min-height:100vh;padding:24px;display:flex;align-items:flex-start;justify-content:center}
+.wrap{max-width:480px;width:100%;margin-top:30px}
+.top{text-align:center;margin-bottom:28px}
+.logo{height:64px;width:64px;object-fit:contain;border-radius:50%;border:2px solid rgba(201,162,39,.4);margin:0 auto 14px;display:block}
+h1{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600}
+.email-now{font-size:13px;color:rgba(255,255,255,.5);margin-top:6px}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.25);border-radius:12px;padding:24px;margin-bottom:18px}
+.card h2{font-family:'Cormorant Garamond',serif;font-size:20px;margin-bottom:4px}
+.card p{font-size:12.5px;color:rgba(255,255,255,.5);margin-bottom:14px;line-height:1.6}
+label{display:block;font-size:12px;color:rgba(255,255,255,.6);margin:10px 0 6px;font-weight:500}
+input{width:100%;padding:12px 15px;border:1px solid rgba(255,255,255,.2);border-radius:var(--r);background:rgba(255,255,255,.07);color:#fff;font-size:15px;font-family:'DM Sans',sans-serif;outline:none}
+input:focus{border-color:var(--gold)}
+button{width:100%;padding:13px;background:var(--gold);color:var(--dark);font-size:14px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:16px;transition:background .2s}
+button:hover{background:var(--gold2)}
+button:disabled{opacity:.6;cursor:not-allowed}
+.msg{font-size:13px;margin-top:12px;padding:11px 13px;border-radius:var(--r);display:none;line-height:1.5}
+.msg.err{display:block;background:rgba(224,80,80,.12);border:1px solid rgba(224,80,80,.4);color:#ff9a9a}
+.msg.ok{display:block;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.4);color:var(--gold2)}
+.actions{display:flex;gap:12px;margin-top:8px}
+.actions a{flex:1;text-align:center;padding:13px;border-radius:var(--r);font-size:14px;font-weight:600;text-decoration:none}
+.btn-back{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.2);color:#fff}
+.btn-logout{background:transparent;border:1px solid rgba(224,80,80,.4);color:#ff9a9a;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600}
+#loading{text-align:center;color:rgba(255,255,255,.5);margin-top:60px}
+#app{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="loading">Chargement…</div>
+  <div id="app">
+    <div class="top">
+      <img src="images/logo.png" class="logo" alt="Logo" onerror="this.src='logo.png'">
+      <h1>Mon compte</h1>
+      <div class="email-now">Connecté en tant que <strong id="cur-email"></strong></div>
+    </div>
+
+    <div class="card">
+      <h2>Changer mon adresse email</h2>
+      <p>Un email de confirmation sera envoyé à la nouvelle adresse. Le changement est effectif après validation.</p>
+      <label for="new-email">Nouvelle adresse email</label>
+      <input type="email" id="new-email" placeholder="nouvelle@exemple.com" autocomplete="email">
+      <button onclick="changeEmail()">Mettre à jour l'email</button>
+      <div class="msg" id="msg-email"></div>
+    </div>
+
+    <div class="card">
+      <h2>Changer mon mot de passe</h2>
+      <p>Choisissez un nouveau mot de passe de 8 caractères minimum.</p>
+      <label for="new-pass">Nouveau mot de passe</label>
+      <input type="password" id="new-pass" placeholder="Au moins 8 caractères" autocomplete="new-password">
+      <label for="new-pass2">Confirmer le nouveau mot de passe</label>
+      <input type="password" id="new-pass2" placeholder="Retapez le mot de passe" autocomplete="new-password">
+      <button onclick="changePassword()">Mettre à jour le mot de passe</button>
+      <div class="msg" id="msg-pass"></div>
+    </div>
+
+    <div class="actions">
+      <a class="btn-back" href="membres.html">← Ma formation</a>
+      <button class="btn-logout" onclick="logout()">Se déconnecter</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+function showMsg(id,text,type){const m=document.getElementById(id);m.textContent=text;m.className='msg '+type;}
+
+// Vérifier la connexion au chargement
+(async function(){
+  const { data:{ session } } = await sb.auth.getSession();
+  if(!session){ window.location.href='membres.html'; return; }
+  document.getElementById('cur-email').textContent = session.user.email;
+  document.getElementById('loading').style.display='none';
+  document.getElementById('app').style.display='block';
+})();
+
+async function changeEmail(){
+  const email=document.getElementById('new-email').value.trim().toLowerCase();
+  if(!email || !email.includes('@')){ showMsg('msg-email',"Adresse email invalide.","err"); return; }
+  const { error } = await sb.auth.updateUser({ email: email });
+  if(error){ showMsg('msg-email',traduireErreurAuth(error.message),"err"); return; }
+  showMsg('msg-email',"✓ Un email de confirmation a été envoyé à la nouvelle adresse. Cliquez sur le lien pour valider le changement.","ok");
+}
+
+async function changePassword(){
+  const p1=document.getElementById('new-pass').value;
+  const p2=document.getElementById('new-pass2').value;
+  if(p1.length<8){ showMsg('msg-pass',"Le mot de passe doit contenir au moins 8 caractères.","err"); return; }
+  if(p1!==p2){ showMsg('msg-pass',"Les deux mots de passe ne sont pas identiques.","err"); return; }
+  const { error } = await sb.auth.updateUser({ password: p1 });
+  if(error){ showMsg('msg-pass',traduireErreurAuth(error.message),"err"); return; }
+  document.getElementById('new-pass').value='';
+  document.getElementById('new-pass2').value='';
+  showMsg('msg-pass',"✓ Mot de passe mis à jour avec succès.","ok");
+}
+
+async function logout(){
+  await sb.auth.signOut();
+  sessionStorage.removeItem('membre');
+  window.location.href='membres.html';
+}
+</script>
+</body>
+</html>
