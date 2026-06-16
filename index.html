@@ -285,7 +285,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
     <div class="hero-stats">
       <div class="stat"><div class="stat-n">28</div><div class="stat-l">Lettres + audio</div></div>
       <div class="stat"><div class="stat-n">6</div><div class="stat-l">Mois structurés</div></div>
-      <div class="stat"><div class="stat-n">5</div><div class="stat-l">Modules complets</div></div>
+      <div class="stat"><div class="stat-n">6</div><div class="stat-l">Modules complets</div></div>
       <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Accès à vie</div></div>
     </div>
   </div>
@@ -321,7 +321,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
 <section id="modules">
   <div class="wrap">
     <p class="s-label">Contenu de la formation</p>
-    <h2 class="s-title">5 Modules pour maîtriser l'arabe classique</h2>
+    <h2 class="s-title">6 Modules pour maîtriser l'arabe classique</h2>
     <p class="s-sub">Un accès complet à tous les modules après votre inscription.</p>
     <div class="mod-grid">
 
@@ -427,6 +427,26 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
         </div>
       </div>
 
+      <div class="module-card">
+        <div class="mod-head">
+          <div class="mod-num">06</div>
+          <div class="mod-head-info">
+            <div class="mod-name">Vocabulaire Essentiel</div>
+            <div class="mod-ar">المفردات</div>
+          </div>
+        </div>
+        <div class="mod-body">
+          <p>Plus de 100 mots arabes classés par thème — salutations, famille, maison, nourriture, couleurs, nombres, temps et verbes — avec phonétique et traduction française.</p>
+          <div class="mod-tags">
+            <span class="mod-tag">100+ mots</span>
+            <span class="mod-tag">Phonétique</span>
+            <span class="mod-tag">Classés par thèmes</span>
+            <span class="mod-tag">Traduction française</span>
+          </div>
+          <div class="mod-lock">Contenu réservé aux membres — <strong>Accès après inscription</strong></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -453,8 +473,8 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
       <div class="lcard"><span class="l-ar">ش</span><div class="l-name">Shīn</div><div class="l-tr">sh</div><button class="aud" onclick="playAud('Shin.mp3',this)">▶</button></div>
       <div class="lcard"><span class="l-ar">ص</span><div class="l-name">Ṣād</div><div class="l-tr">ṣ</div><button class="aud" onclick="playAud('Sad.mp3',this)">▶</button></div>
       <div class="lcard"><span class="l-ar">ض</span><div class="l-name">Ḍād</div><div class="l-tr">ḍ</div><button class="aud" onclick="playAud('Dad.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ط</span><div class="l-name">Ṭā</div><div class="l-tr">ṭ</div><button class="aud" onclick="playAud('TImou.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ظ</span><div class="l-name">Ẓā</div><div class="l-tr">ẓ</div><button class="aud" onclick="playAud('Thaaa.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ط</span><div class="l-name">Ṭā</div><div class="l-tr">ṭ</div><button class="aud" onclick="playAud('Tta.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ظ</span><div class="l-name">Ẓā</div><div class="l-tr">ẓ</div></div>
       <div class="lcard"><span class="l-ar">ع</span><div class="l-name">'Ayn</div><div class="l-tr">ʿ</div><button class="aud" onclick="playAud('ayn.mp3',this)">▶</button></div>
       <div class="lcard"><span class="l-ar">غ</span><div class="l-name">Ghayn</div><div class="l-tr">gh</div><button class="aud" onclick="playAud('Ghayn.mp3',this)">▶</button></div>
       <div class="lcard"><span class="l-ar">ف</span><div class="l-name">Fā</div><div class="l-tr">f</div><button class="aud" onclick="playAud('Fa.mp3',this)">▶</button></div>
@@ -509,7 +529,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
         <li>Conjugaison : accompli, inaccompli, impératif</li>
         <li>Exercices corrigés à chaque leçon</li>
         <li>Programme Al-Adjroumiyya 6 mois (24 semaines)</li>
-        <li>Vocabulaire essentiel avec prononciation audio</li>
+        <li>Vocabulaire essentiel : 100+ mots (arabe, phonétique, français)</li>
         <li>Mises à jour futures incluses gratuitement</li>
         <li>Accès illimité, sans date d'expiration</li>
       </ul>
@@ -653,7 +673,7 @@ let ca=null,cb=null;
 function playAud(f,b){
   if(ca){ca.pause();ca.currentTime=0;if(cb){cb.textContent='▶';cb.style.background=''}}
   if(cb===b){ca=null;cb=null;return}
-  const a=new Audio(f);
+  const a=new Audio('audio/'+f);
   a.play().catch(()=>{});
   ca=a;cb=b;b.textContent='⏸';b.style.background='var(--gold)';b.style.color='var(--dark)';
   a.onended=()=>{b.textContent='▶';b.style.background='';ca=null;cb=null}

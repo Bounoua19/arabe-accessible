@@ -320,7 +320,7 @@ body.dark th{color:var(--gold2)}
   <div class="sidebar-prog-wrap">
     <div class="prog-label">Progression globale</div>
     <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
-    <div class="prog-pct" id="progPct">0 / 23 leçons</div>
+    <div class="prog-pct" id="progPct">0 / 26 leçons</div>
   </div>
 </aside>
 
@@ -456,7 +456,8 @@ const ALL_LESSONS = [
   'gram-nom','gram-pronom','gram-verbe',
   'conj-accompli','conj-inaccompli','conj-imperatif',
   'adj-m1','adj-m2','adj-m3','adj-m4','adj-m5','adj-m6','adj-m7','adj-m8',
-  'sarf-intro','sarf-racines','sarf-modeles','sarf-formes','sarf-derives','sarf-formes10'
+  'sarf-intro','sarf-racines','sarf-modeles','sarf-formes','sarf-derives','sarf-formes10',
+  'vocab-base','vocab-vie','vocab-temps'
 ];
 const STEPS_MAP = {
   'alph-lettres':2,'alph-formes':2,'alph-voyelles':3,
@@ -464,7 +465,8 @@ const STEPS_MAP = {
   'conj-accompli':10,'conj-inaccompli':10,'conj-imperatif':9,
   'adj-m1':5,'adj-m2':5,'adj-m3':5,'adj-m4':5,
   'adj-m5':6,'adj-m6':6,'adj-m7':2,'adj-m8':6,
-  'sarf-intro':3,'sarf-racines':2,'sarf-modeles':2,'sarf-formes':3,'sarf-derives':4,'sarf-formes10':2
+  'sarf-intro':3,'sarf-racines':2,'sarf-modeles':2,'sarf-formes':3,'sarf-derives':4,'sarf-formes10':2,
+  'vocab-base':3,'vocab-vie':4,'vocab-temps':3
 };
 
 let completed = [];
@@ -559,7 +561,7 @@ let curAud=null,curBtn=null;
 function playAud(file,btn){
   if(curAud){curAud.pause();curAud.currentTime=0;if(curBtn){curBtn.classList.remove('playing');curBtn.innerHTML='&#9654;'}}
   if(curBtn===btn){curAud=null;curBtn=null;return}
-  const a=new Audio(file);
+  const a=new Audio('audio/'+file);
   a.play().catch(()=>{});
   curAud=a;curBtn=btn;btn.classList.add('playing');btn.innerHTML='&#9646;&#9646;';
   a.onended=()=>{btn.classList.remove('playing');btn.innerHTML='&#9654;';curAud=null;curBtn=null}
