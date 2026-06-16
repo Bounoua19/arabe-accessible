@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Espace Membres — L'Arabe Accessible</title>
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<meta name="theme-color" content="#09190f">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Amiri:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--dark:#09190f;--dark2:#122218;--green:#1a4029;--green2:#245c38;--gold:#c9a227;--gold2:#e8c96a;--gold-bg:rgba(201,162,39,.08);--white:#fff;--off:#f7f4ee;--gray:#e5e0d5;--text:#18180f;--muted:#5a5a4a;--r:8px}
@@ -169,7 +172,25 @@ tr:hover td{background:var(--off)}
 .ln-btn.primary:hover{background:var(--green2)}
 
 /* DARK MODE */
-
+body.dark{background:#0f0f1e;color:#e0e0f0}
+body.dark .sidebar{background:#1a1a2e;border-color:#2a2a4a}
+body.dark .chapter-btn{color:#e0e0f0}
+body.dark .chapter-btn:hover{background:#252545}
+body.dark .lesson-item{color:#a0a0c0}
+body.dark .lesson-item:hover{background:#252545;color:#e0e0f0}
+body.dark .etape{background:#1e1e3a;border-color:#2a2a4a}
+body.dark .etape-body{background:#1e1e3a}
+body.dark table td{border-color:#2a2a4a;color:#e0e0f0}
+body.dark tr:hover td{background:#252545}
+body.dark .ex-row{background:#252545}
+body.dark .regle{background:rgba(201,162,39,.07);border-color:rgba(201,162,39,.2);color:#e0e0f0}
+body.dark .vocab-card{background:#252545;border-color:#2a2a4a}
+body.dark .vocab-fr{color:#e0e0f0}
+body.dark .lesson-progress{background:#1e1e3a;border-color:#2a2a4a}
+body.dark .prog-bar,.dark .lp-bar{background:#2a2a4a}
+body.dark .lesson-nav .ln-btn{background:#1e1e3a;border-color:#2a2a4a;color:#a0a0c0}
+body.dark .step-dot{background:#2a2a4a;color:#a0a0c0}
+body.dark .sidebar-sep{background:#2a2a4a}
 
 /* MODULE HEADER Al-Adjroumiyya */
 .module-header{background:linear-gradient(135deg,var(--dark) 0%,var(--green) 100%);border-radius:var(--r);padding:20px 24px;margin-bottom:16px;border-left:4px solid var(--gold)}
@@ -179,152 +200,14 @@ tr:hover td{background:var(--off)}
 
 /* RESPONSIVE */
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.main{padding:20px 16px}.ex-grid{grid-template-columns:1fr}}
-
-
-
-
-/* TABLEAU FORMES DES LETTRES */
-.formes-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:8px;overflow:hidden;border:1px solid rgba(201,162,39,.2)}
-.formes-table th{padding:12px 8px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid rgba(201,162,39,.2);line-height:1.4}
-.formes-table td{padding:12px 8px;border-bottom:1px solid rgba(255,255,255,.05);line-height:1.2;vertical-align:middle}
-.formes-table tbody tr:last-child td{border-bottom:none}
-.formes-table tbody tr:hover td{opacity:.85;transition:opacity .15s}
-
-/* ═══ DARK MODE COMPLET ═══ */
-body.dark{
-  background:#0d1810;
-  color:#dce8e2;
-  --text:#dce8e2;
-  --muted:#8ab09a;
-  --white:#111e14;
-  --off:#0d1810;
-  --gray:#1e3024;
-}
-
-/* Sidebar */
-body.dark .sidebar{background:#0a1208;border-color:#1a2e20}
-body.dark .sidebar-section{border-color:#1a2e20}
-body.dark .sidebar-sep{background:#1a2e20}
-body.dark .chapter-btn{color:#dce8e2;background:transparent}
-body.dark .chapter-btn:hover{background:rgba(201,162,39,.08)}
-body.dark .chapter-num{background:rgba(201,162,39,.08);color:var(--gold2)}
-body.dark .chapter-title{color:#dce8e2}
-body.dark .lesson-item{color:#8ab09a}
-body.dark .lesson-item:hover{background:rgba(201,162,39,.08);color:#fff}
-body.dark .lesson-item.active{background:rgba(201,162,39,.12);color:var(--gold2)}
-
-/* Contenu principal */
-body.dark .main-content{background:#0d1810}
-body.dark .lesson-panel{color:#dce8e2;background:#0d1810}
-body.dark .lesson-main-title{color:#fff}
-body.dark .lesson-ar-title{color:var(--gold2)}
-body.dark .lesson-meta{color:#6a8a78}
-body.dark .lesson-num{background:rgba(201,162,39,.1);color:var(--gold2)}
-
-/* Étapes */
-body.dark .etape{background:#111e14;border-color:#1e3024}
-body.dark .etape-header{background:#0f1a12;border-color:#1e3024}
-body.dark .etape-num{color:var(--gold);background:rgba(201,162,39,.08)}
-body.dark .etape-title{color:#fff}
-body.dark .etape-body{background:#111e14;color:#dce8e2}
-body.dark .etape-body p{color:#c0d8cc}
-
-/* Définitions */
-body.dark .definition{background:rgba(201,162,39,.05);border-color:rgba(201,162,39,.2)}
-body.dark .def-term{color:var(--gold2)}
-body.dark .def-text{color:#dce8e2}
-
-/* Règles */
-body.dark .regle{background:rgba(201,162,39,.05);border-color:rgba(201,162,39,.2);color:#dce8e2}
-
-/* Tableaux */
-body.dark table{border-color:#1e3024;background:#0f1a12}
-body.dark table th{background:#0a1208;color:var(--gold2);border-color:#1e3024}
-body.dark table td{color:#dce8e2;border-color:#1e3024;background:transparent}
-body.dark .ar-cell{color:var(--gold2)}
-body.dark .tr-cell{color:#8ab09a}
-body.dark tr:nth-child(even) td{background:rgba(255,255,255,.02)}
-body.dark tr:hover td{background:rgba(201,162,39,.05)}
-
-/* Exemples */
-body.dark .exemples{border-color:#1e3024}
-body.dark .ex-row{border-color:#1e3024}
-body.dark .ex-ar{color:var(--gold2)}
-body.dark .ex-fr{color:#dce8e2}
-
-/* Vocabulaire */
-body.dark .vocab-card{background:#111e14;border-color:#1e3024}
-body.dark .vocab-ar{color:var(--gold2)}
-body.dark .vocab-fr{color:#dce8e2}
-
-/* Progression */
-body.dark .lesson-progress{background:#0f1a12;border-color:#1e3024}
-body.dark .lp-label{color:#8ab09a}
-body.dark .lp-bar{background:#1e3024}
-body.dark .lp-pct{color:#8ab09a}
-body.dark .step-dot{background:#1e3024;color:#8ab09a;border-color:#2e4034}
-body.dark .step-dot.current{background:var(--gold);color:var(--dark);border-color:var(--gold)}
-body.dark .step-dot.done{background:var(--green);color:#fff;border-color:var(--green)}
-
-/* Navigation leçons */
-body.dark .lesson-nav{border-color:#1e3024}
-body.dark .ln-btn{background:#111e14;border-color:#1e3024;color:#8ab09a}
-body.dark .ln-btn:hover{background:#1a2e20;color:#dce8e2}
-body.dark .ln-btn.primary{background:var(--gold);color:var(--dark);border-color:var(--gold)}
-
-/* Exercices */
-body.dark .ex-card{background:#111e14;border-color:#1e3024}
-body.dark .ex-question{color:#dce8e2}
-body.dark .ex-answer{background:#0f1a12;border-color:#1e3024;color:#dce8e2}
-
-/* Alphabet / lettres */
-body.dark .lcard{background:#111e14;border-color:#1e3024}
-body.dark .l-name{color:var(--gold2)}
-body.dark .l-tr{color:#8ab09a}
-
-/* Login */
-body.dark .login-box{background:#111e14;border-color:#1e3024}
-body.dark .login-title{color:#fff}
-body.dark .login-sub{color:#8ab09a}
-body.dark .login-input{background:#0f1a12;border-color:#1e3024;color:#dce8e2}
-body.dark .login-input::placeholder{color:#4a6a58}
-
-/* Navbar */
-body.dark nav{border-color:#1e3024}
-body.dark .nav-name{color:#fff}
-
-/* Sidebar progress */
-body.dark .sidebar-prog-wrap{border-color:#1e3024}
-body.dark .prog-label{color:#8ab09a}
-body.dark .prog-bar{background:#1e3024}
-
-/* Texte général */
-body.dark h1, body.dark h2, body.dark h3, body.dark h4{color:#fff}
-body.dark p{color:#c0d8cc}
-body.dark strong{color:#fff}
-body.dark a{color:var(--gold2)}
-
-/* Bouton audio */
-body.dark .aud{background:rgba(201,162,39,.1);border-color:rgba(201,162,39,.3);color:var(--gold2)}
-body.dark .aud:hover{background:var(--gold);color:var(--dark)}
-
 </style>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0YPP7Y51K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-L0YPP7Y51K');
-</script>
 </head>
 <body>
 
 <!-- LOGIN -->
 <div id="login-screen">
   <div class="login-box">
-    <img src="images/logo.png" onerror="this.src='logo.png'" class="login-logo" alt="Logo L'Arabe Accessible">
+    <img src="logo.png" class="login-logo" alt="Logo">
     <div class="login-title">Espace Membres</div>
     <div class="login-sub">Veuillez entrer vos identifiants pour accéder à votre formation</div>
     <input class="login-input" type="email" id="login-email" placeholder="Votre adresse email">
@@ -338,7 +221,7 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="images/logo.png" onerror="this.src='logo.png'" alt="Logo">
+    <img src="logo.png" alt="Logo">
     <span class="nav-name">L'<span>Arabe</span> Accessible</span>
   </div>
   <div class="nav-right">
@@ -433,16 +316,16 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
   <div class="sidebar-section">
     <button class="chapter-btn" onclick="toggleChapter(this)">
       <div class="chapter-num">5</div>
-      <span class="chapter-title">Le Sarf — Morphologie</span>
+      <span class="chapter-title">Le Sarf</span>
       <span class="chapter-icon">›</span>
     </button>
     <div class="lesson-list">
       <div class="lesson-item" onclick="showLesson('sarf-intro',this)">Introduction au Sarf</div>
-      <div class="lesson-item" onclick="showLesson('sarf-racines',this)">Les racines et dérivés</div>
-      <div class="lesson-item" onclick="showLesson('sarf-modeles',this)">Les modèles (الأوزان)</div>
-      <div class="lesson-item" onclick="showLesson('sarf-verbes',this)">Les formes verbales</div>
-      <div class="lesson-item" onclick="showLesson('sarf-derives',this)">Les dérivés du verbe</div>
-      <div class="lesson-item" onclick="showLesson('sarf-dix',this)">Les 10 formes verbales</div>
+      <div class="lesson-item" onclick="showLesson('sarf-racines',this)">Les Racines et Dérivés</div>
+      <div class="lesson-item" onclick="showLesson('sarf-modeles',this)">Les Modèles (الأوزان)</div>
+      <div class="lesson-item" onclick="showLesson('sarf-formes',this)">Les Formes Verbales</div>
+      <div class="lesson-item" onclick="showLesson('sarf-derives',this)">Les Dérivés du Verbe</div>
+      <div class="lesson-item" onclick="showLesson('sarf-formes10',this)">Les 10 Formes Verbales</div>
     </div>
   </div>
 
@@ -450,7 +333,7 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
   <div class="sidebar-prog-wrap">
     <div class="prog-label">Progression globale</div>
     <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
-    <div class="prog-pct" id="progPct">0 / 14 leçons</div>
+    <div class="prog-pct" id="progPct">0 / 23 leçons</div>
   </div>
 </aside>
 
@@ -479,34 +362,34 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
     <div class="etape-header"><span class="etape-num">LES 28 LETTRES</span><span class="etape-title">Cliquez sur &#9654; pour écouter la prononciation</span></div>
     <div class="etape-body">
       <div class="vocab-grid">
-        <div class="vocab-card"><div class="vocab-ar ar">أ</div><div><div class="vocab-fr">Alif — ā</div></div><button class="aud" onclick="playAud('audio/Alif.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ب</div><div><div class="vocab-fr">Bā — b</div></div><button class="aud" onclick="playAud('audio/BA.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ت</div><div><div class="vocab-fr">Tā — t</div></div><button class="aud" onclick="playAud('audio/Ta.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ث</div><div><div class="vocab-fr">Thā — th</div></div><button class="aud" onclick="playAud('audio/Tha.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ج</div><div><div class="vocab-fr">Jīm — dj</div></div><button class="aud" onclick="playAud('audio/Djim.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ح</div><div><div class="vocab-fr">Ḥā — ḥ</div></div><button class="aud" onclick="playAud('audio/Ha.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">خ</div><div><div class="vocab-fr">Khā — kh</div></div><button class="aud" onclick="playAud('audio/Kha.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">د</div><div><div class="vocab-fr">Dāl — d</div></div><button class="aud" onclick="playAud('audio/dAL.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ذ</div><div><div class="vocab-fr">Dhāl — dh</div></div><button class="aud" onclick="playAud('audio/Dhal.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ر</div><div><div class="vocab-fr">Rā — r</div></div><button class="aud" onclick="playAud('audio/Ra.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ز</div><div><div class="vocab-fr">Zāy — z</div></div><button class="aud" onclick="playAud('audio/Zay.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">س</div><div><div class="vocab-fr">Sīn — s</div></div><button class="aud" onclick="playAud('audio/Sin.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ش</div><div><div class="vocab-fr">Shīn — sh</div></div><button class="aud" onclick="playAud('audio/Shin.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ص</div><div><div class="vocab-fr">Ṣād — ṣ</div></div><button class="aud" onclick="playAud('audio/Sad.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ض</div><div><div class="vocab-fr">Ḍād — ḍ</div></div><button class="aud" onclick="playAud('audio/Dad.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ط</div><div><div class="vocab-fr">Ṭā — ṭ</div></div><button class="aud" onclick="playAud('audio/TImou.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ظ</div><div><div class="vocab-fr">Ẓā — ẓ</div></div><button class="aud" onclick="playAud('audio/Thaaa.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ع</div><div><div class="vocab-fr">'Ayn — ʿ</div></div><button class="aud" onclick="playAud('audio/ayn.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">غ</div><div><div class="vocab-fr">Ghayn — gh</div></div><button class="aud" onclick="playAud('audio/Ghayn.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ف</div><div><div class="vocab-fr">Fā — f</div></div><button class="aud" onclick="playAud('audio/Fa.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ق</div><div><div class="vocab-fr">Qāf — q</div></div><button class="aud" onclick="playAud('audio/Qaf.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ك</div><div><div class="vocab-fr">Kāf — k</div></div><button class="aud" onclick="playAud('audio/Kaf.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ل</div><div><div class="vocab-fr">Lām — l</div></div><button class="aud" onclick="playAud('audio/Lam.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">م</div><div><div class="vocab-fr">Mīm — m</div></div><button class="aud" onclick="playAud('audio/Mim.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ن</div><div><div class="vocab-fr">Nūn — n</div></div><button class="aud" onclick="playAud('audio/Noun.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ه</div><div><div class="vocab-fr">Hā — h</div></div><button class="aud" onclick="playAud('audio/HAA.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">و</div><div><div class="vocab-fr">Wāw — w/ū</div></div><button class="aud" onclick="playAud('audio/Waw.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">ي</div><div><div class="vocab-fr">Yā — y/ī</div></div><button class="aud" onclick="playAud('audio/Ya.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">أ</div><div><div class="vocab-fr">Alif — ā</div></div><button class="aud" onclick="playAud('Alif.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ب</div><div><div class="vocab-fr">Bā — b</div></div><button class="aud" onclick="playAud('BA.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ت</div><div><div class="vocab-fr">Tā — t</div></div><button class="aud" onclick="playAud('Ta.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ث</div><div><div class="vocab-fr">Thā — th</div></div><button class="aud" onclick="playAud('Tha.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ج</div><div><div class="vocab-fr">Jīm — dj</div></div><button class="aud" onclick="playAud('Djim.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ح</div><div><div class="vocab-fr">Ḥā — ḥ</div></div><button class="aud" onclick="playAud('Ha.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">خ</div><div><div class="vocab-fr">Khā — kh</div></div><button class="aud" onclick="playAud('Kha.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">د</div><div><div class="vocab-fr">Dāl — d</div></div><button class="aud" onclick="playAud('dAL.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ذ</div><div><div class="vocab-fr">Dhāl — dh</div></div><button class="aud" onclick="playAud('Dhal.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ر</div><div><div class="vocab-fr">Rā — r</div></div><button class="aud" onclick="playAud('Ra.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ز</div><div><div class="vocab-fr">Zāy — z</div></div><button class="aud" onclick="playAud('Zay.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">س</div><div><div class="vocab-fr">Sīn — s</div></div><button class="aud" onclick="playAud('Sin.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ش</div><div><div class="vocab-fr">Shīn — sh</div></div><button class="aud" onclick="playAud('Shin.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ص</div><div><div class="vocab-fr">Ṣād — ṣ</div></div><button class="aud" onclick="playAud('Sad.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ض</div><div><div class="vocab-fr">Ḍād — ḍ</div></div><button class="aud" onclick="playAud('Dad.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ط</div><div><div class="vocab-fr">Ṭā — ṭ</div></div><button class="aud" onclick="playAud('TImou.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ظ</div><div><div class="vocab-fr">Ẓā — ẓ</div></div><button class="aud" onclick="playAud('Thaaa.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ع</div><div><div class="vocab-fr">'Ayn — ʿ</div></div><button class="aud" onclick="playAud('ayn.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">غ</div><div><div class="vocab-fr">Ghayn — gh</div></div><button class="aud" onclick="playAud('Ghayn.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ف</div><div><div class="vocab-fr">Fā — f</div></div><button class="aud" onclick="playAud('Fa.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ق</div><div><div class="vocab-fr">Qāf — q</div></div><button class="aud" onclick="playAud('Qaf.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ك</div><div><div class="vocab-fr">Kāf — k</div></div><button class="aud" onclick="playAud('Kaf.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ل</div><div><div class="vocab-fr">Lām — l</div></div><button class="aud" onclick="playAud('Lam.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">م</div><div><div class="vocab-fr">Mīm — m</div></div><button class="aud" onclick="playAud('Mim.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ن</div><div><div class="vocab-fr">Nūn — n</div></div><button class="aud" onclick="playAud('Noun.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ه</div><div><div class="vocab-fr">Hā — h</div></div><button class="aud" onclick="playAud('HAA.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">و</div><div><div class="vocab-fr">Wāw — w/ū</div></div><button class="aud" onclick="playAud('Waw.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">ي</div><div><div class="vocab-fr">Yā — y/ī</div></div><button class="aud" onclick="playAud('Ya.mp3',this)">&#9654;</button></div>
       </div>
     </div>
   </div>
@@ -515,12 +398,12 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
     <div class="etape-header"><span class="etape-num">VOCABULAIRE</span><span class="etape-title">Premiers mots avec audio</span></div>
     <div class="etape-body">
       <div class="vocab-grid">
-        <div class="vocab-card"><div class="vocab-ar ar">بَيْتٌ</div><div><div class="vocab-fr">Maison</div><div class="vocab-tr">baytoun</div></div><button class="aud" onclick="playAud('audio/Bayt.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">مَدْرَسَةٌ</div><div><div class="vocab-fr">École</div><div class="vocab-tr">madrasatoun</div></div><button class="aud" onclick="playAud('audio/Madrasa.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">كَتَبَ</div><div><div class="vocab-fr">Il a écrit</div><div class="vocab-tr">kataba</div></div><button class="aud" onclick="playAud('audio/Kataba.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">دَرَسَ</div><div><div class="vocab-fr">Il a étudié</div><div class="vocab-tr">darasa</div></div><button class="aud" onclick="playAud('audio/Darasa.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">مُدَرِّسٌ</div><div><div class="vocab-fr">Professeur</div><div class="vocab-tr">moudarrisoun</div></div><button class="aud" onclick="playAud('audio/mOUDARIS.mp3',this)">&#9654;</button></div>
-        <div class="vocab-card"><div class="vocab-ar ar">بَابٌ</div><div><div class="vocab-fr">Porte</div><div class="vocab-tr">bāboun</div></div><button class="aud" onclick="playAud('audio/bABA.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">بَيْتٌ</div><div><div class="vocab-fr">Maison</div><div class="vocab-tr">baytoun</div></div><button class="aud" onclick="playAud('Bayt.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">مَدْرَسَةٌ</div><div><div class="vocab-fr">École</div><div class="vocab-tr">madrasatoun</div></div><button class="aud" onclick="playAud('Madrasa.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">كَتَبَ</div><div><div class="vocab-fr">Il a écrit</div><div class="vocab-tr">kataba</div></div><button class="aud" onclick="playAud('Kataba.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">دَرَسَ</div><div><div class="vocab-fr">Il a étudié</div><div class="vocab-tr">darasa</div></div><button class="aud" onclick="playAud('Darasa.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">مُدَرِّسٌ</div><div><div class="vocab-fr">Professeur</div><div class="vocab-tr">moudarrisoun</div></div><button class="aud" onclick="playAud('mOUDARIS.mp3',this)">&#9654;</button></div>
+        <div class="vocab-card"><div class="vocab-ar ar">بَابٌ</div><div><div class="vocab-fr">Porte</div><div class="vocab-tr">bāboun</div></div><button class="aud" onclick="playAud('bABA.mp3',this)">&#9654;</button></div>
       </div>
     </div>
   </div>
@@ -562,207 +445,35 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
   <div class="etape">
     <div class="etape-header"><span class="etape-num">TABLEAU</span><span class="etape-title">Les 28 lettres en 4 formes</span></div>
     <div class="etape-body">
-      <table class="formes-table">
-        <thead>
-          <tr>
-            <th style="background:#0a1208;color:var(--gold2);width:15%;text-align:center">Lettre</th>
-            <th style="background:rgba(201,162,39,.15);color:var(--gold2);width:21.25%;text-align:center">Isolée<br><span style="font-size:10px;opacity:.6;font-weight:400">seule</span></th>
-            <th style="background:rgba(30,200,100,.1);color:#4caf82;width:21.25%;text-align:center">Début<br><span style="font-size:10px;opacity:.6;font-weight:400">connexion →</span></th>
-            <th style="background:rgba(100,150,255,.1);color:#7aa3e0;width:21.25%;text-align:center">Milieu<br><span style="font-size:10px;opacity:.6;font-weight:400">← connexion →</span></th>
-            <th style="background:rgba(255,120,80,.1);color:#e08060;width:21.25%;text-align:center">Fin<br><span style="font-size:10px;opacity:.6;font-weight:400">← connexion</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">أ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">أ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">أ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـأ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـأ</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ب</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ب</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">بـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـبـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـب</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ت</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ت</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">تـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـتـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـت</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ث</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ث</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ثـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـثـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـث</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ج</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ج</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">جـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـجـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـج</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ح</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ح</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">حـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـحـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـح</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">خ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">خ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">خـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـخـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـخ</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">د</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">د</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">د</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـد</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـد</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ذ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ذ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ذ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـذ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـذ</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ر</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ر</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ر</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـر</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـر</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ز</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ز</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ز</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـز</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـز</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">س</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">س</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">سـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـسـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـس</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ش</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ش</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">شـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـشـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـش</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ص</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ص</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">صـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـصـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـص</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ض</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ض</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">ضـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـضـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـض</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ط</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ط</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">طـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـطـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـط</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ع</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ع</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">عـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـعـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـع</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">غ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">غ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">غـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـغـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـغ</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ف</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ف</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">فـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـفـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـف</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ق</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ق</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">قـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـقـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـق</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ك</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ك</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">كـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـكـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـك</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ل</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ل</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">لـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـلـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـل</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">م</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">م</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">مـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـمـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـم</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ن</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ن</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">نـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـنـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـن</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ه</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ه</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">هـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـهـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـه</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">و</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">و</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">و</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـو</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـو</td>
-          </tr>
-          <tr>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:26px;color:var(--gold2);background:#0a1208;font-weight:700">ي</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e8c96a;background:rgba(201,162,39,.05)">ي</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#4caf82;background:rgba(30,200,100,.04)">يـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#7aa3e0;background:rgba(100,150,255,.04)">ـيـ</td>
-            <td style="text-align:center;font-family:'Amiri',serif;font-size:28px;color:#e08060;background:rgba(255,120,80,.04)">ـي</td>
-          </tr>
-        </tbody>
+      <table>
+        <tr><th>Lettre</th><th>Isolée</th><th>Début</th><th>Milieu</th><th>Fin</th></tr>
+        <tr><td class="ar-cell">أ</td><td class="ar-cell">أ</td><td class="ar-cell">أ</td><td class="ar-cell">ـأ</td><td class="ar-cell">ـأ</td></tr>
+        <tr><td class="ar-cell">ب</td><td class="ar-cell">ب</td><td class="ar-cell">بـ</td><td class="ar-cell">ـبـ</td><td class="ar-cell">ـب</td></tr>
+        <tr><td class="ar-cell">ت</td><td class="ar-cell">ت</td><td class="ar-cell">تـ</td><td class="ar-cell">ـتـ</td><td class="ar-cell">ـت</td></tr>
+        <tr><td class="ar-cell">ث</td><td class="ar-cell">ث</td><td class="ar-cell">ثـ</td><td class="ar-cell">ـثـ</td><td class="ar-cell">ـث</td></tr>
+        <tr><td class="ar-cell">ج</td><td class="ar-cell">ج</td><td class="ar-cell">جـ</td><td class="ar-cell">ـجـ</td><td class="ar-cell">ـج</td></tr>
+        <tr><td class="ar-cell">ح</td><td class="ar-cell">ح</td><td class="ar-cell">حـ</td><td class="ar-cell">ـحـ</td><td class="ar-cell">ـح</td></tr>
+        <tr><td class="ar-cell">خ</td><td class="ar-cell">خ</td><td class="ar-cell">خـ</td><td class="ar-cell">ـخـ</td><td class="ar-cell">ـخ</td></tr>
+        <tr><td class="ar-cell">د</td><td class="ar-cell">د</td><td class="ar-cell">د</td><td class="ar-cell">ـد</td><td class="ar-cell">ـد</td></tr>
+        <tr><td class="ar-cell">ذ</td><td class="ar-cell">ذ</td><td class="ar-cell">ذ</td><td class="ar-cell">ـذ</td><td class="ar-cell">ـذ</td></tr>
+        <tr><td class="ar-cell">ر</td><td class="ar-cell">ر</td><td class="ar-cell">ر</td><td class="ar-cell">ـر</td><td class="ar-cell">ـر</td></tr>
+        <tr><td class="ar-cell">ز</td><td class="ar-cell">ز</td><td class="ar-cell">ز</td><td class="ar-cell">ـز</td><td class="ar-cell">ـز</td></tr>
+        <tr><td class="ar-cell">س</td><td class="ar-cell">س</td><td class="ar-cell">سـ</td><td class="ar-cell">ـسـ</td><td class="ar-cell">ـس</td></tr>
+        <tr><td class="ar-cell">ش</td><td class="ar-cell">ش</td><td class="ar-cell">شـ</td><td class="ar-cell">ـشـ</td><td class="ar-cell">ـش</td></tr>
+        <tr><td class="ar-cell">ص</td><td class="ar-cell">ص</td><td class="ar-cell">صـ</td><td class="ar-cell">ـصـ</td><td class="ar-cell">ـص</td></tr>
+        <tr><td class="ar-cell">ض</td><td class="ar-cell">ض</td><td class="ar-cell">ضـ</td><td class="ar-cell">ـضـ</td><td class="ar-cell">ـض</td></tr>
+        <tr><td class="ar-cell">ط</td><td class="ar-cell">ط</td><td class="ar-cell">طـ</td><td class="ar-cell">ـطـ</td><td class="ar-cell">ـط</td></tr>
+        <tr><td class="ar-cell">ع</td><td class="ar-cell">ع</td><td class="ar-cell">عـ</td><td class="ar-cell">ـعـ</td><td class="ar-cell">ـع</td></tr>
+        <tr><td class="ar-cell">غ</td><td class="ar-cell">غ</td><td class="ar-cell">غـ</td><td class="ar-cell">ـغـ</td><td class="ar-cell">ـغ</td></tr>
+        <tr><td class="ar-cell">ف</td><td class="ar-cell">ف</td><td class="ar-cell">فـ</td><td class="ar-cell">ـفـ</td><td class="ar-cell">ـف</td></tr>
+        <tr><td class="ar-cell">ق</td><td class="ar-cell">ق</td><td class="ar-cell">قـ</td><td class="ar-cell">ـقـ</td><td class="ar-cell">ـق</td></tr>
+        <tr><td class="ar-cell">ك</td><td class="ar-cell">ك</td><td class="ar-cell">كـ</td><td class="ar-cell">ـكـ</td><td class="ar-cell">ـك</td></tr>
+        <tr><td class="ar-cell">ل</td><td class="ar-cell">ل</td><td class="ar-cell">لـ</td><td class="ar-cell">ـلـ</td><td class="ar-cell">ـل</td></tr>
+        <tr><td class="ar-cell">م</td><td class="ar-cell">م</td><td class="ar-cell">مـ</td><td class="ar-cell">ـمـ</td><td class="ar-cell">ـم</td></tr>
+        <tr><td class="ar-cell">ن</td><td class="ar-cell">ن</td><td class="ar-cell">نـ</td><td class="ar-cell">ـنـ</td><td class="ar-cell">ـن</td></tr>
+        <tr><td class="ar-cell">ه</td><td class="ar-cell">ه</td><td class="ar-cell">هـ</td><td class="ar-cell">ـهـ</td><td class="ar-cell">ـه</td></tr>
+        <tr><td class="ar-cell">و</td><td class="ar-cell">و</td><td class="ar-cell">و</td><td class="ar-cell">ـو</td><td class="ar-cell">ـو</td></tr>
+        <tr><td class="ar-cell">ي</td><td class="ar-cell">ي</td><td class="ar-cell">يـ</td><td class="ar-cell">ـيـ</td><td class="ar-cell">ـي</td></tr>
       </table>
     </div>
   </div>
@@ -805,9 +516,9 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
     <div class="etape-body">
       <table>
         <tr><th>Signe</th><th>Nom</th><th>Son</th><th>Exemple</th><th>Écouter</th></tr>
-        <tr><td class="ar-cell">بَ</td><td>Fatḥa</td><td>a court</td><td class="ar-cell">بَ (ba)</td><td><button class="aud" onclick="playAud('audio/BA.mp3',this)">&#9654;</button></td></tr>
-        <tr><td class="ar-cell">بِ</td><td>Kasra</td><td>i court</td><td class="ar-cell">بِ (bi)</td><td><button class="aud" onclick="playAud('audio/BI.mp3',this)">&#9654;</button></td></tr>
-        <tr><td class="ar-cell">بُ</td><td>Ḍamma</td><td>ou court</td><td class="ar-cell">بُ (bou)</td><td><button class="aud" onclick="playAud('audio/BOU.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بَ</td><td>Fatḥa</td><td>a court</td><td class="ar-cell">بَ (ba)</td><td><button class="aud" onclick="playAud('BA.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بِ</td><td>Kasra</td><td>i court</td><td class="ar-cell">بِ (bi)</td><td><button class="aud" onclick="playAud('BI.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بُ</td><td>Ḍamma</td><td>ou court</td><td class="ar-cell">بُ (bou)</td><td><button class="aud" onclick="playAud('BOU.mp3',this)">&#9654;</button></td></tr>
         <tr><td class="ar-cell">بْ</td><td>Sukūn</td><td>pas de voyelle</td><td class="ar-cell">بْ</td><td></td></tr>
       </table>
     </div>
@@ -818,9 +529,9 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
     <div class="etape-body">
       <table>
         <tr><th>Signe</th><th>Nom</th><th>Son</th><th>Exemple</th><th>Écouter</th></tr>
-        <tr><td class="ar-cell">بَا</td><td>Alif madd</td><td>ā long</td><td class="ar-cell">بَا (bā)</td><td><button class="aud" onclick="playAud('audio/BAA.mp3',this)">&#9654;</button></td></tr>
-        <tr><td class="ar-cell">بِي</td><td>Yā madd</td><td>ī long</td><td class="ar-cell">بِي (bī)</td><td><button class="aud" onclick="playAud('audio/BIII.mp3',this)">&#9654;</button></td></tr>
-        <tr><td class="ar-cell">بُو</td><td>Wāw madd</td><td>ū long</td><td class="ar-cell">بُو (bū)</td><td><button class="aud" onclick="playAud('audio/BOUUU.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بَا</td><td>Alif madd</td><td>ā long</td><td class="ar-cell">بَا (bā)</td><td><button class="aud" onclick="playAud('BAA.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بِي</td><td>Yā madd</td><td>ī long</td><td class="ar-cell">بِي (bī)</td><td><button class="aud" onclick="playAud('BIII.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بُو</td><td>Wāw madd</td><td>ū long</td><td class="ar-cell">بُو (bū)</td><td><button class="aud" onclick="playAud('BOUUU.mp3',this)">&#9654;</button></td></tr>
       </table>
     </div>
   </div>
@@ -831,9 +542,9 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
       <div class="regle">Le <strong>Tanwīn</strong> est le son "n" final sur un nom indéfini. Il existe en trois formes selon le cas grammatical.</div>
       <table>
         <tr><th>Forme</th><th>Son</th><th>Cas</th><th>Exemple</th><th>Écouter</th></tr>
-        <tr><td class="ar-cell">بٌ</td><td>-oun</td><td>Nominatif indéfini</td><td class="ar-cell">كِتَابٌ (kitāboun)</td><td><button class="aud" onclick="playAud('audio/Batimou.mp3',this)">&#9654;</button></td></tr>
-        <tr><td class="ar-cell">بً</td><td>-an</td><td>Accusatif indéfini</td><td class="ar-cell">كِتَابًا (kitāban)</td><td><button class="aud" onclick="playAud('audio/BAAA.mp3',this)">&#9654;</button></td></tr>
-        <tr><td class="ar-cell">بٍ</td><td>-in</td><td>Génitif indéfini</td><td class="ar-cell">كِتَابٍ (kitābin)</td><td><button class="aud" onclick="playAud('audio/Thaa.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بٌ</td><td>-oun</td><td>Nominatif indéfini</td><td class="ar-cell">كِتَابٌ (kitāboun)</td><td><button class="aud" onclick="playAud('Batimou.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بً</td><td>-an</td><td>Accusatif indéfini</td><td class="ar-cell">كِتَابًا (kitāban)</td><td><button class="aud" onclick="playAud('BAAA.mp3',this)">&#9654;</button></td></tr>
+        <tr><td class="ar-cell">بٍ</td><td>-in</td><td>Génitif indéfini</td><td class="ar-cell">كِتَابٍ (kitābin)</td><td><button class="aud" onclick="playAud('Thaa.mp3',this)">&#9654;</button></td></tr>
       </table>
     </div>
   </div>
@@ -2418,10 +2129,7 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
 
   <div class="lesson-nav">
     <button class="ln-btn" onclick="goPrev('adj-m7')">‹ Module 7</button>
-    <div style="font-size:14px;color:var(--green2);font-weight:600;display:flex;align-items:center;gap:8px">
-      <span style="background:var(--gold);color:var(--dark);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700">COMPLET</span>
-      Formation Al-Adjroumiyya terminée !
-    </div>
+    <button class="ln-btn primary" onclick="goNext('sarf-intro')">Chapitre 5 : Le Sarf ›</button>
   </div>
 </div>
 
@@ -2449,18 +2157,14 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
     <div class="etape-body">
       <div class="definition">
         <div class="def-term ar">الصَّرْفُ</div>
-        <div class="def-text">Le <strong>Sarf</strong> (الصرف) est la science qui étudie la <strong>construction des mots arabes</strong>. C'est la morphologie de la langue arabe.</div>
+        <div class="def-text">Le <strong>Sarf</strong> (الصرف) est la science qui étudie la construction des mots arabes. C'est la <strong>morphologie</strong> de la langue arabe.</div>
       </div>
-      <div class="regle" style="margin-top:14px">
-        <strong>La différence entre le Nahw et le Sarf :</strong><br><br>
-        Si le <strong>Nahw (النحو)</strong> étudie la <strong>place du mot dans la phrase</strong> et ses cas grammaticaux,<br>
-        le <strong>Sarf (الصرف)</strong> étudie le <strong>mot lui-même</strong> :
-      </div>
-      <div class="exemples" style="margin-top:12px">
-        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الجذر (racine)</div><div class="ex-fr">Les 3 lettres fondamentales qui portent le sens</div></div>
-        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الوزن (modèle)</div><div class="ex-fr">Le schème qui donne la forme au mot</div></div>
-        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">التحويل (transformation)</div><div class="ex-fr">Les changements que subit le mot</div></div>
-        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الاشتقاق (dérivation)</div><div class="ex-fr">Les mots qui naissent d'une même racine</div></div>
+      <div class="regle"><strong>Nahw vs Sarf :</strong> le <strong>Nahw</strong> (النحو) étudie la place du mot dans la phrase et ses cas grammaticaux ; le <strong>Sarf</strong> (الصرف) étudie le mot lui-même.</div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">الجذر</div><div class="ex-tr">la racine</div><div class="ex-fr">Les 3 lettres fondamentales qui portent le sens</div></div>
+        <div class="ex-row"><div class="ex-ar ar">الوزن</div><div class="ex-tr">le modèle</div><div class="ex-fr">Le schème qui donne la forme au mot</div></div>
+        <div class="ex-row"><div class="ex-ar ar">التحويل</div><div class="ex-tr">la transformation</div><div class="ex-fr">Les changements que subit le mot</div></div>
+        <div class="ex-row"><div class="ex-ar ar">الاشتقاق</div><div class="ex-tr">la dérivation</div><div class="ex-fr">Les mots qui naissent d'une même racine</div></div>
       </div>
     </div>
   </div>
@@ -2468,8 +2172,8 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
   <div class="etape">
     <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Pourquoi apprendre le Sarf ?</span></div>
     <div class="etape-body">
-      <div class="regle">Le Sarf est l'une des deux grandes sciences fondamentales de l'arabe classique. Une fois le <strong>Nahw</strong> et le <strong>Sarf</strong> maîtrisés ensemble, vous possédez les outils pour lire et comprendre n'importe quel texte arabe classique.</div>
-      <table style="margin-top:14px">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Le Sarf est l'une des deux grandes sciences fondamentales de l'arabe classique. Une fois le Nahw et le Sarf maîtrisés ensemble, vous possédez les outils pour lire et comprendre n'importe quel texte arabe classique.</p>
+      <table>
         <tr><th>Avantage</th><th>Explication</th></tr>
         <tr><td>Comprendre des milliers de mots</td><td>À partir d'une seule racine, des dizaines de mots s'ouvrent à vous</td></tr>
         <tr><td>Reconnaître les racines</td><td>Même un mot inconnu devient déchiffrable si vous connaissez sa racine</td></tr>
@@ -2483,34 +2187,33 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
   <div class="etape">
     <div class="etape-header"><span class="etape-num">ÉTAPE 3</span><span class="etape-title">Les éléments fondamentaux du Sarf</span></div>
     <div class="etape-body">
-      <div class="regle">Voici les 7 éléments que vous allez maîtriser dans ce chapitre :</div>
-      <table style="margin-top:12px">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Voici les 7 éléments que vous allez maîtriser dans ce chapitre :</p>
+      <table>
         <tr><th>Élément</th><th>Arabe</th><th>Définition</th></tr>
-        <tr><td><strong>La racine</strong></td><td class="ar-cell">الجذر</td><td>3 lettres qui portent le sens fondamental</td></tr>
-        <tr><td><strong>Le modèle</strong></td><td class="ar-cell">الوزن</td><td>Le schème فَعَلَ qui donne la forme</td></tr>
-        <tr><td><strong>Le masdar</strong></td><td class="ar-cell">المصدر</td><td>Le nom de l'action (l'infinitif arabe)</td></tr>
-        <tr><td><strong>Le participe actif</strong></td><td class="ar-cell">اسم الفاعل</td><td>Celui qui fait l'action</td></tr>
-        <tr><td><strong>Le participe passif</strong></td><td class="ar-cell">اسم المفعول</td><td>Ce qui subit l'action</td></tr>
-        <tr><td><strong>Le nom de lieu</strong></td><td class="ar-cell">اسم المكان</td><td>Le lieu où l'action se produit</td></tr>
-        <tr><td><strong>Les 10 formes</strong></td><td class="ar-cell">الأوزان العشرة</td><td>Les 10 grandes formes verbales de l'arabe</td></tr>
+        <tr><td>La racine</td><td class="ar-cell">الجذر</td><td>3 lettres qui portent le sens fondamental</td></tr>
+        <tr><td>Le modèle</td><td class="ar-cell">الوزن</td><td>Le schème فَعَلَ qui donne la forme</td></tr>
+        <tr><td>Le masdar</td><td class="ar-cell">المصدر</td><td>Le nom de l'action (l'infinitif arabe)</td></tr>
+        <tr><td>Le participe actif</td><td class="ar-cell">اسم الفاعل</td><td>Celui qui fait l'action</td></tr>
+        <tr><td>Le participe passif</td><td class="ar-cell">اسم المفعول</td><td>Ce qui subit l'action</td></tr>
+        <tr><td>Le nom de lieu</td><td class="ar-cell">اسم المكان</td><td>Le lieu où l'action se produit</td></tr>
+        <tr><td>Les 10 formes</td><td class="ar-cell">الأوزان العشرة</td><td>Les 10 grandes formes verbales de l'arabe</td></tr>
       </table>
     </div>
   </div>
-
   <div class="lesson-nav">
     <button class="ln-btn" onclick="goPrev('adj-m8')">‹ Al-Adjroumiyya</button>
-    <button class="ln-btn primary" onclick="goNext('sarf-racines')">Les racines ›</button>
+    <button class="ln-btn primary" onclick="goNext('sarf-racines')">Leçon suivante : Les racines ›</button>
   </div>
 </div>
 
-<!-- Leçon : Racines et dérivés -->
+<!-- Leçon : Les Racines et Dérivés -->
 <div class="lesson-panel" id="lesson-sarf-racines">
   <div class="lesson-top">
     <span class="lesson-num">19</span>
     <div class="lesson-info">
       <div class="lesson-main-title">Les Racines et Dérivés</div>
       <div class="lesson-ar-title ar">الجذور والمشتقات</div>
-      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 1-2</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · La racine trilitère</div>
     </div>
   </div>
   <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-racines" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-racines">0/2</span></div>
@@ -2522,20 +2225,18 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
   <div class="etape">
     <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Qu'est-ce qu'une racine ?</span></div>
     <div class="etape-body">
-      <div class="regle">La plupart des mots arabes proviennent d'une <strong>racine composée de trois lettres</strong>. Ces trois lettres portent l'idée fondamentale du mot.</div>
-      <div class="definition" style="margin-top:14px">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">La plupart des mots arabes proviennent d'une racine composée de trois lettres. Ces trois lettres portent l'idée fondamentale du mot.</p>
+      <div class="definition">
         <div class="def-term ar">كَتَبَ</div>
-        <div class="def-text">La racine de كَتَبَ (kataba = il a écrit) est :<br>
-        <span style="font-family:'Amiri',serif;font-size:28px;color:var(--gold2);letter-spacing:12px">ك ت ب</span><br>
-        Cette racine contient l'idée générale de <strong>l'écriture</strong>.</div>
+        <div class="def-text">La racine de <strong class="ar">كَتَبَ</strong> (kataba = il a écrit) est <strong class="ar">ك ت ب</strong> — elle contient l'idée générale de l'écriture.</div>
       </div>
-      <div class="regle" style="margin-top:14px">Comment identifier une racine ? Enlevez les voyelles et les lettres ajoutées — il reste 3 lettres fondamentales.</div>
-      <table style="margin-top:12px">
-        <tr><th>Mot</th><th>Racine</th><th>Idée</th></tr>
-        <tr><td class="ar-cell">كَتَبَ / كِتَاب / كَاتِب</td><td class="ar-cell" style="letter-spacing:8px">ك ت ب</td><td>L'écriture</td></tr>
-        <tr><td class="ar-cell">دَرَسَ / دِرَاسَة / مَدْرَسَة</td><td class="ar-cell" style="letter-spacing:8px">د ر س</td><td>L'étude</td></tr>
-        <tr><td class="ar-cell">عَلِمَ / عِلْم / عَالِم</td><td class="ar-cell" style="letter-spacing:8px">ع ل م</td><td>Le savoir</td></tr>
-        <tr><td class="ar-cell">قَرَأَ / قِرَاءَة / قَارِئ</td><td class="ar-cell" style="letter-spacing:8px">ق ر أ</td><td>La lecture</td></tr>
+      <div class="regle"><strong>Comment identifier une racine ?</strong> Enlevez les voyelles et les lettres ajoutées — il reste 3 lettres fondamentales.</div>
+      <table>
+        <tr><th>Mots</th><th>Racine</th><th>Idée</th></tr>
+        <tr><td class="ar-cell">كَتَبَ / كِتَاب / كَاتِب</td><td class="ar-cell">ك ت ب</td><td>L'écriture</td></tr>
+        <tr><td class="ar-cell">دَرَسَ / دِرَاسَة / مَدْرَسَة</td><td class="ar-cell">د ر س</td><td>L'étude</td></tr>
+        <tr><td class="ar-cell">عَلِمَ / عِلْم / عَالِم</td><td class="ar-cell">ع ل م</td><td>Le savoir</td></tr>
+        <tr><td class="ar-cell">قَرَأَ / قِرَاءَة / قَارِئ</td><td class="ar-cell">ق ر أ</td><td>La lecture</td></tr>
       </table>
     </div>
   </div>
@@ -2543,39 +2244,35 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
   <div class="etape">
     <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Les mots dérivés d'une même racine</span></div>
     <div class="etape-body">
-      <div class="regle">À partir d'une seule racine de 3 lettres, l'arabe peut générer des dizaines de mots. C'est la richesse du Sarf.</div>
-      <div class="definition" style="margin-top:14px">
-        <div class="def-text" style="text-align:center;margin-bottom:12px">À partir de la racine <span style="font-family:'Amiri',serif;font-size:28px;color:var(--gold2);letter-spacing:8px">ك ت ب</span></div>
-      </div>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">À partir d'une seule racine de 3 lettres, l'arabe peut générer des dizaines de mots. Voici ceux issus de la racine <strong class="ar">ك ت ب</strong> :</p>
       <table>
-        <tr><th>Mot arabe</th><th>Translittération</th><th>Sens</th><th>Nature</th></tr>
-        <tr><td class="ar-cell">كَتَبَ</td><td class="tr-cell">kataba</td><td>Il a écrit</td><td>Verbe (accompli)</td></tr>
-        <tr><td class="ar-cell">يَكْتُبُ</td><td class="tr-cell">yaktoubou</td><td>Il écrit</td><td>Verbe (inaccompli)</td></tr>
-        <tr><td class="ar-cell">كِتَاب</td><td class="tr-cell">kitāb</td><td>Livre</td><td>Nom</td></tr>
-        <tr><td class="ar-cell">كَاتِب</td><td class="tr-cell">kātib</td><td>Écrivain</td><td>Participe actif</td></tr>
-        <tr><td class="ar-cell">مَكْتَب</td><td class="tr-cell">maktab</td><td>Bureau</td><td>Nom de lieu</td></tr>
-        <tr><td class="ar-cell">مَكْتَبَة</td><td class="tr-cell">maktaba</td><td>Bibliothèque</td><td>Nom de lieu</td></tr>
-        <tr><td class="ar-cell">مَكْتُوب</td><td class="tr-cell">maktoub</td><td>Écrit</td><td>Participe passif</td></tr>
-        <tr><td class="ar-cell">كِتَابَة</td><td class="tr-cell">kitābah</td><td>L'écriture</td><td>Masdar</td></tr>
+        <tr><th>Mot</th><th>Translittération</th><th>Sens</th><th>Nature</th></tr>
+        <tr><td class="ar-cell">كَتَبَ</td><td>kataba</td><td>Il a écrit</td><td>Verbe (accompli)</td></tr>
+        <tr><td class="ar-cell">يَكْتُبُ</td><td>yaktoubou</td><td>Il écrit</td><td>Verbe (inaccompli)</td></tr>
+        <tr><td class="ar-cell">كِتَاب</td><td>kitāb</td><td>Livre</td><td>Nom</td></tr>
+        <tr><td class="ar-cell">كَاتِب</td><td>kātib</td><td>Écrivain</td><td>Participe actif</td></tr>
+        <tr><td class="ar-cell">مَكْتَب</td><td>maktab</td><td>Bureau</td><td>Nom de lieu</td></tr>
+        <tr><td class="ar-cell">مَكْتَبَة</td><td>maktaba</td><td>Bibliothèque</td><td>Nom de lieu</td></tr>
+        <tr><td class="ar-cell">مَكْتُوب</td><td>maktoub</td><td>Écrit</td><td>Participe passif</td></tr>
+        <tr><td class="ar-cell">كِتَابَة</td><td>kitābah</td><td>L'écriture</td><td>Masdar</td></tr>
       </table>
-      <div class="regle" style="margin-top:14px">Tous ces mots ont un lien avec l'écriture. En apprenant une racine, vous comprenez automatiquement tous ses dérivés !</div>
+      <div class="regle">Tous ces mots ont un lien avec l'écriture. En apprenant une racine, vous comprenez automatiquement tous ses dérivés !</div>
     </div>
   </div>
-
   <div class="lesson-nav">
     <button class="ln-btn" onclick="goPrev('sarf-intro')">‹ Introduction</button>
     <button class="ln-btn primary" onclick="goNext('sarf-modeles')">Les modèles ›</button>
   </div>
 </div>
 
-<!-- Leçon : Les modèles -->
+<!-- Leçon : Les Modèles -->
 <div class="lesson-panel" id="lesson-sarf-modeles">
   <div class="lesson-top">
     <span class="lesson-num">20</span>
     <div class="lesson-info">
       <div class="lesson-main-title">Les Modèles (الأوزان)</div>
       <div class="lesson-ar-title ar">أوزان الصرف</div>
-      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 3-4</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Le schème فَعَلَ</div>
     </div>
   </div>
   <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-modeles" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-modeles">0/2</span></div>
@@ -2585,148 +2282,118 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 3</span><span class="etape-title">Le modèle de base — فَعَلَ</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Le modèle de base — فَعَلَ</span></div>
     <div class="etape-body">
-      <div class="regle">Les Arabes ont créé des <strong>modèles (أوزان)</strong> permettant de construire les mots. Le modèle de base est <strong class="ar">فَعَلَ</strong>.</div>
-      <div class="definition" style="margin-top:14px">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Les Arabes ont créé des modèles (أوزان) permettant de construire les mots. Le modèle de base est <strong class="ar">فَعَلَ</strong>.</p>
+      <div class="definition">
         <div class="def-term ar">فَعَلَ</div>
-        <div class="def-text">Les lettres <span style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2);letter-spacing:8px">ف ع ل</span> ne sont pas un vrai mot. Elles servent <strong>uniquement de modèle</strong>.<br><br>
-        ف = représente la 1ère lettre de la racine<br>
-        ع = représente la 2ème lettre de la racine<br>
-        ل = représente la 3ème lettre de la racine</div>
+        <div class="def-text">Les lettres <strong class="ar">ف ع ل</strong> ne forment pas un vrai mot. Elles servent uniquement de modèle.</div>
+      </div>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">ف</div><div class="ex-tr">1ʳᵉ lettre</div><div class="ex-fr">Représente la 1ère lettre de la racine</div></div>
+        <div class="ex-row"><div class="ex-ar ar">ع</div><div class="ex-tr">2ᵉ lettre</div><div class="ex-fr">Représente la 2ème lettre de la racine</div></div>
+        <div class="ex-row"><div class="ex-ar ar">ل</div><div class="ex-tr">3ᵉ lettre</div><div class="ex-fr">Représente la 3ème lettre de la racine</div></div>
       </div>
     </div>
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 4</span><span class="etape-title">Remplacer les lettres du modèle</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Remplacer les lettres du modèle</span></div>
     <div class="etape-body">
-      <div class="regle">Pour former un mot, on <strong>remplace les lettres du modèle</strong> par les lettres de la racine.</div>
-      <table style="margin-top:12px">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Pour former un mot, on remplace les lettres du modèle par les lettres de la racine.</p>
+      <table>
         <tr><th>Modèle</th><th>Racine</th><th>Remplacement</th><th>Résultat</th><th>Sens</th></tr>
-        <tr>
-          <td class="ar-cell">فَعَلَ</td>
-          <td class="ar-cell" style="letter-spacing:6px">ك ت ب</td>
-          <td style="font-size:13px">ف←ك · ع←ت · ل←ب</td>
-          <td class="ar-cell">كَتَبَ</td>
-          <td>Il a écrit</td>
-        </tr>
-        <tr>
-          <td class="ar-cell">فَعَلَ</td>
-          <td class="ar-cell" style="letter-spacing:6px">د ر س</td>
-          <td style="font-size:13px">ف←د · ع←ر · ل←س</td>
-          <td class="ar-cell">دَرَسَ</td>
-          <td>Il a étudié</td>
-        </tr>
-        <tr>
-          <td class="ar-cell">فَعَلَ</td>
-          <td class="ar-cell" style="letter-spacing:6px">ذ ه ب</td>
-          <td style="font-size:13px">ف←ذ · ع←ه · ل←ب</td>
-          <td class="ar-cell">ذَهَبَ</td>
-          <td>Il est allé</td>
-        </tr>
-        <tr>
-          <td class="ar-cell">فَعَلَ</td>
-          <td class="ar-cell" style="letter-spacing:6px">ف ه م</td>
-          <td style="font-size:13px">ف←ف · ع←ه · ل←م</td>
-          <td class="ar-cell">فَهِمَ</td>
-          <td>Il a compris</td>
-        </tr>
-        <tr>
-          <td class="ar-cell">فَعَلَ</td>
-          <td class="ar-cell" style="letter-spacing:6px">ق ر أ</td>
-          <td style="font-size:13px">ف←ق · ع←ر · ل←أ</td>
-          <td class="ar-cell">قَرَأَ</td>
-          <td>Il a lu</td>
-        </tr>
+        <tr><td class="ar-cell">فَعَلَ</td><td class="ar-cell">ك ت ب</td><td class="ar-cell">ف←ك · ع←ت · ل←ب</td><td class="ar-cell">كَتَبَ</td><td>Il a écrit</td></tr>
+        <tr><td class="ar-cell">فَعَلَ</td><td class="ar-cell">د ر س</td><td class="ar-cell">ف←د · ع←ر · ل←س</td><td class="ar-cell">دَرَسَ</td><td>Il a étudié</td></tr>
+        <tr><td class="ar-cell">فَعَلَ</td><td class="ar-cell">ذ ه ب</td><td class="ar-cell">ف←ذ · ع←ه · ل←ب</td><td class="ar-cell">ذَهَبَ</td><td>Il est allé</td></tr>
+        <tr><td class="ar-cell">فَعَلَ</td><td class="ar-cell">ف ه م</td><td class="ar-cell">ف←ف · ع←ه · ل←م</td><td class="ar-cell">فَهِمَ</td><td>Il a compris</td></tr>
+        <tr><td class="ar-cell">فَعَلَ</td><td class="ar-cell">ق ر أ</td><td class="ar-cell">ف←ق · ع←ر · ل←أ</td><td class="ar-cell">قَرَأَ</td><td>Il a lu</td></tr>
       </table>
-      <div class="regle" style="margin-top:14px">Une fois ce système compris, vous pouvez <strong>analyser n'importe quel verbe arabe</strong> et identifier sa racine instantanément.</div>
+      <div class="regle">Une fois ce système compris, vous pouvez analyser n'importe quel verbe arabe et identifier sa racine instantanément.</div>
     </div>
   </div>
-
   <div class="lesson-nav">
     <button class="ln-btn" onclick="goPrev('sarf-racines')">‹ Les racines</button>
-    <button class="ln-btn primary" onclick="goNext('sarf-verbes')">Les formes verbales ›</button>
+    <button class="ln-btn primary" onclick="goNext('sarf-formes')">Les formes verbales ›</button>
   </div>
 </div>
 
-<!-- Leçon : Les formes verbales passé/présent/impératif -->
-<div class="lesson-panel" id="lesson-sarf-verbes">
+<!-- Leçon : Les Formes Verbales -->
+<div class="lesson-panel" id="lesson-sarf-formes">
   <div class="lesson-top">
     <span class="lesson-num">21</span>
     <div class="lesson-info">
       <div class="lesson-main-title">Les Formes Verbales</div>
       <div class="lesson-ar-title ar">صيغ الفعل</div>
-      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 5-7</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Passé · Présent · Impératif</div>
     </div>
   </div>
-  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-verbes" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-verbes">0/3</span></div>
-  <div class="step-dots" id="steps-sarf-verbes">
-    <div class="step-dot current" id="sd-sarf-verbes-1" onclick="setStep('sarf-verbes',1,3)">1</div>
-    <div class="step-dot" id="sd-sarf-verbes-2" onclick="setStep('sarf-verbes',2,3)">2</div>
-    <div class="step-dot" id="sd-sarf-verbes-3" onclick="setStep('sarf-verbes',3,3)">3</div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-formes" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-formes">0/3</span></div>
+  <div class="step-dots" id="steps-sarf-formes">
+    <div class="step-dot current" id="sd-sarf-formes-1" onclick="setStep('sarf-formes',1,3)">1</div>
+    <div class="step-dot" id="sd-sarf-formes-2" onclick="setStep('sarf-formes',2,3)">2</div>
+    <div class="step-dot" id="sd-sarf-formes-3" onclick="setStep('sarf-formes',3,3)">3</div>
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 5</span><span class="etape-title">Le passé — الماضي</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Le passé — الماضي</span></div>
     <div class="etape-body">
-      <div class="regle">Le modèle le plus fréquent du passé est <strong class="ar">فَعَلَ</strong>. C'est la forme de base à partir de laquelle tout se construit.</div>
-      <table style="margin-top:12px">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Le modèle le plus fréquent du passé est <strong class="ar">فَعَلَ</strong>. C'est la forme de base à partir de laquelle tout se construit.</p>
+      <table>
         <tr><th>Verbe</th><th>Translittération</th><th>Sens</th></tr>
-        <tr><td class="ar-cell">كَتَبَ</td><td class="tr-cell">kataba</td><td>Il a écrit</td></tr>
-        <tr><td class="ar-cell">دَرَسَ</td><td class="tr-cell">darasa</td><td>Il a étudié</td></tr>
-        <tr><td class="ar-cell">ذَهَبَ</td><td class="tr-cell">dhahaba</td><td>Il est allé</td></tr>
-        <tr><td class="ar-cell">فَهِمَ</td><td class="tr-cell">fahima</td><td>Il a compris</td></tr>
-        <tr><td class="ar-cell">قَرَأَ</td><td class="tr-cell">qara'a</td><td>Il a lu</td></tr>
-        <tr><td class="ar-cell">سَمِعَ</td><td class="tr-cell">sami'a</td><td>Il a entendu</td></tr>
+        <tr><td class="ar-cell">كَتَبَ</td><td>kataba</td><td>Il a écrit</td></tr>
+        <tr><td class="ar-cell">دَرَسَ</td><td>darasa</td><td>Il a étudié</td></tr>
+        <tr><td class="ar-cell">ذَهَبَ</td><td>dhahaba</td><td>Il est allé</td></tr>
+        <tr><td class="ar-cell">فَهِمَ</td><td>fahima</td><td>Il a compris</td></tr>
+        <tr><td class="ar-cell">قَرَأَ</td><td>qara'a</td><td>Il a lu</td></tr>
+        <tr><td class="ar-cell">سَمِعَ</td><td>sami'a</td><td>Il a entendu</td></tr>
       </table>
     </div>
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 6</span><span class="etape-title">Le présent — المضارع</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Le présent — المضارع</span></div>
     <div class="etape-body">
-      <div class="regle">À partir du passé <strong class="ar">فَعَلَ</strong>, on obtient le présent <strong class="ar">يَفْعَلُ</strong>. Le présent commence par les préfixes : أ · ن · ي · ت</div>
-      <table style="margin-top:12px">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">À partir du passé <strong class="ar">فَعَلَ</strong>, on obtient le présent <strong class="ar">يَفْعَلُ</strong>. Le présent commence par les préfixes : <strong class="ar">أ · ن · ي · ت</strong></p>
+      <table>
         <tr><th>Pronom</th><th>Arabe</th><th>Translittération</th><th>Sens</th></tr>
-        <tr><td>Je</td><td class="ar-cell">أَكْتُبُ</td><td class="tr-cell">aktoubou</td><td>J'écris</td></tr>
-        <tr><td>Nous</td><td class="ar-cell">نَكْتُبُ</td><td class="tr-cell">naktoubou</td><td>Nous écrivons</td></tr>
-        <tr><td>Il</td><td class="ar-cell">يَكْتُبُ</td><td class="tr-cell">yaktoubou</td><td>Il écrit</td></tr>
-        <tr><td>Tu / Elle</td><td class="ar-cell">تَكْتُبُ</td><td class="tr-cell">taktoubou</td><td>Tu écris / Elle écrit</td></tr>
+        <tr><td>Je</td><td class="ar-cell">أَكْتُبُ</td><td>aktoubou</td><td>J'écris</td></tr>
+        <tr><td>Nous</td><td class="ar-cell">نَكْتُبُ</td><td>naktoubou</td><td>Nous écrivons</td></tr>
+        <tr><td>Il</td><td class="ar-cell">يَكْتُبُ</td><td>yaktoubou</td><td>Il écrit</td></tr>
+        <tr><td>Tu / Elle</td><td class="ar-cell">تَكْتُبُ</td><td>taktoubou</td><td>Tu écris / Elle écrit</td></tr>
       </table>
-      <div class="regle" style="margin-top:12px">Le même modèle s'applique à tous les verbes : دَرَسَ → يَدْرُسُ · ذَهَبَ → يَذْهَبُ · فَهِمَ → يَفْهَمُ</div>
+      <div class="regle">Le même modèle s'applique à tous les verbes : دَرَسَ → يَدْرُسُ · ذَهَبَ → يَذْهَبُ · فَهِمَ → يَفْهَمُ</div>
     </div>
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 7</span><span class="etape-title">L'impératif — الأمر</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 3</span><span class="etape-title">L'impératif — الأمر</span></div>
     <div class="etape-body">
-      <div class="regle">L'impératif sert à donner un ordre. Il se forme à partir de l'inaccompli en retirant le préfixe et en ajoutant une hamza de liaison.</div>
-      <table style="margin-top:12px">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">L'impératif sert à donner un ordre. Il se forme à partir de l'inaccompli en retirant le préfixe et en ajoutant une hamza de liaison.</p>
+      <table>
         <tr><th>Inaccompli</th><th>Impératif</th><th>Translittération</th><th>Sens</th></tr>
-        <tr><td class="ar-cell">يَكْتُبُ</td><td class="ar-cell">اُكْتُبْ</td><td class="tr-cell">ouktoub</td><td>Écris !</td></tr>
-        <tr><td class="ar-cell">يَدْرُسُ</td><td class="ar-cell">اُدْرُسْ</td><td class="tr-cell">oudrous</td><td>Étudie !</td></tr>
-        <tr><td class="ar-cell">يَذْهَبُ</td><td class="ar-cell">اِذْهَبْ</td><td class="tr-cell">idhhab</td><td>Va !</td></tr>
-        <tr><td class="ar-cell">يَقْرَأُ</td><td class="ar-cell">اِقْرَأْ</td><td class="tr-cell">iqra'</td><td>Lis !</td></tr>
-        <tr><td class="ar-cell">يَسْمَعُ</td><td class="ar-cell">اِسْمَعْ</td><td class="tr-cell">isma'</td><td>Écoute !</td></tr>
+        <tr><td class="ar-cell">يَكْتُبُ</td><td class="ar-cell">اُكْتُبْ</td><td>ouktoub</td><td>Écris !</td></tr>
+        <tr><td class="ar-cell">يَدْرُسُ</td><td class="ar-cell">اُدْرُسْ</td><td>oudrous</td><td>Étudie !</td></tr>
+        <tr><td class="ar-cell">يَذْهَبُ</td><td class="ar-cell">اِذْهَبْ</td><td>idhhab</td><td>Va !</td></tr>
+        <tr><td class="ar-cell">يَقْرَأُ</td><td class="ar-cell">اِقْرَأْ</td><td>iqra'</td><td>Lis !</td></tr>
+        <tr><td class="ar-cell">يَسْمَعُ</td><td class="ar-cell">اِسْمَعْ</td><td>isma'</td><td>Écoute !</td></tr>
       </table>
     </div>
   </div>
-
   <div class="lesson-nav">
     <button class="ln-btn" onclick="goPrev('sarf-modeles')">‹ Les modèles</button>
     <button class="ln-btn primary" onclick="goNext('sarf-derives')">Les dérivés ›</button>
   </div>
 </div>
 
-<!-- Leçon : Les dérivés -->
+<!-- Leçon : Les Dérivés du Verbe -->
 <div class="lesson-panel" id="lesson-sarf-derives">
   <div class="lesson-top">
     <span class="lesson-num">22</span>
     <div class="lesson-info">
       <div class="lesson-main-title">Les Dérivés du Verbe</div>
       <div class="lesson-ar-title ar">المشتقات</div>
-      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 8-11</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Masdar · Participes · Nom de lieu</div>
     </div>
   </div>
   <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-derives" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-derives">0/4</span></div>
@@ -2738,146 +2405,142 @@ body.dark .aud:hover{background:var(--gold);color:var(--dark)}
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 8</span><span class="etape-title">Le Masdar — المصدر (nom d'action)</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Le Masdar — المصدر (nom d'action)</span></div>
     <div class="etape-body">
       <div class="definition">
         <div class="def-term ar">الْمَصْدَرُ</div>
-        <div class="def-text">Le <strong>masdar</strong> est le <strong>nom de l'action</strong> — l'équivalent de l'infinitif en français. Il désigne l'action en elle-même, sans indication de temps.</div>
+        <div class="def-text">Le masdar est le <strong>nom de l'action</strong> — l'équivalent de l'infinitif en français. Il désigne l'action en elle-même, sans indication de temps. Son modèle (فِعَالَة, فُعُول, فَعْل…) varie selon le verbe.</div>
       </div>
-      <div class="regle" style="margin-top:12px">Le masdar de la forme I (فَعَلَ) est généralement sur le modèle <strong class="ar">فِعَالَة</strong> ou <strong class="ar">فُعُول</strong> ou <strong class="ar">فَعْل</strong> — il varie selon le verbe.</div>
-      <table style="margin-top:12px">
+      <table>
         <tr><th>Verbe</th><th>Masdar</th><th>Translittération</th><th>Sens</th></tr>
-        <tr><td class="ar-cell">كَتَبَ (écrire)</td><td class="ar-cell">كِتَابَة</td><td class="tr-cell">kitābah</td><td>L'écriture</td></tr>
-        <tr><td class="ar-cell">دَرَسَ (étudier)</td><td class="ar-cell">دِرَاسَة</td><td class="tr-cell">dirāsah</td><td>L'étude</td></tr>
-        <tr><td class="ar-cell">قَرَأَ (lire)</td><td class="ar-cell">قِرَاءَة</td><td class="tr-cell">qirā'ah</td><td>La lecture</td></tr>
-        <tr><td class="ar-cell">ذَهَبَ (aller)</td><td class="ar-cell">ذَهَاب</td><td class="tr-cell">dhahāb</td><td>L'aller / le voyage</td></tr>
-        <tr><td class="ar-cell">فَهِمَ (comprendre)</td><td class="ar-cell">فَهْم</td><td class="tr-cell">fahm</td><td>La compréhension</td></tr>
-        <tr><td class="ar-cell">سَمِعَ (entendre)</td><td class="ar-cell">سَمَاع</td><td class="tr-cell">samā'</td><td>L'écoute</td></tr>
+        <tr><td class="ar-cell">كَتَبَ <span style="color:var(--muted)">(écrire)</span></td><td class="ar-cell">كِتَابَة</td><td>kitābah</td><td>L'écriture</td></tr>
+        <tr><td class="ar-cell">دَرَسَ <span style="color:var(--muted)">(étudier)</span></td><td class="ar-cell">دِرَاسَة</td><td>dirāsah</td><td>L'étude</td></tr>
+        <tr><td class="ar-cell">قَرَأَ <span style="color:var(--muted)">(lire)</span></td><td class="ar-cell">قِرَاءَة</td><td>qirā'ah</td><td>La lecture</td></tr>
+        <tr><td class="ar-cell">ذَهَبَ <span style="color:var(--muted)">(aller)</span></td><td class="ar-cell">ذَهَاب</td><td>dhahāb</td><td>L'aller / le voyage</td></tr>
+        <tr><td class="ar-cell">فَهِمَ <span style="color:var(--muted)">(comprendre)</span></td><td class="ar-cell">فَهْم</td><td>fahm</td><td>La compréhension</td></tr>
+        <tr><td class="ar-cell">سَمِعَ <span style="color:var(--muted)">(entendre)</span></td><td class="ar-cell">سَمَاع</td><td>samā'</td><td>L'écoute</td></tr>
       </table>
     </div>
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 9</span><span class="etape-title">Le Participe actif — اسم الفاعل</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 2</span><span class="etape-title">Le Participe actif — اسم الفاعل</span></div>
     <div class="etape-body">
       <div class="definition">
         <div class="def-term ar">اسْمُ الفَاعِلِ</div>
-        <div class="def-text">Le <strong>ism al-fā'il</strong> désigne <strong>celui qui fait l'action</strong>. Son modèle est toujours <span style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2)">فَاعِل</span></div>
+        <div class="def-text">Le ism al-fā'il désigne <strong>celui qui fait l'action</strong>. Son modèle est toujours <strong class="ar">فَاعِل</strong>.</div>
       </div>
-      <table style="margin-top:12px">
+      <table>
         <tr><th>Verbe</th><th>Participe actif</th><th>Translittération</th><th>Sens</th></tr>
-        <tr><td class="ar-cell">كَتَبَ (écrire)</td><td class="ar-cell">كَاتِب</td><td class="tr-cell">kātib</td><td>Écrivain / celui qui écrit</td></tr>
-        <tr><td class="ar-cell">دَرَسَ (étudier)</td><td class="ar-cell">دَارِس</td><td class="tr-cell">dāris</td><td>Étudiant / celui qui étudie</td></tr>
-        <tr><td class="ar-cell">عَلِمَ (savoir)</td><td class="ar-cell">عَالِم</td><td class="tr-cell">'ālim</td><td>Savant / celui qui sait</td></tr>
-        <tr><td class="ar-cell">سَمِعَ (entendre)</td><td class="ar-cell">سَامِع</td><td class="tr-cell">sāmi'</td><td>Celui qui écoute</td></tr>
-        <tr><td class="ar-cell">قَرَأَ (lire)</td><td class="ar-cell">قَارِئ</td><td class="tr-cell">qāri'</td><td>Lecteur / celui qui lit</td></tr>
+        <tr><td class="ar-cell">كَتَبَ <span style="color:var(--muted)">(écrire)</span></td><td class="ar-cell">كَاتِب</td><td>kātib</td><td>Écrivain / celui qui écrit</td></tr>
+        <tr><td class="ar-cell">دَرَسَ <span style="color:var(--muted)">(étudier)</span></td><td class="ar-cell">دَارِس</td><td>dāris</td><td>Étudiant / celui qui étudie</td></tr>
+        <tr><td class="ar-cell">عَلِمَ <span style="color:var(--muted)">(savoir)</span></td><td class="ar-cell">عَالِم</td><td>'ālim</td><td>Savant / celui qui sait</td></tr>
+        <tr><td class="ar-cell">سَمِعَ <span style="color:var(--muted)">(entendre)</span></td><td class="ar-cell">سَامِع</td><td>sāmi'</td><td>Celui qui écoute</td></tr>
+        <tr><td class="ar-cell">قَرَأَ <span style="color:var(--muted)">(lire)</span></td><td class="ar-cell">قَارِئ</td><td>qāri'</td><td>Lecteur / celui qui lit</td></tr>
       </table>
     </div>
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 10</span><span class="etape-title">Le Participe passif — اسم المفعول</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 3</span><span class="etape-title">Le Participe passif — اسم المفعول</span></div>
     <div class="etape-body">
       <div class="definition">
         <div class="def-term ar">اسْمُ الْمَفْعُولِ</div>
-        <div class="def-text">Le <strong>ism al-maf'ūl</strong> désigne <strong>ce qui subit l'action</strong>. Son modèle est toujours <span style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2)">مَفْعُول</span></div>
+        <div class="def-text">Le ism al-maf'ūl désigne <strong>ce qui subit l'action</strong>. Son modèle est toujours <strong class="ar">مَفْعُول</strong>.</div>
       </div>
-      <table style="margin-top:12px">
+      <table>
         <tr><th>Verbe</th><th>Participe passif</th><th>Translittération</th><th>Sens</th></tr>
-        <tr><td class="ar-cell">كَتَبَ (écrire)</td><td class="ar-cell">مَكْتُوب</td><td class="tr-cell">maktoub</td><td>Écrit / ce qui est écrit</td></tr>
-        <tr><td class="ar-cell">سَمِعَ (entendre)</td><td class="ar-cell">مَسْمُوع</td><td class="tr-cell">masmou'</td><td>Entendu</td></tr>
-        <tr><td class="ar-cell">قَرَأَ (lire)</td><td class="ar-cell">مَقْرُوء</td><td class="tr-cell">maqrū'</td><td>Lu</td></tr>
-        <tr><td class="ar-cell">عَلِمَ (savoir)</td><td class="ar-cell">مَعْلُوم</td><td class="tr-cell">ma'loum</td><td>Connu / su</td></tr>
-        <tr><td class="ar-cell">فَهِمَ (comprendre)</td><td class="ar-cell">مَفْهُوم</td><td class="tr-cell">mafhoum</td><td>Compris / concept</td></tr>
+        <tr><td class="ar-cell">كَتَبَ <span style="color:var(--muted)">(écrire)</span></td><td class="ar-cell">مَكْتُوب</td><td>maktoub</td><td>Écrit / ce qui est écrit</td></tr>
+        <tr><td class="ar-cell">سَمِعَ <span style="color:var(--muted)">(entendre)</span></td><td class="ar-cell">مَسْمُوع</td><td>masmou'</td><td>Entendu</td></tr>
+        <tr><td class="ar-cell">قَرَأَ <span style="color:var(--muted)">(lire)</span></td><td class="ar-cell">مَقْرُوء</td><td>maqrū'</td><td>Lu</td></tr>
+        <tr><td class="ar-cell">عَلِمَ <span style="color:var(--muted)">(savoir)</span></td><td class="ar-cell">مَعْلُوم</td><td>ma'loum</td><td>Connu / su</td></tr>
+        <tr><td class="ar-cell">فَهِمَ <span style="color:var(--muted)">(comprendre)</span></td><td class="ar-cell">مَفْهُوم</td><td>mafhoum</td><td>Compris / concept</td></tr>
       </table>
     </div>
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 11</span><span class="etape-title">Le Nom de lieu — اسم المكان</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 4</span><span class="etape-title">Le Nom de lieu — اسم المكان</span></div>
     <div class="etape-body">
       <div class="definition">
         <div class="def-term ar">اسْمُ الْمَكَانِ</div>
-        <div class="def-text">Le <strong>ism al-makān</strong> désigne <strong>le lieu où l'action se produit</strong>. Son modèle est généralement <span style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2)">مَفْعَل / مَفْعِل</span></div>
+        <div class="def-text">Le ism al-makān désigne <strong>le lieu où l'action se produit</strong>. Son modèle est généralement <strong class="ar">مَفْعَل / مَفْعِل</strong>.</div>
       </div>
-      <table style="margin-top:12px">
+      <table>
         <tr><th>Verbe</th><th>Nom de lieu</th><th>Translittération</th><th>Sens</th></tr>
-        <tr><td class="ar-cell">كَتَبَ (écrire)</td><td class="ar-cell">مَكْتَب</td><td class="tr-cell">maktab</td><td>Bureau (lieu où on écrit)</td></tr>
-        <tr><td class="ar-cell">دَرَسَ (étudier)</td><td class="ar-cell">مَدْرَسَة</td><td class="tr-cell">madrasah</td><td>École (lieu où on étudie)</td></tr>
-        <tr><td class="ar-cell">سَجَدَ (se prosterner)</td><td class="ar-cell">مَسْجِد</td><td class="tr-cell">masjid</td><td>Mosquée (lieu de prosternation)</td></tr>
-        <tr><td class="ar-cell">لَعِبَ (jouer)</td><td class="ar-cell">مَلْعَب</td><td class="tr-cell">mal'ab</td><td>Terrain de jeu</td></tr>
-        <tr><td class="ar-cell">قَبَرَ (enterrer)</td><td class="ar-cell">مَقْبَرَة</td><td class="tr-cell">maqbarah</td><td>Cimetière</td></tr>
+        <tr><td class="ar-cell">كَتَبَ <span style="color:var(--muted)">(écrire)</span></td><td class="ar-cell">مَكْتَب</td><td>maktab</td><td>Bureau (lieu où on écrit)</td></tr>
+        <tr><td class="ar-cell">دَرَسَ <span style="color:var(--muted)">(étudier)</span></td><td class="ar-cell">مَدْرَسَة</td><td>madrasah</td><td>École (lieu où on étudie)</td></tr>
+        <tr><td class="ar-cell">سَجَدَ <span style="color:var(--muted)">(se prosterner)</span></td><td class="ar-cell">مَسْجِد</td><td>masjid</td><td>Mosquée (lieu de prosternation)</td></tr>
+        <tr><td class="ar-cell">لَعِبَ <span style="color:var(--muted)">(jouer)</span></td><td class="ar-cell">مَلْعَب</td><td>mal'ab</td><td>Terrain de jeu</td></tr>
+        <tr><td class="ar-cell">قَبَرَ <span style="color:var(--muted)">(enterrer)</span></td><td class="ar-cell">مَقْبَرَة</td><td>maqbarah</td><td>Cimetière</td></tr>
       </table>
-      <div class="regle" style="margin-top:12px">Astuce : un mot arabe qui commence par <strong class="ar">مَـ</strong> et se termine par <strong class="ar">ة</strong> ou a la forme مَفْعَل est souvent un nom de lieu !</div>
+      <div class="regle"><strong>Astuce :</strong> un mot arabe qui commence par <strong class="ar">مَـ</strong> et se termine par <strong class="ar">ة</strong>, ou qui suit la forme <strong class="ar">مَفْعَل</strong>, est souvent un nom de lieu !</div>
     </div>
   </div>
-
   <div class="lesson-nav">
-    <button class="ln-btn" onclick="goPrev('sarf-verbes')">‹ Les formes verbales</button>
-    <button class="ln-btn primary" onclick="goNext('sarf-dix')">Les 10 formes ›</button>
+    <button class="ln-btn" onclick="goPrev('sarf-formes')">‹ Les formes verbales</button>
+    <button class="ln-btn primary" onclick="goNext('sarf-formes10')">Les 10 formes ›</button>
   </div>
 </div>
 
-<!-- Leçon : Les 10 formes verbales -->
-<div class="lesson-panel" id="lesson-sarf-dix">
+<!-- Leçon : Les 10 Formes Verbales -->
+<div class="lesson-panel" id="lesson-sarf-formes10">
   <div class="lesson-top">
     <span class="lesson-num">23</span>
     <div class="lesson-info">
       <div class="lesson-main-title">Les 10 Formes Verbales</div>
       <div class="lesson-ar-title ar">الأوزان العشرة</div>
-      <div class="lesson-meta">Chapitre 5 · Le Sarf · Étapes 12-14</div>
+      <div class="lesson-meta">Chapitre 5 · Le Sarf · Synthèse finale</div>
     </div>
   </div>
-  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-dix" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-dix">0/2</span></div>
-  <div class="step-dots" id="steps-sarf-dix">
-    <div class="step-dot current" id="sd-sarf-dix-1" onclick="setStep('sarf-dix',1,2)">1</div>
-    <div class="step-dot" id="sd-sarf-dix-2" onclick="setStep('sarf-dix',2,2)">2</div>
+  <div class="lesson-progress"><span class="lp-label">Progression :</span><div class="lp-bar"><div class="lp-fill" id="lpf-sarf-formes10" style="width:0%"></div></div><span class="lp-pct" id="lpp-sarf-formes10">0/2</span></div>
+  <div class="step-dots" id="steps-sarf-formes10">
+    <div class="step-dot current" id="sd-sarf-formes10-1" onclick="setStep('sarf-formes10',1,2)">1</div>
+    <div class="step-dot" id="sd-sarf-formes10-2" onclick="setStep('sarf-formes10',2,2)">2</div>
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPE 12</span><span class="etape-title">Les dix grandes formes verbales</span></div>
+    <div class="etape-header"><span class="etape-num">ÉTAPE 1</span><span class="etape-title">Les dix grandes formes verbales</span></div>
     <div class="etape-body">
-      <div class="regle">Le Sarf enseigne <strong>10 grandes formes verbales</strong>. Chaque forme a un sens particulier et se construit sur un modèle précis. La maîtrise de ces 10 formes permet de comprendre la quasi-totalité des verbes arabes.</div>
-      <table style="margin-top:14px">
-        <tr><th>Forme</th><th>Modèle</th><th>Exemple</th><th>Translittération</th><th>Sens de l'exemple</th></tr>
-        <tr><td><strong>Forme I</strong></td><td class="ar-cell">فَعَلَ</td><td class="ar-cell">كَتَبَ</td><td class="tr-cell">kataba</td><td>Écrire (sens de base)</td></tr>
-        <tr><td><strong>Forme II</strong></td><td class="ar-cell">فَعَّلَ</td><td class="ar-cell">عَلَّمَ</td><td class="tr-cell">'allama</td><td>Faire apprendre / enseigner</td></tr>
-        <tr><td><strong>Forme III</strong></td><td class="ar-cell">فَاعَلَ</td><td class="ar-cell">جَاهَدَ</td><td class="tr-cell">jāhada</td><td>Combattre / s'efforcer</td></tr>
-        <tr><td><strong>Forme IV</strong></td><td class="ar-cell">أَفْعَلَ</td><td class="ar-cell">أَكْرَمَ</td><td class="tr-cell">akrama</td><td>Honorer</td></tr>
-        <tr><td><strong>Forme V</strong></td><td class="ar-cell">تَفَعَّلَ</td><td class="ar-cell">تَعَلَّمَ</td><td class="tr-cell">ta'allama</td><td>Apprendre (pour soi)</td></tr>
-        <tr><td><strong>Forme VI</strong></td><td class="ar-cell">تَفَاعَلَ</td><td class="ar-cell">تَعَاوَنَ</td><td class="tr-cell">ta'āwana</td><td>Coopérer (mutuellement)</td></tr>
-        <tr><td><strong>Forme VII</strong></td><td class="ar-cell">اِنْفَعَلَ</td><td class="ar-cell">اِنْكَسَرَ</td><td class="tr-cell">inkasara</td><td>Se casser (passif)</td></tr>
-        <tr><td><strong>Forme VIII</strong></td><td class="ar-cell">اِفْتَعَلَ</td><td class="ar-cell">اِجْتَمَعَ</td><td class="tr-cell">ijtama'a</td><td>Se réunir</td></tr>
-        <tr><td><strong>Forme IX</strong></td><td class="ar-cell">اِفْعَلَّ</td><td class="ar-cell">اِحْمَرَّ</td><td class="tr-cell">ihmarra</td><td>Rougir (couleurs)</td></tr>
-        <tr><td><strong>Forme X</strong></td><td class="ar-cell">اِسْتَفْعَلَ</td><td class="ar-cell">اِسْتَغْفَرَ</td><td class="tr-cell">istaghfara</td><td>Demander le pardon</td></tr>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Le Sarf enseigne 10 grandes formes verbales. Chaque forme a un sens particulier et se construit sur un modèle précis. La maîtrise de ces 10 formes permet de comprendre la quasi-totalité des verbes arabes.</p>
+      <table>
+        <tr><th>Forme</th><th>Modèle</th><th>Exemple</th><th>Translittération</th><th>Sens</th></tr>
+        <tr><td>Forme I</td><td class="ar-cell">فَعَلَ</td><td class="ar-cell">كَتَبَ</td><td>kataba</td><td>Écrire (sens de base)</td></tr>
+        <tr><td>Forme II</td><td class="ar-cell">فَعَّلَ</td><td class="ar-cell">عَلَّمَ</td><td>'allama</td><td>Faire apprendre / enseigner</td></tr>
+        <tr><td>Forme III</td><td class="ar-cell">فَاعَلَ</td><td class="ar-cell">جَاهَدَ</td><td>jāhada</td><td>Combattre / s'efforcer</td></tr>
+        <tr><td>Forme IV</td><td class="ar-cell">أَفْعَلَ</td><td class="ar-cell">أَكْرَمَ</td><td>akrama</td><td>Honorer</td></tr>
+        <tr><td>Forme V</td><td class="ar-cell">تَفَعَّلَ</td><td class="ar-cell">تَعَلَّمَ</td><td>ta'allama</td><td>Apprendre (pour soi)</td></tr>
+        <tr><td>Forme VI</td><td class="ar-cell">تَفَاعَلَ</td><td class="ar-cell">تَعَاوَنَ</td><td>ta'āwana</td><td>Coopérer (mutuellement)</td></tr>
+        <tr><td>Forme VII</td><td class="ar-cell">اِنْفَعَلَ</td><td class="ar-cell">اِنْكَسَرَ</td><td>inkasara</td><td>Se casser (passif)</td></tr>
+        <tr><td>Forme VIII</td><td class="ar-cell">اِفْتَعَلَ</td><td class="ar-cell">اِجْتَمَعَ</td><td>ijtama'a</td><td>Se réunir</td></tr>
+        <tr><td>Forme IX</td><td class="ar-cell">اِفْعَلَّ</td><td class="ar-cell">اِحْمَرَّ</td><td>ihmarra</td><td>Rougir (couleurs)</td></tr>
+        <tr><td>Forme X</td><td class="ar-cell">اِسْتَفْعَلَ</td><td class="ar-cell">اِسْتَغْفَرَ</td><td>istaghfara</td><td>Demander le pardon</td></tr>
       </table>
     </div>
   </div>
 
   <div class="etape">
-    <div class="etape-header"><span class="etape-num">ÉTAPES 13-14 — CONCLUSION</span><span class="etape-title">Pourquoi le Sarf est essentiel</span></div>
+    <div class="etape-header"><span class="etape-num">SYNTHÈSE</span><span class="etape-title">Pourquoi le Sarf est essentiel</span></div>
     <div class="etape-body">
-      <div class="regle"><strong>Le Sarf vous donne :</strong></div>
-      <div class="exemples" style="margin-top:12px">
-        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الجذور</div><div class="ex-fr">Reconnaître les racines de n'importe quel mot</div></div>
-        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الأوزان</div><div class="ex-fr">Utiliser les modèles pour former et analyser les mots</div></div>
-        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">المشتقات</div><div class="ex-fr">Comprendre masdar, participes actif/passif, nom de lieu</div></div>
-        <div class="ex-row"><div class="ex-ar ar" style="font-size:16px">الأوزان العشرة</div><div class="ex-fr">Maîtriser les 10 formes verbales de l'arabe classique</div></div>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">Le Sarf vous donne :</p>
+      <div class="exemples">
+        <div class="ex-row"><div class="ex-ar ar">الجذور</div><div class="ex-fr">Reconnaître les racines de n'importe quel mot</div></div>
+        <div class="ex-row"><div class="ex-ar ar">الأوزان</div><div class="ex-fr">Utiliser les modèles pour former et analyser les mots</div></div>
+        <div class="ex-row"><div class="ex-ar ar">المشتقات</div><div class="ex-fr">Comprendre masdar, participes actif/passif, nom de lieu</div></div>
+        <div class="ex-row"><div class="ex-ar ar">الأوزان العشرة</div><div class="ex-fr">Maîtriser les 10 formes verbales de l'arabe classique</div></div>
       </div>
-
-      <div style="text-align:center;margin-top:28px;padding:28px;background:var(--dark);border-radius:var(--r);border:1px solid rgba(201,162,39,.3)">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#fff;margin-bottom:8px">Félicitations !</div>
-        <div style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2);margin-bottom:14px">أَتْمَمْتَ عِلْمَ الصَّرْفِ</div>
-        <p style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.8;max-width:500px;margin:0 auto">Vous avez maintenant les deux grandes sciences fondamentales de l'arabe classique : le <strong style="color:var(--gold2)">Nahw (النحو)</strong> avec l'Al-Adjroumiyya et le <strong style="color:var(--gold2)">Sarf (الصرف)</strong>. Ensemble, ils vous ouvrent les portes de la langue arabe classique.</p>
+      <div style="text-align:center;margin-top:28px;padding:24px;background:var(--dark);border-radius:var(--r);border:1px solid rgba(201,162,39,.3)">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;color:#fff;margin-bottom:8px">Félicitations !</div>
+        <div style="font-family:'Amiri',serif;font-size:22px;color:var(--gold2);margin-bottom:12px">أَتْمَمْتَ عِلْمَ الصَّرْفِ</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.8">Vous avez maintenant les deux grandes sciences fondamentales de l'arabe classique : le Nahw (النحو) avec l'Al-Adjroumiyya et le Sarf (الصرف). Ensemble, ils vous ouvrent les portes de la langue arabe classique.</p>
       </div>
     </div>
   </div>
-
   <div class="lesson-nav">
     <button class="ln-btn" onclick="goPrev('sarf-derives')">‹ Les dérivés</button>
     <div style="font-size:14px;color:var(--green2);font-weight:600;display:flex;align-items:center;gap:8px">
       <span style="background:var(--gold);color:var(--dark);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700">COMPLET</span>
-      Formation complète terminée !
+      Formation terminée !
     </div>
   </div>
 </div>
@@ -2893,24 +2556,11 @@ const MEMBERS = {
 };
 
 function doLogin(){
-  const emailRaw = document.getElementById('login-email').value;
-  const passRaw  = document.getElementById('login-pass').value;
-  const email = emailRaw.trim().toLowerCase();
-  const pass  = passRaw.trim();
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const pass  = document.getElementById('login-pass').value;
   const err   = document.getElementById('login-err');
-  const screen = document.getElementById('login-screen');
-  
-  if(!email || !pass){
-    err.textContent = 'Veuillez remplir tous les champs.';
-    err.style.display='block';
-    setTimeout(()=>err.style.display='none', 3000);
-    return;
-  }
-  
   if(MEMBERS[email] && MEMBERS[email] === pass){
-    screen.style.display='none';
-    screen.style.visibility='hidden';
-    screen.style.opacity='0';
+    document.getElementById('login-screen').style.display='none';
     sessionStorage.setItem('membre', email);
     loadSavedProgress();
   } else {
@@ -2936,22 +2586,11 @@ function declineCookies(){
   localStorage.setItem('cookie-consent','declined');
   document.getElementById('cookie-banner').classList.remove('show');
 }
-document.addEventListener('DOMContentLoaded',function(){
-  // Vérifier si déjà connecté
-  const savedMembre = sessionStorage.getItem('membre');
-  if(savedMembre && MEMBERS[savedMembre]){
-    const screen = document.getElementById('login-screen');
-    if(screen){
-      screen.style.display='none';
-      screen.style.visibility='hidden';
-    }
-  }
-  // Cookie banner
-  if(!localStorage.getItem('cookie-consent')){
-    const banner = document.getElementById('cookie-banner');
-    if(banner) banner.classList.add('show');
-  }
-});
+if(!localStorage.getItem('cookie-consent')){
+  document.addEventListener('DOMContentLoaded',function(){
+    document.getElementById('cookie-banner').classList.add('show');
+  });
+}
 
 /* ── DARK MODE ── */
 function toggleDark(){
@@ -2990,7 +2629,7 @@ const ALL_LESSONS = [
   'gram-nom','gram-pronom','gram-verbe',
   'conj-accompli','conj-inaccompli','conj-imperatif',
   'adj-m1','adj-m2','adj-m3','adj-m4','adj-m5','adj-m6','adj-m7','adj-m8',
-  'sarf-intro','sarf-racines','sarf-modeles','sarf-verbes','sarf-derives','sarf-dix'
+  'sarf-intro','sarf-racines','sarf-modeles','sarf-formes','sarf-derives','sarf-formes10'
 ];
 const STEPS_MAP = {
   'alph-lettres':2,'alph-formes':2,'alph-voyelles':3,
@@ -2998,7 +2637,7 @@ const STEPS_MAP = {
   'conj-accompli':10,'conj-inaccompli':10,'conj-imperatif':9,
   'adj-m1':5,'adj-m2':5,'adj-m3':5,'adj-m4':5,
   'adj-m5':6,'adj-m6':6,'adj-m7':2,'adj-m8':6,
-  'sarf-intro':3,'sarf-racines':2,'sarf-modeles':2,'sarf-verbes':3,'sarf-derives':4,'sarf-dix':2
+  'sarf-intro':3,'sarf-racines':2,'sarf-modeles':2,'sarf-formes':3,'sarf-derives':4,'sarf-formes10':2
 };
 
 let completed = [];

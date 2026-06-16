@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Accès confirmé — L'Arabe Accessible</title>
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<meta name="theme-color" content="#09190f">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Amiri:wght@400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--dark:#09190f;--dark2:#122218;--gold:#c9a227;--gold2:#e8c96a;--white:#fff;--off:#f7f4ee;--gray:#e5e0d5;--text:#18180f;--muted:#5a5a4a;--r:8px;--green:#1a4029}
@@ -37,21 +40,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;min-heig
 @keyframes fall{0%{transform:translateY(-100px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
 .c{position:fixed;width:10px;height:10px;border-radius:2px;animation:fall linear infinite}
 </style>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L0YPP7Y51K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-L0YPP7Y51K');
-</script>
 </head>
 <body>
 <canvas class="confetti" id="confetti"></canvas>
 
 <div class="wrap">
-  <img src="images/logo.png" class="logo" alt="Logo">
+  <img src="logo.png" class="logo" alt="Logo">
   <div class="check-circle">✓</div>
   <h1 class="title">Bienvenue dans <span class="g">L'Arabe</span> Accessible !</h1>
   <p class="subtitle" style="font-family:'Amiri',serif">مرحباً بك في رحلة تعلم العربية</p>
