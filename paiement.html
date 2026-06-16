@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paiement sécurisé — L'Arabe Accessible</title>
+<link rel="icon" type="image/png" href="images/logo.png">
+<meta name="theme-color" content="#09190f">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Amiri:wght@400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--dark:#09190f;--green:#1a4029;--gold:#c9a227;--gold2:#e8c96a;--r:8px}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;min-height:100vh;padding:28px 20px}
+.head{text-align:center;margin-bottom:26px}
+.logo{height:60px;width:60px;object-fit:contain;border-radius:50%;border:2px solid rgba(201,162,39,.4);margin:0 auto 12px;display:block}
+.head h1{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600}
+.head p{font-size:13px;color:rgba(255,255,255,.5);margin-top:4px}
+.layout{max-width:980px;margin:0 auto;display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:start}
+.recap{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.25);border-radius:12px;padding:26px;position:sticky;top:28px}
+.recap h2{font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:4px}
+.recap .ar{font-family:'Amiri',serif;font-size:18px;color:rgba(201,162,39,.6);margin-bottom:18px}
+.price{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;color:var(--gold);line-height:1}
+.price sup{font-size:22px;vertical-align:top;margin-top:10px}
+.once{font-size:12px;color:rgba(255,255,255,.45);margin:6px 0 18px}
+.feat{list-style:none}
+.feat li{display:flex;gap:8px;font-size:13px;color:rgba(255,255,255,.8);padding:6px 0}
+.feat li::before{content:'✓';color:var(--gold);font-weight:700}
+.checkout-wrap{background:#fff;border-radius:12px;padding:8px;min-height:420px}
+#checkout{min-height:400px}
+.loading,.errbox{text-align:center;color:rgba(255,255,255,.6);padding:60px 20px}
+.errbox{color:#ff9a9a;background:rgba(224,80,80,.1);border:1px solid rgba(224,80,80,.4);border-radius:12px;line-height:1.7}
+.errbox a{color:var(--gold2)}
+.secure{text-align:center;font-size:12px;color:rgba(255,255,255,.35);margin-top:18px}
+.back{display:block;text-align:center;font-size:12px;color:rgba(255,255,255,.3);margin-top:14px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.recap{position:static}}
+</style>
+</head>
+<body>
+<div class="head">
+  <img src="images/logo.png" class="logo" alt="Logo" onerror="this.src='logo.png'">
+  <h1>Finaliser mon inscription</h1>
+  <p>Paiement 100 % sécurisé — vous restez sur arabeaccessible.com</p>
+</div>
+
+<div class="layout">
+  <div class="recap">
+    <h2>Formation Complète</h2>
+    <div class="ar">العربية الكلاسيكية الكاملة</div>
+    <div class="price"><sup>€</sup>49,99</div>
+    <div class="once">Paiement unique · Accès à vie · Sans abonnement</div>
+    <ul class="feat">
+      <li>Alphabet, voyelles &amp; audio</li>
+      <li>Grammaire complète</li>
+      <li>Conjugaison &amp; verbes</li>
+      <li>Al-Adjroumiyya (6 mois)</li>
+      <li>Le Sarf (morphologie)</li>
+      <li>Accès illimité à vie</li>
+    </ul>
+  </div>
+
+  <div>
+    <div class="checkout-wrap">
+      <div class="loading" id="loading" style="color:#333">Chargement du paiement sécurisé…</div>
+      <div id="checkout"></div>
+    </div>
+    <div class="errbox" id="errbox" style="display:none"></div>
+    <div class="secure">🔒 Paiement chiffré géré par Stripe · Vos données bancaires ne transitent jamais par notre site</div>
+    <a class="back" href="membres.html">← Retour</a>
+  </div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+function showError(html){
+  document.getElementById('loading').style.display='none';
+  document.getElementById('checkout').style.display='none';
+  const e=document.getElementById('errbox');
+  e.innerHTML=html; e.style.display='block';
+}
+
+(async function(){
+  // 1. Le membre doit être connecté
+  const { data:{ session } } = await sb.auth.getSession();
+  if(!session){ window.location.href='inscription.html'; return; }
+
+  // 2. S'il a déjà payé, inutile de repayer → direction la formation
+  const { data: profile } = await sb.from('profiles').select('has_access').eq('id', session.user.id).single();
+  if(profile && profile.has_access){ window.location.href='membres.html'; return; }
+
+  // 3. Créer la session de paiement via la fonction Supabase
+  try {
+    const res = await fetch(SUPABASE_URL + '/functions/v1/create-checkout-session', {
+      method:'POST',
+      headers:{
+        'Authorization':'Bearer ' + session.access_token,
+        'apikey': SUPABASE_KEY,
+        'Content-Type':'application/json'
+      }
+    });
+    const data = await res.json();
+    if(!res.ok || !data.clientSecret){
+      showError("Le paiement n'a pas pu démarrer.<br>" + (data.error||'') + "<br><br>Réessayez ou écrivez-nous à <a href='mailto:contact@arabeaccessible.com'>contact@arabeaccessible.com</a>.");
+      return;
+    }
+
+    // 4. Afficher le formulaire de carte intégré (Stripe)
+    const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+    const checkout = await stripe.initEmbeddedCheckout({ clientSecret: data.clientSecret });
+    document.getElementById('loading').style.display='none';
+    checkout.mount('#checkout');
+  } catch(e){
+    showError("Erreur de connexion au paiement.<br>" + e.message);
+  }
+})();
+</script>
+</body>
+</html>

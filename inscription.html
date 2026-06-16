@@ -86,13 +86,13 @@ async function register(){
   if(error){ showMsg(traduireErreurAuth(error.message),"err"); return; }
 
   if(data.session){
-    // Confirmation email désactivée : connexion immédiate
-    showMsg("Compte créé ! Redirection vers votre formation…","ok");
-    setTimeout(()=>{ window.location.href='membres.html'; }, 1200);
+    // Confirmation email désactivée : on enchaîne directement sur le paiement
+    showMsg("Compte créé ! Redirection vers le paiement sécurisé…","ok");
+    setTimeout(()=>{ window.location.href='paiement.html'; }, 1200);
   } else {
     // Confirmation email activée
     document.getElementById('form').style.display='none';
-    showMsg("✓ Compte créé ! Un email de confirmation vous a été envoyé. Cliquez sur le lien reçu, puis connectez-vous.","ok");
+    showMsg("✓ Compte créé ! Un email de confirmation vous a été envoyé. Cliquez sur le lien reçu, puis connectez-vous pour finaliser votre inscription.","ok");
   }
 }
 </script>

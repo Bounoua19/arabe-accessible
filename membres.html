@@ -2628,8 +2628,15 @@ async function doLogin(){
   }
   onLoggedIn(data.user);
 }
-function onLoggedIn(user){
+async function onLoggedIn(user){
   sessionStorage.setItem('membre', user.email);
+  // Vérifier que ce membre a bien payé (accès réservé aux clients)
+  const { data: profile } = await sb.from('profiles').select('has_access').eq('id', user.id).single();
+  if(!profile || !profile.has_access){
+    // Compte créé mais paiement non finalisé → page de paiement
+    window.location.href = 'paiement.html';
+    return;
+  }
   document.getElementById('login-screen').style.display='none';
   loadSavedProgress();
 }
