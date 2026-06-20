@@ -35,6 +35,9 @@ nav{position:fixed;top:0;left:0;right:0;height:68px;background:var(--dark);borde
 .nav-name span{color:var(--gold)}
 .nav-cta{background:var(--gold);color:var(--dark);padding:9px 20px;border-radius:4px;font-size:13px;font-weight:700}
 .nav-cta:hover{background:var(--gold2)}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-login{color:#fff;font-size:13px;font-weight:600;transition:color .2s}
+.nav-login:hover{color:var(--gold)}
 
 /* HERO */
 .hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden}
@@ -262,7 +265,10 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
     <img src="logo.png" onerror="this.src='images/logo.png'" alt="Logo">
     <span class="nav-name">L'<span>Arabe</span> Accessible</span>
   </div>
-  <a href="inscription.html" class="nav-cta">S'inscrire</a>
+  <div class="nav-right">
+    <a href="membres.html" class="nav-login">Connexion</a>
+    <a href="paiement.html" class="nav-cta">S'inscrire</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -279,7 +285,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
       <span class="pill">6 mois de programme</span>
     </div>
     <div class="hero-btns">
-      <a href="inscription.html" class="btn-main">Commencer maintenant — 49,99 €</a>
+      <a href="paiement.html" class="btn-main">Commencer maintenant — 49,99 €</a>
       <a href="#modules" class="btn-sec">Découvrir la formation</a>
     </div>
     <div class="hero-stats">
@@ -489,7 +495,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
     </div>
     <div class="alpha-cta">
       <p>Les voyelles, vocabulaire audio, grammaire complète et programme 6 mois sont réservés aux membres.</p>
-      <a href="inscription.html">Accéder à tout le contenu — 49,99 €</a>
+      <a href="paiement.html">Accéder à tout le contenu — 49,99 €</a>
     </div>
   </div>
 </section>
@@ -539,7 +545,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
           <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank">CGV</a> et la <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</span>
         </label>
       </div>
-      <a href="inscription.html" id="btn-tarif" class="btn-stripe">Je m'inscris maintenant →</a>
+      <a href="paiement.html" id="btn-tarif" class="btn-stripe">Je m'inscris maintenant →</a>
       <div class="tarif-note">Paiement sécurisé via Stripe · Accès immédiat</div>
     </div>
   </div>
@@ -589,7 +595,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
       <input type="checkbox" id="cgv-insc" onchange="toggleBtn('cgv-insc','btn-insc')">
       <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank">Conditions Générales de Vente</a> et la <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</span>
     </div>
-    <a href="inscription.html" id="btn-insc" class="btn-insc">Commencer maintenant — 49,99 €</a>
+    <a href="paiement.html" id="btn-insc" class="btn-insc">Commencer maintenant — 49,99 €</a>
     <div class="insc-note">Paiement sécurisé via Stripe · Accès immédiat</div>
   </div>
 </section>
@@ -617,7 +623,8 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
     <div class="f-col">
       <div class="f-col-title">Informations</div>
       <ul>
-        <li><a href="inscription.html">S'inscrire</a></li>
+        <li><a href="paiement.html">S'inscrire</a></li>
+        <li><a href="membres.html">Connexion (espace membres)</a></li>
         <li><a href="mentions-legales.html">Mentions légales</a></li>
         <li><a href="#" onclick="openCookiePrefs();return false;">Gérer les cookies</a></li>
         <li><a href="mailto:contact@arabeaccessible.com">Contact</a></li>

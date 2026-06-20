@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merci — L'Arabe Accessible</title>
+<title>Bienvenue — L'Arabe Accessible</title>
 <link rel="icon" type="image/png" href="images/logo.png">
 <meta name="theme-color" content="#09190f">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Amiri:wght@400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -11,17 +11,24 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--dark:#09190f;--gold:#c9a227;--gold2:#e8c96a;--r:8px}
 body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-.box{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.3);border-top:4px solid var(--gold);border-radius:14px;padding:48px 40px;max-width:460px;width:100%;text-align:center}
-.check{width:72px;height:72px;border-radius:50%;background:rgba(201,162,39,.12);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--gold2);margin:0 auto 22px}
-h1{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;margin-bottom:6px}
-.ar{font-family:'Amiri',serif;font-size:20px;color:rgba(201,162,39,.6);margin-bottom:18px}
-p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:14px}
-.status{font-size:13px;color:rgba(255,255,255,.5);margin:18px 0}
-.btn{display:inline-block;width:100%;padding:15px;background:var(--gold);color:var(--dark);font-size:16px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:background .2s}
-.btn:hover{background:var(--gold2)}
-.btn.disabled{opacity:.5;pointer-events:none}
-.spin{display:inline-block;width:16px;height:16px;border:2px solid rgba(201,162,39,.3);border-top-color:var(--gold);border-radius:50%;animation:s .8s linear infinite;vertical-align:middle;margin-right:8px}
-@keyframes s{to{transform:rotate(360deg)}}
+.box{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.3);border-top:4px solid var(--gold);border-radius:14px;padding:44px 40px;max-width:460px;width:100%;text-align:center}
+.check{width:68px;height:68px;border-radius:50%;background:rgba(201,162,39,.12);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:34px;color:var(--gold2);margin:0 auto 18px}
+h1{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;margin-bottom:6px}
+.ar{font-family:'Amiri',serif;font-size:20px;color:rgba(201,162,39,.6);margin-bottom:14px}
+.intro{font-size:14px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:22px}
+label{display:block;text-align:left;font-size:12px;color:rgba(255,255,255,.6);margin:12px 0 6px;font-weight:500}
+input{width:100%;padding:13px 16px;border:1px solid rgba(255,255,255,.2);border-radius:var(--r);background:rgba(255,255,255,.07);color:#fff;font-size:15px;font-family:'DM Sans',sans-serif;outline:none}
+input:focus{border-color:var(--gold)}
+input::placeholder{color:rgba(255,255,255,.3)}
+.hint{font-size:11px;color:rgba(255,255,255,.4);text-align:left;margin-top:6px}
+button{width:100%;padding:15px;background:var(--gold);color:var(--dark);font-size:16px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:20px;transition:background .2s}
+button:hover:not(:disabled){background:var(--gold2)}
+button:disabled{opacity:.6;cursor:not-allowed}
+.msg{font-size:13px;margin-top:16px;padding:12px 14px;border-radius:var(--r);display:none;line-height:1.6;text-align:left}
+.msg.err{display:block;background:rgba(224,80,80,.12);border:1px solid rgba(224,80,80,.4);color:#ff9a9a}
+.msg.ok{display:block;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.4);color:var(--gold2)}
+.alt{font-size:12px;color:rgba(255,255,255,.4);margin-top:18px}
+.alt a{color:var(--gold)}
 </style>
 </head>
 <body>
@@ -29,42 +36,69 @@ p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:14px}
   <div class="check">✓</div>
   <h1>Merci pour votre confiance !</h1>
   <div class="ar">بارك الله فيك</div>
-  <p>Votre paiement a bien été reçu. Vous avez désormais accès à <strong>toute la formation, à vie</strong>.</p>
-  <div class="status" id="status"><span class="spin"></span>Activation de votre accès en cours…</div>
-  <a class="btn disabled" id="btn" href="membres.html">Accéder à ma formation</a>
+  <p class="intro">Votre paiement a bien été reçu. <strong>Dernière étape :</strong> choisissez votre mot de passe pour créer votre accès personnel à la formation.</p>
+
+  <div id="form">
+    <label for="pass">Choisissez votre mot de passe</label>
+    <input type="password" id="pass" placeholder="Au moins 8 caractères" autocomplete="new-password">
+    <div class="hint">8 caractères minimum. C'est avec ce mot de passe que vous vous connecterez.</div>
+    <label for="pass2">Confirmer le mot de passe</label>
+    <input type="password" id="pass2" placeholder="Retapez votre mot de passe" autocomplete="new-password" onkeydown="if(event.key==='Enter')finalize()">
+    <button id="btn" onclick="finalize()">Accéder à ma formation →</button>
+  </div>
+
+  <div class="msg" id="msg"></div>
+  <div class="alt">Un souci ? <a href="mailto:contact@arabeaccessible.com">contact@arabeaccessible.com</a></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script>
-const statusEl=document.getElementById('status');
-const btn=document.getElementById('btn');
+function showMsg(t,type){const m=document.getElementById('msg');m.textContent=t;m.className='msg '+type;}
+const params = new URLSearchParams(window.location.search);
+const SESSION_ID = params.get('session_id');
 
-function ready(){
-  statusEl.innerHTML='✓ Accès activé !';
-  statusEl.style.color='var(--gold2)';
-  btn.classList.remove('disabled');
+if(!SESSION_ID){
+  // Arrivée sans paiement → on renvoie vers la connexion
+  document.getElementById('form').style.display='none';
+  showMsg("Page accessible après un paiement. Si vous avez déjà un compte, connectez-vous.","err");
+  document.querySelector('.alt').innerHTML = '<a href="membres.html">→ Se connecter</a>';
 }
 
-(async function(){
-  const { data:{ session } } = await sb.auth.getSession();
-  if(!session){ btn.classList.remove('disabled'); statusEl.textContent=''; return; }
+async function finalize(){
+  const p1=document.getElementById('pass').value;
+  const p2=document.getElementById('pass2').value;
+  const btn=document.getElementById('btn');
+  if(p1.length<8){ showMsg("Le mot de passe doit contenir au moins 8 caractères.","err"); return; }
+  if(p1!==p2){ showMsg("Les deux mots de passe ne sont pas identiques.","err"); return; }
 
-  // Le webhook Stripe débloque l'accès en quelques secondes : on vérifie en boucle
-  let tries=0;
-  const check=async ()=>{
-    tries++;
-    const { data } = await sb.from('profiles').select('has_access').eq('id', session.user.id).single();
-    if(data && data.has_access){ ready(); return; }
-    if(tries>=12){ // ~18s : on laisse quand même passer
-      statusEl.innerHTML="Votre accès s'active sous peu. Si la formation n'est pas encore débloquée, patientez une minute puis reconnectez-vous.";
-      btn.classList.remove('disabled');
+  btn.disabled=true; btn.textContent="Création de votre accès…";
+  try{
+    const res = await fetch(SUPABASE_URL + '/functions/v1/finalize-account', {
+      method:'POST',
+      headers:{ 'apikey': SUPABASE_KEY, 'Content-Type':'application/json' },
+      body: JSON.stringify({ session_id: SESSION_ID, password: p1 })
+    });
+    const data = await res.json();
+    if(!res.ok || !data.email){
+      btn.disabled=false; btn.textContent="Accéder à ma formation →";
+      showMsg((data.error||"Une erreur est survenue.") + " Réessayez ou contactez-nous.","err");
       return;
     }
-    setTimeout(check, 1500);
-  };
-  check();
-})();
+    // Connexion automatique avec l'email du paiement + le mot de passe choisi
+    const { error } = await sb.auth.signInWithPassword({ email: data.email, password: p1 });
+    if(error){
+      showMsg("Compte créé ! Connectez-vous avec votre email et votre mot de passe.","ok");
+      setTimeout(()=>{ window.location.href='membres.html'; }, 1800);
+      return;
+    }
+    showMsg("✓ Compte créé ! Redirection vers votre formation…","ok");
+    setTimeout(()=>{ window.location.href='membres.html'; }, 1200);
+  }catch(e){
+    btn.disabled=false; btn.textContent="Accéder à ma formation →";
+    showMsg("Erreur de connexion. Réessayez dans un instant.","err");
+  }
+}
 </script>
 </body>
 </html>

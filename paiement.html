@@ -92,8 +92,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;min-heig
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script>
-let SESSION = null;
-
 function showError(html){
   var l=document.getElementById('loading'); if(l) l.style.display='none';
   var c=document.getElementById('checkout'); if(c) c.style.display='none';
@@ -107,29 +105,16 @@ function updateConsent(){
   document.getElementById('btn-pay').disabled = !ok;
 }
 
-// Au chargement : vérifier la connexion + si déjà payé
-(async function(){
-  const { data:{ session } } = await sb.auth.getSession();
-  if(!session){ window.location.href='inscription.html'; return; }
-  const { data: profile } = await sb.from('profiles').select('has_access').eq('id', session.user.id).single();
-  if(profile && profile.has_access){ window.location.href='membres.html'; return; }
-  SESSION = session; // on attend que l'utilisateur coche les 2 cases puis clique "Continuer"
-})();
-
-// Déclenché par le bouton "Continuer", uniquement après acceptation des 2 cases
+// Déclenché par "Continuer", après acceptation des 2 cases. Aucune connexion requise :
+// Stripe collecte l'email, et le compte sera créé après le paiement.
 async function startPayment(){
-  if(!SESSION) return;
   if(!document.getElementById('cb-cgv').checked || !document.getElementById('cb-retract').checked) return;
   document.getElementById('consent-block').style.display='none';
   document.getElementById('checkout-wrap').style.display='block';
   try {
     const res = await fetch(SUPABASE_URL + '/functions/v1/create-checkout-session', {
       method:'POST',
-      headers:{
-        'Authorization':'Bearer ' + SESSION.access_token,
-        'apikey': SUPABASE_KEY,
-        'Content-Type':'application/json'
-      }
+      headers:{ 'apikey': SUPABASE_KEY, 'Content-Type':'application/json' }
     });
     const data = await res.json();
     if(!res.ok || !data.clientSecret){
