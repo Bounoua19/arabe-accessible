@@ -82,6 +82,12 @@ async function finalize(){
     });
     const data = await res.json();
     if(!res.ok || !data.email){
+      if(data.already){
+        document.getElementById('form').style.display='none';
+        showMsg("Ce compte est déjà activé. Connectez-vous avec votre email et votre mot de passe.","ok");
+        document.querySelector('.alt').innerHTML='<a href="membres.html">→ Se connecter</a> · <a href="mot-de-passe.html">Mot de passe oublié ?</a>';
+        return;
+      }
       btn.disabled=false; btn.textContent="Accéder à ma formation →";
       showMsg((data.error||"Une erreur est survenue.") + " Réessayez ou contactez-nous.","err");
       return;
