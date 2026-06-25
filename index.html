@@ -676,6 +676,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
 
 <script>
 /* Audio */
+document.querySelectorAll('.aud').forEach(function(b){ if(!b.getAttribute('aria-label')) b.setAttribute('aria-label','Écouter la prononciation'); });
 let ca=null,cb=null;
 function playAud(f,b){
   if(ca){ca.pause();ca.currentTime=0;if(cb){cb.textContent='▶';cb.style.background=''}}

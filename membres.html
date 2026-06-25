@@ -156,6 +156,15 @@ tr:hover td{background:var(--off)}
 .forms-table{table-layout:fixed;width:100%}
 .forms-table th,.forms-table td{text-align:center}
 .forms-table .ar-cell{text-align:center;direction:rtl;font-size:22px}
+/* Leçons de lecture (assembler, mots, sukūn, hamza) : lettres bien centrées */
+#lesson-alph-assembler th,#lesson-alph-assembler td,
+#lesson-alph-mots3 th,#lesson-alph-mots3 td,
+#lesson-alph-lecture th,#lesson-alph-lecture td,
+#lesson-alph-hamza th,#lesson-alph-hamza td{text-align:center;vertical-align:middle}
+#lesson-alph-assembler .ar-cell,
+#lesson-alph-mots3 .ar-cell,
+#lesson-alph-lecture .ar-cell,
+#lesson-alph-hamza .ar-cell{text-align:center;direction:rtl;font-size:23px}
 .tr-cell{color:var(--muted);font-style:italic;font-size:13px}
 
 /* EXEMPLES */
@@ -452,6 +461,7 @@ function initSidebar(){
   document.querySelectorAll('.lesson-list').forEach(l=>{
     if(!l.previousElementSibling.classList.contains('open')) l.style.display='none';
   });
+  document.querySelectorAll('.aud').forEach(function(b){ if(!b.getAttribute('aria-label')) b.setAttribute('aria-label','Écouter la prononciation'); });
 }
 
 /* ── NAVIGATION ── */

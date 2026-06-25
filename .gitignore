@@ -1,0 +1,16 @@
+# ⚠️ NE JAMAIS publier ces fichiers (contenu privé / outils / système)
+# Le contenu des cours doit rester dans le bucket Supabase, PAS dans le repo public.
+cours-prive.html
+apercu-programme.html
+securite-supabase.sql
+*.bak
+
+# Dossiers internes
+.claude/
+supabase/
+
+# Archives / fichiers système
+*.zip
+.DS_Store
+**/.DS_Store
+Thumbs.db

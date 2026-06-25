@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /membres.html
-
-Sitemap: https://www.arabeaccessible.com/sitemap.xml
+Disallow: /mon-compte.html
+Disallow: /mot-de-passe.html
+Disallow: /paiement.html
+Disallow: /merci.html
+Sitemap: https://arabeaccessible.com/sitemap.xml
