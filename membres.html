@@ -168,6 +168,26 @@ tr:hover td{background:var(--off)}
 #lesson-alph-mots3 .ar-cell,
 #lesson-alph-lecture .ar-cell,
 #lesson-alph-hamza .ar-cell{text-align:center;direction:rtl;font-size:23px}
+/* QUIZ */
+.quiz{background:var(--gold-bg);border:1px solid rgba(201,162,39,.3);border-radius:var(--r);padding:20px 22px;margin-top:20px}
+.quiz-title{font-weight:700;color:var(--green2);margin-bottom:4px;font-size:15px}
+.quiz-sub{font-size:12px;color:var(--muted);margin-bottom:14px}
+.quiz-q{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(201,162,39,.15)}
+.quiz-q:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.quiz-prompt{font-size:14px;font-weight:600;margin-bottom:10px}
+.quiz-opts{display:flex;flex-direction:column;gap:8px}
+.quiz-opt{text-align:left;padding:10px 14px;border:1px solid var(--gray);border-radius:6px;background:#fff;cursor:pointer;font-family:inherit;font-size:14px;color:var(--text);transition:all .15s}
+.quiz-opt .ar{font-size:20px}
+.quiz-opt:hover:not(:disabled){border-color:var(--gold)}
+.quiz-opt:disabled{cursor:default}
+.quiz-opt.good{background:rgba(42,138,74,.15);border-color:#2a8a4a;color:#1d6e38;font-weight:600}
+.quiz-opt.bad{background:rgba(224,80,80,.12);border-color:#e05050;color:#b03030}
+.quiz-fb{margin-top:8px;font-size:13px;font-weight:600;display:none}
+.quiz-fb.ok{display:block;color:#2a8a4a}
+.quiz-fb.no{display:block;color:#c0504d}
+body.dark .quiz-opt{background:#1e1e3a;border-color:#2a2a4a;color:#e0e0f0}
+body.dark .quiz-opt.good{background:rgba(42,138,74,.28);color:#8fe6ad;border-color:#2a8a4a}
+body.dark .quiz-opt.bad{background:rgba(224,80,80,.22);color:#ff9a9a}
 .tr-cell{color:var(--muted);font-style:italic;font-size:13px}
 
 /* EXEMPLES */
@@ -465,6 +485,18 @@ function initSidebar(){
     if(!l.previousElementSibling.classList.contains('open')) l.style.display='none';
   });
   document.querySelectorAll('.aud').forEach(function(b){ if(!b.getAttribute('aria-label')) b.setAttribute('aria-label','Écouter la prononciation'); });
+}
+
+/* ── QUIZ ── */
+function quizAns(btn){
+  var q = btn.closest('.quiz-q');
+  if(!q || q.classList.contains('answered')) return;
+  q.classList.add('answered');
+  var ok = btn.getAttribute('data-c') === '1';
+  q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled=true; if(b.getAttribute('data-c')==='1') b.classList.add('good'); });
+  if(!ok) btn.classList.add('bad');
+  var fb = q.querySelector('.quiz-fb');
+  if(fb){ fb.textContent = ok ? '✓ Bonne réponse !' : '✗ La bonne réponse est en vert.'; fb.className = 'quiz-fb ' + (ok?'ok':'no'); }
 }
 
 /* ── NAVIGATION ── */
