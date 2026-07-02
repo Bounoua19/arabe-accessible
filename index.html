@@ -9,6 +9,9 @@
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="apple-touch-icon" href="images/logo.png">
 <meta name="theme-color" content="#09190f">
+<!-- Sécurité : politique CSP appliquée par le navigateur (GitHub Pages n'applique pas le fichier _headers) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.stripe.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://*.stripe.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src https://js.stripe.com https://*.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Aperçu de partage (réseaux sociaux). Remplacez l'URL par votre domaine final si différent. -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="L'Arabe Accessible — Formation d'arabe classique">
@@ -148,21 +151,17 @@ section{padding:80px 24px}
 .tarif-features li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:14px;color:rgba(255,255,255,.8)}
 .tarif-features li:last-child{border:none}
 .tarif-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
-.cgv-box{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.2);border-radius:6px;padding:12px 14px;margin-bottom:16px}
-.cgv-box label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
-.cgv-box input{width:17px;height:17px;flex-shrink:0;margin-top:2px;accent-color:var(--gold);cursor:pointer}
-.cgv-box a{color:var(--gold2);font-weight:600}
-.btn-stripe{display:block;width:100%;padding:17px;background:var(--gold);color:var(--dark);font-size:16px;font-weight:700;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;text-align:center;opacity:.45;pointer-events:none}
-.btn-stripe.active{opacity:1;pointer-events:auto}
-.btn-stripe.active:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-stripe{display:block;width:100%;padding:17px;background:var(--gold);color:var(--dark);font-size:16px;font-weight:700;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;text-align:center}
+.btn-stripe:hover{background:var(--gold2);transform:translateY(-2px)}
 .tarif-note{font-size:12px;color:rgba(255,255,255,.35);text-align:center;margin-top:12px}
 
 /* FAQ */
 #faq{background:var(--off);text-align:center}
 .faq-list{max-width:720px;margin:48px auto 0;text-align:left}
 .faq-item{background:#fff;border:1px solid var(--gray);border-radius:8px;margin-bottom:10px;overflow:hidden}
-.faq-q{padding:18px 24px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q{width:100%;background:none;border:none;font-family:inherit;color:inherit;text-align:left;padding:18px 24px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .faq-q:hover{background:var(--off)}
+.faq-q:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 .faq-q::after{content:'+';font-size:20px;color:var(--gold);flex-shrink:0;font-weight:300}
 .faq-item.open .faq-q::after{content:'−'}
 .faq-a{display:none;padding:0 24px 18px;font-size:14px;color:var(--muted);line-height:1.8}
@@ -173,13 +172,8 @@ section{padding:80px 24px}
 #inscription .s-title{color:#fff}
 #inscription .s-label{color:var(--gold2)}
 .insc-desc{font-size:16px;color:rgba(255,255,255,.6);max-width:580px;margin:0 auto 36px;line-height:1.8}
-.insc-cgv{background:rgba(255,255,255,.05);border:1px solid rgba(201,162,39,.2);border-radius:6px;padding:12px 16px;max-width:520px;margin:0 auto 16px;display:flex;align-items:flex-start;gap:10px;text-align:left}
-.insc-cgv input{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--gold);cursor:pointer}
-.insc-cgv span{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6}
-.insc-cgv a{color:var(--gold2);font-weight:600}
-.btn-insc{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--dark);padding:18px 48px;border-radius:4px;font-size:17px;font-weight:700;transition:all .25s;opacity:.45;pointer-events:none;cursor:not-allowed}
-.btn-insc.active{opacity:1;pointer-events:auto;cursor:pointer}
-.btn-insc.active:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-insc{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--dark);padding:18px 48px;border-radius:4px;font-size:17px;font-weight:700;transition:all .25s;cursor:pointer}
+.btn-insc:hover{background:var(--gold2);transform:translateY(-2px)}
 .insc-note{font-size:12px;color:rgba(255,255,255,.3);margin-top:14px}
 
 /* FOOTER */
@@ -241,9 +235,15 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
   .f-grid{grid-template-columns:1fr}
   .alpha-grid{grid-template-columns:repeat(4,1fr)}
   nav{padding:0 16px}
-  .nav-cta{display:none}
+  .nav-cta{padding:8px 14px;font-size:12px}
+  .nav-right{gap:12px}
 }
-@media(max-width:500px){.alpha-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){
+  .alpha-grid{grid-template-columns:repeat(3,1fr)}
+  /* Sur petit écran on garde le logo + les 2 boutons : le nom passe en dessous de la limite */
+  .nav-name{display:none}
+  .nav-logo img{height:44px;width:44px}
+}
 
 /* ── MOUVEMENT DISCRET ── */
 html{scroll-behavior:smooth;scroll-padding-top:88px}
@@ -282,7 +282,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
     <div class="hero-badge">✦ Formation arabe classique · 100% en français</div>
     <h1>L'<span>Arabe</span> Accessible</h1>
     <p class="hero-ar">العربية في متناول الجميع</p>
-    <img src="hero-letters.png" onerror="this.src='images/hero-letters.png'" alt="Lettres arabes" class="hero-img">
+    <img src="images/hero-letters.png" alt="Lettres arabes" class="hero-img" width="280" height="280">
     <p class="hero-desc">Apprenez l'arabe classique depuis zéro avec une méthode structurée, des leçons complètes et des exercices audio pour une prononciation parfaite.</p>
     <div class="hero-pills">
       <span class="pill">Audio intégré</span>
@@ -544,14 +544,8 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
         <li>Mises à jour futures incluses gratuitement</li>
         <li>Accès illimité, sans date d'expiration</li>
       </ul>
-      <div class="cgv-box">
-        <label>
-          <input type="checkbox" id="cgv-tarif" onchange="toggleBtn('cgv-tarif','btn-tarif')">
-          <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank">CGV</a> et la <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</span>
-        </label>
-      </div>
       <a href="paiement.html" id="btn-tarif" class="btn-stripe">Je m'inscris maintenant →</a>
-      <div class="tarif-note">Paiement sécurisé via Stripe · Accès immédiat</div>
+      <div class="tarif-note">Paiement sécurisé via Stripe · Accès immédiat · CGV à accepter à l'étape de paiement</div>
     </div>
   </div>
 </section>
@@ -563,27 +557,27 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
     <h2 class="s-title">Vos questions, nos réponses</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Faut-il connaître l'arabe pour commencer ?</div>
+        <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Faut-il connaître l'arabe pour commencer ?</button>
         <div class="faq-a">Non, absolument pas. La formation commence depuis zéro : alphabet, sons, voyelles. Vous n'avez besoin d'aucune connaissance préalable en arabe.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Quel arabe est enseigné — classique ou dialectal ?</div>
+        <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Quel arabe est enseigné — classique ou dialectal ?</button>
         <div class="faq-a">La formation enseigne l'arabe classique (فصحى), la langue du Coran et des textes islamiques traditionnels. C'est la base solide pour comprendre tous les dialectes.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Comment accéder au contenu après paiement ?</div>
+        <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Comment accéder au contenu après paiement ?</button>
         <div class="faq-a">Juste après votre paiement, vous choisissez vous-même votre mot de passe, et vous accédez <strong>immédiatement</strong> à l'intégralité de la formation. Pour revenir plus tard, il vous suffit de cliquer sur « Connexion » avec votre email et votre mot de passe.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Combien de temps faut-il consacrer à la formation ?</div>
+        <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Combien de temps faut-il consacrer à la formation ?</button>
         <div class="faq-a">30 à 60 minutes par jour suffisent pour progresser régulièrement. Le programme est conçu pour être suivi à votre propre rythme — tout le contenu est disponible à vie.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Est-ce que j'ai accès pour toujours ?</div>
+        <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Est-ce que j'ai accès pour toujours ?</button>
         <div class="faq-a">Oui. Paiement unique, accès illimité. Les futures mises à jour sont également incluses gratuitement, sans aucun abonnement.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Le site fonctionne-t-il sur mobile ?</div>
+        <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Le site fonctionne-t-il sur mobile ?</button>
         <div class="faq-a">Oui, le site est entièrement responsive. Les boutons audio et tous les contenus fonctionnent sur smartphone, tablette et ordinateur.</div>
       </div>
     </div>
@@ -596,12 +590,8 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
     <p class="s-label">Rejoignez la formation</p>
     <h2 class="s-title">Commencez Dès Aujourd'hui</h2>
     <p class="insc-desc">Une méthode structurée, des leçons complètes avec audio et un programme de 6 mois — pour une seule fois 49,99 €.</p>
-    <div class="insc-cgv">
-      <input type="checkbox" id="cgv-insc" onchange="toggleBtn('cgv-insc','btn-insc')">
-      <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank">Conditions Générales de Vente</a> et la <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</span>
-    </div>
     <a href="paiement.html" id="btn-insc" class="btn-insc">Commencer maintenant — 49,99 €</a>
-    <div class="insc-note">Paiement sécurisé via Stripe · Accès immédiat</div>
+    <div class="insc-note">Paiement sécurisé via Stripe · Accès immédiat · CGV à accepter à l'étape de paiement</div>
   </div>
 </section>
 
@@ -642,7 +632,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" role="dialog" aria-label="Gestion des cookies">
   <div class="ck-title">🍪 Votre vie privée compte</div>
-  <div class="ck-text">Nous utilisons des cookies nécessaires au bon fonctionnement du site, ainsi que des cookies de <strong>mesure d'audience (Google Analytics)</strong> pour comprendre comment le site est utilisé et l'améliorer. Vous pouvez tout accepter, tout refuser, ou choisir précisément ce que vous autorisez. <a href="mentions-legales.html#cookies" target="_blank">En savoir plus</a>.</div>
+  <div class="ck-text">Nous utilisons des cookies nécessaires au bon fonctionnement du site, ainsi que des cookies de <strong>mesure d'audience (Google Analytics)</strong> pour comprendre comment le site est utilisé et l'améliorer. Vous pouvez tout accepter, tout refuser, ou choisir précisément ce que vous autorisez. <a href="mentions-legales.html#cookies" target="_blank" rel="noopener">En savoir plus</a>.</div>
   <div class="ck-btns">
     <button class="ck-custom" onclick="openCookiePrefs()">Personnaliser</button>
     <button class="ck-no" onclick="cookieRefuseAll()">Tout refuser</button>
@@ -692,22 +682,13 @@ function playAud(f,b){
   a.onended=()=>{b.textContent='▶';b.style.background='';ca=null;cb=null}
 }
 
-/* FAQ */
+/* FAQ (boutons : utilisable au clavier avec Tab + Entrée) */
 function toggleFaq(el){
   const item=el.parentElement;
   const isOpen=item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-  if(!isOpen)item.classList.add('open');
-}
-
-/* CGV → active bouton */
-function toggleBtn(cbId, btnId){
-  const cb=document.getElementById(cbId);
-  const btn=document.getElementById(btnId);
-  if(cb&&btn){
-    if(cb.checked){btn.classList.add('active');btn.style.pointerEvents='auto';}
-    else{btn.classList.remove('active');btn.style.pointerEvents='none';}
-  }
+  document.querySelectorAll('.faq-q').forEach(q=>q.setAttribute('aria-expanded','false'));
+  if(!isOpen){item.classList.add('open');el.setAttribute('aria-expanded','true');}
 }
 
 /* ── COOKIES (consentement RGPD) ── */

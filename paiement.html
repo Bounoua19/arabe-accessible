@@ -7,6 +7,9 @@
 <title>Paiement sécurisé — L'Arabe Accessible</title>
 <link rel="icon" type="image/png" href="images/logo.png">
 <meta name="theme-color" content="#09190f">
+<!-- Sécurité : politique CSP appliquée par le navigateur (GitHub Pages n'applique pas le fichier _headers) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.stripe.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://*.stripe.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src https://js.stripe.com https://*.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Amiri:wght@400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -73,7 +76,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;min-heig
     <div id="consent-block">
       <label class="consent-row">
         <input type="checkbox" id="cb-cgv" onchange="updateConsent()">
-        <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank">Conditions Générales de Vente</a> et la <a href="mentions-legales.html#confidentialite" target="_blank">Politique de confidentialité</a>.</span>
+        <span>J'ai lu et j'accepte les <a href="mentions-legales.html#cgv" target="_blank" rel="noopener">Conditions Générales de Vente</a> et la <a href="mentions-legales.html#confidentialite" target="_blank" rel="noopener">Politique de confidentialité</a>.</span>
       </label>
       <label class="consent-row">
         <input type="checkbox" id="cb-retract" onchange="updateConsent()">

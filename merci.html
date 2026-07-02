@@ -7,6 +7,9 @@
 <title>Bienvenue — L'Arabe Accessible</title>
 <link rel="icon" type="image/png" href="images/logo.png">
 <meta name="theme-color" content="#09190f">
+<!-- Sécurité : politique CSP appliquée par le navigateur (GitHub Pages n'applique pas le fichier _headers) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.stripe.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://*.stripe.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src https://js.stripe.com https://*.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Amiri:wght@400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -63,9 +66,12 @@ const params = new URLSearchParams(window.location.search);
 const SESSION_ID = params.get('session_id');
 
 if(!SESSION_ID){
-  // Arrivée sans paiement → on renvoie vers la connexion
+  // Arrivée sans paiement → on masque le message de remerciement (trompeur) et on renvoie vers la connexion
   document.getElementById('form').style.display='none';
-  showMsg("Page accessible après un paiement. Si vous avez déjà un compte, connectez-vous.","err");
+  document.querySelector('.intro').style.display='none';
+  document.querySelector('h1').textContent='Accès à la formation';
+  document.querySelector('.ar').style.display='none';
+  showMsg("Cette page s'affiche après un paiement. Si vous avez déjà un compte, connectez-vous.","err");
   document.querySelector('.alt').innerHTML = '<a href="membres.html">→ Se connecter</a>';
 }
 
@@ -87,6 +93,7 @@ async function finalize(){
     if(!res.ok || !data.email){
       if(data.already){
         document.getElementById('form').style.display='none';
+        document.querySelector('.intro').style.display='none';
         showMsg("Ce compte est déjà activé. Connectez-vous avec votre email et votre mot de passe.","ok");
         document.querySelector('.alt').innerHTML='<a href="membres.html">→ Se connecter</a> · <a href="mot-de-passe.html">Mot de passe oublié ?</a>';
         return;
@@ -95,6 +102,9 @@ async function finalize(){
       showMsg((data.error||"Une erreur est survenue.") + " Réessayez ou contactez-nous.","err");
       return;
     }
+    // Compte créé : on retire le formulaire et le message d'étape, place à la confirmation
+    document.getElementById('form').style.display='none';
+    document.querySelector('.intro').style.display='none';
     // Connexion automatique avec l'email du paiement + le mot de passe choisi
     const { error } = await sb.auth.signInWithPassword({ email: data.email, password: p1 });
     if(error){

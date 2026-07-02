@@ -7,6 +7,9 @@
 <link rel="icon" type="image/png" href="images/logo.png">
 <link rel="apple-touch-icon" href="images/logo.png">
 <meta name="theme-color" content="#09190f">
+<!-- Sécurité : politique CSP appliquée par le navigateur (GitHub Pages n'applique pas le fichier _headers) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.stripe.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://*.stripe.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src https://js.stripe.com https://*.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -147,7 +150,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
           <strong>Netlify, Inc.</strong>
           44 Montgomery Street, Suite 300<br>
           San Francisco, California 94104 — États-Unis<br>
-          Site : <a href="https://www.netlify.com" target="_blank">www.netlify.com</a><br>
+          Site : <a href="https://www.netlify.com" target="_blank" rel="noopener">www.netlify.com</a><br>
           Email : <a href="mailto:support@netlify.com">support@netlify.com</a>
         </div>
       </div>
@@ -351,7 +354,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
           <li>Droit de définir des directives relatives au sort de vos données après votre décès, conformément à la législation française</li>
         </ul>
         <p style="margin-top:10px">Pour exercer vos droits : <a href="mailto:contact@arabeaccessible.com">contact@arabeaccessible.com</a></p>
-        <p>Vous avez également le droit d'introduire une réclamation auprès de la <strong>CNIL</strong> : <a href="https://www.cnil.fr" target="_blank">www.cnil.fr</a></p>
+        <p>Vous avez également le droit d'introduire une réclamation auprès de la <strong>CNIL</strong> : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
       </div>
 
       <div class="article">
@@ -423,8 +426,8 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
 
       <div class="article">
         <h3>Cookies tiers</h3>
-        <p>Ce site utilise Stripe pour le paiement sécurisé. Stripe peut déposer ses propres cookies nécessaires à la sécurité des transactions. Pour plus d'informations : <a href="https://stripe.com/fr/privacy" target="_blank">politique de confidentialité Stripe</a>.</p>
-        <p style="margin-top:10px">Avec votre accord uniquement, nous utilisons <strong>Google Analytics</strong> pour mesurer l'audience et la fréquentation du site. Vous pouvez l'activer ou le désactiver à tout moment via le bouton « Modifier mes préférences cookies » ci-dessus. Pour plus d'informations : <a href="https://policies.google.com/privacy" target="_blank">politique de confidentialité Google</a>.</p>
+        <p>Ce site utilise Stripe pour le paiement sécurisé. Stripe peut déposer ses propres cookies nécessaires à la sécurité des transactions. Pour plus d'informations : <a href="https://stripe.com/fr/privacy" target="_blank" rel="noopener">politique de confidentialité Stripe</a>.</p>
+        <p style="margin-top:10px">Avec votre accord uniquement, nous utilisons <strong>Google Analytics</strong> pour mesurer l'audience et la fréquentation du site. Vous pouvez l'activer ou le désactiver à tout moment via le bouton « Modifier mes préférences cookies » ci-dessus. Pour plus d'informations : <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">politique de confidentialité Google</a>.</p>
       </div>
 
       <div class="article">
@@ -436,10 +439,10 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
       <div class="article">
         <h3>Comment désactiver les cookies via votre navigateur</h3>
         <ul>
-          <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li>
-          <li><a href="https://support.mozilla.org/fr/kb/cookies-informations-sites-enregistrent" target="_blank">Mozilla Firefox</a></li>
-          <li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank">Safari</a></li>
-          <li><a href="https://support.microsoft.com/fr-fr/microsoft-edge" target="_blank">Microsoft Edge</a></li>
+          <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+          <li><a href="https://support.mozilla.org/fr/kb/cookies-informations-sites-enregistrent" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+          <li><a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+          <li><a href="https://support.microsoft.com/fr-fr/microsoft-edge" target="_blank" rel="noopener">Microsoft Edge</a></li>
         </ul>
       </div>
     </div>
@@ -457,7 +460,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
           <strong>CM2C — Centre de Médiation de la Consommation de Conciliateurs de Justice</strong>
           14 rue Saint Jean<br>
           75017 Paris<br>
-          Site : <a href="https://www.cm2c.net" target="_blank">www.cm2c.net</a><br>
+          Site : <a href="https://www.cm2c.net" target="_blank" rel="noopener">www.cm2c.net</a><br>
           Email : <a href="mailto:contact@cm2c.net">contact@cm2c.net</a>
         </div>
       </div>
@@ -466,7 +469,7 @@ footer{background:var(--dark);border-top:1px solid rgba(201,162,39,.15);padding:
         <h3>Comment saisir le médiateur ?</h3>
         <p>En cas de litige non résolu avec notre service, vous pouvez saisir gratuitement le médiateur en :</p>
         <ul>
-          <li>Remplissant le formulaire en ligne sur <a href="https://www.cm2c.net" target="_blank">www.cm2c.net</a></li>
+          <li>Remplissant le formulaire en ligne sur <a href="https://www.cm2c.net" target="_blank" rel="noopener">www.cm2c.net</a></li>
           <li>Envoyant un courrier à l'adresse ci-dessus</li>
         </ul>
         <p style="margin-top:10px">La demande de médiation doit être effectuée dans un délai d'un an à compter de la réclamation écrite adressée à notre service client.</p>
