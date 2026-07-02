@@ -153,6 +153,13 @@ section{padding:80px 24px}
 .tarif-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:1px}
 .btn-stripe{display:block;width:100%;padding:17px;background:var(--gold);color:var(--dark);font-size:16px;font-weight:700;border:none;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;text-align:center}
 .btn-stripe:hover{background:var(--gold2);transform:translateY(-2px)}
+/* Comparatif de prix (ancrage) */
+.compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;max-width:580px;margin:36px auto 0}
+.compare > div{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:16px 12px;font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.5;text-align:center}
+.compare > div strong{display:block;font-size:17px;color:rgba(255,255,255,.75);margin-top:5px;font-weight:600}
+.compare .best{background:rgba(201,162,39,.12);border-color:var(--gold);color:rgba(255,255,255,.75)}
+.compare .best strong{color:var(--gold)}
+@media(max-width:560px){.compare{grid-template-columns:1fr}}
 .tarif-note{font-size:12px;color:rgba(255,255,255,.35);text-align:center;margin-top:12px}
 
 /* FAQ */
@@ -259,7 +266,21 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
 }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Course","name":"L'Arabe Accessible — Formation d'arabe classique","description":"Apprenez l'arabe classique depuis zéro : alphabet, lecture, grammaire, conjugaison, Al-Adjroumiyya, Sarf et 1000+ mots de vocabulaire. 100% en français.","inLanguage":"fr","provider":{"@type":"Organization","name":"L'Arabe Accessible","url":"https://arabeaccessible.com"},"offers":{"@type":"Offer","price":"49.99","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://arabeaccessible.com/"}}
+{"@context":"https://schema.org","@type":"Course","name":"L'Arabe Accessible — Formation d'arabe classique","description":"Apprenez l'arabe classique depuis zéro : alphabet, lecture, grammaire, conjugaison, Al-Adjroumiyya, Sarf et 1000+ mots de vocabulaire. 100% en français.","inLanguage":"fr","provider":{"@type":"Organization","name":"L'Arabe Accessible","url":"https://arabeaccessible.com"},"offers":{"@type":"Offer","price":"49.99","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://arabeaccessible.com/"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT30M"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"L'Arabe Accessible","url":"https://arabeaccessible.com","logo":"https://arabeaccessible.com/images/logo.png","email":"contact@arabeaccessible.com","description":"Formation en ligne d'arabe classique pour francophones : alphabet avec audio, grammaire, conjugaison, Al-Adjroumiyya et Sarf."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Faut-il connaître l'arabe pour commencer ?","acceptedAnswer":{"@type":"Answer","text":"Non, absolument pas. La formation commence depuis zéro : alphabet, sons, voyelles. Vous n'avez besoin d'aucune connaissance préalable en arabe."}},
+{"@type":"Question","name":"Quel arabe est enseigné — classique ou dialectal ?","acceptedAnswer":{"@type":"Answer","text":"La formation enseigne l'arabe classique (fusha), la langue du Coran et des textes islamiques traditionnels. C'est la base solide pour comprendre tous les dialectes."}},
+{"@type":"Question","name":"Puis-je essayer gratuitement avant d'acheter ?","acceptedAnswer":{"@type":"Answer","text":"Oui. La première leçon complète — les 28 lettres de l'alphabet arabe avec audio, les formes et les voyelles — est offerte gratuitement sur la page « Leçon gratuite »."}},
+{"@type":"Question","name":"Comment accéder au contenu après paiement ?","acceptedAnswer":{"@type":"Answer","text":"Juste après votre paiement, vous choisissez votre mot de passe et vous accédez immédiatement à l'intégralité de la formation. Pour revenir plus tard, cliquez sur « Connexion » avec votre email et votre mot de passe."}},
+{"@type":"Question","name":"Combien de temps faut-il consacrer à la formation ?","acceptedAnswer":{"@type":"Answer","text":"30 à 60 minutes par jour suffisent pour progresser régulièrement. Le programme est conçu pour être suivi à votre propre rythme — tout le contenu est disponible à vie."}},
+{"@type":"Question","name":"Est-ce que j'ai accès pour toujours ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Paiement unique de 49,99 €, accès illimité. Les futures mises à jour sont également incluses gratuitement, sans aucun abonnement."}},
+{"@type":"Question","name":"Le site fonctionne-t-il sur mobile ?","acceptedAnswer":{"@type":"Answer","text":"Oui, le site est entièrement responsive. Les boutons audio et tous les contenus fonctionnent sur smartphone, tablette et ordinateur."}}
+]}
 </script>
 </head>
 <body>
@@ -291,7 +312,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
     </div>
     <div class="hero-btns">
       <a href="paiement.html" class="btn-main">Commencer maintenant — 49,99 €</a>
-      <a href="#modules" class="btn-sec">Découvrir la formation</a>
+      <a href="lecon-gratuite.html" class="btn-sec">Essayer la 1ʳᵉ leçon gratuite</a>
     </div>
     <div class="hero-stats">
       <div class="stat"><div class="stat-n">28</div><div class="stat-l">Lettres + audio</div></div>
@@ -499,8 +520,9 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
       <div class="lcard"><span class="l-ar">ي</span><div class="l-name">Yā</div><div class="l-tr">y/ī</div><button class="aud" onclick="playAud('Ya.mp3',this)">▶</button></div>
     </div>
     <div class="alpha-cta">
-      <p>Les voyelles, vocabulaire audio, grammaire complète et programme 6 mois sont réservés aux membres.</p>
-      <a href="paiement.html">Accéder à tout le contenu — 49,99 €</a>
+      <p>Envie d'aller plus loin gratuitement ? La <strong>première leçon complète</strong> (lettres + formes + voyelles, avec audio) est offerte.</p>
+      <a href="lecon-gratuite.html">Recevoir la 1ʳᵉ leçon gratuite</a>
+      <a href="paiement.html" style="background:transparent;border:1px solid rgba(201,162,39,.4);color:var(--gold2)">Tout débloquer — 49,99 €</a>
     </div>
   </div>
 </section>
@@ -522,11 +544,61 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
 </section>
 
 
+<!-- TÉMOIGNAGES
+    Section prête à l'emploi, désactivée pour l'instant.
+     Dès que vous avez de VRAIS retours clients (demandez-les par email après achat),
+     remplacez les textes ci-dessous puis retirez les balises de commentaire
+     (la ligne "TÉMOIGNAGES" ci-dessus jusqu'à "fin commentaire témoignages" ci-dessous).
+     Ne publiez JAMAIS de faux avis : c'est illégal (DGCCRF) et destructeur pour la confiance.
+
+<section id="temoignages">
+  <div class="wrap">
+    <p class="s-label">Ils apprennent avec nous</p>
+    <h2 class="s-title">Ce que disent nos élèves</h2>
+    <div class="temo-grid">
+      <div class="temo-card">
+        <div class="temo-badge">✓ Achat vérifié</div>
+        <div class="temo-stars">★★★★★</div>
+        <p class="temo-text">« [Témoignage réel du client — copier/coller son email ou message, avec son accord.] »</p>
+        <div class="temo-author">
+          <div class="temo-avatar">A</div>
+          <div><div class="temo-name">[Prénom]</div><div class="temo-info">[Ville ou profil, ex. « Débutante complète »]</div></div>
+        </div>
+      </div>
+      <div class="temo-card">
+        <div class="temo-badge">✓ Achat vérifié</div>
+        <div class="temo-stars">★★★★★</div>
+        <p class="temo-text">« [Témoignage réel n°2] »</p>
+        <div class="temo-author">
+          <div class="temo-avatar">B</div>
+          <div><div class="temo-name">[Prénom]</div><div class="temo-info">[Profil]</div></div>
+        </div>
+      </div>
+      <div class="temo-card">
+        <div class="temo-badge">✓ Achat vérifié</div>
+        <div class="temo-stars">★★★★★</div>
+        <p class="temo-text">« [Témoignage réel n°3] »</p>
+        <div class="temo-author">
+          <div class="temo-avatar">C</div>
+          <div><div class="temo-name">[Prénom]</div><div class="temo-info">[Profil]</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+fin commentaire témoignages -->
+
 <!-- TARIF -->
 <section id="tarif">
   <div class="wrap">
     <p class="s-label">Offre unique</p>
     <h2 class="s-title">Un seul tarif. Tout inclus. Pour toujours.</h2>
+    <div class="compare">
+      <div>Un cours particulier d'arabe<strong>30 à 50 € / heure</strong></div>
+      <div>Un institut en ligne<strong>40 à 120 € / mois</strong></div>
+      <div class="best">L'Arabe Accessible<strong>49,99 € une seule fois</strong></div>
+    </div>
+    <p class="compare-note">Moins cher qu'une seule heure de cours particulier — pour une formation complète, à vie.</p>
     <div class="tarif-card">
       <div class="tarif-badge">✦ ACCÈS COMPLET</div>
       <div class="tarif-name">Formation Complète</div>
@@ -563,6 +635,10 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
       <div class="faq-item">
         <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Quel arabe est enseigné — classique ou dialectal ?</button>
         <div class="faq-a">La formation enseigne l'arabe classique (فصحى), la langue du Coran et des textes islamiques traditionnels. C'est la base solide pour comprendre tous les dialectes.</div>
+      </div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Puis-je essayer gratuitement avant d'acheter ?</button>
+        <div class="faq-a">Oui ! La <a href="lecon-gratuite.html" style="color:var(--gold);font-weight:600">première leçon complète est offerte</a> : les 28 lettres de l'alphabet avec audio, les formes des lettres et les voyelles. De quoi vous faire une idée précise de la méthode avant de vous engager.</div>
       </div>
       <div class="faq-item">
         <button type="button" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Comment accéder au contenu après paiement ?</button>
@@ -610,6 +686,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
       <div class="f-col-title">Formation</div>
       <ul>
         <li><a href="#modules">Les modules</a></li>
+        <li><a href="lecon-gratuite.html">Leçon gratuite</a></li>
         <li><a href="#alphabet-preview">L'alphabet</a></li>
         <li><a href="#tarif">Tarif</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -631,7 +708,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
 
 <!-- COOKIE BANNER -->
 <div id="cookie-banner" role="dialog" aria-label="Gestion des cookies">
-  <div class="ck-title">🍪 Votre vie privée compte</div>
+  <div class="ck-title">Votre vie privée compte</div>
   <div class="ck-text">Nous utilisons des cookies nécessaires au bon fonctionnement du site, ainsi que des cookies de <strong>mesure d'audience (Google Analytics)</strong> pour comprendre comment le site est utilisé et l'améliorer. Vous pouvez tout accepter, tout refuser, ou choisir précisément ce que vous autorisez. <a href="mentions-legales.html#cookies" target="_blank" rel="noopener">En savoir plus</a>.</div>
   <div class="ck-btns">
     <button class="ck-custom" onclick="openCookiePrefs()">Personnaliser</button>
