@@ -318,8 +318,10 @@ body.dark th{color:var(--gold2)}
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="images/logo.png" alt="Logo" onerror="this.src='logo.png'">
-    <span class="nav-name">L'<span>Arabe</span> Accessible</span>
+    <a href="index.html" style="display:flex;align-items:center;gap:10px" aria-label="Accueil — L'Arabe Accessible">
+      <img src="images/logo.png" alt="Logo" onerror="this.src='logo.png'">
+      <span class="nav-name">L'<span>Arabe</span> Accessible</span>
+    </a>
   </div>
   <div class="nav-right">
     <button class="sb-toggle" onclick="toggleSidebar()" aria-label="Ouvrir le menu des leçons" aria-expanded="false" id="sbToggleBtn">☰ Leçons</button>
