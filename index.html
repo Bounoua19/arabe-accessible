@@ -294,7 +294,7 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
       <span class="nav-name">L'<span>Arabe</span> Accessible</span>
     </a>
   </div>
-  <div class="nav-right">
+  <div class="nav-right" id="navRight">
     <a href="membres.html" class="nav-login">Connexion</a>
     <a href="paiement.html" class="nav-cta">S'inscrire</a>
   </div>
@@ -843,6 +843,22 @@ function loadAnalytics(){
   function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
   onScroll();
   window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
+
+<!-- Reconnaître un membre déjà connecté : adapter le menu pour un retour fluide vers la formation -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+(async function(){
+  try{
+    const { data:{ session } } = await sb.auth.getSession();
+    if(!session || !session.user) return; // Visiteur non connecté : on garde « Connexion / S'inscrire »
+    var nr = document.getElementById('navRight');
+    if(nr){
+      nr.innerHTML = '<a href="membres.html" class="nav-cta">Accéder à ma formation →</a>';
+    }
+  }catch(e){ /* En cas d'erreur, on laisse le menu par défaut */ }
 })();
 </script>
 </body>

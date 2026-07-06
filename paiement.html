@@ -105,6 +105,29 @@ function showError(html){
   e.innerHTML=html; e.style.display='block';
 }
 
+// Après un échec de démarrage du paiement : réafficher le parcours (les cases restent cochées)
+function retryPayment(){
+  document.getElementById('errbox').style.display='none';
+  document.getElementById('checkout-wrap').style.display='none';
+  document.getElementById('checkout').style.display='block';
+  document.getElementById('loading').style.display='block';
+  document.getElementById('consent-block').style.display='block';
+  updateConsent();
+}
+
+// Garde-fou : si un membre a DÉJÀ payé, on lui évite un second paiement par erreur.
+(async function(){
+  try{
+    const { data:{ session } } = await sb.auth.getSession();
+    if(!session || !session.user) return; // Parcours normal « payer d'abord » : personne n'est connecté ici
+    const { data: profile } = await sb.from('profiles').select('has_access').eq('id', session.user.id).single();
+    if(profile && profile.has_access){
+      document.getElementById('consent-block').style.display='none';
+      showError("Vous avez déjà accès à la formation avec ce compte.<br><br><a href='membres.html'>→ Accéder à ma formation</a>");
+    }
+  }catch(e){ /* En cas de doute, on laisse le paiement disponible */ }
+})();
+
 // Active le bouton seulement quand les 2 cases sont cochées
 function updateConsent(){
   var ok = document.getElementById('cb-cgv').checked && document.getElementById('cb-retract').checked;
@@ -124,7 +147,7 @@ async function startPayment(){
     });
     const data = await res.json();
     if(!res.ok || !data.clientSecret){
-      showError("Le paiement n'a pas pu démarrer.<br>" + (data.error||'') + "<br><br>Réessayez ou écrivez-nous à <a href='mailto:contact@arabeaccessible.com'>contact@arabeaccessible.com</a>.");
+      showError("Le paiement n'a pas pu démarrer.<br>" + (data.error||'') + "<br><br><button class='btn-continue' style='max-width:220px' onclick='retryPayment()'>↻ Réessayer</button><br><br>Si le problème persiste, écrivez-nous à <a href='mailto:contact@arabeaccessible.com'>contact@arabeaccessible.com</a>.");
       return;
     }
     const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
@@ -132,7 +155,7 @@ async function startPayment(){
     document.getElementById('loading').style.display='none';
     checkout.mount('#checkout');
   } catch(e){
-    showError("Erreur de connexion au paiement.<br>" + e.message);
+    showError("Erreur de connexion au paiement.<br>" + e.message + "<br><br><button class='btn-continue' style='max-width:220px' onclick='retryPayment()'>↻ Réessayer</button>");
   }
 }
 </script>
