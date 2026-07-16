@@ -105,6 +105,10 @@ section{padding:80px 24px}
 #alphabet-preview .s-title{color:#fff}
 #alphabet-preview .s-label{color:var(--gold2)}
 .alpha-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin:36px 0}
+.hamza-solo{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-top:10px}
+.hamza-solo .lcard{grid-column:4}
+@media(max-width:900px){.hamza-solo{grid-template-columns:repeat(4,1fr)}.hamza-solo .lcard{grid-column:2}}
+@media(max-width:520px){.hamza-solo{grid-template-columns:repeat(3,1fr)}.hamza-solo .lcard{grid-column:2}}
 .lcard{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.15);border-radius:8px;padding:14px 8px;text-align:center;transition:all .2s}
 .lcard:hover{background:rgba(201,162,39,.08);border-color:rgba(201,162,39,.4)}
 .l-ar{font-family:'Amiri',serif;font-size:28px;color:#fff;display:block;margin-bottom:4px}
@@ -521,6 +525,8 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
       <div class="lcard"><span class="l-ar">ه</span><div class="l-name">Hā</div><div class="l-tr">h</div><button class="aud" onclick="playAud('HAA.mp3',this)">▶</button></div>
       <div class="lcard"><span class="l-ar">و</span><div class="l-name">Wāw</div><div class="l-tr">w/ū</div><button class="aud" onclick="playAud('Waw.mp3',this)">▶</button></div>
       <div class="lcard"><span class="l-ar">ي</span><div class="l-name">Yā</div><div class="l-tr">y/ī</div><button class="aud" onclick="playAud('Ya.mp3',this)">▶</button></div>
+    </div>
+    <div class="hamza-solo">
       <div class="lcard"><span class="l-ar">ء</span><div class="l-name">Hamza</div><div class="l-tr">ʾ</div><button class="aud" onclick="playAud('Hamza.mp3',this)">▶</button></div>
     </div>
     <div class="alpha-cta">
