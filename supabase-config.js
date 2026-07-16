@@ -12,8 +12,21 @@ const SUPABASE_KEY = 'sb_publishable_M6g9NV9WNlSGBFJKi7sCeA_YHzTu4eu';
 // Pour passer en réel : remplacez par votre clé pk_live_...
 const STRIPE_PUBLISHABLE_KEY = 'pk_test_51TixfbEaRMtm6vUxRx8Kgam7HITXd10fuzvPv5DUKt3krpjb8nG64h9SdXk9UiY99Zm8vo7NYzLrFUbMNB2utTdr00kTf97Vtw';
 
+/* « Se souvenir de moi » : la case à la connexion pilote où est gardée la session.
+   Cochée (défaut) → localStorage : on reste connecté d'une visite à l'autre.
+   Décochée → sessionStorage : la session est oubliée à la fermeture du navigateur
+   (recommandé sur un ordinateur partagé). */
+function _rememberOff(){ try{ return localStorage.getItem('remember-me')==='0'; }catch(e){ return false; } }
+const _authStorage = {
+  getItem: function(k){ return (_rememberOff()? sessionStorage : localStorage).getItem(k); },
+  setItem: function(k,v){ (_rememberOff()? sessionStorage : localStorage).setItem(k,v); },
+  removeItem: function(k){ try{ sessionStorage.removeItem(k); }catch(e){} try{ localStorage.removeItem(k); }catch(e){} }
+};
+
 // Client Supabase global (window.supabase vient du script CDN chargé avant)
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: { storage: _authStorage, persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+});
 
 // Traduction des messages d'erreur courants en français
 function traduireErreurAuth(m){

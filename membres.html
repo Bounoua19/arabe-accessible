@@ -75,6 +75,9 @@ a{text-decoration:none;color:inherit}
 .login-input::placeholder{color:rgba(255,255,255,.35)}
 .login-btn{width:100%;padding:15px;background:var(--gold);color:var(--dark);font-size:16px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;margin-top:4px}
 .login-btn:hover{background:var(--gold2)}
+.login-remember{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,.6);margin:2px 0 10px;cursor:pointer;user-select:none;text-align:left}
+.login-remember input{width:16px;height:16px;accent-color:var(--gold);cursor:pointer;flex-shrink:0}
+.login-remember:hover span{color:rgba(255,255,255,.85)}
 .login-err{color:#e05050;font-size:13px;margin-top:10px;display:none}
 .login-hint{font-size:12px;color:rgba(255,255,255,.3);margin-top:16px}
 
@@ -307,6 +310,10 @@ body.dark th{color:var(--gold2)}
     <div class="login-sub">Veuillez entrer vos identifiants pour accéder à votre formation</div>
     <input class="login-input" type="email" id="login-email" placeholder="Votre adresse email">
     <input class="login-input" type="password" id="login-pass" placeholder="Votre mot de passe" onkeydown="if(event.key==='Enter')doLogin()">
+    <label class="login-remember">
+      <input type="checkbox" id="login-remember" checked>
+      <span>Se souvenir de moi</span>
+    </label>
     <button class="login-btn" onclick="doLogin()">Accéder à ma formation</button>
     <div class="login-err" id="login-err">Email ou mot de passe incorrect</div>
     <div class="login-hint" style="margin-top:18px">Pas encore membre ? <a href="index.html" style="color:var(--gold);font-weight:600">Découvrir la formation</a></div>
@@ -404,6 +411,8 @@ async function doLogin(){
   const pass  = document.getElementById('login-pass').value;
   const err   = document.getElementById('login-err');
   err.style.display='none';
+  // « Se souvenir de moi » : à enregistrer AVANT la connexion pour que la session soit stockée au bon endroit
+  try{ localStorage.setItem('remember-me', document.getElementById('login-remember').checked ? '1' : '0'); }catch(e){}
   const { data, error } = await sb.auth.signInWithPassword({ email:email, password:pass });
   if(error){
     err.textContent = traduireErreurAuth(error.message);
