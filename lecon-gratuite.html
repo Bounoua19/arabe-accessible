@@ -63,6 +63,9 @@ h1 span{color:var(--gold)}
 .gate button{width:100%;padding:15px;background:var(--gold);color:var(--dark);font-size:15px;font-weight:700;border:none;border-radius:var(--r);cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s}
 .gate button:hover:not(:disabled){background:var(--gold2)}
 .gate button:disabled{opacity:.6;cursor:not-allowed}
+.gate-consent{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:rgba(255,255,255,.7);margin:2px 0 12px;cursor:pointer;user-select:none;text-align:left;line-height:1.5}
+.gate-consent input{width:17px;height:17px;flex-shrink:0;margin-top:1px;accent-color:var(--gold);cursor:pointer}
+.gate-consent:hover span{color:rgba(255,255,255,.9)}
 .gate .legal{font-size:11.5px;color:rgba(255,255,255,.35);margin-top:14px;margin-bottom:0;line-height:1.6}
 .gate .legal a{color:rgba(201,162,39,.7);text-decoration:underline}
 .gate-msg{font-size:13px;margin-top:12px;padding:11px 13px;border-radius:var(--r);display:none;line-height:1.6;text-align:left}
@@ -144,6 +147,10 @@ footer a{color:rgba(201,162,39,.6)}
     <input type="email" id="lead-email" placeholder="Votre adresse email" autocomplete="email" onkeydown="if(event.key==='Enter')unlockLesson()">
     <!-- Pot de miel anti-robots : champ invisible pour les humains ; s'il est rempli, c'est un bot -->
     <input type="text" id="lead-web" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;border:0;padding:0">
+    <label class="gate-consent">
+      <input type="checkbox" id="lead-consent">
+      <span>J'accepte de recevoir les emails de L'Arabe Accessible (conseils et offres)</span>
+    </label>
     <button id="lead-btn" onclick="unlockLesson()">Débloquer ma leçon gratuite →</button>
     <div class="gate-msg" id="gate-msg"></div>
     <p class="legal">En débloquant la leçon, vous acceptez de recevoir nos emails (conseils et offres). Désinscription possible à tout moment, en un clic. Votre email n'est jamais revendu. <a href="mentions-legales.html#confidentialite" target="_blank" rel="noopener">Politique de confidentialité</a></p>
@@ -266,6 +273,8 @@ async function unlockLesson(){
   // Pot de miel : un humain ne voit pas ce champ ; s'il est rempli, on ignore silencieusement (robot)
   if(document.getElementById('lead-web').value){ return; }
   if(!email || !email.includes('@') || !email.includes('.')){ gateMsg("Adresse email invalide.","err"); return; }
+  // Consentement RGPD explicite : la case doit être cochée par le visiteur lui-même
+  if(!document.getElementById('lead-consent').checked){ gateMsg("Veuillez cocher la case d'acceptation pour recevoir la leçon par email.","err"); return; }
   btn.disabled=true; btn.textContent="Un instant…";
   try{
     const { error } = await sb.from('prospects').insert({ email:email, source:'lecon-gratuite' });
