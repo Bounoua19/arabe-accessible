@@ -10,8 +10,9 @@
 <link rel="apple-touch-icon" href="images/logo.png">
 <meta name="theme-color" content="#09190f">
 <!-- Sécurité : politique CSP appliquée par le navigateur (GitHub Pages n'applique pas le fichier _headers) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.stripe.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://*.stripe.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src https://js.stripe.com https://*.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.stripe.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://*.supabase.co https://*.stripe.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src https://js.stripe.com https://*.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script>if(window.top!==window.self){try{window.top.location=window.self.location}catch(e){document.documentElement.style.display="none"}}</script>
 <!-- Aperçu de partage (réseaux sociaux). Remplacez l'URL par votre domaine final si différent. -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="L'Arabe Accessible — Formation d'arabe classique">
@@ -497,37 +498,37 @@ nav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.35);background:#06120a}
     <h2 class="s-title" style="color:#fff">L'Alphabet Arabe — Écoutez chaque lettre</h2>
     <p class="s-sub" style="color:rgba(255,255,255,.55)">Cliquez sur ▶ pour entendre la prononciation réelle. Le contenu complet est disponible après inscription.</p>
     <div class="alpha-grid">
-      <div class="lcard"><span class="l-ar">أ</span><div class="l-name">Alif</div><div class="l-tr">ā</div><button class="aud" onclick="playAud('Alif.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ب</span><div class="l-name">Bā</div><div class="l-tr">b</div><button class="aud" onclick="playAud('BA.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ت</span><div class="l-name">Tā</div><div class="l-tr">t</div><button class="aud" onclick="playAud('Ta.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ث</span><div class="l-name">Thā</div><div class="l-tr">th</div><button class="aud" onclick="playAud('Tha.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ج</span><div class="l-name">Jīm</div><div class="l-tr">dj</div><button class="aud" onclick="playAud('Djim.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ح</span><div class="l-name">Ḥā</div><div class="l-tr">ḥ</div><button class="aud" onclick="playAud('Ha.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">خ</span><div class="l-name">Khā</div><div class="l-tr">kh</div><button class="aud" onclick="playAud('Kha.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">د</span><div class="l-name">Dāl</div><div class="l-tr">d</div><button class="aud" onclick="playAud('dAL.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ذ</span><div class="l-name">Dhāl</div><div class="l-tr">dh</div><button class="aud" onclick="playAud('Dhal.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ر</span><div class="l-name">Rā</div><div class="l-tr">r</div><button class="aud" onclick="playAud('Ra.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ز</span><div class="l-name">Zāy</div><div class="l-tr">z</div><button class="aud" onclick="playAud('Zay.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">س</span><div class="l-name">Sīn</div><div class="l-tr">s</div><button class="aud" onclick="playAud('Sin.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ش</span><div class="l-name">Shīn</div><div class="l-tr">sh</div><button class="aud" onclick="playAud('Shin.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ص</span><div class="l-name">Ṣād</div><div class="l-tr">ṣ</div><button class="aud" onclick="playAud('Sad.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ض</span><div class="l-name">Ḍād</div><div class="l-tr">ḍ</div><button class="aud" onclick="playAud('Dad.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ط</span><div class="l-name">Ṭā</div><div class="l-tr">ṭ</div><button class="aud" onclick="playAud('Tta.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ظ</span><div class="l-name">Ẓā</div><div class="l-tr">ẓ</div><button class="aud" onclick="playAud('Za.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ع</span><div class="l-name">'Ayn</div><div class="l-tr">ʿ</div><button class="aud" onclick="playAud('ayn.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">غ</span><div class="l-name">Ghayn</div><div class="l-tr">gh</div><button class="aud" onclick="playAud('Ghayn.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ف</span><div class="l-name">Fā</div><div class="l-tr">f</div><button class="aud" onclick="playAud('Fa.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ق</span><div class="l-name">Qāf</div><div class="l-tr">q</div><button class="aud" onclick="playAud('Qaf.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ك</span><div class="l-name">Kāf</div><div class="l-tr">k</div><button class="aud" onclick="playAud('Kaf.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ل</span><div class="l-name">Lām</div><div class="l-tr">l</div><button class="aud" onclick="playAud('Lam.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">م</span><div class="l-name">Mīm</div><div class="l-tr">m</div><button class="aud" onclick="playAud('Mim.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ن</span><div class="l-name">Nūn</div><div class="l-tr">n</div><button class="aud" onclick="playAud('Noun.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ه</span><div class="l-name">Hā</div><div class="l-tr">h</div><button class="aud" onclick="playAud('HAA.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">و</span><div class="l-name">Wāw</div><div class="l-tr">w/ū</div><button class="aud" onclick="playAud('Waw.mp3',this)">▶</button></div>
-      <div class="lcard"><span class="l-ar">ي</span><div class="l-name">Yā</div><div class="l-tr">y/ī</div><button class="aud" onclick="playAud('Ya.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">أ</span><div class="l-name">Alif</div><div class="l-tr">ā</div><button class="aud" onclick="playAud('Alif.mp3',this)" aria-label="Écouter Alif">▶</button></div>
+      <div class="lcard"><span class="l-ar">ب</span><div class="l-name">Bā</div><div class="l-tr">b</div><button class="aud" onclick="playAud('BA.mp3',this)" aria-label="Écouter Bā">▶</button></div>
+      <div class="lcard"><span class="l-ar">ت</span><div class="l-name">Tā</div><div class="l-tr">t</div><button class="aud" onclick="playAud('Ta.mp3',this)" aria-label="Écouter Tā">▶</button></div>
+      <div class="lcard"><span class="l-ar">ث</span><div class="l-name">Thā</div><div class="l-tr">th</div><button class="aud" onclick="playAud('Tha.mp3',this)" aria-label="Écouter Thā">▶</button></div>
+      <div class="lcard"><span class="l-ar">ج</span><div class="l-name">Jīm</div><div class="l-tr">dj</div><button class="aud" onclick="playAud('Djim.mp3',this)" aria-label="Écouter Jīm">▶</button></div>
+      <div class="lcard"><span class="l-ar">ح</span><div class="l-name">Ḥā</div><div class="l-tr">ḥ</div><button class="aud" onclick="playAud('Ha.mp3',this)" aria-label="Écouter Ḥā">▶</button></div>
+      <div class="lcard"><span class="l-ar">خ</span><div class="l-name">Khā</div><div class="l-tr">kh</div><button class="aud" onclick="playAud('Kha.mp3',this)" aria-label="Écouter Khā">▶</button></div>
+      <div class="lcard"><span class="l-ar">د</span><div class="l-name">Dāl</div><div class="l-tr">d</div><button class="aud" onclick="playAud('dAL.mp3',this)" aria-label="Écouter Dāl">▶</button></div>
+      <div class="lcard"><span class="l-ar">ذ</span><div class="l-name">Dhāl</div><div class="l-tr">dh</div><button class="aud" onclick="playAud('Dhal.mp3',this)" aria-label="Écouter Dhāl">▶</button></div>
+      <div class="lcard"><span class="l-ar">ر</span><div class="l-name">Rā</div><div class="l-tr">r</div><button class="aud" onclick="playAud('Ra.mp3',this)" aria-label="Écouter Rā">▶</button></div>
+      <div class="lcard"><span class="l-ar">ز</span><div class="l-name">Zāy</div><div class="l-tr">z</div><button class="aud" onclick="playAud('Zay.mp3',this)" aria-label="Écouter Zāy">▶</button></div>
+      <div class="lcard"><span class="l-ar">س</span><div class="l-name">Sīn</div><div class="l-tr">s</div><button class="aud" onclick="playAud('Sin.mp3',this)" aria-label="Écouter Sīn">▶</button></div>
+      <div class="lcard"><span class="l-ar">ش</span><div class="l-name">Shīn</div><div class="l-tr">sh</div><button class="aud" onclick="playAud('Shin.mp3',this)" aria-label="Écouter Shīn">▶</button></div>
+      <div class="lcard"><span class="l-ar">ص</span><div class="l-name">Ṣād</div><div class="l-tr">ṣ</div><button class="aud" onclick="playAud('Sad.mp3',this)" aria-label="Écouter Ṣād">▶</button></div>
+      <div class="lcard"><span class="l-ar">ض</span><div class="l-name">Ḍād</div><div class="l-tr">ḍ</div><button class="aud" onclick="playAud('Dad.mp3',this)" aria-label="Écouter Ḍād">▶</button></div>
+      <div class="lcard"><span class="l-ar">ط</span><div class="l-name">Ṭā</div><div class="l-tr">ṭ</div><button class="aud" onclick="playAud('Tta.mp3',this)" aria-label="Écouter Ṭā">▶</button></div>
+      <div class="lcard"><span class="l-ar">ظ</span><div class="l-name">Ẓā</div><div class="l-tr">ẓ</div><button class="aud" onclick="playAud('Za.mp3',this)" aria-label="Écouter Ẓā">▶</button></div>
+      <div class="lcard"><span class="l-ar">ع</span><div class="l-name">'Ayn</div><div class="l-tr">ʿ</div><button class="aud" onclick="playAud('ayn.mp3',this)" aria-label="Écouter 'Ayn">▶</button></div>
+      <div class="lcard"><span class="l-ar">غ</span><div class="l-name">Ghayn</div><div class="l-tr">gh</div><button class="aud" onclick="playAud('Ghayn.mp3',this)" aria-label="Écouter Ghayn">▶</button></div>
+      <div class="lcard"><span class="l-ar">ف</span><div class="l-name">Fā</div><div class="l-tr">f</div><button class="aud" onclick="playAud('Fa.mp3',this)" aria-label="Écouter Fā">▶</button></div>
+      <div class="lcard"><span class="l-ar">ق</span><div class="l-name">Qāf</div><div class="l-tr">q</div><button class="aud" onclick="playAud('Qaf.mp3',this)" aria-label="Écouter Qāf">▶</button></div>
+      <div class="lcard"><span class="l-ar">ك</span><div class="l-name">Kāf</div><div class="l-tr">k</div><button class="aud" onclick="playAud('Kaf.mp3',this)" aria-label="Écouter Kāf">▶</button></div>
+      <div class="lcard"><span class="l-ar">ل</span><div class="l-name">Lām</div><div class="l-tr">l</div><button class="aud" onclick="playAud('Lam.mp3',this)" aria-label="Écouter Lām">▶</button></div>
+      <div class="lcard"><span class="l-ar">م</span><div class="l-name">Mīm</div><div class="l-tr">m</div><button class="aud" onclick="playAud('Mim.mp3',this)" aria-label="Écouter Mīm">▶</button></div>
+      <div class="lcard"><span class="l-ar">ن</span><div class="l-name">Nūn</div><div class="l-tr">n</div><button class="aud" onclick="playAud('Noun.mp3',this)" aria-label="Écouter Nūn">▶</button></div>
+      <div class="lcard"><span class="l-ar">ه</span><div class="l-name">Hā</div><div class="l-tr">h</div><button class="aud" onclick="playAud('HAA.mp3',this)" aria-label="Écouter Hā">▶</button></div>
+      <div class="lcard"><span class="l-ar">و</span><div class="l-name">Wāw</div><div class="l-tr">w/ū</div><button class="aud" onclick="playAud('Waw.mp3',this)" aria-label="Écouter Wāw">▶</button></div>
+      <div class="lcard"><span class="l-ar">ي</span><div class="l-name">Yā</div><div class="l-tr">y/ī</div><button class="aud" onclick="playAud('Ya.mp3',this)" aria-label="Écouter Yā">▶</button></div>
     </div>
     <div class="hamza-solo">
-      <div class="lcard"><span class="l-ar">ء</span><div class="l-name">Hamza</div><div class="l-tr">ʾ</div><button class="aud" onclick="playAud('Hamza.mp3',this)">▶</button></div>
+      <div class="lcard"><span class="l-ar">ء</span><div class="l-name">Hamza</div><div class="l-tr">ʾ</div><button class="aud" onclick="playAud('Hamza.mp3',this)" aria-label="Écouter Hamza">▶</button></div>
     </div>
     <div class="alpha-cta">
       <p>Envie d'aller plus loin gratuitement ? La <strong>première leçon complète</strong> (lettres + formes + voyelles, avec audio) est offerte.</p>
@@ -854,7 +855,7 @@ function loadAnalytics(){
 </script>
 
 <!-- Reconnaître un membre déjà connecté : adapter le menu pour un retour fluide vers la formation -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.7" integrity="sha384-BmlQlKlDvXvKoxkn5OQuUo/aJQCTXeB+Kls6EccBmG4Kf8AXvp89RtO9MtPxP/r5" crossorigin="anonymous"></script>
 <script src="supabase-config.js"></script>
 <script>
 (async function(){

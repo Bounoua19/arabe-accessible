@@ -10,8 +10,9 @@
 <link rel="apple-touch-icon" href="images/logo.png">
 <meta name="theme-color" content="#09190f">
 <!-- Sécurité : politique CSP appliquée par le navigateur (GitHub Pages n'applique pas le fichier _headers) -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.stripe.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.supabase.co https://*.stripe.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src https://js.stripe.com https://*.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.stripe.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://*.supabase.co https://*.stripe.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com; frame-src https://js.stripe.com https://*.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script>if(window.top!==window.self){try{window.top.location=window.self.location}catch(e){document.documentElement.style.display="none"}}</script>
 <meta property="og:type" content="article">
 <meta property="og:title" content="Alphabet arabe : les 28 lettres avec audio — Leçon gratuite">
 <meta property="og:description" content="Première leçon complète offerte : les 28 lettres de l'alphabet arabe avec prononciation audio par un locuteur natif. 100% en français.">
@@ -141,6 +142,8 @@ footer a{color:rgba(201,162,39,.6)}
     <h2>Recevez la leçon gratuite</h2>
     <p>Entrez votre email pour débloquer immédiatement la leçon complète ci-dessous, et recevoir nos conseils pour apprendre l'arabe.</p>
     <input type="email" id="lead-email" placeholder="Votre adresse email" autocomplete="email" onkeydown="if(event.key==='Enter')unlockLesson()">
+    <!-- Pot de miel anti-robots : champ invisible pour les humains ; s'il est rempli, c'est un bot -->
+    <input type="text" id="lead-web" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;border:0;padding:0">
     <button id="lead-btn" onclick="unlockLesson()">Débloquer ma leçon gratuite →</button>
     <div class="gate-msg" id="gate-msg"></div>
     <p class="legal">En débloquant la leçon, vous acceptez de recevoir nos emails (conseils et offres). Désinscription possible à tout moment, en un clic. Votre email n'est jamais revendu. <a href="mentions-legales.html#confidentialite" target="_blank" rel="noopener">Politique de confidentialité</a></p>
@@ -245,7 +248,7 @@ footer a{color:rgba(201,162,39,.6)}
   <div style="margin-top:8px">© 2026 L'Arabe Accessible</div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.7" integrity="sha384-BmlQlKlDvXvKoxkn5OQuUo/aJQCTXeB+Kls6EccBmG4Kf8AXvp89RtO9MtPxP/r5" crossorigin="anonymous"></script>
 <script src="supabase-config.js"></script>
 <script>
 /* ── CAPTURE EMAIL + DÉBLOCAGE DE LA LEÇON ── */
@@ -260,6 +263,8 @@ if(localStorage.getItem('lecon1-ok')==='1') revealLesson();
 async function unlockLesson(){
   const email=document.getElementById('lead-email').value.trim().toLowerCase();
   const btn=document.getElementById('lead-btn');
+  // Pot de miel : un humain ne voit pas ce champ ; s'il est rempli, on ignore silencieusement (robot)
+  if(document.getElementById('lead-web').value){ return; }
   if(!email || !email.includes('@') || !email.includes('.')){ gateMsg("Adresse email invalide.","err"); return; }
   btn.disabled=true; btn.textContent="Un instant…";
   try{
