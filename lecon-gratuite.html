@@ -117,6 +117,42 @@ tr:last-child td{border:none}
 
 footer{border-top:1px solid rgba(201,162,39,.15);padding:28px 24px;text-align:center;font-size:12px;color:rgba(255,255,255,.3)}
 footer a{color:rgba(201,162,39,.6)}
+/* COOKIE BANNER */
+#cookie-banner{position:fixed;bottom:18px;left:18px;right:18px;max-width:680px;margin:0 auto;background:#0f2014;border:1px solid rgba(201,162,39,.3);border-radius:12px;padding:22px 24px;display:none;z-index:9999;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+#cookie-banner.show{display:block}
+.ck-title{font-family:'Cormorant Garamond',serif;font-size:21px;color:#fff;margin-bottom:8px}
+.ck-text{font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.7;margin-bottom:16px}
+.ck-text a{color:var(--gold2);text-decoration:underline}
+.ck-text strong{color:rgba(255,255,255,.92)}
+.ck-btns{display:flex;gap:10px;flex-wrap:wrap}
+.ck-btns button{flex:1 1 auto;min-width:130px;font-family:'DM Sans',sans-serif}
+.ck-ok{padding:11px 20px;background:var(--gold);color:var(--dark);font-size:13px;font-weight:700;border:none;border-radius:5px;cursor:pointer;transition:background .2s}
+.ck-ok:hover{background:var(--gold2)}
+.ck-no{padding:11px 20px;background:transparent;color:rgba(255,255,255,.75);font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,.25);border-radius:5px;cursor:pointer;transition:all .2s}
+.ck-no:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.ck-custom{padding:11px 20px;background:rgba(201,162,39,.12);color:var(--gold2);font-size:13px;font-weight:600;border:1px solid rgba(201,162,39,.35);border-radius:5px;cursor:pointer;transition:all .2s}
+.ck-custom:hover{background:rgba(201,162,39,.2)}
+.ck-modal{position:fixed;inset:0;background:rgba(5,12,8,.72);display:none;align-items:center;justify-content:center;z-index:10000;padding:20px}
+.ck-modal.show{display:flex}
+.ck-modal-box{background:#0f2014;border:1px solid rgba(201,162,39,.3);border-radius:14px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;padding:28px}
+.ck-modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.ck-modal-head h3{font-family:'Cormorant Garamond',serif;font-size:24px;color:#fff}
+.ck-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:26px;cursor:pointer;line-height:1;padding:0 4px}
+.ck-close:hover{color:#fff}
+.ck-modal-intro{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:18px}
+.ck-pref-row{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:16px 0;border-top:1px solid rgba(255,255,255,.08)}
+.ck-pref-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px}
+.ck-pref-desc{font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.6}
+.ck-switch{position:relative;display:inline-block;width:46px;height:26px;flex-shrink:0;margin-top:2px}
+.ck-switch input{opacity:0;width:0;height:0}
+.ck-slider{position:absolute;inset:0;background:rgba(255,255,255,.18);border-radius:26px;transition:.25s;cursor:pointer}
+.ck-slider::before{content:'';position:absolute;height:20px;width:20px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.25s}
+.ck-switch input:checked + .ck-slider{background:var(--gold)}
+.ck-switch input:checked + .ck-slider::before{transform:translateX(20px)}
+.ck-switch.ck-disabled .ck-slider{background:rgba(201,162,39,.5);cursor:not-allowed}
+.ck-modal-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.ck-modal-actions button{flex:1 1 auto;min-width:140px;font-family:'DM Sans',sans-serif}
+@media(max-width:540px){.ck-btns button{flex:1 1 100%}}
 </style>
 </head>
 <body>
@@ -251,9 +287,76 @@ footer a{color:rgba(201,162,39,.6)}
 </div><!-- fin #lecon -->
 
 <footer>
-  <a href="index.html">← Retour à l'accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="mailto:contact@arabeaccessible.com">contact@arabeaccessible.com</a>
+  <a href="index.html">← Retour à l'accueil</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="#" onclick="openCookiePrefs();return false;">Gérer les cookies</a> · <a href="mailto:contact@arabeaccessible.com">contact@arabeaccessible.com</a>
   <div style="margin-top:8px">© 2026 L'Arabe Accessible</div>
 </footer>
+
+<!-- BANNIÈRE COOKIES -->
+<div id="cookie-banner" role="dialog" aria-label="Gestion des cookies">
+  <div class="ck-title">Votre vie privée compte</div>
+  <div class="ck-text">Nous utilisons des cookies nécessaires au bon fonctionnement du site, ainsi que des cookies de <strong>mesure d'audience (Google Analytics)</strong> pour comprendre comment le site est utilisé et l'améliorer. Vous pouvez tout accepter, tout refuser, ou choisir précisément ce que vous autorisez. <a href="mentions-legales.html#cookies" target="_blank" rel="noopener">En savoir plus</a>.</div>
+  <div class="ck-btns">
+    <button class="ck-custom" onclick="openCookiePrefs()">Personnaliser</button>
+    <button class="ck-no" onclick="cookieRefuseAll()">Tout refuser</button>
+    <button class="ck-ok" onclick="cookieAcceptAll()">Tout accepter</button>
+  </div>
+</div>
+
+<!-- Panneau de préférences cookies -->
+<div id="cookie-prefs" class="ck-modal" role="dialog" aria-modal="true" aria-label="Paramètres des cookies">
+  <div class="ck-modal-box">
+    <div class="ck-modal-head">
+      <h3>Paramètres des cookies</h3>
+      <button class="ck-close" onclick="closeCookiePrefs()" aria-label="Fermer">&times;</button>
+    </div>
+    <p class="ck-modal-intro">Gérez vos préférences ci-dessous. Les cookies essentiels sont toujours actifs car le site ne peut pas fonctionner sans eux. Vous pouvez modifier ces choix à tout moment depuis le pied de page.</p>
+    <div class="ck-pref-row">
+      <div>
+        <div class="ck-pref-title">Cookies essentiels</div>
+        <div class="ck-pref-desc">Indispensables : navigation, sécurité et mémorisation de vos préférences (choix cookies, déblocage de la leçon). Toujours actifs.</div>
+      </div>
+      <label class="ck-switch ck-disabled"><input type="checkbox" checked disabled><span class="ck-slider"></span></label>
+    </div>
+    <div class="ck-pref-row">
+      <div>
+        <div class="ck-pref-title">Mesure d'audience — Google Analytics</div>
+        <div class="ck-pref-desc">Statistiques de visite anonymisées (pages vues, durée, type d'appareil) pour améliorer le site. Aucune donnée n'est revendue. Désactivé par défaut.</div>
+      </div>
+      <label class="ck-switch"><input type="checkbox" id="ck-analytics"><span class="ck-slider"></span></label>
+    </div>
+    <div class="ck-modal-actions">
+      <button class="ck-no" onclick="cookieRefuseAll()">Tout refuser</button>
+      <button class="ck-ok" onclick="saveCookiePrefs()">Enregistrer mes choix</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── COOKIES (consentement RGPD) — même logique que l'accueil ── */
+function ckBanner(show){var b=document.getElementById('cookie-banner');if(b)b.classList.toggle('show',show);}
+function openCookiePrefs(){var c=ckGet();var a=document.getElementById('ck-analytics');if(a)a.checked=(c.analytics===true);document.getElementById('cookie-prefs').classList.add('show');}
+function closeCookiePrefs(){document.getElementById('cookie-prefs').classList.remove('show');}
+function ckGet(){try{return JSON.parse(localStorage.getItem('cookie-consent-v2'))||{};}catch(e){return {};}}
+function ckStore(o){o.date=new Date().toISOString();localStorage.setItem('cookie-consent-v2',JSON.stringify(o));}
+function ckApply(c){if(c.analytics)loadAnalytics();}
+function cookieAcceptAll(){ckStore({essential:true,analytics:true});ckBanner(false);closeCookiePrefs();ckApply({analytics:true});}
+function cookieRefuseAll(){ckStore({essential:true,analytics:false});ckBanner(false);closeCookiePrefs();}
+function saveCookiePrefs(){var a=document.getElementById('ck-analytics').checked;ckStore({essential:true,analytics:a});ckBanner(false);closeCookiePrefs();if(a)ckApply({analytics:true});}
+function loadAnalytics(){
+  if(window.__gaLoaded)return;
+  /* Le suivi ne se charge qu'avec le consentement du visiteur. */
+  var ID='G-L0YPP7Y51K';
+  window.__gaLoaded=true;
+  var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+ID;document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;
+  gtag('js',new Date());gtag('config',ID,{anonymize_ip:true});
+}
+(function(){
+  var c=ckGet();
+  if(c.essential===undefined)ckBanner(true);
+  else ckApply(c);
+})();
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.110.7" integrity="sha384-BmlQlKlDvXvKoxkn5OQuUo/aJQCTXeB+Kls6EccBmG4Kf8AXvp89RtO9MtPxP/r5" crossorigin="anonymous"></script>
 <script src="supabase-config.js"></script>
