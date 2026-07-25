@@ -407,19 +407,40 @@ body.dark th{color:var(--gold2)}
 
 <script>
 /* ── AUTHENTIFICATION (Supabase) ── */
+/* Garde-fou anti-force-brute (en plus des limites serveur Supabase) :
+   après 5 échecs, pause de 30 s avant une nouvelle tentative depuis ce navigateur. */
+let loginFails = 0, loginBlockedUntil = 0;
 async function doLogin(){
   const email = document.getElementById('login-email').value.trim().toLowerCase();
   const pass  = document.getElementById('login-pass').value;
   const err   = document.getElementById('login-err');
   err.style.display='none';
+  const now = Date.now();
+  if(now < loginBlockedUntil){
+    const s = Math.ceil((loginBlockedUntil - now)/1000);
+    err.textContent = "Trop de tentatives. Réessayez dans " + s + " seconde" + (s>1?"s":"") + ".";
+    err.style.display='block';
+    return;
+  }
+  if(!email || !pass){
+    err.textContent = "Veuillez renseigner votre email et votre mot de passe.";
+    err.style.display='block';
+    return;
+  }
   // « Se souvenir de moi » : à enregistrer AVANT la connexion pour que la session soit stockée au bon endroit
   try{ localStorage.setItem('remember-me', document.getElementById('login-remember').checked ? '1' : '0'); }catch(e){}
+  const btn = document.querySelector('.login-btn');
+  if(btn){ btn.disabled = true; btn.textContent = "Connexion…"; }
   const { data, error } = await sb.auth.signInWithPassword({ email:email, password:pass });
+  if(btn){ btn.disabled = false; btn.textContent = "Accéder à ma formation"; }
   if(error){
+    loginFails++;
+    if(loginFails >= 5){ loginBlockedUntil = Date.now() + 30000; loginFails = 0; }
     err.textContent = traduireErreurAuth(error.message);
     err.style.display='block';
     return;
   }
+  loginFails = 0;
   onLoggedIn(data.user);
 }
 async function onLoggedIn(user){
