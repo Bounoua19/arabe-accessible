@@ -136,29 +136,15 @@ function updateConsent(){
   document.getElementById('btn-pay').disabled = !ok;
 }
 
-// Déclenché par "Continuer", après acceptation des 2 cases. Aucune connexion requise :
-// Stripe collecte l'email, et le compte sera créé après le paiement.
-async function startPayment(){
+// Déclenché par "Continuer", après acceptation des 2 cases (CGV + renonciation).
+// Le consentement légal est recueilli sur CETTE page, avant la redirection vers Stripe.
+// Stripe (Payment Link) collecte l'email et encaisse ; le compte est créé au retour, sur merci.html.
+const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/dRm4gA4jp7adeqrggf7ok00';
+function startPayment(){
   if(!document.getElementById('cb-cgv').checked || !document.getElementById('cb-retract').checked) return;
-  document.getElementById('consent-block').style.display='none';
-  document.getElementById('checkout-wrap').style.display='block';
-  try {
-    const res = await fetch(SUPABASE_URL + '/functions/v1/create-checkout-session', {
-      method:'POST',
-      headers:{ 'apikey': SUPABASE_KEY, 'Content-Type':'application/json' }
-    });
-    const data = await res.json();
-    if(!res.ok || !data.clientSecret){
-      showError("Le paiement n'a pas pu démarrer.<br>" + (data.error||'') + "<br><br><button class='btn-continue' style='max-width:220px' onclick='retryPayment()'>↻ Réessayer</button><br><br>Si le problème persiste, écrivez-nous à <a href='mailto:contact@arabeaccessible.com'>contact@arabeaccessible.com</a>.");
-      return;
-    }
-    const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-    const checkout = await stripe.initEmbeddedCheckout({ clientSecret: data.clientSecret });
-    document.getElementById('loading').style.display='none';
-    checkout.mount('#checkout');
-  } catch(e){
-    showError("Erreur de connexion au paiement.<br>" + e.message + "<br><br><button class='btn-continue' style='max-width:220px' onclick='retryPayment()'>↻ Réessayer</button>");
-  }
+  var btn = document.getElementById('btn-pay');
+  if(btn){ btn.disabled = true; btn.textContent = 'Redirection vers le paiement sécurisé…'; }
+  window.location.href = STRIPE_PAYMENT_LINK;
 }
 </script>
 </body>

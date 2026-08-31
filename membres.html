@@ -436,7 +436,7 @@ body.dark #cert-name-input{background:#1e1e3a;color:#fff;border-color:#2a2a4a}
   <div class="sidebar-prog-wrap">
     <div class="prog-label">Progression globale</div>
     <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
-    <div class="prog-pct" id="progPct">0 / 54 leçons</div>
+    <div class="prog-pct" id="progPct">0 / 55 leçons</div>
   </div>
 </aside>
 
@@ -623,7 +623,7 @@ function quizAns(btn){
 
 /* ── NAVIGATION ── */
 const ALL_LESSONS = [
-  'alph-lettres','alph-formes','alph-voyelles','alph-assembler','alph-mots3','alph-lecture','alph-hamza',
+  'alph-lettres','alph-formes','alph-voyelles','alph-assembler','alph-mots3','alph-lecture','alph-hamza','alph-cahier',
   'gram-nom','gram-pronom','gram-verbe',
   'conj-accompli','conj-inaccompli','conj-imperatif',
   'adj-m1','adj-m2','adj-m3','adj-m4','adj-m5','adj-m6','adj-m7','adj-m8',
@@ -633,7 +633,7 @@ const ALL_LESSONS = [
   'vocab-corps2','vocab-aliments2','vocab-animaux2','vocab-nature2','vocab-maison2','vocab-sante','vocab-metiers2','vocab-transport2','vocab-ecole2','vocab-verbes4','vocab-adj2','vocab-pays','vocab-temps3','vocab-expr2','vocab-divers'
 ];
 const STEPS_MAP = {
-  'alph-lettres':2,'alph-formes':2,'alph-voyelles':3,'alph-assembler':3,'alph-mots3':3,'alph-lecture':3,'alph-hamza':3,
+  'alph-lettres':2,'alph-formes':2,'alph-voyelles':3,'alph-assembler':3,'alph-mots3':3,'alph-lecture':3,'alph-hamza':3,'alph-cahier':1,
   'gram-nom':10,'gram-pronom':20,'gram-verbe':10,
   'conj-accompli':10,'conj-inaccompli':10,'conj-imperatif':9,
   'adj-m1':5,'adj-m2':5,'adj-m3':5,'adj-m4':5,
@@ -777,6 +777,58 @@ function updateCert(){
   if(d && !d.textContent){
     d.textContent = 'Délivrée le ' + new Date().toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'});
   }
+}
+
+/* Cahier d'écriture : ouvre un document complet prêt à imprimer dans un nouvel onglet */
+function openCahierEcriture(){
+  const T = "ـ"; // tatweel
+  const lettres = [
+    ["ا","Alif","ā"],["ب","Bā","b"],["ت","Tā","t"],["ث","Thā","th"],["ج","Jīm","dj"],
+    ["ح","Ḥā","ḥ"],["خ","Khā","kh"],["د","Dāl","d"],["ذ","Dhāl","dh"],["ر","Rā","r"],
+    ["ز","Zāy","z"],["س","Sīn","s"],["ش","Shīn","sh"],["ص","Ṣād","ṣ"],["ض","Ḍād","ḍ"],
+    ["ط","Ṭā","ṭ"],["ظ","Ẓā","ẓ"],["ع","'Ayn","ʿ"],["غ","Ghayn","gh"],["ف","Fā","f"],
+    ["ق","Qāf","q"],["ك","Kāf","k"],["ل","Lām","l"],["م","Mīm","m"],["ن","Nūn","n"],
+    ["ه","Hā","h"],["و","Wāw","w/ū"],["ي","Yā","y/ī"],["ء","Hamza","ʾ"]
+  ];
+  const noLeft = ["ا","د","ذ","ر","ز","و","ء"];
+  const mots = [
+    ["بَاب","bāb","Porte"],["وَلَد","walad","Garçon"],["قَلَم","qalam","Stylo"],
+    ["بَيْت","bayt","Maison"],["كِتَاب","kitāb","Livre"],["قَمَر","qamar","Lune"],
+    ["شَمْس","shams","Soleil"],["جَمَل","jamal","Chameau"],["كَلْب","kalb","Chien"],
+    ["مَاء","māʾ","Eau"],["مَدْرَسَة","madrasa","École"],["مَسْجِد","masjid","Mosquée"]
+  ];
+  const letters = lettres.map(l =>
+    '<div class="lrow"><div class="lbl"><div class="big ar">'+l[0]+'</div><div class="nm">'+l[1]+'</div><div class="tr">'+l[2]+'</div></div>'
+    +'<div class="track"><span class="model solid ar">'+l[0]+'</span><span class="model hollow ar">'+l[0]+'</span><span class="model hollow ar">'+l[0]+'</span>'
+    +'<span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span></div></div>').join('');
+  let forms = '<tr><th>Lettre</th><th>Isolée</th><th>Début</th><th>Milieu</th><th>Fin</th></tr>';
+  lettres.forEach(l => { const c=l[0], nl=noLeft.includes(c);
+    forms += '<tr><td class="name">'+l[1]+'</td><td class="g">'+c+'</td><td class="g">'+(nl?c:c+T)+'</td><td class="g">'+(nl?T+c:T+c+T)+'</td><td class="g">'+T+c+'</td></tr>'; });
+  const words = mots.map(m =>
+    '<div class="wrow"><div class="whead"><span class="w-ar ar">'+m[0]+'</span><span class="w-meta"><b>'+m[2]+'</b> · '+m[1]+'</span></div>'
+    +'<div class="wtrace"><span class="wm s ar">'+m[0]+'</span><span class="wm h ar">'+m[0]+'</span><span class="wm h ar">'+m[0]+'</span></div></div>').join('');
+
+  const css = "*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#1b1b12;padding-bottom:40px}.ar{font-family:'Amiri','Geeza Pro','Noto Naskh Arabic',serif}"
+    +".cover{background:linear-gradient(160deg,#09190f,#1a4029);color:#fff;text-align:center;padding:48px 24px 40px;border-bottom:5px solid #c9a227}.cover .k{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#e8c96a;margin-bottom:12px}.cover h1{font-family:Georgia,serif;font-size:36px}.cover h1 span{color:#e8c96a}.cover .at{font-size:24px;color:rgba(201,162,39,.75);margin:8px 0 14px}.cover p{font-size:14px;color:rgba(255,255,255,.6);max-width:560px;margin:0 auto;line-height:1.7}"
+    +".wrap{max-width:840px;margin:0 auto;padding:0 20px}.intro{background:#fff8e6;border:1px solid rgba(201,162,39,.4);border-radius:10px;padding:16px 20px;margin:24px 0;font-size:13.5px;color:#6b5200;line-height:1.75}"
+    +"section{margin-top:34px}h2.s{font-family:Georgia,serif;font-size:23px;color:#09190f;display:flex;align-items:center;gap:12px}h2.s .n{background:#c9a227;color:#09190f;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}.ss{font-size:13px;color:#6a6a55;margin:2px 0 16px 42px}"
+    +".lrow{background:#fffdf8;border:1px solid #e2ddd0;border-radius:10px;margin-bottom:11px;padding:12px 16px;display:flex;align-items:center;gap:14px;overflow:hidden}.lbl{flex:0 0 82px;text-align:center;border-left:2px solid #efe9dc;padding-left:10px}.lbl .big{font-size:42px;color:#c9a227;direction:rtl;line-height:1}.lbl .nm{font-size:12px;color:#6a6a55;font-weight:700;margin-top:3px}.lbl .tr{font-size:11px;color:#a39c88}.track{flex:1;display:flex;align-items:center;gap:9px;direction:rtl;min-width:0}.model{font-size:36px;line-height:1;flex-shrink:0}.model.solid{color:#cfc7b4}.model.hollow{color:transparent;-webkit-text-stroke:1px #e8e2d3}.cell{flex:1;min-width:28px;height:50px;border:1px dashed #e2ddd0;border-radius:6px;background:repeating-linear-gradient(0deg,transparent,transparent 24px,#f1ecdf 24px,#f1ecdf 25px)}"
+    +".forms{width:100%;border-collapse:collapse;background:#fffdf8;border:1px solid #e2ddd0;border-radius:10px;overflow:hidden;font-size:13px}.forms th{background:#09190f;color:#e8c96a;padding:9px 8px;font-size:11px;text-transform:uppercase;text-align:center}.forms td{border-top:1px solid #efe9dc;padding:9px 6px;text-align:center}.forms td.name{text-align:right;padding-right:12px;font-weight:600;color:#6a6a55;font-size:12px}.forms td.g{font-family:'Amiri','Geeza Pro',serif;font-size:25px;direction:rtl}.forms tr:nth-child(even) td{background:#faf7ef}"
+    +".wrow{background:#fffdf8;border:1px solid #e2ddd0;border-radius:10px;margin-bottom:11px;padding:12px 16px;overflow:hidden}.whead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;flex-wrap:wrap;gap:6px}.whead .w-ar{font-family:'Amiri','Geeza Pro',serif;font-size:28px;color:#c9a227;direction:rtl}.whead .w-meta{font-size:13px;color:#6a6a55}.whead .w-meta b{color:#1b1b12}.wtrace{border:1px dashed #e2ddd0;border-radius:8px;height:62px;direction:rtl;display:flex;align-items:center;padding:0 16px;gap:22px;background:repeating-linear-gradient(0deg,transparent,transparent 30px,#f1ecdf 30px,#f1ecdf 31px)}.wtrace .wm{font-family:'Amiri','Geeza Pro',serif;font-size:32px}.wtrace .wm.s{color:#cfc7b4}.wtrace .wm.h{color:transparent;-webkit-text-stroke:1px #e8e2d3}"
+    +".foot{text-align:center;font-size:12px;color:#6a6a55;margin-top:34px;padding-top:14px;border-top:1px solid #e2ddd0}"
+    +"@media print{.cover,.forms th{-webkit-print-color-adjust:exact;print-color-adjust:exact}.lrow,.wrow,.forms,.intro{break-inside:avoid}.pb{break-before:page}}";
+
+  const doc = "<!DOCTYPE html><html lang='fr'><head><meta charset='UTF-8'><title>Cahier d'écriture — L'Arabe Accessible</title><style>"+css+"</style></head><body>"
+    +"<div class='cover'><div class='k'>Bonus de la formation</div><h1>Cahier d'écriture<br><span>L'Arabe Accessible</span></h1><div class='at ar'>كُرَّاسَةُ الخَطّ</div><p>Tracez les 28 lettres, leurs 4 formes et vos premiers mots — à imprimer et repasser au crayon.</p></div>"
+    +"<div class='wrap'><div class='intro'><strong>Comment l'utiliser —</strong> l'arabe s'écrit <strong>de droite à gauche</strong>. Pour chaque lettre : repassez le modèle plein, puis les modèles évidés, puis recopiez dans les cases en prononçant le nom à voix haute. 10 minutes par jour valent mieux qu'une heure par semaine.</div>"
+    +"<section><h2 class='s'><span class='n'>1</span> Les 28 lettres + la hamza</h2><div class='ss'>Repassez les modèles, puis entraînez-vous dans les cases.</div>"+letters+"</section>"
+    +"<section class='pb'><h2 class='s'><span class='n'>2</span> Les 4 formes de chaque lettre</h2><div class='ss'>Isolée · début · milieu · fin.</div><table class='forms'>"+forms+"</table></section>"
+    +"<section class='pb'><h2 class='s'><span class='n'>3</span> Écrire ses premiers mots</h2><div class='ss'>Repassez le modèle à droite, puis continuez la ligne.</div>"+words+"</section>"
+    +"<div class='foot'>L'Arabe Accessible — cahier d'écriture · imprimer en A4 (Cmd/Ctrl + P → « Enregistrer en PDF »)</div></div></body></html>";
+
+  const w = window.open('', '_blank');
+  if(!w){ alert("Autorisez les fenêtres pop-up pour ouvrir le cahier, puis réessayez."); return; }
+  w.document.open(); w.document.write(doc); w.document.close();
 }
 
 function goNext(id){
