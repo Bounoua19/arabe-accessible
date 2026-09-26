@@ -86,6 +86,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:#fff;min-heig
       </label>
       <button id="btn-pay" class="btn-continue" onclick="startPayment()" disabled>Continuer vers le paiement →</button>
     </div>
+    <div id="coming-soon" style="display:none;background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.25);border-radius:12px;padding:28px 24px;text-align:center">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold2);margin-bottom:10px">Ouverture imminente</div>
+      <p style="font-size:14px;color:rgba(255,255,255,.7);line-height:1.75;margin-bottom:20px">La formation complète sera disponible à l'achat très prochainement. En attendant, commencez <strong>dès maintenant et gratuitement</strong> avec la première leçon offerte (l'alphabet complet, avec audio).</p>
+      <a href="lecon-gratuite.html" class="btn-continue" style="display:inline-block;text-decoration:none;max-width:320px">Recevoir la 1ʳᵉ leçon gratuite →</a>
+    </div>
     <div class="checkout-wrap" id="checkout-wrap" style="display:none">
       <div class="loading" id="loading" style="color:#333">Chargement du paiement sécurisé…</div>
       <div id="checkout"></div>
@@ -140,7 +145,21 @@ function updateConsent(){
 // Le consentement légal est recueilli sur CETTE page, avant la redirection vers Stripe.
 // Stripe (Payment Link) collecte l'email et encaisse ; le compte est créé au retour, sur merci.html.
 const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/dRm4gA4jp7adeqrggf7ok00';
+
+/* ═══════ INTERRUPTEUR DE VENTE ═══════
+   false = vente FERMÉE (achat désactivé, en attendant le SIRET).
+   Le jour du lancement : passer cette ligne à  true  pour rouvrir l'achat. */
+const VENTE_OUVERTE = false;
+
+/* Vente fermée → on masque le paiement et on affiche « ouverture imminente ». */
+if(!VENTE_OUVERTE){
+  var _cb=document.getElementById('consent-block'); if(_cb) _cb.style.display='none';
+  var _cs=document.getElementById('coming-soon'); if(_cs) _cs.style.display='block';
+  var _sec=document.querySelector('.secure'); if(_sec) _sec.style.display='none';
+}
+
 function startPayment(){
+  if(!VENTE_OUVERTE) return; /* vente fermée : aucune redirection possible */
   if(!document.getElementById('cb-cgv').checked || !document.getElementById('cb-retract').checked) return;
   var btn = document.getElementById('btn-pay');
   if(btn){ btn.disabled = true; btn.textContent = 'Redirection vers le paiement sécurisé…'; }
