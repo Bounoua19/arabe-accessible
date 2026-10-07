@@ -149,7 +149,7 @@ const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/dRm4gA4jp7adeqrggf7ok00';
 /* ═══════ INTERRUPTEUR DE VENTE ═══════
    false = vente FERMÉE (achat désactivé, en attendant le SIRET).
    Le jour du lancement : passer cette ligne à  true  pour rouvrir l'achat. */
-const VENTE_OUVERTE = false;
+const VENTE_OUVERTE = true;
 
 /* Vente fermée → on masque le paiement et on affiche « ouverture imminente ». */
 if(!VENTE_OUVERTE){
