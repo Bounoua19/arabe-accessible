@@ -380,9 +380,9 @@ async function unlockLesson(){
   if(!document.getElementById('lead-consent').checked){ gateMsg("Veuillez cocher la case d'acceptation pour recevoir la leçon par email.","err"); return; }
   btn.disabled=true; btn.textContent="Un instant…";
   try{
-    const { error } = await sb.from('prospects').insert({ email:email, source:'lecon-gratuite' });
-    /* Email déjà enregistré (code 23505) : pas grave, on débloque quand même */
-    if(error && error.code!=='23505') throw error;
+    /* Enregistre l'email dans Supabase ET l'ajoute à la liste Brevo (déclenche l'email de bienvenue) */
+    const { error } = await sb.functions.invoke('capture-lead', { body:{ email:email, website:document.getElementById('lead-web').value } });
+    if(error) throw error;
     localStorage.setItem('lecon1-ok','1');
     if(window.gtag) gtag('event','lead_lecon_gratuite');
     revealLesson();
